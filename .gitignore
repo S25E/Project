@@ -45,7 +45,6 @@ local.properties
 *.sln.docstates
 <<<<<<< HEAD
 =======
-*.sln
 >>>>>>> 3d0161a2b547ff517f3e280747c7ad1e8d84a29b
 
 # Build results
