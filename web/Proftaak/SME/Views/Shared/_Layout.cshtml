@@ -8,13 +8,13 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>@ViewPage.ti</title>
+    <title>@ViewBag.Title</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-    <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/main.css">
-    <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+
+    <link rel="stylesheet" href="@Url.Content("~/css/normalize.css")">
+    <link rel="stylesheet" href="@Url.Content("~/css/main.css")">
+    ><script src="@Url.Content("~/Scripts/modernizr-2.6.2.min.js")"></script>
     @RenderSection("head", required: false)
 </head>
 <body>
@@ -25,8 +25,7 @@
     @RenderBody()
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
-    <script src="js/plugins.js"></script>
-    <script src="js/main.js"></script>
+    <script>window.jQuery || document.write('<script src="@Url.Content("~/Scripts/jquery-1.10.2.min.js")"><\/script>')</script>
+    <script src="@Url.Content("~/Scripts/bootstrap.js")"></script>
 </body>
 </html>
