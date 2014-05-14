@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace mvcWeb.Controllers
+namespace SME.Controllers
 {
     /// <summary>
     ///  
