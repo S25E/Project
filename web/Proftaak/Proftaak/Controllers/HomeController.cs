@@ -8,9 +8,10 @@ namespace mvcWeb.Controllers
 {
     public class HomeController : Controller
     {
-        //
-        // GET: /Home/
-
+        /// <summary>
+        /// GET: /Home/
+        /// </summary>
+        /// <returns></returns>
         public ActionResult Index()
         {
             return View();
