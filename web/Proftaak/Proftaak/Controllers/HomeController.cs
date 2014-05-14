@@ -7,14 +7,14 @@ using System.Web.Mvc;
 namespace mvcWeb.Controllers
 {
     /// <summary>
-    /// This class is the home controller 
+    ///  
     /// </summary>
     public class HomeController : Controller
     {
         /// <summary>
         /// GET: /Home/
         /// </summary>
-        /// <returns>This is bullshit dsfsds</returns>
+        /// <returns></returns>
         public ActionResult Index()
         {
             return View();
