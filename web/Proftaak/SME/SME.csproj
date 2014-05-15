@@ -68,8 +68,20 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="model\Bestand.cs" />
+    <Compile Include="model\BestandDB.cs" />
+    <Compile Include="model\BestandenCatalogus.cs" />
+    <Compile Include="model\Database.cs" />
+    <Compile Include="model\Map.cs" />
+    <Compile Include="model\MapDB.cs" />
+    <Compile Include="model\Persoon.cs" />
+    <Compile Include="model\PersoonBeheer.cs" />
+    <Compile Include="model\PersoonDB.cs" />
+    <Compile Include="model\Reactie.cs" />
+    <Compile Include="model\ReactieDB.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
