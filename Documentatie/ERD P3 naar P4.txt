@@ -1,0 +1,20 @@
+Campingplaats > Kampeerplaats
+Reservering_plaats (IPV) Reserveringnummer veld in Kampeerplaats
+Artikel > Materiaal
+Lening > Uitlening
+RFID_col is een collectie van RFID nummers, dus de nummers moeten in deze tabel voorkomen voordat het nummer wordt uitgegeven(ofwel nummer is onbekend)
+Bijboeker_Of_Medewerker 	> Medewerker
+				> Klant
+Hoofdboeker > Klant_betalend
+Klant_betalend meer informatie
+Een Tabel Bestand (!! geen subtypering); Extensiew IN Bestand tabel
+Bestand heeft een rating bij zich wat kan fungeren als like/dislike ratio?	- Mogelijk Like en Dislike tabellen maken
+										- Rating als "Rapport" Cijfer(Ratio)
+										- Rating als optelsom; elke like is +1 elke dislike -1
+Reactie > Opmerking (!! Surrogaatkey)
+
+
+=============================
+- Geen Reports In Nieuwe ERD?
+- 
+=============================
