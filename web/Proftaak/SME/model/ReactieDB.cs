@@ -8,7 +8,7 @@ using Oracle.DataAccess.Types;
 
 namespace FileSharing
 {
-    class ReactieDB : Database
+    public partial class Reactie
     {
         /// <summary>
         /// Het ophalen van de reacties die bij een bepaald bestand horen

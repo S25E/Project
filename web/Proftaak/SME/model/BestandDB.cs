@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace FileSharing
 {
-    class BestandDB : Database 
+    public partial class Bestand 
     {
         /// <summary>
         /// Het ophalen van bestanden gebeurt in de meeste gevallen op dezelfde manier. Alleen het laatste gedeelte van de WHERE-clause verschilt. Om dit te vermakkelijken: deze methode.

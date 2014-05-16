@@ -11,7 +11,7 @@ namespace FileSharing
 
     }
 
-    class PersoonDB : Database
+    public partial class Persoon
     {
         /// <summary>
         /// Het ophalen van een bepaald persoon aan de hand van een nummer

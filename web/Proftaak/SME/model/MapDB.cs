@@ -6,7 +6,7 @@ using System.Data;
 
 namespace FileSharing
 {
-    class MapDB : Database
+    public partial class Map
     {
         /// <summary>
         /// Het ophalen van alle mappen.

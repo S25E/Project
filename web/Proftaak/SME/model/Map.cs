@@ -5,7 +5,7 @@ using System.Text;
 
 namespace FileSharing
 {
-    public class Map
+    public partial class Map
     {
         /// <summary>
         /// De connecties met de database.

@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace FileSharing
 {
-    public class Bestand
+    public partial class Bestand
     {
         /// <summary>
         /// Database connecties
