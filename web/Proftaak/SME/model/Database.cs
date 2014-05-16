@@ -4,8 +4,6 @@ using System.Linq;
 using System.Text;
 using Oracle.DataAccess.Client;
 using Oracle.DataAccess.Types;
-using System.Data;
-using System.Windows.Forms;
 
 namespace SME
 {
