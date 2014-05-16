@@ -205,11 +205,14 @@
             <BooleanProperty Name="Enabled">False</BooleanProperty>
           </RuleSettings>
         </Rule>
+<<<<<<< HEAD
         <Rule Name="ElementDocumentationMustBeSpelledCorrectly">
           <RuleSettings>
             <BooleanProperty Name="Enabled">False</BooleanProperty>
           </RuleSettings>
         </Rule>
+=======
+>>>>>>> parent of d49f71d... styelcop2
       </Rules>
       <AnalyzerSettings />
     </Analyzer>
