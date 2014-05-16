@@ -7,19 +7,17 @@ using Oracle.DataAccess.Types;
 
 namespace SME
 {
-    public class Database
+    public static class Database
     {
-        private OracleConnection oc;
+        private static OracleConnection oc;
 
         /// <summary>
         /// Het initiëren van de databaseinstellingen
         /// </summary>
         public Database()
         {
-            this.oc = new OracleConnection();
-            String pcn = "dbi300480";
-            String pw = "HH9VTIT7qf";
-            oc.ConnectionString = "User Id=" + pcn + ";Password=" + pw + ";Data Source=" + "//192.168.15.50:1521/fhictora" + ";";
+            oc = new OracleConnection();
+            oc.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["SMEConnectionString"].ConnectionString;
         }
 
         /// <summary>
