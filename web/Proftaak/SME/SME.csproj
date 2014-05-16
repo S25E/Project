@@ -76,7 +76,6 @@
     <Compile Include="model\Map.cs" />
     <Compile Include="model\Map.db.cs" />
     <Compile Include="model\Persoon.cs" />
-    <Compile Include="model\PersoonBeheer.cs" />
     <Compile Include="model\Persoon.db.cs" />
     <Compile Include="model\Reactie.cs" />
     <Compile Include="model\Reactie.db.cs" />
