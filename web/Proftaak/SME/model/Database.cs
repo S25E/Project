@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Oracle.DataAccess.Client;
 using Oracle.DataAccess.Types;
+using System.Data;
 
 namespace SME
 {
@@ -25,7 +26,7 @@ namespace SME
         /// </summary>
         /// <param name="query"></param>
         /// <returns>En een DataTable met de opgehaalde infromatie</returns>
-        public DataTable GetData(string query)
+        public static DataTable GetData(string query)
         {
             DataTable dt = new DataTable();
 
@@ -53,7 +54,7 @@ namespace SME
         /// Het uitvoeren van een SQL-commando
         /// </summary>
         /// <param name="query"></param>
-        public void Execute(string query)
+        public static void Execute(string query)
         {
             OracleCommand command = new OracleCommand(query, this.oc);
 
@@ -71,16 +72,6 @@ namespace SME
                 this.oc.Close();
             }
 
-        }
-
-        /// <summary>
-        /// Het escapen van een string, zodat hackers geen kans hebben om te hacken.
-        /// </summary>
-        /// <param name="input"></param>
-        /// <returns></returns>
-        public string Escape(string input)
-        {
-            return input.Replace("'", "\'");
         }
     }
 }
