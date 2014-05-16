@@ -32,18 +32,18 @@ namespace SME
 
             try
             {
-                this.oc.Open();
+                oc.Open();
 
-                OracleDataAdapter adapter = new OracleDataAdapter(query, this.oc);
+                OracleDataAdapter adapter = new OracleDataAdapter(query, oc);
                 adapter.Fill(dt);
             }
             catch(Exception e)
             {
-                MessageBox.Show("ERROR! " + e.Message + " " + query);
+                throw;
             }
             finally
             {
-                this.oc.Close();
+                oc.Close();
             }
 
             return dt;
@@ -65,7 +65,7 @@ namespace SME
             }
             catch (Exception e)
             {
-                MessageBox.Show("ERROR! " + e.Message + " " + query);
+                throw;
             }
             finally
             {
