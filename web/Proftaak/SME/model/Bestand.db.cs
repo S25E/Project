@@ -5,7 +5,7 @@ using System.Text;
 using System.Data;
 using System.Windows.Forms;
 
-namespace FileSharing
+namespace SME
 {
     public partial class Bestand 
     {

@@ -6,7 +6,7 @@ using System.Data;
 using System.Windows.Forms;
 using Oracle.DataAccess.Types;
 
-namespace FileSharing
+namespace SME
 {
     public partial class Reactie
     {

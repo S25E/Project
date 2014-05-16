@@ -7,7 +7,7 @@ using Oracle.DataAccess.Types;
 using System.Data;
 using System.Windows.Forms;
 
-namespace FileSharing
+namespace SME
 {
     public class Database
     {

@@ -6,7 +6,7 @@ using System.IO;
 using System.Net;
 using System.Windows.Forms;
 
-namespace FileSharing
+namespace SME
 {
     public partial class Bestand
     {
