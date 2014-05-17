@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SME
 {
-    public class Reactie
+    public partial class Reactie
     {
         /// <summary>
         /// De connecties met de database.
