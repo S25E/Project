@@ -26,15 +26,15 @@ namespace SME
         /// </summary>
         /// <param name="query"></param>
         /// <returns>En een DataTable met de opgehaalde infromatie</returns>
-        public static DataTable GetData(string query)
+        public static DataTable GetData(OracleCommand command)
         {
             DataTable dt = new DataTable();
 
             try
             {
                 oc.Open();
-
-                OracleDataAdapter adapter = new OracleDataAdapter(query, oc);
+                command.Connection = oc;
+                OracleDataAdapter adapter = new OracleDataAdapter(command);
                 adapter.Fill(dt);
             }
             catch(Exception e)
@@ -54,13 +54,12 @@ namespace SME
         /// Het uitvoeren van een SQL-commando
         /// </summary>
         /// <param name="query"></param>
-        public static void Execute(string query)
-        {
-            OracleCommand command = new OracleCommand(query, this.oc);
-
+        public static void Execute(OracleCommand command)
+        {   
             try
             {
-                this.oc.Open();
+                oc.Open();
+                command.Connection = oc;
                 command.ExecuteNonQuery();
             }
             catch (Exception e)
@@ -69,9 +68,8 @@ namespace SME
             }
             finally
             {
-                this.oc.Close();
+                oc.Close();
             }
-
         }
     }
 }
