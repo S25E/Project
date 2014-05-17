@@ -12,11 +12,11 @@ namespace SME
         /// Het ophalen van alle mappen.
         /// </summary>
         /// <returns>Een Dictionary met MAP_NUMMER => de Map</returns>
-        public Dictionary<int, Map> GetMappen()
+        public static Dictionary<int, Map> GetMappen()
         {
             Dictionary<int, Map> mappen = new Dictionary<int, Map>();
 
-            foreach (DataRow row in this.GetData("SELECT * FROM MAP ORDER by MAP_NUMMER ASC").Rows)
+            foreach (DataRow row in Database.GetData("SELECT * FROM MAP ORDER by MAP_NUMMER ASC").Rows)
                 mappen.Add(Convert.ToInt32(row["MAP_NUMMER"]), this.rowToBestand(row));
 
             return mappen;
@@ -27,12 +27,12 @@ namespace SME
         /// </summary>
         /// <param name="map"></param>
         /// <returns>Een lijst met mappen</returns>
-        public List<Map> GetSubmappenBijMap(Map map)
+        public static List<Map> GetSubmappenBijMap(Map map)
         {
             List<Map> mappen = new List<Map>();
 
-            foreach (DataRow row in this.GetData("SELECT * FROM MAP WHERE PARENT = " + map.Nummer).Rows)
-                mappen.Add(this.rowToBestand(row));
+            foreach (DataRow row in Database.GetData("SELECT * FROM MAP WHERE PARENT = " + map.Nummer).Rows)
+                mappen.Add(rowToBestand(row));
 
             return mappen;
         }
@@ -42,10 +42,10 @@ namespace SME
         /// </summary>
         /// <param name="nummer"></param>
         /// <returns>De Map</returns>
-        public Map GetMapBijNummer(int nummer)
+        public static Map GetMapBijNummer(int nummer)
         {
-            foreach (DataRow row in this.GetData("SELECT * FROM MAP WHERE MAP_NUMMER = " + nummer).Rows)
-                return this.rowToBestand(row);
+            foreach (DataRow row in Database.GetData("SELECT * FROM MAP WHERE MAP_NUMMER = " + nummer).Rows)
+                return rowToBestand(row);
 
             return null;
         }
@@ -55,11 +55,11 @@ namespace SME
         /// </summary>
         /// <param name="map"></param>
         /// <returns>Het nummer van de toegevoegde map</returns>
-        public int AddMap(Map map)
+        public static int AddMap(Map map)
         {
-            int insertedId = Convert.ToInt32(this.GetData("SELECT map1.nextval FROM dual").Rows[0]["NEXTVAL"]);
+            int insertedId = Convert.ToInt32(Database.GetData("SELECT map1.nextval FROM dual").Rows[0]["NEXTVAL"]);
 
-            this.Execute("INSERT INTO MAP (MAP_NUMMER, NAAM, PARENT) VALUES (" + insertedId + ", '" + this.Escape(map.Naam) + "', " + (map.ParentMapNummer == 0 ? "NULL" : map.ParentMapNummer.ToString()) + ")");
+            Database.Execute("INSERT INTO MAP (MAP_NUMMER, NAAM, PARENT) VALUES (" + insertedId + ", '" + this.Escape(map.Naam) + "', " + (map.ParentMapNummer == 0 ? "NULL" : map.ParentMapNummer.ToString()) + ")");
 
             return insertedId;
         }
@@ -69,7 +69,7 @@ namespace SME
         /// </summary>
         /// <param name="row"></param>
         /// <returns>De Map</returns>
-        private Map rowToBestand(DataRow row)
+        private static Map rowToBestand(DataRow row)
         {
             return new Map(
                 Convert.ToInt32(row["MAP_NUMMER"]),

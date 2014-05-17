@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SME
 {
-    public abstract class Persoon : IEquatable<Persoon>
+    public abstract partial class Persoon : IEquatable<Persoon>
     {
         /// <summary>
         /// Het nummer van de persoon.

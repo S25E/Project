@@ -13,19 +13,19 @@ namespace SME
         /// </summary>
         /// <param name="where"></param>
         /// <returns>DataTable met bestanden</returns>
-        private DataTable getBestandenByWhere(string where = ""){
-            return this.GetData("SELECT * FROM BESTAND LEFT JOIN GELUIDSFRAGMENT ON BESTAND.BESTAND_NUMMER = GELUIDSFRAGMENT.BESTAND_NUMMER LEFT JOIN FILM ON BESTAND.BESTAND_NUMMER = FILM.BESTAND_NUMMER LEFT JOIN BOEK ON BESTAND.BESTAND_NUMMER = BOEK.BESTAND_NUMMER LEFT JOIN AFBEELDING ON BESTAND.BESTAND_NUMMER = AFBEELDING.BESTAND_NUMMER WHERE (SELECT COUNT(1) FROM DISLIKE_LIKE_REPORT WHERE DISLIKE_LIKE_REPORT.BESTAND_NUMMER = BESTAND.BESTAND_NUMMER AND REPORT = 'Y') <= 3" + (where != "" ? " AND " + where : ""));
+        private static DataTable getBestandenByWhere(string where = ""){
+            return Database.GetData("SELECT * FROM BESTAND LEFT JOIN GELUIDSFRAGMENT ON BESTAND.BESTAND_NUMMER = GELUIDSFRAGMENT.BESTAND_NUMMER LEFT JOIN FILM ON BESTAND.BESTAND_NUMMER = FILM.BESTAND_NUMMER LEFT JOIN BOEK ON BESTAND.BESTAND_NUMMER = BOEK.BESTAND_NUMMER LEFT JOIN AFBEELDING ON BESTAND.BESTAND_NUMMER = AFBEELDING.BESTAND_NUMMER WHERE (SELECT COUNT(1) FROM DISLIKE_LIKE_REPORT WHERE DISLIKE_LIKE_REPORT.BESTAND_NUMMER = BESTAND.BESTAND_NUMMER AND REPORT = 'Y') <= 3" + (where != "" ? " AND " + where : ""));
         }
 
         /// <summary>
         /// Geeft bestanden terug gesorteerd bij map.
         /// </summary>
         /// <returns>Dictionary MAP_NUMMER => lijst met BESTANDEN</returns>
-        public Dictionary<int, List<Bestand>> GetBestandenBijMap()
+        public static Dictionary<int, List<Bestand>> GetBestandenBijMap()
         {
             Dictionary<int, List<Bestand>> bestanden = new Dictionary<int, List<Bestand>>();
 
-            foreach (DataRow row in this.getBestandenByWhere().Rows)
+            foreach (DataRow row in getBestandenByWhere().Rows)
             {
                 Bestand bestand = this.rowToBestand(row);
                 int mapNummer = Convert.ToInt32(row["MAP_NUMMER"]);
@@ -47,11 +47,11 @@ namespace SME
         /// Geeft alle bestanden.
         /// </summary>
         /// <returns>Lijst met bestanden</returns>
-        public List<Bestand> GetBestanden()
+        public static List<Bestand> GetBestanden()
         {
             List<Bestand> bestanden = new List<Bestand>();
 
-            foreach (DataRow row in this.getBestandenByWhere().Rows)
+            foreach (DataRow row in getBestandenByWhere().Rows)
                 bestanden.Add(this.rowToBestand(row));
 
             return bestanden;
@@ -62,11 +62,11 @@ namespace SME
         /// </summary>
         /// <param name="map"></param>
         /// <returns>Lijst met bestanden</returns>
-        public List<Bestand> GetBestandenBijMap(Map map)
+        public static List<Bestand> GetBestandenBijMap(Map map)
         {
             List<Bestand> bestanden = new List<Bestand>();
 
-            foreach (DataRow row in this.getBestandenByWhere("MAP_NUMMER = " + map.Nummer).Rows)
+            foreach (DataRow row in getBestandenByWhere("MAP_NUMMER = " + map.Nummer).Rows)
                 bestanden.Add(this.rowToBestand(row));
 
             return bestanden;
@@ -77,13 +77,13 @@ namespace SME
         /// </summary>
         /// <param name="bestand"></param>
         /// <param name="persoon"></param>
-        public void AddLike(Bestand bestand, Persoon persoon)
+        public static void AddLike(Bestand bestand, Persoon persoon)
         {
-            DataTable dt = this.GetData("SELECT * FROM DISLIKE_LIKE_REPORT WHERE PERSOON_NUMMER = " + persoon.Nummer + " AND BESTAND_NUMMER = " + bestand.Nummer);
+            DataTable dt = Database.GetData("SELECT * FROM DISLIKE_LIKE_REPORT WHERE PERSOON_NUMMER = " + persoon.Nummer + " AND BESTAND_NUMMER = " + bestand.Nummer);
             if (dt.Rows.Count == 0)
-                this.Execute("INSERT INTO DISLIKE_LIKE_REPORT (PERSOON_NUMMER, BESTAND_NUMMER, LIKEDISLIKE, REPORT) VALUES (" + persoon.Nummer + ", " + bestand.Nummer + ", 'LIKE', 'N')");
+                Database.Execute("INSERT INTO DISLIKE_LIKE_REPORT (PERSOON_NUMMER, BESTAND_NUMMER, LIKEDISLIKE, REPORT) VALUES (" + persoon.Nummer + ", " + bestand.Nummer + ", 'LIKE', 'N')");
             else
-                this.Execute("UPDATE DISLIKE_LIKE_REPORT SET LIKEDISLIKE = 'LIKE' WHERE PERSOON_NUMMER = " + persoon.Nummer + " AND BESTAND_NUMMER = " + bestand.Nummer);
+                Database.Execute("UPDATE DISLIKE_LIKE_REPORT SET LIKEDISLIKE = 'LIKE' WHERE PERSOON_NUMMER = " + persoon.Nummer + " AND BESTAND_NUMMER = " + bestand.Nummer);
         }
 
         /// <summary>
@@ -91,13 +91,13 @@ namespace SME
         /// </summary>
         /// <param name="bestand"></param>
         /// <param name="persoon"></param>
-        public void AddDislike(Bestand bestand, Persoon persoon)
+        public static void AddDislike(Bestand bestand, Persoon persoon)
         {
-            DataTable dt = this.GetData("SELECT * FROM DISLIKE_LIKE_REPORT WHERE PERSOON_NUMMER = " + persoon.Nummer + " AND BESTAND_NUMMER = " + bestand.Nummer);
+            DataTable dt = Database.GetData("SELECT * FROM DISLIKE_LIKE_REPORT WHERE PERSOON_NUMMER = " + persoon.Nummer + " AND BESTAND_NUMMER = " + bestand.Nummer);
             if (dt.Rows.Count == 0)
-                this.Execute("INSERT INTO DISLIKE_LIKE_REPORT (PERSOON_NUMMER, BESTAND_NUMMER, LIKEDISLIKE, REPORT) VALUES (" + persoon.Nummer + ", " + bestand.Nummer + ", 'DISLIKE', 'N')");
+                Database.Execute("INSERT INTO DISLIKE_LIKE_REPORT (PERSOON_NUMMER, BESTAND_NUMMER, LIKEDISLIKE, REPORT) VALUES (" + persoon.Nummer + ", " + bestand.Nummer + ", 'DISLIKE', 'N')");
             else
-                this.Execute("UPDATE DISLIKE_LIKE_REPORT SET LIKEDISLIKE = 'DISLIKE' WHERE PERSOON_NUMMER = " + persoon.Nummer + " AND BESTAND_NUMMER = " + bestand.Nummer);
+                Database.Execute("UPDATE DISLIKE_LIKE_REPORT SET LIKEDISLIKE = 'DISLIKE' WHERE PERSOON_NUMMER = " + persoon.Nummer + " AND BESTAND_NUMMER = " + bestand.Nummer);
         }
 
         /// <summary>
@@ -105,13 +105,13 @@ namespace SME
         /// </summary>
         /// <param name="bestand"></param>
         /// <param name="persoon"></param>
-        public void AddReport(Bestand bestand, Persoon persoon)
+        public static void AddReport(Bestand bestand, Persoon persoon)
         {
-            DataTable dt = this.GetData("SELECT * FROM DISLIKE_LIKE_REPORT WHERE PERSOON_NUMMER = " + persoon.Nummer + " AND BESTAND_NUMMER = " + bestand.Nummer);
+            DataTable dt = Database.GetData("SELECT * FROM DISLIKE_LIKE_REPORT WHERE PERSOON_NUMMER = " + persoon.Nummer + " AND BESTAND_NUMMER = " + bestand.Nummer);
             if (dt.Rows.Count == 0)
-                this.Execute("INSERT INTO DISLIKE_LIKE_REPORT (PERSOON_NUMMER, BESTAND_NUMMER, LIKEDISLIKE, REPORT) VALUES (" + persoon.Nummer + ", " + bestand.Nummer + ", NULL, 'Y')");
+                Database.Execute("INSERT INTO DISLIKE_LIKE_REPORT (PERSOON_NUMMER, BESTAND_NUMMER, LIKEDISLIKE, REPORT) VALUES (" + persoon.Nummer + ", " + bestand.Nummer + ", NULL, 'Y')");
             else
-                this.Execute("UPDATE DISLIKE_LIKE_REPORT SET REPORT = 'Y' WHERE PERSOON_NUMMER = " + persoon.Nummer + " AND BESTAND_NUMMER = " + bestand.Nummer);
+                Database.Execute("UPDATE DISLIKE_LIKE_REPORT SET REPORT = 'Y' WHERE PERSOON_NUMMER = " + persoon.Nummer + " AND BESTAND_NUMMER = " + bestand.Nummer);
         }
 
         /// <summary>
@@ -119,7 +119,7 @@ namespace SME
         /// </summary>
         /// <param name="bestand"></param>
         /// <returns>Het nummer van het toegevoegde bestand</returns>
-        public int AddBestand(Bestand bestand)
+        public static int AddBestand(Bestand bestand)
         {
             string type = null;
             if (bestand is Geluidsfragment)
@@ -131,26 +131,26 @@ namespace SME
             else if (bestand is Afbeelding)
                 type = "AFBEELDING";
 
-            int insertedId = Convert.ToInt32(this.GetData("SELECT bestand1.nextval FROM dual").Rows[0]["NEXTVAL"]);
-            this.Execute("INSERT INTO BESTAND (BESTAND_NUMMER, DATUM, NAAM, MAP_NUMMER, PERSOON_NUMMER, GROOTTE, OPMERKING, BESTANDSLOCATIE, TYPE) VALUES (" + insertedId + ", TO_DATE('" + bestand.UploadDatum.ToString("yyyy-MM-dd HH:mm:ss") + "', 'SYYYY-MM-DD HH24:MI:SS'), '" + this.Escape(bestand.Bestandsnaam) + "', " + bestand.MapNummer + ", " + bestand.GeuploadDoor.Nummer + ", " + bestand.Grootte + ", '" + this.Escape(bestand.Opmerking) + "', '" + this.Escape(bestand.Bestandslocatie) + "', '" + type + "')");
+            int insertedId = Convert.ToInt32(Database.GetData("SELECT bestand1.nextval FROM dual").Rows[0]["NEXTVAL"]);
+            Database.Execute("INSERT INTO BESTAND (BESTAND_NUMMER, DATUM, NAAM, MAP_NUMMER, PERSOON_NUMMER, GROOTTE, OPMERKING, BESTANDSLOCATIE, TYPE) VALUES (" + insertedId + ", TO_DATE('" + bestand.UploadDatum.ToString("yyyy-MM-dd HH:mm:ss") + "', 'SYYYY-MM-DD HH24:MI:SS'), '" + this.Escape(bestand.Bestandsnaam) + "', " + bestand.MapNummer + ", " + bestand.GeuploadDoor.Nummer + ", " + bestand.Grootte + ", '" + this.Escape(bestand.Opmerking) + "', '" + this.Escape(bestand.Bestandslocatie) + "', '" + type + "')");
 
             switch (type)
             {
                 case "GELUIDSFRAGMENT":
                     Geluidsfragment geluidsfragment = bestand as Geluidsfragment;
-                    this.Execute("INSERT INTO GELUIDSFRAGMENT (BESTAND_NUMMER, ARTIEST, SPEELDUUR) VALUES (" + insertedId + ", '" + this.Escape(geluidsfragment.Artiest) + "', " + geluidsfragment.Speelduur + ")");
+                    Database.Execute("INSERT INTO GELUIDSFRAGMENT (BESTAND_NUMMER, ARTIEST, SPEELDUUR) VALUES (" + insertedId + ", '" + this.Escape(geluidsfragment.Artiest) + "', " + geluidsfragment.Speelduur + ")");
                     break;
                 case "FILM":
                     Film film = bestand as Film;
-                    this.Execute("INSERT INTO FILM (BESTAND_NUMMER, FILMDUUR, MAKER) VALUES (" + insertedId + ", " + film.Duur + ", '" + this.Escape(film.Maker) + "')");
+                    Database.Execute("INSERT INTO FILM (BESTAND_NUMMER, FILMDUUR, MAKER) VALUES (" + insertedId + ", " + film.Duur + ", '" + this.Escape(film.Maker) + "')");
                     break;
                 case "BOEK":
                     Boek boek = bestand as Boek;
-                    this.Execute("INSERT INTO BOEK (BESTAND_NUMMER, AANTAL_PAGINAS, SCHRIJVER, TAAL, GENRE) VALUES (" + insertedId + ", " + boek.AantalPaginas + ", '" + this.Escape(boek.Schrijver) + "', '" + this.Escape(boek.Taal) + "', '" + this.Escape(boek.Genre) + "')");
+                    Database.Execute("INSERT INTO BOEK (BESTAND_NUMMER, AANTAL_PAGINAS, SCHRIJVER, TAAL, GENRE) VALUES (" + insertedId + ", " + boek.AantalPaginas + ", '" + this.Escape(boek.Schrijver) + "', '" + this.Escape(boek.Taal) + "', '" + this.Escape(boek.Genre) + "')");
                     break;
                 case "AFBEELDING":
                     Afbeelding afbeelding = bestand as Afbeelding;
-                    this.Execute("INSERT INTO AFBEELDING (BESTAND_NUMMER, AFMETING) VALUES (" + insertedId + ", '" + this.Escape(afbeelding.Afmeting) + "')");
+                    Database.Execute("INSERT INTO AFBEELDING (BESTAND_NUMMER, AFMETING) VALUES (" + insertedId + ", '" + this.Escape(afbeelding.Afmeting) + "')");
                     break;
             }
             return insertedId;
@@ -160,15 +160,15 @@ namespace SME
         /// Het verwijderen van een bestand
         /// </summary>
         /// <param name="bestand"></param>
-        public void DeleteBestand(Bestand bestand)
+        public static void DeleteBestand(Bestand bestand)
         {
-            this.Execute("DELETE FROM FILM WHERE BESTAND_NUMMER = " + bestand.Nummer);
-            this.Execute("DELETE FROM GELUIDSFRAGMENT WHERE BESTAND_NUMMER = " + bestand.Nummer);
-            this.Execute("DELETE FROM BOEK WHERE BESTAND_NUMMER = " + bestand.Nummer);
-            this.Execute("DELETE FROM AFBEELDING WHERE BESTAND_NUMMER = " + bestand.Nummer);
-            this.Execute("DELETE FROM REACTIE WHERE BESTAND_NUMMER = " + bestand.Nummer);
-            this.Execute("DELETE FROM DISLIKE_LIKE_REPORT WHERE BESTAND_NUMMER = " + bestand.Nummer);
-            this.Execute("DELETE FROM BESTAND WHERE BESTAND_NUMMER = " + bestand.Nummer);
+            Database.Execute("DELETE FROM FILM WHERE BESTAND_NUMMER = " + bestand.Nummer);
+            Database.Execute("DELETE FROM GELUIDSFRAGMENT WHERE BESTAND_NUMMER = " + bestand.Nummer);
+            Database.Execute("DELETE FROM BOEK WHERE BESTAND_NUMMER = " + bestand.Nummer);
+            Database.Execute("DELETE FROM AFBEELDING WHERE BESTAND_NUMMER = " + bestand.Nummer);
+            Database.Execute("DELETE FROM REACTIE WHERE BESTAND_NUMMER = " + bestand.Nummer);
+            Database.Execute("DELETE FROM DISLIKE_LIKE_REPORT WHERE BESTAND_NUMMER = " + bestand.Nummer);
+            Database.Execute("DELETE FROM BESTAND WHERE BESTAND_NUMMER = " + bestand.Nummer);
         }
 
         /// <summary>

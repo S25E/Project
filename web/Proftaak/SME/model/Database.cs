@@ -26,16 +26,16 @@ namespace SME
         /// </summary>
         /// <param name="query"></param>
         /// <returns>En een DataTable met de opgehaalde infromatie</returns>
-        public static DataTable GetData(OracleCommand command, Dictionary<string, string> waardes = default(Dictionary<string, string>))
+        public static DataTable GetData(string query, Dictionary<string, string> waardes = default(Dictionary<string, object>))
         {
             DataTable dt = new DataTable();
 
             try
             {
                 oc.Open();
-                command.Connection = oc;
+                OracleCommand command = new OracleCommand(query, oc);
 
-                if (!waardes.Equals(default(Dictionary<string, string>)))
+                if (!waardes.Equals(default(Dictionary<string, object>)))
                 {
                     foreach(KeyValuePair<string, string> waarde in waardes){
                         command.Parameters.Add(waarde.Key, waarde.Value);
@@ -63,12 +63,12 @@ namespace SME
         /// Het uitvoeren van een SQL-commando
         /// </summary>
         /// <param name="query"></param>
-        public static void Execute(OracleCommand command)
+        public static void Execute(string query)
         {   
             try
             {
                 oc.Open();
-                command.Connection = oc;
+                OracleCommand command = new OracleCommand(query, oc);
                 command.ExecuteNonQuery();
             }
             catch (Exception e)

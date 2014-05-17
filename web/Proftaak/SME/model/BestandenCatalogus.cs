@@ -8,12 +8,6 @@ namespace SME
     class BestandenCatalogus
     {
         /// <summary>
-        /// De connecties met de database.
-        /// </summary>
-        private MapDB mapdb = new MapDB();
-        private BestandDB bestanddb = new BestandDB();
-
-        /// <summary>
         /// Het ophalen van alle mappen. In deze methode wordt op een slimme manier alle mappen en bestanden opgehaald en vervolgens gekoppeld.
         /// </summary>
         public List<Map> Mappen
@@ -21,8 +15,8 @@ namespace SME
             get
             {
                 // Eerst mappen en ALLE bestanden ophalen. Dan bestanden koppelen met map.
-                Dictionary<int, Map> mappen = mapdb.GetMappen();
-                Dictionary<int, List<Bestand>> bestanden = bestanddb.GetBestandenBijMap();
+                Dictionary<int, Map> mappen = Map.GetMappen();
+                Dictionary<int, List<Bestand>> bestanden = Bestand.GetBestandenBijMap();
 
                 foreach (KeyValuePair<int, Map> row in mappen)
                 {
@@ -40,17 +34,12 @@ namespace SME
         }
 
         /// <summary>
-        /// De koppeling met persoonbeheer.
-        /// </summary>
-        public PersoonBeheer PersoonBeheer = new PersoonBeheer();
-
-        /// <summary>
         /// Het toevoegen van een map.
         /// </summary>
         /// <param name="map"></param>
         public void AddMap(Map map)
         {
-            map.Nummer = this.mapdb.AddMap(map);
+            map.Nummer = Map.AddMap(map);
         }
     }
 }

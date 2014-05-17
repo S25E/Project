@@ -8,12 +8,6 @@ namespace SME
     public partial class Map
     {
         /// <summary>
-        /// De connecties met de database.
-        /// </summary>
-        private MapDB mapdb = new MapDB();
-        private BestandDB bestanddb = new BestandDB();
-
-        /// <summary>
         /// Het nummer van de map.
         /// </summary>
         public int Nummer
@@ -50,7 +44,7 @@ namespace SME
                 if(parentMap != null)
                     return this.parentMap;
                 else if(this.ParentMapNummer != 0)
-                    this.parentMap = this.mapdb.GetMapBijNummer(this.ParentMapNummer);
+                    this.parentMap = Map.GetMapBijNummer(this.ParentMapNummer);
                 return null;
             }
             set {
@@ -69,7 +63,7 @@ namespace SME
                 if(this.bestanden != null)
                     return this.bestanden;
 
-                return this.bestanddb.GetBestandenBijMap(this);
+                return Bestand.GetBestandenBijMap(this);
             }
             set {
                 this.bestanden = value;   
@@ -105,7 +99,7 @@ namespace SME
         /// <param name="bestand"></param>
         public void AddBestand(Bestand bestand)
         {
-            bestand.Nummer = this.bestanddb.AddBestand(bestand);
+            bestand.Nummer = Bestand.AddBestand(bestand);
             this.bestanden = null;
         }
 
@@ -115,7 +109,7 @@ namespace SME
         /// <param name="bestand"></param>
         public void DeleteBestand(Bestand bestand)
         {
-            this.bestanddb.DeleteBestand(bestand);
+            Bestand.DeleteBestand(bestand);
         }
 
         /// <summary>

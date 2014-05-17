@@ -18,10 +18,10 @@ namespace SME
         /// </summary>
         /// <param name="nummer"></param>
         /// <returns>De Persoon</returns>
-        public Persoon GetPersoonBijNummer(int nummer)
+        public static Persoon GetPersoonBijNummer(int nummer)
         {
-            foreach (DataRow row in this.GetData("SELECT * FROM PERSOON WHERE PERSOON_NUMMER = " + nummer).Rows)
-                return this.rowToPersoon(row);
+            foreach (DataRow row in Database.GetData("SELECT * FROM PERSOON WHERE PERSOON_NUMMER = " + nummer).Rows)
+                return rowToPersoon(row);
 
             return null;
         }
@@ -31,12 +31,12 @@ namespace SME
         /// </summary>
         /// <param name="nummers"></param>
         /// <returns>Een Dictonary met personen PERSOON_NUMMER => de Persoon</returns>
-        public Dictionary<int, Persoon> GetPersonenBijNummers(List<int> nummers)
+        public static Dictionary<int, Persoon> GetPersonenBijNummers(List<int> nummers)
         {
             Dictionary<int, Persoon> personen = new Dictionary<int, Persoon>();
 
             if(nummers.Count > 0)
-                foreach (DataRow row in this.GetData("SELECT * FROM PERSOON WHERE PERSOON_NUMMER IN(" + string.Join(",", nummers) + ")").Rows)
+                foreach (DataRow row in Database.GetData("SELECT * FROM PERSOON WHERE PERSOON_NUMMER IN(" + string.Join(",", nummers) + ")").Rows)
                     personen.Add(Convert.ToInt32(row["PERSOON_NUMMER"]), this.rowToPersoon(row));
 
             return personen;
@@ -47,12 +47,12 @@ namespace SME
         /// </summary>
         /// <param name="bestand"></param>
         /// <returns>Een lijst met personen.</returns>
-        public List<Persoon> GetLikes(Bestand bestand)
+        public static List<Persoon> GetLikes(Bestand bestand)
         {
             List<Persoon> likes = new List<Persoon>();
 
-            foreach (DataRow row in this.GetData("SELECT * FROM PERSOON WHERE PERSOON_NUMMER IN (SELECT PERSOON_NUMMER FROM DISLIKE_LIKE_REPORT WHERE LIKEDISLIKE = 'LIKE' AND BESTAND_NUMMER = " + bestand.Nummer + ")").Rows)
-                likes.Add(this.rowToPersoon(row));
+            foreach (DataRow row in Database.GetData("SELECT * FROM PERSOON WHERE PERSOON_NUMMER IN (SELECT PERSOON_NUMMER FROM DISLIKE_LIKE_REPORT WHERE LIKEDISLIKE = 'LIKE' AND BESTAND_NUMMER = " + bestand.Nummer + ")").Rows)
+                likes.Add(rowToPersoon(row));
 
             return likes;
         }
@@ -62,12 +62,12 @@ namespace SME
         /// </summary>
         /// <param name="bestand"></param>
         /// <returns>Een lijst met personen</returns>
-        public List<Persoon> GetDislikes(Bestand bestand)
+        public static List<Persoon> GetDislikes(Bestand bestand)
         {
             List<Persoon> likes = new List<Persoon>();
 
-            foreach (DataRow row in this.GetData("SELECT * FROM PERSOON WHERE PERSOON_NUMMER IN (SELECT PERSOON_NUMMER FROM DISLIKE_LIKE_REPORT WHERE LIKEDISLIKE = 'DISLIKE' AND BESTAND_NUMMER = " + bestand.Nummer + ")").Rows)
-                likes.Add(this.rowToPersoon(row));
+            foreach (DataRow row in Database.GetData("SELECT * FROM PERSOON WHERE PERSOON_NUMMER IN (SELECT PERSOON_NUMMER FROM DISLIKE_LIKE_REPORT WHERE LIKEDISLIKE = 'DISLIKE' AND BESTAND_NUMMER = " + bestand.Nummer + ")").Rows)
+                likes.Add(rowToPersoon(row));
 
             return likes;
         }
@@ -77,12 +77,12 @@ namespace SME
         /// </summary>
         /// <param name="bestand"></param>
         /// <returns>Een lijst met personen</returns>
-        public List<Persoon> GetReports(Bestand bestand)
+        public static List<Persoon> GetReports(Bestand bestand)
         {
             List<Persoon> likes = new List<Persoon>();
 
-            foreach (DataRow row in this.GetData("SELECT * FROM PERSOON WHERE PERSOON_NUMMER IN (SELECT PERSOON_NUMMER FROM DISLIKE_LIKE_REPORT WHERE REPORT = 'Y' AND BESTAND_NUMMER = " + bestand.Nummer + ")").Rows)
-                likes.Add(this.rowToPersoon(row));
+            foreach (DataRow row in Database.GetData("SELECT * FROM PERSOON WHERE PERSOON_NUMMER IN (SELECT PERSOON_NUMMER FROM DISLIKE_LIKE_REPORT WHERE REPORT = 'Y' AND BESTAND_NUMMER = " + bestand.Nummer + ")").Rows)
+                likes.Add(rowToPersoon(row));
 
             return likes;
         }
@@ -92,7 +92,7 @@ namespace SME
         /// </summary>
         /// <param name="row"></param>
         /// <returns>Een Persoon</returns>
-        private Persoon rowToPersoon(DataRow row)
+        private static Persoon rowToPersoon(DataRow row)
         {
             string soort = row["SOORT"].ToString().ToUpper();
 

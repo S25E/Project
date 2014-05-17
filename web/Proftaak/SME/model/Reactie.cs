@@ -8,12 +8,6 @@ namespace SME
     public partial class Reactie
     {
         /// <summary>
-        /// De connecties met de database.
-        /// </summary>
-        private PersoonDB persoondb = new PersoonDB();
-        private ReactieDB reactiedb = new ReactieDB();
-
-        /// <summary>
         /// Het nummer van de reactie.
         /// </summary>
         public int Nummer
@@ -39,7 +33,7 @@ namespace SME
         {
             get {
                 if (this.persoon == null)
-                    this.persoon = this.persoondb.GetPersoonBijNummer(this.PersoonNummer);
+                    this.persoon = Persoon.GetPersoonBijNummer(this.PersoonNummer);
 
                 return this.persoon;
             }
