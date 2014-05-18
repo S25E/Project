@@ -134,25 +134,6 @@ namespace SME
             int insertedId = Convert.ToInt32(Database.GetData("SELECT bestand1.nextval FROM dual").Rows[0]["NEXTVAL"]);
             Database.Execute("INSERT INTO BESTAND (BESTAND_NUMMER, DATUM, NAAM, MAP_NUMMER, PERSOON_NUMMER, GROOTTE, OPMERKING, BESTANDSLOCATIE, TYPE) VALUES (" + insertedId + ", TO_DATE('" + bestand.UploadDatum.ToString("yyyy-MM-dd HH:mm:ss") + "', 'SYYYY-MM-DD HH24:MI:SS'), '" + this.Escape(bestand.Bestandsnaam) + "', " + bestand.MapNummer + ", " + bestand.GeuploadDoor.Nummer + ", " + bestand.Grootte + ", '" + this.Escape(bestand.Opmerking) + "', '" + this.Escape(bestand.Bestandslocatie) + "', '" + type + "')");
 
-            switch (type)
-            {
-                case "GELUIDSFRAGMENT":
-                    Geluidsfragment geluidsfragment = bestand as Geluidsfragment;
-                    Database.Execute("INSERT INTO GELUIDSFRAGMENT (BESTAND_NUMMER, ARTIEST, SPEELDUUR) VALUES (" + insertedId + ", '" + this.Escape(geluidsfragment.Artiest) + "', " + geluidsfragment.Speelduur + ")");
-                    break;
-                case "FILM":
-                    Film film = bestand as Film;
-                    Database.Execute("INSERT INTO FILM (BESTAND_NUMMER, FILMDUUR, MAKER) VALUES (" + insertedId + ", " + film.Duur + ", '" + this.Escape(film.Maker) + "')");
-                    break;
-                case "BOEK":
-                    Boek boek = bestand as Boek;
-                    Database.Execute("INSERT INTO BOEK (BESTAND_NUMMER, AANTAL_PAGINAS, SCHRIJVER, TAAL, GENRE) VALUES (" + insertedId + ", " + boek.AantalPaginas + ", '" + this.Escape(boek.Schrijver) + "', '" + this.Escape(boek.Taal) + "', '" + this.Escape(boek.Genre) + "')");
-                    break;
-                case "AFBEELDING":
-                    Afbeelding afbeelding = bestand as Afbeelding;
-                    Database.Execute("INSERT INTO AFBEELDING (BESTAND_NUMMER, AFMETING) VALUES (" + insertedId + ", '" + this.Escape(afbeelding.Afmeting) + "')");
-                    break;
-            }
             return insertedId;
         }
 
