@@ -26,27 +26,19 @@ namespace SME
         /// </summary>
         /// <param name="query"></param>
         /// <returns>En een DataTable met de opgehaalde infromatie</returns>
-        public static DataTable GetData(string query, Dictionary<string, string> waardes = default(Dictionary<string, object>))
+        public static DataTable GetData(string query, Dictionary<string, object> waardes = default(Dictionary<string, object>))
         {
             DataTable dt = new DataTable();
 
             try
             {
                 oc.Open();
-                OracleCommand command = new OracleCommand(query, oc);
-
-                if (!waardes.Equals(default(Dictionary<string, object>)))
-                {
-                    foreach(KeyValuePair<string, string> waarde in waardes){
-                        command.Parameters.Add(waarde.Key, waarde.Value);
-                    }
-                }
-
+                OracleCommand command = toOracleCommand(query, waardes);
                 OracleDataAdapter adapter = new OracleDataAdapter(command);
 
                 adapter.Fill(dt);
             }
-            catch(Exception e)
+            catch(Exception)
             {
                 throw;
             }
@@ -63,15 +55,15 @@ namespace SME
         /// Het uitvoeren van een SQL-commando
         /// </summary>
         /// <param name="query"></param>
-        public static void Execute(string query)
+        public static void Execute(string query, Dictionary<string, object> waardes = default(Dictionary<string, object>))
         {   
             try
             {
                 oc.Open();
-                OracleCommand command = new OracleCommand(query, oc);
+                OracleCommand command = toOracleCommand(query, waardes);
                 command.ExecuteNonQuery();
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 throw;
             }
@@ -79,6 +71,21 @@ namespace SME
             {
                 oc.Close();
             }
+        }
+
+        private static OracleCommand toOracleCommand(string query, Dictionary<string, object> waardes = default(Dictionary<string, object>))
+        {
+            OracleCommand command = new OracleCommand(query, oc);
+
+            if (!waardes.Equals(default(Dictionary<string, object>)))
+            {
+                foreach (KeyValuePair<string, object> waarde in waardes)
+                {
+                    command.Parameters.Add(waarde.Key, waarde.Value);
+                }
+            }
+
+            return command;
         }
     }
 }
