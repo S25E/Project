@@ -27,7 +27,7 @@ namespace SME
 
             foreach (DataRow row in getBestandenByWhere().Rows)
             {
-                Bestand bestand = this.rowToBestand(row);
+                Bestand bestand = rowToBestand(row);
                 int mapNummer = Convert.ToInt32(row["MAP_NUMMER"]);
 
                 if (bestanden.ContainsKey(mapNummer))
@@ -52,7 +52,7 @@ namespace SME
             List<Bestand> bestanden = new List<Bestand>();
 
             foreach (DataRow row in getBestandenByWhere().Rows)
-                bestanden.Add(this.rowToBestand(row));
+                bestanden.Add(rowToBestand(row));
 
             return bestanden;
         }
@@ -67,7 +67,7 @@ namespace SME
             List<Bestand> bestanden = new List<Bestand>();
 
             foreach (DataRow row in getBestandenByWhere("MAP_NUMMER = " + map.Nummer).Rows)
-                bestanden.Add(this.rowToBestand(row));
+                bestanden.Add(rowToBestand(row));
 
             return bestanden;
         }
@@ -132,7 +132,18 @@ namespace SME
                 type = "AFBEELDING";
 
             int insertedId = Convert.ToInt32(Database.GetData("SELECT bestand1.nextval FROM dual").Rows[0]["NEXTVAL"]);
-            Database.Execute("INSERT INTO BESTAND (BESTAND_NUMMER, DATUM, NAAM, MAP_NUMMER, PERSOON_NUMMER, GROOTTE, OPMERKING, BESTANDSLOCATIE, TYPE) VALUES (" + insertedId + ", TO_DATE('" + bestand.UploadDatum.ToString("yyyy-MM-dd HH:mm:ss") + "', 'SYYYY-MM-DD HH24:MI:SS'), '" + this.Escape(bestand.Bestandsnaam) + "', " + bestand.MapNummer + ", " + bestand.GeuploadDoor.Nummer + ", " + bestand.Grootte + ", '" + this.Escape(bestand.Opmerking) + "', '" + this.Escape(bestand.Bestandslocatie) + "', '" + type + "')");
+            Database.Execute("INSERT INTO BESTAND (BESTAND_NUMMER, DATUM, NAAM, MAP_NUMMER, PERSOON_NUMMER, GROOTTE, OPMERKING, BESTANDSLOCATIE, TYPE) VALUES (@nummer, TO_DATE(@datum, 'SYYYY-MM-DD HH24:MI:SS'), @naam, @map_nummer, @persoon_nummer, @grootte, @opmerking, @bestandlocatie, @type)", new Dictionary<string, object>()
+            {
+                {"@nummer", insertedId},
+                {"@datum", bestand.UploadDatum.ToString("yyyy-MM-dd HH:mm:ss")},
+                {"@naam", bestand.Bestandsnaam},
+                {"@map_nummer", bestand.MapNummer},
+                {"@persoon_nummer", bestand.GeuploadDoor.Nummer},
+                {"@grootte", bestand.Grootte},
+                {"@opmerking", bestand.Opmerking},
+                {"@bestandlocatie", bestand.Bestandslocatie},
+                {"@type", type}
+            });
 
             return insertedId;
         }
@@ -157,7 +168,7 @@ namespace SME
         /// </summary>
         /// <param name="row"></param>
         /// <returns>Het bestand</returns>
-        private Bestand rowToBestand(DataRow row)
+        private static Bestand rowToBestand(DataRow row)
         {
             string type = row["TYPE"].ToString().ToUpper();
 
