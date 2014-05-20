@@ -38,6 +38,10 @@ namespace SME
 
                 adapter.Fill(dt);
             }
+            catch (OracleException ex)
+            {
+                throw;
+            }
             catch(Exception)
             {
                 throw;
@@ -56,12 +60,16 @@ namespace SME
         /// </summary>
         /// <param name="query"></param>
         public static void Execute(string query, Dictionary<string, object> waardes = default(Dictionary<string, object>))
-        {   
+        {
             try
             {
                 oc.Open();
                 OracleCommand command = toOracleCommand(query, waardes);
                 command.ExecuteNonQuery();
+            }
+            catch (OracleException ex)
+            {
+                throw;
             }
             catch (Exception)
             {
@@ -75,15 +83,23 @@ namespace SME
 
         private static OracleCommand toOracleCommand(string query, Dictionary<string, object> waardes = default(Dictionary<string, object>))
         {
-            OracleCommand command = new OracleCommand(query, oc);
-
-            if (!waardes.Equals(default(Dictionary<string, object>)))
+            if (waardes != null && waardes.Count > 0)
             {
                 foreach (KeyValuePair<string, object> waarde in waardes)
                 {
-                    command.Parameters.Add(waarde.Key, waarde.Value);
+                    if (waarde.Value is Int32 || waarde.Value.ToString() == "NULL")
+                    {
+                        query = query.Replace(waarde.Key, waarde.Value.ToString());
+                    }
+                    else
+                    {
+                        query = query.Replace(waarde.Key, "'" + waarde.Value.ToString().Replace("'", "\'") + "'");
+                    }
+                    //command.Parameters.Add(new OracleParameter(waarde.Key, waarde.Value).Value);
                 }
             }
+
+            OracleCommand command = new OracleCommand(query, oc);
 
             return command;
         }

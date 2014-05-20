@@ -16,7 +16,7 @@ namespace SME
         {
             Dictionary<int, Map> mappen = new Dictionary<int, Map>();
 
-            foreach (DataRow row in Database.GetData("SELECT * FROM MAP ORDER by MAP_NUMMER ASC").Rows)
+            foreach (DataRow row in Database.GetData("SELECT * FROM MAP ORDER by MAP_ID ASC").Rows)
                 mappen.Add(Convert.ToInt32(row["MAP_ID"]), rowToBestand(row));
 
             return mappen;
