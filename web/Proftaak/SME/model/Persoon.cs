@@ -94,12 +94,6 @@ namespace SME
 
     class Hoofdboeker : Boeker
     {
-        public string Naam
-        {
-            get;
-            set;
-        }
-
         public string Straat
         {
             get;
@@ -148,7 +142,7 @@ namespace SME
         /// <param name="nummer"></param>
         /// <param name="naam"></param>
         /// <param name="wachtwoord"></param>
-        public Hoofdboeker(int nummer, string wachtwoord, bool aanwezig, string naam, int reserveringsnummer, string naam, string straat, string postcode, string woonplaats, string telefoon, string email, string rekeningnummer, string sofinummer)
+        public Hoofdboeker(int nummer, string wachtwoord, bool aanwezig, string naam, int reserveringsnummer, string straat, string postcode, string woonplaats, string telefoon, string email, string rekeningnummer, string sofinummer)
             : base(nummer, wachtwoord, aanwezig, naam, reserveringsnummer)
         {
             this.Naam = naam;
