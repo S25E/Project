@@ -16,7 +16,7 @@ namespace SME
     /// <returns></returns>
     class ReserveringBeheer
     {
-        public List<Reservering> Reserveringen;
+        /*public List<Reservering> Reserveringen;
         public List<Kampeerplaats> Kampeerplaatsen;
         private DB db = new DB();
 
@@ -231,6 +231,6 @@ namespace SME
                 Producten.Add(productnaam);
             }
             return Producten;
-        }
+        }*/
     }
 }
