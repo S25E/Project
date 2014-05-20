@@ -17,18 +17,21 @@ namespace SME
         }
 
         /// <summary>
-        /// De naam van een persoon.
-        /// </summary>
-        public string Naam
-        {
-            get;
-            private set;
-        }
-
-        /// <summary>
         /// Het wachtwoord van een persoon.
         /// </summary>
         private string wachtwoord;
+
+        public bool Aanwezig
+        {
+            get;
+            set;
+        }
+
+        public string Naam
+        {
+            get;
+            set;
+        }
 
         /// <summary>
         /// Het maken van een persoon waarvan het nummer al bekend is => de persoon staat al in database.
@@ -36,11 +39,12 @@ namespace SME
         /// <param name="nummer"></param>
         /// <param name="naam"></param>
         /// <param name="wachtwoord"></param>
-        public Persoon(int nummer, string naam, string wachtwoord)
+        public Persoon(int nummer, string wachtwoord, bool aanwezig, string naam)
         {
             this.Nummer = nummer;
-            this.Naam = naam;
             this.wachtwoord = wachtwoord;
+            this.Aanwezig = aanwezig;
+            this.Naam = naam;
         }
 
         /// <summary>
@@ -63,21 +67,102 @@ namespace SME
             return this.Nummer.Equals(other.Nummer);
         }
     }
-    class Hoofdboeker : Persoon
+
+    class Boeker : Persoon
     {
+        public int ReserveringNummer
+        {
+            get;
+            set;
+        }
+
+        public Reservering Reservering
+        {
+            get
+            {
+                // Lazy loading maken.
+                return null;
+            }
+        }
+
+        public Boeker(int nummer, string wachtwoord, bool aanwezig, string naam, int reserveringsnummer)
+            : base(nummer, wachtwoord, aanwezig, naam)
+        {
+
+        }
+    }
+
+    class Hoofdboeker : Boeker
+    {
+        public string Naam
+        {
+            get;
+            set;
+        }
+
+        public string Straat
+        {
+            get;
+            set;
+        }
+
+        public string Postcode
+        {
+            get;
+            set;
+        }
+
+        public string Woonplaats
+        {
+            get;
+            set;
+        }
+
+        public string Telefoon
+        {
+            get;
+            set;
+        }
+
+        public string Email
+        {
+            get;
+            set;
+        }
+
+        public string Rekeningnummer
+        {
+            get;
+            set;
+        }
+
+        public string Sofinummer
+        {
+            get;
+            set;
+        }
+
         /// <summary>
         /// Het aanmaken van een hoofdboeker. 
         /// </summary>
         /// <param name="nummer"></param>
         /// <param name="naam"></param>
         /// <param name="wachtwoord"></param>
-        public Hoofdboeker(int nummer, string naam, string wachtwoord)
-            : base(nummer, naam, wachtwoord)
+        public Hoofdboeker(int nummer, string wachtwoord, bool aanwezig, string naam, int reserveringsnummer, string naam, string straat, string postcode, string woonplaats, string telefoon, string email, string rekeningnummer, string sofinummer)
+            : base(nummer, wachtwoord, aanwezig, naam, reserveringsnummer)
         {
-
+            this.Naam = naam;
+            this.Straat = straat;
+            this.Postcode = postcode;
+            this.Woonplaats = woonplaats;
+            this.Telefoon = telefoon;
+            this.Email = email;
+            this.Rekeningnummer = rekeningnummer;
+            this.Sofinummer = sofinummer;
         }
     }
-    class Bijboeker : Persoon
+
+    class Bijboeker : Boeker
     {
         /// <summary>
         /// Het aanmaken van een bijboeker.
@@ -85,24 +170,37 @@ namespace SME
         /// <param name="nummer"></param>
         /// <param name="naam"></param>
         /// <param name="wachtwoord"></param>
-        public Bijboeker(int nummer, string naam, string wachtwoord)
-            : base(nummer, naam, wachtwoord)
+        public Bijboeker(int nummer, string wachtwoord, bool aanwezig, string naam, int reserveringsnummer)
+            : base(nummer, wachtwoord, aanwezig, naam, reserveringsnummer)
         {
 
         }
     }
     class Medewerker : Persoon
     {
+        public string Functie
+        {
+            get;
+            set;
+        }
+
+        public string Rekeningnummer
+        {
+            get;
+            set;
+        }
+
         /// <summary>
         /// Het aanmaken van een medewerker.
         /// </summary>
         /// <param name="nummer"></param>
         /// <param name="naam"></param>
         /// <param name="wachtwoord"></param>
-        public Medewerker(int nummer, string naam, string wachtwoord)
-            : base(nummer, naam, wachtwoord)
+        public Medewerker(int nummer, string wachtwoord, bool aanwezig, string naam, string functie, string rekeningnummer)
+            : base(nummer, wachtwoord, aanwezig, naam)
         {
-
+            this.Functie = functie;
+            this.Rekeningnummer = rekeningnummer;
         }
     }
 }
