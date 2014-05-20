@@ -10,7 +10,7 @@ namespace SME
         /// <summary>
         /// Het ophalen van alle mappen. In deze methode wordt op een slimme manier alle mappen en bestanden opgehaald en vervolgens gekoppeld.
         /// </summary>
-        public List<Map> Mappen
+        public static List<Map> Mappen
         {
             get
             {
@@ -37,7 +37,7 @@ namespace SME
         /// Het toevoegen van een map.
         /// </summary>
         /// <param name="map"></param>
-        public void AddMap(Map map)
+        public static void AddMap(Map map)
         {
             map.Nummer = Map.AddMap(map);
         }
