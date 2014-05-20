@@ -18,13 +18,13 @@ namespace SME
         {
             List<Reactie> reacties = new List<Reactie>();
 
-            foreach (DataRow row in Database.GetData("SELECT * FROM REACTIE WHERE (SELECT COUNT(1) FROM REACTIEREPORT WHERE REACTIEREPORT.REACTIE_NUMMER = REACTIE.REACTIE_NUMMER) <= 3 AND BESTAND_NUMMER = " + bestand.Nummer + " ORDER by REACTIE_NUMMER").Rows)
+            foreach (DataRow row in Database.GetData("SELECT * FROM OPMERKING WHERE (SELECT COUNT(1) FROM OPMERKINGREPORT WHERE OPMERKINGREPORT.OPMERKING_ID = REACTIE.OPMERKING_ID) <= 3 AND BESTAND_ID = " + bestand.Nummer + " ORDER by OPMERKING_ID").Rows)
                 reacties.Add(
                     new Reactie(
-                        Convert.ToInt32(row["REACTIE_NUMMER"]),
-                        Convert.ToInt32(row["PERSOON_NUMMER"]),
-                        row["OPMERKING"].ToString(),
-                        Convert.ToDateTime(row["DATUMTIJD"])
+                        Convert.ToInt32(row["OPMERKING_ID"]),
+                        Convert.ToInt32(row["RFID"]),
+                        Convert.ToDateTime(row["DATUM"]),
+                        row["OPMERKING_TEXT"].ToString()
                     )
                 );
 
@@ -38,8 +38,8 @@ namespace SME
         /// <param name="persoon"></param>
         public static void AddReport(Reactie reactie, Persoon persoon)
         {
-            if(Database.GetData("SELECT * FROM REACTIEREPORT WHERE REACTIE_NUMMER = " + reactie.Nummer + " AND PERSOON_NUMMER = " + persoon.Nummer).Rows.Count == 0)
-                Database.Execute("INSERT INTO REACTIEREPORT (REACTIE_NUMMER, PERSOON_NUMMER) VALUES (" + reactie.Nummer + ", " + persoon.Nummer + ")");
+            if (Database.GetData("SELECT * FROM OPMERKINGREPORT WHERE OPMERKING_ID = " + reactie.Nummer + " AND RFID = " + persoon.Nummer).Rows.Count == 0)
+                Database.Execute("INSERT INTO OPMERKINGREPORT (OPMERKING_ID, RFID) VALUES (" + reactie.Nummer + ", " + persoon.Nummer + ")");
         }
 
         /// <summary>
@@ -49,8 +49,15 @@ namespace SME
         /// <param name="reactie"></param>
         public static int AddReactie(Bestand bestand, Reactie reactie)
         {
-            int insertedId = Convert.ToInt32(Database.GetData("SELECT reactie1.nextval FROM dual").Rows[0]["NEXTVAL"]);
-            Database.Execute("INSERT INTO REACTIE (REACTIE_NUMMER, PERSOON_NUMMER, BESTAND_NUMMER, DATUMTIJD, OPMERKING) VALUES (" + insertedId + ", " + reactie.PersoonNummer + ", " + bestand.Nummer + ", TO_DATE('" + reactie.DatumTijd.ToString("yyyy-MM-dd HH:mm:ss") + "', 'SYYYY-MM-DD HH24:MI:SS'), '" + this.Escape(reactie.Opmerking) + "')");
+            int insertedId = Convert.ToInt32(Database.GetData("SELECT SEQ_OPMERKINGREPORT.nextval FROM dual").Rows[0]["NEXTVAL"]);
+            Database.Execute("INSERT INTO OPMERKING (OPMERKING_ID, RFID, BESTAND_ID, DATUM, OPMERKING_TEXT) VALUES (@nummer, @rfid, @bestand_nummer, TO_DATE(@datum, 'SYYYY-MM-DD HH24:MI:SS'), @opmerking)", new Dictionary<string, object>
+            {
+                {"@nummer", insertedId},
+                {"@rfid", reactie.PersoonNummer},
+                {"@bestand_nummer", bestand.Nummer},
+                {"@datum", reactie.Datum.ToString("yyyy-MM-dd HH:mm:ss")},
+                {"@opmerking", reactie.Opmerking},
+            });
             return insertedId;
         }
     }
