@@ -123,10 +123,10 @@ namespace SME
         /// <returns>Het nummer van het toegevoegde bestand</returns>
         public static int AddBestand(Bestand bestand)
         {
-            int insertId = Convert.ToInt32(Database.GetData("SELECT SEQ_BESTAND.nextval FROM dual").Rows[0]["NEXTVAL"]);
+            int insertedId = Convert.ToInt32(Database.GetData("SELECT SEQ_BESTAND.nextval FROM dual").Rows[0]["NEXTVAL"]);
             Database.Execute("INSERT INTO BESTAND (BESTAND_ID, MAP_ID, NAAM, BESCHRIJVING, EXTENSIE, GROOTTE, RFID, DATUM, PAD, IMGINDEX) VALUES (@nummer, @map_nummer, @naam, @beschrijving, @extensie, @grootte, @rfid, TO_DATE(@datum, 'SYYYY-MM-DD HH24:MI:SS'), @pad, @imgindex)", new Dictionary<string, object>()
             {
-                {"@nummer", insertId},
+                {"@nummer", insertedId},
                 {"@map_nummer", bestand.MapNummer},
                 {"@naam", bestand.Naam},
                 {"@beschrijving", bestand.Beschrijving},
@@ -138,7 +138,7 @@ namespace SME
                 {"@imgindex", bestand.Image}
             });
 
-            return insertId;
+            return insertedId;
         }
           
         /// <summary>
