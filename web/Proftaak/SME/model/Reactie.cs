@@ -33,7 +33,7 @@ namespace SME
         {
             get {
                 if (this.persoon == null)
-                    this.persoon = Persoon.GetPersoonBijNummer(this.PersoonNummer);
+                    this.persoon = Persoon.GetPersoonBijRFID(this.PersoonNummer);
 
                 return this.persoon;
             }
@@ -92,7 +92,7 @@ namespace SME
         /// <param name="persoon"></param>
         public void AddReport(Persoon persoon)
         {
-            this.reactiedb.AddReport(this, persoon);
+            Reactie.AddReport(this, persoon);
         }
 
         /// <summary>
