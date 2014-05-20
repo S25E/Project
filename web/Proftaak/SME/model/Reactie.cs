@@ -43,6 +43,15 @@ namespace SME
         }
 
         /// <summary>
+        /// De tijd waarop de reactie is geplaatst.
+        /// </summary>
+        public DateTime Datum
+        {
+            get;
+            private set;
+        }
+
+        /// <summary>
         /// De opmerking die een persoon als reactie heeft geplaatst.
         /// </summary>
         public string Opmerking
@@ -52,23 +61,14 @@ namespace SME
         }
 
         /// <summary>
-        /// De tijd waarop de reactie is geplaatst.
-        /// </summary>
-        public DateTime DatumTijd
-        {
-            get;
-            private set;
-        }
-
-        /// <summary>
         /// Het aanmaken van een reactie waarvan het nummer bekend is => de reactie staat al in de database.
         /// </summary>
         /// <param name="nummer"></param>
         /// <param name="persoonnummer"></param>
         /// <param name="opmerking"></param>
         /// <param name="datumtijd"></param>
-        public Reactie(int nummer, int persoonnummer, string opmerking, DateTime datumtijd)
-            : this(persoonnummer, opmerking, datumtijd)
+        public Reactie(int nummer, int persoonnummer, DateTime datum, string opmerking)
+            : this(persoonnummer, datum, opmerking)
         {
             this.Nummer = nummer;
         }
@@ -79,11 +79,11 @@ namespace SME
         /// <param name="persoonnummer"></param>
         /// <param name="opmerking"></param>
         /// <param name="datumtijd"></param>
-        public Reactie(int persoonnummer, string opmerking, DateTime datumtijd)
+        public Reactie(int persoonnummer, DateTime datum, string opmerking)
         {
             this.PersoonNummer = persoonnummer;
             this.Opmerking = opmerking;
-            this.DatumTijd = datumtijd;
+            this.Datum = datum;
         }
 
         /// <summary>
