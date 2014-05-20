@@ -335,7 +335,7 @@ namespace SME
         {
             this.Pad = this.Datum.ToFileTime() + (new FileInfo(bestandslocatie)).Extension;
 
-            FtpWebRequest request = (FtpWebRequest)WebRequest.Create("ftp://www.trink.nl/" + this.Bestandslocatie);
+            FtpWebRequest request = (FtpWebRequest)WebRequest.Create("ftp://www.trink.nl/" + this.Pad);
             request.Method = WebRequestMethods.Ftp.UploadFile;
             request.Credentials = new NetworkCredential("sme@trink.nl", "sme");
 
