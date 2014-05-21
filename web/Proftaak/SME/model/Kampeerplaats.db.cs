@@ -16,8 +16,6 @@ namespace SME
                 return new Kampeerplaats(nummer, Convert.ToInt32(row["x"]), Convert.ToInt32(row["y"]), Convert.ToInt32(row["PRIJS"]), row["OPMERKINGEN"].ToString());
             }
             return null;
-        
-            
         }
 
         public static List<Kampeerplaats> GetKampeerplaatsen()

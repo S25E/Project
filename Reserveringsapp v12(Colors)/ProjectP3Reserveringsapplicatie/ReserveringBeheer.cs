@@ -16,9 +16,15 @@ namespace ProjectP3Reserveringsapplicatie
     /// Beheert de reserveringen zoals toevoegen, verwijderen etc.
     /// </summary>
     /// <returns></returns>
-    class ReserveringBeheer
+    public partial class ReserveringBeheer
     {
-        public List<Reservering> Reserveringen;
+        public List<Reservering> Reserveringen
+        {
+            get
+            {
+                return Reserver
+            }
+        }
         public List<Kampeerplaats> Kampeerplaatsen;
         private DB db = new DB();
 
@@ -55,7 +61,7 @@ namespace ProjectP3Reserveringsapplicatie
             }
 
             //Hoofdboeker van de reservering toevoegen, altijd 1!
-            db.InsertData("INSERT INTO HOOFDBOEKER VALUES ('" + reservering.Hoofdboeker.Nummer + "', '" + reservering.Reserveringsnummer + "', '" + reservering.Hoofdboeker.Email + "', '" + reservering.Hoofdboeker.Rekeningnummer + "', '" + reservering.Hoofdboeker.Adres + "', '" + reservering.Hoofdboeker.Woonplaats + "', '" + reservering.Hoofdboeker.Postcode +"')");
+            db.InsertData("INSERT INTO HOOFDBOEKER VALUES ('" + reservering.Hoofdboeker.Nummer + "', '" + reservering.Reserveringsnummer + "', '" + reservering.Hoofdboeker.Email + "', '" + reservering.Hoofdboeker.Rekeningnummer + "', '" + reservering.Hoofdboeker.Adres + "', '" + reservering.Hoofdboeker.Woonplaats + "', '" + reservering.Hoofdboeker.Postcode + "')");
 
             //Bijboekers toevoegen kunnen meerdere zijn!
             foreach (Bijboeker b in reservering.Bijboekers)
@@ -64,7 +70,7 @@ namespace ProjectP3Reserveringsapplicatie
             }
 
             //kamping plaats update ipv insert. reserveringnummer staat default op 0
-            foreach(Kampeerplaats k in reservering.Kampeerplaatsen)
+            foreach (Kampeerplaats k in reservering.Kampeerplaatsen)
             {
                 db.InsertData("UPDATE CAMPINGPLAATS SET RESERVERING_NUMMER = '" + reservering.Reserveringsnummer + "' WHERE PLAATS_NUMMER = '" + k.Nummer + "'");
             }
@@ -99,7 +105,7 @@ namespace ProjectP3Reserveringsapplicatie
 
         }
 
-        
+
         /// <summary>
         /// geeft het eerst volgend vrije persoonsnummer terug van het type INT
         /// </summary>
@@ -125,9 +131,9 @@ namespace ProjectP3Reserveringsapplicatie
         /// <returns>Geeft een kampeerplaats terug met het plaatsnummer dat ingevoerd is</returns>
         public Kampeerplaats FindPlaats(int nummer)
         {
-            foreach(Kampeerplaats k in Kampeerplaatsen)
+            foreach (Kampeerplaats k in Kampeerplaatsen)
             {
-                if(k.Nummer == nummer)
+                if (k.Nummer == nummer)
                 {
                     return k;
                 }
@@ -188,8 +194,8 @@ namespace ProjectP3Reserveringsapplicatie
                 Reserveringsnummer = Convert.ToInt32(rdr["reservering_nummer"]);
                 Opmerking = rdr["opmerking"].ToString();
                 Oppervlakte = Convert.ToInt32(rdr["oppervlakte"]);
-                x =  Convert.ToInt32(rdr["x"]);
-                y =  Convert.ToInt32(rdr["y"]);
+                x = Convert.ToInt32(rdr["x"]);
+                y = Convert.ToInt32(rdr["y"]);
                 Kampeerplaats k = new Kampeerplaats(Reserveringsnummer, Plaatsnummer, Opmerking, Oppervlakte, x, y);
                 Kampeerplaatsen.Add(k);
             }
@@ -232,7 +238,7 @@ namespace ProjectP3Reserveringsapplicatie
         /// <param name="query">De query die uitgevoerd moet worden om het gewenste resultaat te krijgen</param>
         /// <param name="kolomnaam">Uit welke kolom moet het resultaat gehaald worden</param>
         /// <returns>Een lijst met productnamen</returns>
-        public List<string> GetProducten( string query, string kolomnaam)
+        public List<string> GetProducten(string query, string kolomnaam)
         {
             string productnaam;
             List<string> Producten = new List<string>();

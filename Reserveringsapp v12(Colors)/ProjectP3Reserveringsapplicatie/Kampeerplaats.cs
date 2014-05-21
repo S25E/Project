@@ -37,10 +37,10 @@ namespace ProjectP3Reserveringsapplicatie
         /// Constructor, deze wordt gebruikt voor het aanmaken van een reservering
         /// </summary>
         /// <param name="Nummer">Kampeerplaatsnummer</param>
-        public Kampeerplaats(int Nummer)
-        {
-            this.Nummer = Nummer;
-        }
+        //public Kampeerplaats(int Nummer)
+        //{
+        //    this.Nummer = Nummer;
+        //}
 
         //public bool IsBeschikbaar()
         //{
