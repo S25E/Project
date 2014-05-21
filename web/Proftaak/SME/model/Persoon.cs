@@ -39,19 +39,21 @@ namespace SME
         /// <param name="nummer"></param>
         /// <param name="naam"></param>
         /// <param name="wachtwoord"></param>
-        public Persoon(int nummer, string wachtwoord, bool aanwezig, string naam)
+        public Persoon(int nummer, string naam, string wachtwoord, bool aanwezig)
         {
             this.Nummer = nummer;
+            this.Naam = naam;
             this.wachtwoord = wachtwoord;
             this.Aanwezig = aanwezig;
-            this.Naam = naam;
+            
         }
 
-        public Persoon(string wachtwoord, bool aanwezig, string naam)
+        public Persoon(string naam, string wachtwoord = null, bool aanwezig = false)
         {
+            this.Naam = naam;
             this.wachtwoord = wachtwoord;
             this.Aanwezig = aanwezig;
-            this.Naam = naam;
+            
         }
 
         /// <summary>
@@ -92,16 +94,16 @@ namespace SME
             }
         }
 
-        public Boeker(int nummer, string wachtwoord, bool aanwezig, string naam, int reserveringsnummer)
-            : base(nummer, wachtwoord, aanwezig, naam)
+        public Boeker(int nummer, string naam, string wachtwoord, bool aanwezig, int reserveringsnummer)
+            : base(nummer, naam, wachtwoord, aanwezig)
         {
 
         }
 
-        public Boeker(string wachtwoord, bool aanwezig, string naam, int reserveringsnummer)
-            : base(wachtwoord, aanwezig, naam)
+        public Boeker(string naam, string wachtwoord = null, bool aanwezig = false, int reserveringsnummer = default(int))
+            : base(naam, wachtwoord, aanwezig)
         {
-
+            this.ReserveringNummer = reserveringsnummer;
         }
     }
 
@@ -156,7 +158,7 @@ namespace SME
         /// <param name="naam"></param>
         /// <param name="wachtwoord"></param>
         public Hoofdboeker(int nummer, string wachtwoord, bool aanwezig, string naam, int reserveringsnummer, string straat, string postcode, string woonplaats, string telefoon, string email, string rekeningnummer, string sofinummer)
-            : base(nummer, wachtwoord, aanwezig, naam, reserveringsnummer)
+            : base(nummer, naam, wachtwoord, aanwezig, reserveringsnummer)
         {
             this.Naam = naam;
             this.Straat = straat;
@@ -168,8 +170,8 @@ namespace SME
             this.Sofinummer = sofinummer;
         }
 
-        public Hoofdboeker(string wachtwoord, bool aanwezig, string naam, int reserveringsnummer, string straat, string postcode, string woonplaats, string telefoon, string email, string rekeningnummer, string sofinummer)
-            : base(wachtwoord, aanwezig, naam, reserveringsnummer)
+        public Hoofdboeker(string naam, string straat, string postcode, string woonplaats, string telefoon, string email, string rekeningnummer, string sofinummer, string wachtwoord = null, bool aanwezig = false)
+            : base(naam, wachtwoord, aanwezig)
         {
             this.Naam = naam;
             this.Straat = straat;
@@ -190,14 +192,14 @@ namespace SME
         /// <param name="nummer"></param>
         /// <param name="naam"></param>
         /// <param name="wachtwoord"></param>
-        public Bijboeker(int nummer, string wachtwoord, bool aanwezig, string naam, int reserveringsnummer)
-            : base(nummer, wachtwoord, aanwezig, naam, reserveringsnummer)
+        public Bijboeker(int nummer, string naam, string wachtwoord, bool aanwezig, int reserveringsnummer)
+            : base(nummer, naam, wachtwoord, aanwezig, reserveringsnummer)
         {
 
         }
 
-        public Bijboeker(string wachtwoord, bool aanwezig, string naam, int reserveringsnummer)
-            : base(wachtwoord, aanwezig, naam, reserveringsnummer)
+        public Bijboeker(string naam, string wachtwoord, bool aanwezig, int reserveringsnummer)
+            : base(naam, wachtwoord, aanwezig, reserveringsnummer)
         {
 
         }
@@ -223,14 +225,14 @@ namespace SME
         /// <param name="naam"></param>
         /// <param name="wachtwoord"></param>
         public Medewerker(int nummer, string wachtwoord, bool aanwezig, string naam, string functie, string rekeningnummer)
-            : base(nummer, wachtwoord, aanwezig, naam)
+            : base(nummer, naam, wachtwoord, aanwezig)
         {
             this.Functie = functie;
             this.Rekeningnummer = rekeningnummer;
         }
 
         public Medewerker(string wachtwoord, bool aanwezig, string naam, string functie, string rekeningnummer)
-            : base(wachtwoord, aanwezig, naam)
+            : base(naam, wachtwoord, aanwezig)
         {
             this.Functie = functie;
             this.Rekeningnummer = rekeningnummer;
