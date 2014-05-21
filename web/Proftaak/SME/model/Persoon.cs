@@ -47,6 +47,13 @@ namespace SME
             this.Naam = naam;
         }
 
+        public Persoon(string wachtwoord, bool aanwezig, string naam)
+        {
+            this.wachtwoord = wachtwoord;
+            this.Aanwezig = aanwezig;
+            this.Naam = naam;
+        }
+
         /// <summary>
         /// Het checken van het wachtwoord.
         /// </summary>
@@ -87,6 +94,12 @@ namespace SME
 
         public Boeker(int nummer, string wachtwoord, bool aanwezig, string naam, int reserveringsnummer)
             : base(nummer, wachtwoord, aanwezig, naam)
+        {
+
+        }
+
+        public Boeker(string wachtwoord, bool aanwezig, string naam, int reserveringsnummer)
+            : base(wachtwoord, aanwezig, naam)
         {
 
         }
@@ -154,6 +167,19 @@ namespace SME
             this.Rekeningnummer = rekeningnummer;
             this.Sofinummer = sofinummer;
         }
+
+        public Hoofdboeker(string wachtwoord, bool aanwezig, string naam, int reserveringsnummer, string straat, string postcode, string woonplaats, string telefoon, string email, string rekeningnummer, string sofinummer)
+            : base(wachtwoord, aanwezig, naam, reserveringsnummer)
+        {
+            this.Naam = naam;
+            this.Straat = straat;
+            this.Postcode = postcode;
+            this.Woonplaats = woonplaats;
+            this.Telefoon = telefoon;
+            this.Email = email;
+            this.Rekeningnummer = rekeningnummer;
+            this.Sofinummer = sofinummer;
+        }
     }
 
     class Bijboeker : Boeker
@@ -166,6 +192,12 @@ namespace SME
         /// <param name="wachtwoord"></param>
         public Bijboeker(int nummer, string wachtwoord, bool aanwezig, string naam, int reserveringsnummer)
             : base(nummer, wachtwoord, aanwezig, naam, reserveringsnummer)
+        {
+
+        }
+
+        public Bijboeker(string wachtwoord, bool aanwezig, string naam, int reserveringsnummer)
+            : base(wachtwoord, aanwezig, naam, reserveringsnummer)
         {
 
         }
@@ -192,6 +224,13 @@ namespace SME
         /// <param name="wachtwoord"></param>
         public Medewerker(int nummer, string wachtwoord, bool aanwezig, string naam, string functie, string rekeningnummer)
             : base(nummer, wachtwoord, aanwezig, naam)
+        {
+            this.Functie = functie;
+            this.Rekeningnummer = rekeningnummer;
+        }
+
+        public Medewerker(string wachtwoord, bool aanwezig, string naam, string functie, string rekeningnummer)
+            : base(wachtwoord, aanwezig, naam)
         {
             this.Functie = functie;
             this.Rekeningnummer = rekeningnummer;
