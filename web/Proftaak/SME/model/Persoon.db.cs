@@ -154,5 +154,11 @@ namespace SME
             
             
         }
+
+        // NOG TE MAKEN
+        public static void DeletePersoon(Persoon persoon)
+        {
+            
+        }
     }
 }
