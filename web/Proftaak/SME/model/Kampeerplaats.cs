@@ -5,14 +5,14 @@ using System.Text;
 
 namespace SME
 {
-    class Kampeerplaats
+    public partial class Kampeerplaats
     {
-        public int Reserveringsnummer;
-        public int Nummer;
-        public string Opmerking;
-        public int Oppervlakte;
-        public int X;
-        public int Y;
+        public int Nummer {get; private set;}
+        public int X { get; private set; }
+        public int Y { get; private set; }
+        public int Prijs { get; private set; }
+        public string Opmerking { get; private set; }
+        
         
         /// <summary>
         /// Constructor, deze wordt gebruikt voor het ophalen van de kampeerplaatsen
@@ -23,14 +23,14 @@ namespace SME
         /// <param name="Oppervlakte">Oppervlakte van de kampeerplaats</param>
         /// <param name="X">X coordinaat van de kamperplaats</param>
         /// <param name="Y">T coordinaat van de kamperplaats</param>
-        public Kampeerplaats(int Reserveringsnummer, int Nummer, string Opmerking, int Oppervlakte, int X, int Y)
+        public Kampeerplaats(int Nummer, string Opmerking, int Prijs, int X, int Y)
         {
-            this.Reserveringsnummer = Reserveringsnummer;
             this.Nummer = Nummer;
-            this.Opmerking = Opmerking;
-            this.Oppervlakte = Oppervlakte;
             this.X = X;
             this.Y = Y;
+            this.Prijs = Prijs;
+            this.Opmerking = Opmerking;
+            
         }
 
         /// <summary>

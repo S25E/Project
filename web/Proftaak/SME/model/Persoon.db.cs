@@ -114,17 +114,17 @@ namespace SME
                 case "Klant":
                     return new Bijboeker(
                         rfid,
+                        naam,
                         wachtwoord,
                         aanwezig,
-                        naam,
                         Convert.ToInt32(row["k_RESERVERINGSNUMMER"])
                     );
                 case "Klant_betalend":
                     return new Hoofdboeker(
                         rfid,
+                        naam,
                         wachtwoord,
                         aanwezig,
-                        naam,
                         Convert.ToInt32(row["kb_RESERVERINGSNUMMER"]),
                         row["STRAAT"].ToString(),
                         row["POSTCODE"].ToString(),
@@ -137,9 +137,9 @@ namespace SME
                 case "Medewerker":
                     return new Medewerker(
                         rfid,
+                        naam,
                         wachtwoord,
                         aanwezig,
-                        naam,
                         row["FUNCTIE"].ToString(),
                         row["REKENINGNUMMER"].ToString()
                     );
@@ -147,11 +147,33 @@ namespace SME
                     throw new InvalidTypePersoonException();
             }
         }
-
         public static void UpdateAanwezigheid(Persoon persoon)
         {
-            Database.Execute("UPDATE PERSOON SET aanwezig= "+ (persoon.Aanwezig ? "Y" : "N")+" WHERE RFID = " + persoon.Nummer);
+            Database.Execute("UPDATE PERSOON SET aanwezig= " + (persoon.Aanwezig ? "Y" : "N") + " WHERE RFID = " + persoon.Nummer);
         }
-    
+
+        // NOG TE MAKEN
+        public static void AddPersoon(Persoon persoon)
+        {
+
+
+        }
+
+        // NOG TE MAKEN
+        public static void DeletePersoon(Persoon persoon)
+        {
+            // DENK AAN ALLE TABELLEN WAARIN RFID GEBRUIKT WORDT.            
+        }
+
+        // NOG TE MAKEN
+        public static Hoofdboeker GetHoofdboekerBijReservering(Reservering reservering)
+        {
+            return (Hoofdboeker)null;
+        }
+
+        public static List<Bijboeker> GetBijboekersBijReservering(Reservering reservering)
+        {
+            return (List<Bijboeker>)null;
+        }
     }
 }
