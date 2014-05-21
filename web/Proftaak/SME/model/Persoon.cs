@@ -202,7 +202,7 @@ namespace SME
 
         }
 
-        public Bijboeker(string naam, string wachtwoord, bool aanwezig, int reserveringsnummer)
+        public Bijboeker(string naam, string wachtwoord, bool aanwezig, int reserveringsnummer = default(int))
             : base(naam, wachtwoord, aanwezig, reserveringsnummer)
         {
 
