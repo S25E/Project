@@ -7,6 +7,7 @@ namespace SME
 {
 	public class Kampeerplaats
 	{
+		// NOG TE MAKEN
         public static Kampeerplaats GetKampeerplaatBijNummer(int nummer)
         {
             return (Kampeerplaats)null;
