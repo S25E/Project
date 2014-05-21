@@ -147,6 +147,12 @@ namespace SME
                     throw new InvalidTypePersoonException();
             }
         }
-    
+
+        // NOG TE MAKEN
+        public static void AddPersoon(Persoon persoon)
+        {
+            
+            
+        }
     }
 }
