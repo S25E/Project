@@ -147,6 +147,11 @@ namespace SME
                     throw new InvalidTypePersoonException();
             }
         }
+
+        public static void UpdateAanwezigheid(Persoon persoon)
+        {
+            Database.Execute("UPDATE PERSOON SET aanwezig= "+ (persoon.Aanwezig ? "Y" : "N")+" WHERE RFID = " + persoon.Nummer);
+        }
     
     }
 }
