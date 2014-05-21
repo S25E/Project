@@ -78,6 +78,7 @@
     <Compile Include="model\BestandenCatalogus.cs" />
     <Compile Include="model\Database.cs" />
     <Compile Include="model\Kampeerplaats.cs" />
+    <Compile Include="model\Kampeerplaats.db.cs" />
     <Compile Include="model\Map.cs" />
     <Compile Include="model\Map.db.cs" />
     <Compile Include="model\Materiaal.cs" />
