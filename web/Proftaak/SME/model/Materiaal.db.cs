@@ -12,7 +12,7 @@ namespace SME
             Database.Execute("INSERT INTO Materiaal (barcode, naam, aantal, verhuurprijs, omschrijving, categorie) VALUES (@barcode, @naam, @aantal, @verhuurprijs, @omschrijving, @categorie)", new Dictionary<string, object>()
             {
                 {"@barcode", materiaal.Barcode},
-                {"@naam", materiaal.Soort},
+                {"@naam", materiaal.Naam},
                 {"@aantal", materiaal.Aantal},
                 {"@verhuurprijs", materiaal.Verhuurprijs},
                 {"@omschrijving", materiaal.Omschrijving},
@@ -28,8 +28,8 @@ namespace SME
         }
         public static void DeleteMateriaal(Materiaal materiaal)
         {
-          
-            Database.Execute("DELETE FROM Materiaal ")
+
+            Database.Execute("DELETE FROM Materiaal ");
         }
     }
 }
