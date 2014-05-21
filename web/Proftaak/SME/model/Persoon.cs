@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.IO;
 
 namespace SME
 {
@@ -50,10 +51,13 @@ namespace SME
 
         public Persoon(string naam, string wachtwoord = null, bool aanwezig = false)
         {
+            if (wachtwoord == null)
+            {
+                wachtwoord = Path.GetRandomFileName().Replace(".", "");
+            }
             this.Naam = naam;
             this.wachtwoord = wachtwoord;
             this.Aanwezig = aanwezig;
-            
         }
 
         /// <summary>
