@@ -103,5 +103,10 @@ namespace SME
 
             return command;
         }
+
+        public static int GetSequence(string naam)
+        {
+            return Convert.ToInt32(Database.GetData("SELECT " + naam + ".nextval FROM dual").Rows[0]["NEXTVAL"]);
+        }
     }
 }
