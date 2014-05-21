@@ -70,6 +70,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Toelating.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -94,6 +95,13 @@
     </Compile>
     <Compile Include="Site1.Master.designer.cs">
       <DependentUpon>Site1.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Toelating.aspx.cs">
+      <DependentUpon>Toelating.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Toelating.aspx.designer.cs">
+      <DependentUpon>Toelating.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup />
