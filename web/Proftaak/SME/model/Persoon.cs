@@ -22,10 +22,16 @@ namespace SME
         /// </summary>
         private string wachtwoord;
 
+        private bool aanwezig;
         public bool Aanwezig
         {
-            get;
-            set;
+            get{
+                return aanwezig;
+            }
+            set{
+                aanwezig = value;
+                UpdateAanwezigheid(this);
+            }
         }
 
         public string Naam
