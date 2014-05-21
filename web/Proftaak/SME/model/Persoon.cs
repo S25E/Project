@@ -87,7 +87,7 @@ namespace SME
         }
     }
 
-    class Boeker : Persoon
+    public class Boeker : Persoon
     {
         public int ReserveringNummer
         {
