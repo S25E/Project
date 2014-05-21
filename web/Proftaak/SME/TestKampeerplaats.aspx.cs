@@ -13,7 +13,7 @@ namespace SME
         protected void Page_Load(object sender, EventArgs e)
         {
             JavaScriptSerializer js = new JavaScriptSerializer();
-            Response.Write(js.Serialize(Kampeerplaats))
+            Response.Write(js.Serialize(Kampeerplaats));
         }
     }
 }

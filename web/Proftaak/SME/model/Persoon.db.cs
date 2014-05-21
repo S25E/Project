@@ -162,7 +162,9 @@ namespace SME
         // NOG TE MAKEN
         public static void DeletePersoon(Persoon persoon)
         {
-            // DENK AAN ALLE TABELLEN WAARIN RFID GEBRUIKT WORDT.            
+            // DENK AAN ALLE TABELLEN WAARIN RFID GEBRUIKT WORDT.   
+            Database.Execute("DELETE FROM KLANT WHERE RFID = " + persoon.Nummer + "ON CASCADE DELETE");
+            Database.Execute("DELETE FROM PERSOON WHERE RFID = " + persoon.Nummer + "ON CASCADE DELETE");
         }
 
         // NOG TE MAKEN

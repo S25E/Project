@@ -55,5 +55,11 @@ namespace SME
         {
             return Kampeerplaats.GetKampeerplaatsBijNummer(nummer);
         }
+
+        //NOG TE MAKEN
+        public static void DeleteReservering(Reservering reservering)
+        {
+            //nog verder maken
+        }
     }
 }
