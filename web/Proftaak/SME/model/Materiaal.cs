@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SME
 {
-    class Materiaal
+    public partial class Materiaal
     {
         public string Soort { get; set; }
         public int Aantal { get; set; }
