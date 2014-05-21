@@ -5,56 +5,91 @@ using System.Text;
 
 namespace SME
 {
-    class Reservering
+    public partial class Reservering
     {
-        public Hoofdboeker Hoofdboeker;
-        public List<Bijboeker> Bijboekers;
-        public List<Kampeerplaats> Kampeerplaatsen;
-        public int Reserveringsnummer;
-        public bool Betaald;
-        public int AantalPersonen;
-        public List<Materiaal> Materialen;
-
-        public Reservering(Hoofdboeker Hoofdboeker, List<Bijboeker> Bijboekers, List<Kampeerplaats> Kampeerplaatsen, int Reserveringsnummer, bool Betaald, int AantalPersonen, List<Materiaal> Materialen)
+        public int Nummer
         {
-            this.Hoofdboeker = Hoofdboeker;
-            this.Bijboekers = Bijboekers;
-            this.Kampeerplaatsen = Kampeerplaatsen;
-            this.Reserveringsnummer = Reserveringsnummer;
-            this.Betaald = Betaald;
-            this.AantalPersonen = AantalPersonen;
-            this.Materialen = Materialen;
+            get; 
+            set;
+        }
+        public bool Betaald
+        {
+            get; 
+            private set;
+        }
+        public DateTime Datum
+        {
+            get; 
+            private set;
         }
 
-        public Reservering(Hoofdboeker Hoofdboeker, List<Bijboeker> Bijboekers, List<Kampeerplaats> Kampeerplaatsen, int Reserveringsnummer, bool Betaald, int AantalPersonen)
+        public Hoofdboeker Hoofdboeker
         {
-            this.Hoofdboeker = Hoofdboeker;
-            this.Bijboekers = Bijboekers;
-            this.Kampeerplaatsen = Kampeerplaatsen;
-            this.Reserveringsnummer = Reserveringsnummer;
-            this.Betaald = Betaald;
-            this.AantalPersonen = AantalPersonen;
-
+            get
+            {
+                return Persoon.GetHoofdboekerBijReservering(this);
+            }
+        }
+        public List<Bijboeker> Bijboekers
+        {
+            get
+            {
+                return Persoon.GetBijboekersBijReservering(this);
+            }
+        }
+        public List<Kampeerplaats> Kampeerplaatsen
+        {
+            get
+            {
+                return new List<Kampeerplaats>();
+            }
+        }
+        
+        public List<Materiaal> Materialen
+        {
+            get
+            {
+                return new List<Materiaal>();
+            }
         }
 
-        //public void AddPersoon(Persoon persoon)
-        //{
+        public Reservering(bool betaald, DateTime datum)
+        {
+            this.Betaald = Betaald;
+            this.Datum = datum;   
+        }
 
-        //}
+        public Reservering(int reserveringsnummer, bool betaald, DateTime datum ) 
+            :this(betaald, datum)
+        {
+            this.Nummer = reserveringsnummer;
+        }
+        public void AddBijboeker(Boeker bijboeker)
 
-        //public void DeletePersoon(Persoon persoon)
-        //{
+        {
+            bijboeker.ReserveringNummer = this.Nummer;
+            Persoon.AddPersoon(bijboeker);
+        }
+        public void DeleteBijboeker(Boeker bijboeker)
+        {
+            Persoon.DeletePersoon(bijboeker);
+        }
 
-        //}
+        public void ZetOpBetaald()
+        {
+            Reservering.ZetOpBetaald(this);
+            this.Betaald = true;
+        }
 
-        //public void ZetOpBetaald()
-        //{
+        /*public void AddMateriaal(Materiaal materiaal)
+        {
+            Reservering.AddMateriaal(materiaal);
+        }*/
 
-        //}
-
-        //public decimal BerekenPrijs()
-        //{
-        //    
-        //}
+        // NOG TE MAKEN
+        public void Delete()
+        {
+            Reservering.DeleteReservering(this);  
+        }
     }
 }
