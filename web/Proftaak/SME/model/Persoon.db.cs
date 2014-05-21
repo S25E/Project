@@ -147,6 +147,29 @@ namespace SME
                     throw new InvalidTypePersoonException();
             }
         }
-    
+
+        // NOG TE MAKEN
+        public static void AddPersoon(Persoon persoon)
+        {
+            
+            
+        }
+
+        // NOG TE MAKEN
+        public static void DeletePersoon(Persoon persoon)
+        {
+            // DENK AAN ALLE TABELLEN WAARIN RFID GEBRUIKT WORDT.            
+        }
+
+        // NOG TE MAKEN
+        public static Hoofdboeker GetHoofdboekerBijReservering(Reservering reservering)
+        {
+            return (Hoofdboeker)null;
+        }
+
+        public static List<Bijboeker> GetBijboekersBijReservering(Reservering reservering)
+        {
+            return (List<Bijboeker>)null;
+        }
     }
 }
