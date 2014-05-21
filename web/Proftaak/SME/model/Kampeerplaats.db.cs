@@ -12,5 +12,11 @@ namespace SME
         {
             return (Kampeerplaats)null;
         }
+
+		// NOT TE MAKEN
+        public static List<Kampeerplaats> GetKampeerplaatsen()
+        {
+            return (List<Kampeerplaats>)null;
+        }
 	}
 }
