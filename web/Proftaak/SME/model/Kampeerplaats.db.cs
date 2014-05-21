@@ -8,7 +8,7 @@ namespace SME
 	public partial class Kampeerplaats
 	{
 		// NOG TE MAKEN
-        public static Kampeerplaats GetKampeerplaatBijNummer(int nummer)
+        public static Kampeerplaats GetKampeerplaatsBijNummer(int nummer)
         {
             return (Kampeerplaats)null;
         }

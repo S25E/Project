@@ -32,14 +32,11 @@ namespace SME
 
 
         /// <summary>
-        /// Voegt een reservering toe aan de database
+        /// Voegt een reservering toe
         /// </summary>
-        /// <param name="Hoofdboeker">De hoofdboeker</param>
-        /// <param name="Bijboekers">De lijst met bijboekers</param>
-        /// <param name="kampeerplaatsen">De lijst met kampeerplaatsen</param>
-        /// <param name="nummer">Het reserveringsnummer</param>
-        /// <param name="HoofdboekerPersoon"></param>
-        /// <param name="Materialen"></param>
+        /// <param name="reservering">De reservering zelf</param>
+        /// <param name="hoofdboeker">De hoofdboeker</param>
+        /// <returns></returns>
         public static Reservering AddReservering(Reservering reservering, Hoofdboeker hoofdboeker)
         {
             reservering.Nummer = Reservering.AddReservering(reservering);
@@ -56,7 +53,7 @@ namespace SME
         /// <returns>Geeft een kampeerplaats terug met het plaatsnummer dat ingevoerd is</returns>
         public static Kampeerplaats GetKampeerplaats(int nummer)
         {
-            return Kampeerplaats.GetKampeerplaatBijNummer(nummer);
+            return Kampeerplaats.GetKampeerplaatsBijNummer(nummer);
         }
     }
 }
