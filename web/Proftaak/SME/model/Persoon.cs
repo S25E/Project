@@ -167,7 +167,7 @@ namespace SME
         /// <param name="nummer"></param>
         /// <param name="naam"></param>
         /// <param name="wachtwoord"></param>
-        public Hoofdboeker(int nummer, string wachtwoord, bool aanwezig, string naam, int reserveringsnummer, string straat, string postcode, string woonplaats, string telefoon, string email, string rekeningnummer, string sofinummer)
+        public Hoofdboeker(int nummer, string naam, string wachtwoord, bool aanwezig, int reserveringsnummer, string straat, string postcode, string woonplaats, string telefoon, string email, string rekeningnummer, string sofinummer)
             : base(nummer, naam, wachtwoord, aanwezig, reserveringsnummer)
         {
             this.Naam = naam;
@@ -234,14 +234,14 @@ namespace SME
         /// <param name="nummer"></param>
         /// <param name="naam"></param>
         /// <param name="wachtwoord"></param>
-        public Medewerker(int nummer, string wachtwoord, bool aanwezig, string naam, string functie, string rekeningnummer)
+        public Medewerker(int nummer, string naam, string wachtwoord, bool aanwezig, string functie, string rekeningnummer)
             : base(nummer, naam, wachtwoord, aanwezig)
         {
             this.Functie = functie;
             this.Rekeningnummer = rekeningnummer;
         }
 
-        public Medewerker(string wachtwoord, bool aanwezig, string naam, string functie, string rekeningnummer)
+        public Medewerker(string naam, string wachtwoord, bool aanwezig, string functie, string rekeningnummer)
             : base(naam, wachtwoord, aanwezig)
         {
             this.Functie = functie;

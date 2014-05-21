@@ -114,17 +114,17 @@ namespace SME
                 case "Klant":
                     return new Bijboeker(
                         rfid,
+                        naam,
                         wachtwoord,
                         aanwezig,
-                        naam,
                         Convert.ToInt32(row["k_RESERVERINGSNUMMER"])
                     );
                 case "Klant_betalend":
                     return new Hoofdboeker(
                         rfid,
+                        naam,
                         wachtwoord,
                         aanwezig,
-                        naam,
                         Convert.ToInt32(row["kb_RESERVERINGSNUMMER"]),
                         row["STRAAT"].ToString(),
                         row["POSTCODE"].ToString(),
@@ -137,9 +137,9 @@ namespace SME
                 case "Medewerker":
                     return new Medewerker(
                         rfid,
+                        naam,
                         wachtwoord,
                         aanwezig,
-                        naam,
                         row["FUNCTIE"].ToString(),
                         row["REKENINGNUMMER"].ToString()
                     );
