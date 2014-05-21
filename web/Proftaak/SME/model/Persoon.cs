@@ -117,7 +117,7 @@ namespace SME
         }
     }
 
-    class Hoofdboeker : Boeker
+    public class Hoofdboeker : Boeker
     {
         public string Straat
         {
@@ -194,7 +194,7 @@ namespace SME
         }
     }
 
-    class Bijboeker : Boeker
+    public class Bijboeker : Boeker
     {
         /// <summary>
         /// Het aanmaken van een bijboeker.
@@ -214,7 +214,7 @@ namespace SME
 
         }
     }
-    class Medewerker : Persoon
+    public class Medewerker : Persoon
     {
         public string Functie
         {
