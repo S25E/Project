@@ -5,7 +5,7 @@ using System.Web;
 
 namespace SME
 {
-	public class Kampeerplaats
+	public partial class Kampeerplaats
 	{
 		// NOG TE MAKEN
         public static Kampeerplaats GetKampeerplaatBijNummer(int nummer)

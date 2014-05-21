@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SME
 {
-    class Kampeerplaats
+    public partial class Kampeerplaats
     {
         public int Nummer {get; private set;}
         public int X { get; private set; }
