@@ -160,5 +160,11 @@ namespace SME
         {
             
         }
+
+        // NOG TE MAKEN
+        public static Hoofdboeker GetHoofdboekerBijReservering(Reservering reservering)
+        {
+            return (Hoofdboeker)null;
+        }
     }
 }
