@@ -11,8 +11,9 @@ namespace SME
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Persoon persoon = Persoon.GetPersoonBijRFID(3234);
-            persoon.Aanwezig = !persoon.Aanwezig;
+            //Persoon persoon = Persoon.GetPersoonBijRFID(3234);
+            //persoon.Aanwezig = !persoon.Aanwezig;
+            this.Title = Site1.UpdateTitle("Toelating");
         }
     }
 }
