@@ -9,6 +9,12 @@ namespace SME
 {
     public partial class Site1 : System.Web.UI.MasterPage
     {
+        private static string title = ": :SME: :";
+ 
+        public static string UpdateTitle(string toBeAddedTitle)
+        {
+            return title + " " + toBeAddedTitle;
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
 
