@@ -23,7 +23,7 @@ namespace SME
         /// <param name="Oppervlakte">Oppervlakte van de kampeerplaats</param>
         /// <param name="X">X coordinaat van de kamperplaats</param>
         /// <param name="Y">T coordinaat van de kamperplaats</param>
-        public Kampeerplaats(int Nummer, string Opmerking, int Prijs, int X, int Y)
+        public Kampeerplaats(int Nummer, int X, int Y, int Prijs, string Opmerking)
         {
             this.Nummer = Nummer;
             this.X = X;
@@ -42,9 +42,9 @@ namespace SME
             this.Nummer = Nummer;
         }
 
-        //public bool IsBeschikbaar()
-        //{
-            
-        //}
+        public bool IsBeschikbaar()
+        {
+            return Kampeerplaats.IsBeschikbaar(this.Nummer);
+        }
     }
 }

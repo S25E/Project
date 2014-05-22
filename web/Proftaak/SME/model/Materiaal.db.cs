@@ -9,15 +9,27 @@ namespace SME
     {
         public static void AddMateriaal(Materiaal materiaal)
         {
-            Database.Execute("INSERT INTO Materiaal (soort, aantal, verhuurprijs, barcode, omschrijving, categorie) VALUES (@soort, @aantal, @verhuurprijs, @barcode, @omschrijving, @categorie)", new Dictionary<string, object>()
+            Database.Execute("INSERT INTO Materiaal (barcode, naam, aantal, verhuurprijs, omschrijving, categorie) VALUES (@barcode, @naam, @aantal, @verhuurprijs, @omschrijving, @categorie)", new Dictionary<string, object>()
             {
-                {"@soort", materiaal.Soort},
+                {"@barcode", materiaal.Barcode},
+                {"@naam", materiaal.Naam},
                 {"@aantal", materiaal.Aantal},
                 {"@verhuurprijs", materiaal.Verhuurprijs},
-                {"@barcode", materiaal.Barcode},
                 {"@omschrijving", materiaal.Omschrijving},
                 {"@categorie", materiaal.Categorie}
             });
+        }
+
+        public static void UpdateAantal(Materiaal materiaal)
+        {
+            Database.Execute("UPDATE MATERIAAL SET AANTAL = " + materiaal.aantal + " WHERE  BARCODE = @BARCODE", new Dictionary<string, object>(){
+                {"@barcode", materiaal.Barcode}
+            });
+        }
+        public static void DeleteMateriaal(Materiaal materiaal)
+        {
+
+            Database.Execute("DELETE FROM Materiaal ");
         }
     }
 }
