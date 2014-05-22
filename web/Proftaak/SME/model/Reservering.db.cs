@@ -9,6 +9,7 @@ namespace SME
     {
         public static List<Reservering> GetReserveringen(){
 
+            //nog te maken
             List<Reservering> lijst = new List<Reservering>();
 
             return lijst;
