@@ -42,9 +42,9 @@ namespace SME
             this.Nummer = Nummer;
         }
 
-        //public bool IsBeschikbaar()
-        //{
-            
-        //}
+        public bool IsBeschikbaar()
+        {
+            return Kampeerplaats.IsBeschikbaar(this.Nummer);
+        }
     }
 }
