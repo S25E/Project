@@ -30,7 +30,7 @@ namespace SME
 
         public static bool IsBeschikbaar(int nummer)
         {
-            if(Database.GetData("SELECT RESERVERING_NUMMER FROM RESERVERING_PLAATS WHERE PLAATS_NUMMER =" + nummer).Rows.Count == 0)
+            if(Database.GetData("SELECT RESERVERINGSNUMMER FROM RESERVERING_PLAATS WHERE PLAATSNUMMER =" + nummer).Rows.Count == 0)
             {
                 return true;
             }

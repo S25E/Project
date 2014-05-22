@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Data;
 
 namespace SME
 {
@@ -12,6 +13,24 @@ namespace SME
             //nog te maken
             List<Reservering> lijst = new List<Reservering>();
 
+            DataTable dt = Database.GetData("SELECT RESERVERINGSNUMMER, BETAALD, DATUM FROM RESERVERING");
+            foreach(DataRow row in dt.Rows)
+            {
+                int reserveringsnummer = Convert.ToInt32(row["RESERVERINGSNUMMER"]);
+                bool betaald;
+                if(row["BETAALD"].ToString() == "true")
+                {
+                    betaald = true;
+                }
+                else
+                {
+                    betaald = false;
+                }
+                
+                DateTime datum = Convert.ToDateTime(row["DATUM"]);
+                Reservering reservering = new Reservering(reserveringsnummer, betaald, datum);
+                lijst.Add(reservering);
+            }
             return lijst;
 
         }

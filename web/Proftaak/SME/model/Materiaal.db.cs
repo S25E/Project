@@ -29,7 +29,7 @@ namespace SME
         public static void DeleteMateriaal(Materiaal materiaal)
         {
 
-            Database.Execute("DELETE FROM Materiaal ");
+            Database.Execute("DELETE FROM Materiaal WHERE BARCODE=" + materiaal.Barcode);
         }
     }
 }

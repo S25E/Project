@@ -79,7 +79,7 @@ namespace SME
         // NOG TE MAKEN
         public void Delete()
         {
-
+            Persoon.DeletePersoon(this);
         }
 
         /// <summary>
