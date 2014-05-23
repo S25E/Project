@@ -5,7 +5,7 @@ using System.Web;
 
 namespace SME
 {
-    public class MateriaalBeheer
+    public partial class MateriaalBeheer
     {
         public static void Leenuit(Materiaal materiaal, Persoon persoon)
         {
