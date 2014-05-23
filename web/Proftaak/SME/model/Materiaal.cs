@@ -7,8 +7,14 @@ namespace SME
 {
     public partial class Materiaal
     {
-        public string Barcode { get; set; }
-        public string Naam { get; set; }
+        public string Barcode { 
+            get; 
+            set; 
+        }
+        public string Naam { 
+            get; 
+            set; 
+        }
 
         private int aantal;
         public int Aantal {
@@ -21,9 +27,18 @@ namespace SME
                 Materiaal.UpdateAantal(this);
             } 
         }
-        public int Verhuurprijs { get; set; }
-        public string Omschrijving { get; set; }
-        public string Categorie { get; set; }
+        public int Verhuurprijs { 
+            get; 
+            set; 
+        }
+        public string Omschrijving { 
+            get; 
+            set; 
+        }
+        public string Categorie { 
+            get; 
+            set; 
+        }
 
         /// <summary>
         /// Constructor, deze wordt gebruik bij het aanmaken van een reservering
