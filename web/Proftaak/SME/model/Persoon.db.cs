@@ -104,7 +104,7 @@ namespace SME
             string type = row["TYPE"].ToString().ToUpper();
 
             // Waardes die voor alle types bestanden relevant zijn, definiëren 
-            int rfid = Convert.ToInt32(row["RFID"]);
+            string rfid = row["RFID"].ToString();
             string wachtwoord = row["WACHTWOORD"].ToString();
             bool aanwezig = row["AANWEZIG"].ToString() == "Y";
             string naam = row["NAAM"].ToString();
@@ -158,20 +158,20 @@ namespace SME
             string type;
             if (persoon is Hoofdboeker)
             {
-                type = "Hoofdboeker";
+                type = "Klant_betalend";
             }
             else if (persoon is Bijboeker)
             {
-                type = "Bijboeker";
+                type = "Klant";
             }
             else
             {
                 type = "Medewerker";
             }
-
+            string rfid = Database.GetData("SELECT RFID FROM RFID_COL WHERE RFID NOT IN (SELECT RFID FROM PERSOON)").Rows[0]["RFID"].ToString();
             Database.Execute("INSERT INTO PERSOON (RFID, WACHTWOORD, TYPE, AANWEZIG, NAAM) VALUES (@rfid, @wachtwoord, @type, @aanwezig, @naam)", new Dictionary<string, object>
                 {
-                    {"@rfid", persoon.Nummer},
+                    {"@rfid", rfid},
                     {"@wachtwoord", persoon.wachtwoord},
                     {"@type", type},
                     {"@aanwezig", persoon.Aanwezig},
@@ -183,7 +183,7 @@ namespace SME
                 Hoofdboeker hoofdboeker = (Hoofdboeker)persoon;
                 Database.Execute("INSERT INTO KLANT_BETALEND (RFID, STRAAT, POSTCODE, WOONPLAATS, TELEFOON, EMAIL, REKENINGNUMMER, SOFINUMMER, RESERVERINGSNUMMER) VALUES (@rfid, @straat, @postcode, @woonplaats, @telefoon, @email, @rekeningnummer, @sofinummer, @reserveringsnummer)", new Dictionary<string, object>
                 {
-                    {"@rfid", hoofdboeker.Nummer},
+                    {"@rfid", rfid},
                     {"@straat", hoofdboeker.Straat},
                     {"@postcode", hoofdboeker.Postcode},
                     {"@woonplaats", hoofdboeker.Woonplaats},
@@ -199,8 +199,8 @@ namespace SME
                 Bijboeker bijboeker = (Bijboeker)persoon;
                 Database.Execute("INSERT INTO KLANT (RFID, RESERVERINGSNUMMER) VALUES (@rfid, @reserveringsnummer)", new Dictionary<string, object>
                 {
-                    {"@rfid", bijboeker.Nummer},
-                    {"@wachtwoord", bijboeker.ReserveringNummer}
+                    {"@rfid", rfid},
+                    {"@reserveringnummer", bijboeker.ReserveringNummer}
                 });
             }
             else if(persoon is Medewerker)
@@ -208,7 +208,7 @@ namespace SME
                 Medewerker medewerker = (Medewerker)persoon;
                 Database.Execute("INSERT INTO MEDEWERKER (RFID, FUNCTIE, REKENINGNUMMER) VALUES (@rfid, @functie, @rekeningnummer)", new Dictionary<string, object>
                 {
-                    {"@rfid", medewerker.Nummer},
+                    {"@rfid", rfid},
                     {"@functie", medewerker.Functie},
                     {"@rekeningnummer", medewerker.Rekeningnummer}
                 });
@@ -220,18 +220,18 @@ namespace SME
         public static void DeletePersoon(Persoon persoon)
         {
             // DENK AAN ALLE TABELLEN WAARIN RFID GEBRUIKT WORDT.
-            Database.Execute("DELETE FROM PERSOON WHERE RFID = " + persoon.Nummer + "ON CASCADE DELETE");
+            Database.Execute("DELETE FROM PERSOON WHERE RFID = " + persoon.Nummer);
             if(persoon is Hoofdboeker)
             {
-                Database.Execute("DELETE FROM KLANT_BETALEND WHERE RFID = " + persoon.Nummer + "ON CASCADE DELETE");
+                Database.Execute("DELETE FROM KLANT_BETALEND WHERE RFID = " + persoon.Nummer);
             }
             else if(persoon is Bijboeker)
             {
-                Database.Execute("DELETE FROM KLANT WHERE RFID = " + persoon.Nummer + "ON CASCADE DELETE");
+                Database.Execute("DELETE FROM KLANT WHERE RFID = " + persoon.Nummer);
             }
             else 
             {
-                Database.Execute("DELETE FROM MEDEWERKER WHERE RFID = " + persoon.Nummer + "ON CASCADE DELETE");
+                Database.Execute("DELETE FROM MEDEWERKER WHERE RFID = " + persoon.Nummer);
             }
 
             
