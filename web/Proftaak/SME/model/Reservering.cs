@@ -53,14 +53,19 @@ namespace SME
             }
         }
 
-        public Reservering(bool betaald, DateTime datum)
+        public Reservering(DateTime datum = default(DateTime), bool betaald = false)
         {
+            if(datum.Equals(default(DateTime)))
+            {
+                datum = DateTime.Now;
+            }
+
             this.Betaald = Betaald;
             this.Datum = datum;   
         }
 
-        public Reservering(int reserveringsnummer, bool betaald, DateTime datum ) 
-            :this(betaald, datum)
+        public Reservering(int reserveringsnummer, DateTime datum, bool betaald) 
+            :this(datum, betaald)
         {
             this.Nummer = reserveringsnummer;
         }
