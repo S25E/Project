@@ -264,7 +264,7 @@ namespace SME
             Database.Execute("DELETE FROM OPMERKING WHERE RFID = @rfid", new Dictionary<string, object>() {{"@rfid", persoon.Nummer}});
 
             //OPMERKINGREPORT
-            Database.Execute("DELETE FROM OPMERKING_REPORT WHERE RFID = @rfid", new Dictionary<string, object>() {{"@rfid", persoon.Nummer}});
+            Database.Execute("DELETE FROM OPMERKINGREPORT WHERE RFID = @rfid", new Dictionary<string, object>() {{"@rfid", persoon.Nummer}});
 
             // UITEINDELIJK DE PERSOON ZELF VERWIJDEREN
             Database.Execute("DELETE FROM PERSOON WHERE RFID = @rfid", new Dictionary<string, object>() { { "@rfid", persoon.Nummer } });
