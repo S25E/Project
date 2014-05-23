@@ -184,7 +184,7 @@ namespace SME
                     {"@rfid", rfid},
                     {"@wachtwoord", persoon.wachtwoord},
                     {"@type", type},
-                    {"@aanwezig", persoon.Aanwezig},
+                    {"@aanwezig", persoon.Aanwezig ? 'Y' : 'N'},
                     {"@naam", persoon.Naam}
                 });
 
