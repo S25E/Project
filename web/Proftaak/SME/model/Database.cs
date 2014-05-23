@@ -93,8 +93,9 @@ namespace SME
                     }
                     else
                     {
-                        query = query.Replace(waarde.Key, "'" + waarde.Value.ToString().Replace("'", "\'") + "'");
+                        query = query.Replace(waarde.Key, Quote(waarde.Value.ToString()));
                     }
+                    // Oracle Command werkt op een of andere manier niet, daarom custom parameters.
                     //command.Parameters.Add(new OracleParameter(waarde.Key, waarde.Value).Value);
                 }
             }
@@ -102,6 +103,16 @@ namespace SME
             OracleCommand command = new OracleCommand(query, oc);
 
             return command;
+        }
+
+        public static string Quote(string waarde)
+        {
+            return "'" + Escape(waarde) + "'";
+        }
+
+        public static string Escape(string waarde)
+        {
+            return waarde.Replace("'", "\'");
         }
 
         public static int GetSequence(string naam)
