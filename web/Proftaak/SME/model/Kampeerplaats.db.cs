@@ -27,5 +27,17 @@ namespace SME
             }
             return kampeerplaatsen;
         }
+
+        public static bool IsBeschikbaar(int nummer)
+        {
+            if(Database.GetData("SELECT RESERVERINGSNUMMER FROM RESERVERING_PLAATS WHERE PLAATSNUMMER =" + nummer).Rows.Count == 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
 	}
 }

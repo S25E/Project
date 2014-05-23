@@ -155,25 +155,114 @@ namespace SME
         // NOG TE MAKEN
         public static void AddPersoon(Persoon persoon)
         {
+            string type;
+            if (persoon is Hoofdboeker)
+            {
+                type = "Hoofdboeker";
+            }
+            else if (persoon is Bijboeker)
+            {
+                type = "Bijboeker";
+            }
+            else
+            {
+                type = "Medewerker";
+            }
 
+            Database.Execute("INSERT INTO PERSOON (RFID, WACHTWOORD, TYPE, AANWEZIG, NAAM) VALUES (@rfid, @wachtwoord, @type, @aanwezig, @naam)", new Dictionary<string, object>
+                {
+                    {"@rfid", persoon.Nummer},
+                    {"@wachtwoord", persoon.wachtwoord},
+                    {"@type", type},
+                    {"@aanwezig", persoon.Aanwezig},
+                    {"@naam", persoon.Naam}
+                });
+
+            if (persoon is Hoofdboeker)
+            {
+                Hoofdboeker hoofdboeker = (Hoofdboeker)persoon;
+                Database.Execute("INSERT INTO KLANT_BETALEND (RFID, STRAAT, POSTCODE, WOONPLAATS, TELEFOON, EMAIL, REKENINGNUMMER, SOFINUMMER, RESERVERINGSNUMMER) VALUES (@rfid, @straat, @postcode, @woonplaats, @telefoon, @email, @rekeningnummer, @sofinummer, @reserveringsnummer)", new Dictionary<string, object>
+                {
+                    {"@rfid", hoofdboeker.Nummer},
+                    {"@straat", hoofdboeker.Straat},
+                    {"@postcode", hoofdboeker.Postcode},
+                    {"@woonplaats", hoofdboeker.Woonplaats},
+                    {"@telefoon", hoofdboeker.Telefoon},
+                    {"@email", hoofdboeker.Email},
+                    {"@rekeningnummer", hoofdboeker.Rekeningnummer},
+                    {"@sofinummer", hoofdboeker.Sofinummer},
+                    {"@reserveringsnummer",hoofdboeker.ReserveringNummer}
+                });
+            }
+            else if (persoon is Bijboeker)
+            {
+                Bijboeker bijboeker = (Bijboeker)persoon;
+                Database.Execute("INSERT INTO KLANT (RFID, RESERVERINGSNUMMER) VALUES (@rfid, @reserveringsnummer)", new Dictionary<string, object>
+                {
+                    {"@rfid", bijboeker.Nummer},
+                    {"@wachtwoord", bijboeker.ReserveringNummer}
+                });
+            }
+            else if(persoon is Medewerker)
+            {
+                Medewerker medewerker = (Medewerker)persoon;
+                Database.Execute("INSERT INTO MEDEWERKER (RFID, FUNCTIE, REKENINGNUMMER) VALUES (@rfid, @functie, @rekeningnummer)", new Dictionary<string, object>
+                {
+                    {"@rfid", medewerker.Nummer},
+                    {"@functie", medewerker.Functie},
+                    {"@rekeningnummer", medewerker.Rekeningnummer}
+                });
+            }
 
         }
 
         // NOG TE MAKEN
         public static void DeletePersoon(Persoon persoon)
         {
-            // DENK AAN ALLE TABELLEN WAARIN RFID GEBRUIKT WORDT.            
+            // DENK AAN ALLE TABELLEN WAARIN RFID GEBRUIKT WORDT.
+            Database.Execute("DELETE FROM PERSOON WHERE RFID = " + persoon.Nummer + "ON CASCADE DELETE");
+            if(persoon is Hoofdboeker)
+            {
+                Database.Execute("DELETE FROM KLANT_BETALEND WHERE RFID = " + persoon.Nummer + "ON CASCADE DELETE");
+            }
+            else if(persoon is Bijboeker)
+            {
+                Database.Execute("DELETE FROM KLANT WHERE RFID = " + persoon.Nummer + "ON CASCADE DELETE");
+            }
+            else 
+            {
+                Database.Execute("DELETE FROM MEDEWERKER WHERE RFID = " + persoon.Nummer + "ON CASCADE DELETE");
+            }
+
+            
+            
+
+            //DISLIKE_LIKE_REPORT
+            //OPMERKING
+            //OPMERKINGREPORT
         }
 
         // NOG TE MAKEN
         public static Hoofdboeker GetHoofdboekerBijReservering(Reservering reservering)
         {
-            return (Hoofdboeker)null;
+            DataTable dt = getPersonenByWhere("KLANT_BETALEND.RESERVERINGSNUMMER =" + reservering.Nummer);
+            foreach(DataRow row in dt.Rows)
+            {
+                return (Hoofdboeker)rowToPersoon(row);
+
+            }
+            return null;
         }
 
         public static List<Bijboeker> GetBijboekersBijReservering(Reservering reservering)
         {
-            return (List<Bijboeker>)null;
+            List<Bijboeker> Bijboekers = new List<Bijboeker>();
+            DataTable dt = getPersonenByWhere("KLANT.RESERVERINGSNUMMER =" + reservering.Nummer);
+            foreach(DataRow row in dt.Rows)
+            {
+                Bijboekers.Add((Bijboeker)rowToPersoon(row));                
+            }
+            return Bijboekers;
         }
     }
 }
