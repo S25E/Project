@@ -5,7 +5,7 @@ using System.Web;
 
 namespace SME.model
 {
-    public class MateriaalBeheer
+    public partial class MateriaalBeheer
     {
         public static void Leenuit(Materiaal materiaal, Persoon persoon)
         {
@@ -19,8 +19,11 @@ namespace SME.model
         });
         }
 
-        public static void BrengTerug(Materiaal materiaal, Persoon persoon)
+        public static void BrengTerug(Materiaal materiaal, Persoon persoon, int aantal)
         {
+            if (Convert.ToInt32(Database.GetData("SELECT AANTAL FROM UITLENING WHERE BARCODE = @BARCODE" )) >0 )
+            { }
+
             Database.Execute("DELETE FROM UITLENING WHERE BARCODE = @BARCODE AND RESERVERINGNUMMER = @RESERVERINGNUMMER)", new Dictionary<string, object>()
             {
                 {"@barcode", materiaal.Barcode},

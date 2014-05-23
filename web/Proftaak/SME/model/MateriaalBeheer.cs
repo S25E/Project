@@ -5,7 +5,7 @@ using System.Web;
 
 namespace SME.model
 {
-    public class MateriaalBeheer
+    public partial class MateriaalBeheer
     {
         public static void AddMateriaal(Materiaal materiaal)
         {
@@ -14,6 +14,10 @@ namespace SME.model
         public static void LeenUit(Materiaal materiaal, Persoon persoon)
         {
             MateriaalBeheer.Leenuit(materiaal, persoon);
+        }
+        public static void Brengterug(Materiaal materiaal, Persoon persoon, int aantal)
+        {
+            MateriaalBeheer.BrengTerug(materiaal, persoon, aantal);
         }
     }
 }
