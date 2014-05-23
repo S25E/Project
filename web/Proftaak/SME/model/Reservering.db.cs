@@ -35,7 +35,7 @@ namespace SME
 
         }
 
-        public static int AddReservering(Reservering reservering)
+        public static void AddReservering(Reservering reservering)
         {
             int insertedId =  Database.GetSequence("SEQ_RESERVERING");
             Database.Execute("INSERT INTO RESERVERING (RESERVERINGSNUMMER, DATUM) VALUES (@nummer, TO_DATE(@datum, 'SYYYY-MM-DD HH24:MI:SS'))", new Dictionary<string, object>()
@@ -43,7 +43,7 @@ namespace SME
                 {"@nummer", insertedId},
                 {"@datum",  reservering.Datum.ToString("yyyy-MM-dd HH:mm:ss")}
             });
-            return insertedId;
+            reservering.Nummer = insertedId;
         }
 
         // NOG TE MAKEN

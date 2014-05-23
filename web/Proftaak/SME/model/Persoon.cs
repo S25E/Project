@@ -16,7 +16,7 @@ namespace SME
         public string Nummer
         {
             get;
-            private set;
+            set;
         }
 
         /// <summary>

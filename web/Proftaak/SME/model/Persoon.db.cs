@@ -25,7 +25,7 @@ namespace SME
         /// <returns>De Persoon</returns>
         public static Persoon GetPersoonBijRFID(string rfid)
         {
-            foreach (DataRow row in getPersonenByWhere("PERSOON.RFID = @rfid", new Dictionary<string, object>() {{"@rfid", rfid}}).Rows)
+            foreach (DataRow row in getPersonenByWhere("PERSOON.RFID = @rfid", new Dictionary<string, object>() { { "@rfid", rfid } }).Rows)
             {
                 return rowToPersoon(row);
             }
@@ -44,7 +44,7 @@ namespace SME
 
             if (rfids.Count > 0)
             {
-                foreach (DataRow row in Database.GetData("SELECT * FROM PERSOON WHERE RFID IN(@rfids)", new Dictionary<string, object>(){{"@rfids", rfids}}).Rows)
+                foreach (DataRow row in Database.GetData("SELECT * FROM PERSOON WHERE RFID IN(@rfids)", new Dictionary<string, object>() { { "@rfids", rfids } }).Rows)
                 {
                     personen.Add(row["RFID"].ToString(), rowToPersoon(row));
                 }
@@ -233,6 +233,8 @@ namespace SME
                 });
             }
 
+            // Nummer van persoon goedzetten.
+            persoon.Nummer = rfid;
         }
 
         // NOG TE MAKEN
