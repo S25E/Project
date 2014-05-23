@@ -15,5 +15,9 @@ namespace SME
         {
             MateriaalBeheer.Leenuit(materiaal, persoon);
         }
+        public static void Brengterug(Materiaal materiaal, Persoon persoon, int aantal)
+        {
+            MateriaalBeheer.BrengTerug(materiaal, persoon, aantal);
+        }
     }
 }
