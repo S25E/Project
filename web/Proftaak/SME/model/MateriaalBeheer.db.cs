@@ -18,9 +18,12 @@ namespace SME
             {"@datum_ingeleverd", 1}
         });
         }
-
-        public static void BrengTerug(Materiaal materiaal, Persoon persoon)
+        //test
+        public static void BrengTerug(Materiaal materiaal, Persoon persoon, int aantal)
         {
+            if (Convert.ToInt32(Database.GetData("SELECT AANTAL FROM UITLENING WHERE BARCODE = @BARCODE" )) >0 )
+            { }
+
             Database.Execute("DELETE FROM UITLENING WHERE BARCODE = @BARCODE AND RESERVERINGNUMMER = @RESERVERINGNUMMER)", new Dictionary<string, object>()
             {
                 {"@barcode", materiaal.Barcode},
