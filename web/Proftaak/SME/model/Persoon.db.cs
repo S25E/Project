@@ -104,7 +104,7 @@ namespace SME
             string type = row["TYPE"].ToString().ToUpper();
 
             // Waardes die voor alle types bestanden relevant zijn, definiëren 
-            int rfid = Convert.ToInt32(row["RFID"]);
+            string rfid = row["RFID"].ToString();
             string wachtwoord = row["WACHTWOORD"].ToString();
             bool aanwezig = row["AANWEZIG"].ToString() == "Y";
             string naam = row["NAAM"].ToString();

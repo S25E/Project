@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.IO;
+using System.DirectoryServices;
+using System.DirectoryServices.AccountManagement;
 
 namespace SME
 {
@@ -11,7 +13,7 @@ namespace SME
         /// <summary>
         /// Het nummer van de persoon.
         /// </summary>
-        public int Nummer
+        public string Nummer
         {
             get;
             private set;
@@ -46,7 +48,7 @@ namespace SME
         /// <param name="nummer"></param>
         /// <param name="naam"></param>
         /// <param name="wachtwoord"></param>
-        public Persoon(int nummer, string naam, string wachtwoord, bool aanwezig)
+        public Persoon(string nummer, string naam, string wachtwoord, bool aanwezig)
         {
             this.Nummer = nummer;
             this.Naam = naam;
@@ -76,10 +78,26 @@ namespace SME
             return this.wachtwoord == wachtwoord;
         }
 
-        // NOG TE MAKEN
         public void Delete()
         {
             Persoon.DeletePersoon(this);
+        }
+
+        // Nog te maken
+        public static bool Login(string rfid, string wachtwoord)
+        {
+            using (PrincipalContext pc = new PrincipalContext(ContextType.Domain, "sme.marijnverwegen.nl"))
+            {
+                bool isValid = pc.ValidateCredentials(rfid, wachtwoord);
+                if (isValid)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
         }
 
         /// <summary>
@@ -110,7 +128,7 @@ namespace SME
             }
         }
 
-        public Boeker(int nummer, string naam, string wachtwoord, bool aanwezig, int reserveringsnummer)
+        public Boeker(string nummer, string naam, string wachtwoord, bool aanwezig, int reserveringsnummer)
             : base(nummer, naam, wachtwoord, aanwezig)
         {
 
@@ -173,7 +191,7 @@ namespace SME
         /// <param name="nummer"></param>
         /// <param name="naam"></param>
         /// <param name="wachtwoord"></param>
-        public Hoofdboeker(int nummer, string naam, string wachtwoord, bool aanwezig, int reserveringsnummer, string straat, string postcode, string woonplaats, string telefoon, string email, string rekeningnummer, string sofinummer)
+        public Hoofdboeker(string nummer, string naam, string wachtwoord, bool aanwezig, int reserveringsnummer, string straat, string postcode, string woonplaats, string telefoon, string email, string rekeningnummer, string sofinummer)
             : base(nummer, naam, wachtwoord, aanwezig, reserveringsnummer)
         {
             this.Naam = naam;
@@ -208,7 +226,7 @@ namespace SME
         /// <param name="nummer"></param>
         /// <param name="naam"></param>
         /// <param name="wachtwoord"></param>
-        public Bijboeker(int nummer, string naam, string wachtwoord, bool aanwezig, int reserveringsnummer)
+        public Bijboeker(string nummer, string naam, string wachtwoord, bool aanwezig, int reserveringsnummer)
             : base(nummer, naam, wachtwoord, aanwezig, reserveringsnummer)
         {
 
@@ -240,7 +258,7 @@ namespace SME
         /// <param name="nummer"></param>
         /// <param name="naam"></param>
         /// <param name="wachtwoord"></param>
-        public Medewerker(int nummer, string naam, string wachtwoord, bool aanwezig, string functie, string rekeningnummer)
+        public Medewerker(string nummer, string naam, string wachtwoord, bool aanwezig, string functie, string rekeningnummer)
             : base(nummer, naam, wachtwoord, aanwezig)
         {
             this.Functie = functie;
