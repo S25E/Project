@@ -81,7 +81,7 @@ namespace SME
 
         /// <summary>
         /// Het ophalen van een lijst met personen die een bestand hebben gereported.
-        /// </summary>
+        /// </summary>h
         /// <param name="bestand"></param>
         /// <returns>Een lijst met personen</returns>
         public static List<Persoon> GetReports(Bestand bestand)
