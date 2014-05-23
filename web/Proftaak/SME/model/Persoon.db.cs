@@ -178,13 +178,22 @@ namespace SME
                 throw new Exception("Ongeldig type!");
             }
 
-            string rfid = Database.GetData("SELECT RFID FROM RFID_COL WHERE RFID NOT IN (SELECT RFID FROM PERSOON)").Rows[0]["RFID"].ToString();
+            string rfid;
+            try
+            {
+                rfid = Database.GetData("SELECT RFID FROM RFID_COL WHERE RFID NOT IN (SELECT RFID FROM PERSOON)").Rows[0]["RFID"].ToString();
+            }
+            catch
+            {
+                throw new Exception("Geen beschikbaar RFID nummer voor persoon gevonden");
+            }
+
             Database.Execute("INSERT INTO PERSOON (RFID, WACHTWOORD, TYPE, AANWEZIG, NAAM) VALUES (@rfid, @wachtwoord, @type, @aanwezig, @naam)", new Dictionary<string, object>
                 {
                     {"@rfid", rfid},
                     {"@wachtwoord", persoon.wachtwoord},
                     {"@type", type},
-                    {"@aanwezig", persoon.Aanwezig ? 'Y' : 'N'},
+                    {"@aanwezig", persoon.Aanwezig ? "Y" : "N"},
                     {"@naam", persoon.Naam}
                 });
 
