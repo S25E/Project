@@ -11,7 +11,7 @@ namespace SME
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            //Persoon persoon = Persoon.GetPersoonBijRFID(3234);
+            //Persoon persoon = Persoon.GetPersoonBijRFID(Convert.ToInt32(Request["RFIDCheck"].Trim()));
             //persoon.Aanwezig = !persoon.Aanwezig;
             this.Title = Site1.UpdateTitle("Toelating");
         }

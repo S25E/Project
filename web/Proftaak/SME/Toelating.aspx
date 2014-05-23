@@ -6,7 +6,7 @@
     <div class="starter-template">
         <h1>Welkom op SME</h1>
         <div class="form-group">
-              <input type="text" style="width: 100px; margin-left:auto; margin-right:auto;" placeholder="RFID-Code" class="form-control" id="RFIDCheck"/>
+              <input type="text" style="width: 100px; margin-left:auto; margin-right:auto;" placeholder="RFID-Code" class="form-control" name="RFIDCheck" id="RFIDCheck"/>
         </div>
       </div>
 </asp:Content>
