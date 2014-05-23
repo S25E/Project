@@ -11,9 +11,21 @@ namespace SME
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            //Persoon persoon = Persoon.GetPersoonBijRFID(Convert.ToInt32(Request["RFIDCheck"].Trim()));
-            //persoon.Aanwezig = !persoon.Aanwezig;
             this.Title = Site1.UpdateTitle("Toelating");
+        }
+
+        protected void ButtonCheck_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Persoon persoon = Persoon.GetPersoonBijRFID(Convert.ToInt32(RFIDCheck.Text));
+                persoon.Aanwezig = !persoon.Aanwezig;
+                RFIDCheck.ForeColor = System.Drawing.Color.Black;
+            }
+            catch 
+            {
+                RFIDCheck.ForeColor = System.Drawing.Color.Red;
+            }
         }
     }
 }

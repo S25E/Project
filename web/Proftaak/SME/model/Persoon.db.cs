@@ -25,7 +25,7 @@ namespace SME
         /// <returns>De Persoon</returns>
         public static Persoon GetPersoonBijRFID(int rfid)
         {
-            foreach (DataRow row in getPersonenByWhere("RFID = " + rfid).Rows)
+            foreach (DataRow row in getPersonenByWhere("PERSOON.RFID = " + "'" + rfid  +"'").Rows)
             {
                 return rowToPersoon(row);
             }
@@ -111,7 +111,7 @@ namespace SME
 
             switch (type)
             {
-                case "Klant":
+                case "KLANT":
                     return new Bijboeker(
                         rfid,
                         naam,
@@ -119,7 +119,7 @@ namespace SME
                         aanwezig,
                         Convert.ToInt32(row["k_RESERVERINGSNUMMER"])
                     );
-                case "Klant_betalend":
+                case "KLANT_BETALEND":
                     return new Hoofdboeker(
                         rfid,
                         naam,
@@ -134,7 +134,7 @@ namespace SME
                         row["kb_REKENINGNUMMER"].ToString(),
                         row["SOFINUMMER"].ToString()
                     );
-                case "Medewerker":
+                case "MEDEWERKER":
                     return new Medewerker(
                         rfid,
                         naam,
@@ -149,7 +149,7 @@ namespace SME
         }
         public static void UpdateAanwezigheid(Persoon persoon)
         {
-            Database.Execute("UPDATE PERSOON SET aanwezig= " + (persoon.Aanwezig ? "Y" : "N") + " WHERE RFID = " + persoon.Nummer);
+            Database.Execute("UPDATE PERSOON SET aanwezig= '" + (persoon.Aanwezig ? "Y" : "N") + "' WHERE RFID = '" + persoon.Nummer + "'");
         }
 
         // NOG TE MAKEN
