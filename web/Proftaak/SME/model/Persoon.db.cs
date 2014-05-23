@@ -235,11 +235,12 @@ namespace SME
             }
 
             
-            
-
             //DISLIKE_LIKE_REPORT
+            Database.Execute("DELETE FROM PERSOON WHERE ");
             //OPMERKING
+
             //OPMERKINGREPORT
+
         }
 
         // NOG TE MAKEN
