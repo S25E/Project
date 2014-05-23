@@ -57,7 +57,7 @@ namespace SME
         /// <returns>Het nummer van de toegevoegde map</returns>
         public static int AddMap(Map map)
         {
-            int insertedId = Convert.ToInt32(Database.GetData("SELECT SEQ_MAP.nextval FROM dual").Rows[0]["NEXTVAL"]);
+            int insertedId = Database.GetSequence("SEQ_MAP");
 
             Database.Execute("INSERT INTO MAP (MAP_ID, MAP_NAAM, PARENT_ID) VALUES (@nummer, @naam, @parent)", new Dictionary<string, object>()
             {
