@@ -18,7 +18,7 @@ namespace SME.model
             {"@datum_ingeleverd", 1}
         });
         }
-
+        //test
         public static void BrengTerug(Materiaal materiaal, Persoon persoon, int aantal)
         {
             if (Convert.ToInt32(Database.GetData("SELECT AANTAL FROM UITLENING WHERE BARCODE = @BARCODE" )) >0 )
