@@ -87,14 +87,29 @@ namespace SME
             {
                 foreach (KeyValuePair<string, object> waarde in waardes)
                 {
+                    string vervang = "";
                     if (waarde.Value is Int32 || waarde.Value.ToString() == "NULL")
                     {
-                        query = query.Replace(waarde.Key, waarde.Value.ToString());
+                        vervang = waarde.Value.ToString();
+                    }
+                    else if(waarde.Value is List<string>)
+                    {
+                        int aantal = ((List<string>)waarde.Value).Count;
+                        int count = 0;
+                        foreach(string value in (List<string>)waarde.Value){
+                            vervang += Quote(value);
+                            count++;
+                            if(count != aantal){
+                                vervang += ",";
+                            }
+                        }
                     }
                     else
                     {
-                        query = query.Replace(waarde.Key, Quote(waarde.Value.ToString()));
+                        vervang = Quote(waarde.Value.ToString());
                     }
+
+                    query = query.Replace(waarde.Key, vervang);
                     // Oracle Command werkt op een of andere manier niet, daarom custom parameters.
                     //command.Parameters.Add(new OracleParameter(waarde.Key, waarde.Value).Value);
                 }
