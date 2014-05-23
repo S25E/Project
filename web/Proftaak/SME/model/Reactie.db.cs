@@ -22,7 +22,7 @@ namespace SME
                 reacties.Add(
                     new Reactie(
                         Convert.ToInt32(row["OPMERKING_ID"]),
-                        Convert.ToInt32(row["RFID"]),
+                        row["RFID"].ToString(),
                         Convert.ToDateTime(row["DATUM"]),
                         row["OPMERKING_TEXT"].ToString()
                     )

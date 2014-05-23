@@ -19,7 +19,7 @@ namespace SME
         /// <summary>
         /// Het nummer van de persoon die de reactie heeft geplaatst.
         /// </summary>
-        public int PersoonNummer
+        public string PersoonNummer
         {
             get;
             private set;
@@ -67,7 +67,7 @@ namespace SME
         /// <param name="persoonnummer"></param>
         /// <param name="opmerking"></param>
         /// <param name="datumtijd"></param>
-        public Reactie(int nummer, int persoonnummer, DateTime datum, string opmerking)
+        public Reactie(int nummer, string persoonnummer, DateTime datum, string opmerking)
             : this(persoonnummer, datum, opmerking)
         {
             this.Nummer = nummer;
@@ -79,7 +79,7 @@ namespace SME
         /// <param name="persoonnummer"></param>
         /// <param name="opmerking"></param>
         /// <param name="datumtijd"></param>
-        public Reactie(int persoonnummer, DateTime datum, string opmerking)
+        public Reactie(string persoonnummer, DateTime datum, string opmerking)
         {
             this.PersoonNummer = persoonnummer;
             this.Opmerking = opmerking;

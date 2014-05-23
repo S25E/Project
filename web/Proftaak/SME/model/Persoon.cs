@@ -100,6 +100,8 @@ namespace SME
             }
         }
 
+        public virtual static Persoon GetPersoonBijRFID(int rfid);
+
         /// <summary>
         /// Om personen te vergelijken moet er aangegeven worden naar welk veld gekeken moet worden.
         /// </summary>
