@@ -9,7 +9,7 @@ namespace UnitTest
     public class MapTest
     {
         [TestMethod]
-        public void TestMethod1()
+        public void AddMap()
         {
             string mapnaam = Path.GetRandomFileName().Replace(",", "");
             Map map = new Map(mapnaam, 0);

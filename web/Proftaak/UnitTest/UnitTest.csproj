@@ -53,12 +53,16 @@
   <ItemGroup>
     <Compile Include="MapTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReserveringTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SME\SME.csproj">
       <Project>{9a1ea0f9-759a-4027-8d8c-c306cd41a8a5}</Project>
       <Name>SME</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
