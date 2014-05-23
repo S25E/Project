@@ -7,11 +7,26 @@ namespace SME
 {
     public partial class Kampeerplaats
     {
-        public int Nummer {get; private set;}
-        public int X { get; private set; }
-        public int Y { get; private set; }
-        public int Prijs { get; private set; }
-        public string Opmerking { get; private set; }
+        public int Nummer {
+            get; 
+            private set;
+        }
+        public int X { 
+            get; 
+            private set; 
+        }
+        public int Y { 
+            get; 
+            private set; 
+        }
+        public int Prijs { 
+            get; 
+            private set; 
+        }
+        public string Opmerking { 
+            get; 
+            private set; 
+        }
         
         
         /// <summary>
