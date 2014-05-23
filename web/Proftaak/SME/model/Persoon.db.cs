@@ -152,7 +152,6 @@ namespace SME
             Database.Execute("UPDATE PERSOON SET aanwezig= " + (persoon.Aanwezig ? "Y" : "N") + " WHERE RFID = " + persoon.Nummer);
         }
 
-        // NOG TE MAKEN
         public static void AddPersoon(Persoon persoon)
         {
             string type;
@@ -220,30 +219,52 @@ namespace SME
         public static void DeletePersoon(Persoon persoon)
         {
             // DENK AAN ALLE TABELLEN WAARIN RFID GEBRUIKT WORDT.
-            Database.Execute("DELETE FROM PERSOON WHERE RFID = " + persoon.Nummer);
+            Database.Execute("DELETE FROM PERSOON WHERE RFID = @rfid", new Dictionary<string, object>()
+                {
+                    {"@rfid", persoon.Nummer}
+                });
             if(persoon is Hoofdboeker)
             {
-                Database.Execute("DELETE FROM KLANT_BETALEND WHERE RFID = " + persoon.Nummer);
+                Database.Execute("DELETE FROM KLANT_BETALEND WHERE RFID = @rfid", new Dictionary<string, object>()
+                    {
+                        {"@rfid", persoon.Nummer}
+                    });
             }
             else if(persoon is Bijboeker)
             {
-                Database.Execute("DELETE FROM KLANT WHERE RFID = " + persoon.Nummer);
+                Database.Execute("DELETE FROM KLANT WHERE RFID = @rfid", new Dictionary<string, object>()
+                    {
+                        {"@rfid", persoon.Nummer}
+                    });
             }
             else 
             {
-                Database.Execute("DELETE FROM MEDEWERKER WHERE RFID = " + persoon.Nummer);
+                Database.Execute("DELETE FROM MEDEWERKER WHERE RFID = @rfid", new Dictionary<string, object>()
+                    {
+                        {"@rfid", persoon.Nummer}
+                    });
             }
 
             
             //DISLIKE_LIKE_REPORT
-            Database.Execute("DELETE FROM PERSOON WHERE ");
+            Database.Execute("DELETE FROM DISLIKE_LIKE_REPORT WHERE RFID = @rfid", new Dictionary<string, object>()
+                {
+                    {"@rfid", persoon.Nummer}
+                });
             //OPMERKING
+            Database.Execute("DELETE FROM OPMERKING WHERE RFID = @rfid", new Dictionary<string, object>()
+                {
+                    {"@rfid", persoon.Nummer}
+                });
 
             //OPMERKINGREPORT
+            Database.Execute("DELETE FROM OPMERKING_REPORT WHERE RFID = @rfid", new Dictionary<string, object>()
+                {
+                    {"@rfid", persoon.Nummer}
+                });
 
         }
 
-        // NOG TE MAKEN
         public static Hoofdboeker GetHoofdboekerBijReservering(Reservering reservering)
         {
             DataTable dt = getPersonenByWhere("KLANT_BETALEND.RESERVERINGSNUMMER =" + reservering.Nummer);
