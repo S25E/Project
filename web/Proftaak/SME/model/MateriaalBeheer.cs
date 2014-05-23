@@ -11,5 +11,9 @@ namespace SME.model
         {
             Materiaal.AddMateriaal(materiaal);
         }
+        public static void LeenUit(Materiaal materiaal, Persoon persoon)
+        {
+            MateriaalBeheer.Leenuit(materiaal, persoon);
+        }
     }
 }
