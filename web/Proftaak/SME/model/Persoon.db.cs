@@ -169,10 +169,15 @@ namespace SME
             {
                 type = "Klant";
             }
-            else
+            else if(persoon is Medewerker)
             {
                 type = "Medewerker";
             }
+            else
+            {
+                throw new Exception("Ongeldig type!");
+            }
+
             string rfid = Database.GetData("SELECT RFID FROM RFID_COL WHERE RFID NOT IN (SELECT RFID FROM PERSOON)").Rows[0]["RFID"].ToString();
             Database.Execute("INSERT INTO PERSOON (RFID, WACHTWOORD, TYPE, AANWEZIG, NAAM) VALUES (@rfid, @wachtwoord, @type, @aanwezig, @naam)", new Dictionary<string, object>
                 {
