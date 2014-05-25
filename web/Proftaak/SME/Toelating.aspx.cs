@@ -19,12 +19,34 @@ namespace SME
             try
             {
                 Persoon persoon = Persoon.GetPersoonBijRFID(RFIDCheck.Text);
-                persoon.Aanwezig = !persoon.Aanwezig;
-                RFIDCheck.ForeColor = System.Drawing.Color.Black;
+                if (persoon is Boeker)
+                {
+                    if ((persoon as Boeker).Reservering.Betaald)
+                    {
+                        persoon.Aanwezig = !persoon.Aanwezig;
+                        RFIDCheck.ForeColor = System.Drawing.Color.Black;
+                        InfoLabel.Text = "";
+                    }
+                    else
+                    {
+                        InfoLabel.Text = "U heeft nog niet betaald!";   
+                    }
+                }
+                else 
+                { 
+                    if(persoon is Medewerker)
+                    {
+                        persoon.Aanwezig = !persoon.Aanwezig;
+                        RFIDCheck.ForeColor = System.Drawing.Color.Black;
+                        InfoLabel.Text = "";
+                    }
+                }
             }
             catch 
             {
                 RFIDCheck.ForeColor = System.Drawing.Color.Red;
+                InfoLabel.Text = "U bent niet bekend in ons systeem";
+                RFIDCheck.Focus();
             }
         }
     }
