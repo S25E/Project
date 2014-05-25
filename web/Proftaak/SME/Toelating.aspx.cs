@@ -25,7 +25,8 @@ namespace SME
                     {
                         persoon.Aanwezig = !persoon.Aanwezig;
                         RFIDCheck.ForeColor = System.Drawing.Color.Black;
-                        InfoLabel.Text = "";
+                        InfoLabel.ForeColor = System.Drawing.Color.Green;
+                        InfoLabel.Text = "U bent" + (persoon.Aanwezig ? "In" : "Uit") + "Gechecked";
                     }
                     else
                     {
@@ -38,7 +39,8 @@ namespace SME
                     {
                         persoon.Aanwezig = !persoon.Aanwezig;
                         RFIDCheck.ForeColor = System.Drawing.Color.Black;
-                        InfoLabel.Text = "";
+                        InfoLabel.ForeColor = System.Drawing.Color.Green;
+                        InfoLabel.Text = "U bent" + (persoon.Aanwezig ? "In" : "Uit") + "Gechecked";
                     }
                 }
             }
