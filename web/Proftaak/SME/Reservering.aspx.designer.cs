@@ -13,6 +13,15 @@ namespace SME {
     public partial class Reservering1 {
         
         /// <summary>
+        /// LabelNaam control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelNaam;
+        
+        /// <summary>
         /// TbNaam control.
         /// </summary>
         /// <remarks>
@@ -22,31 +31,13 @@ namespace SME {
         protected global::System.Web.UI.WebControls.TextBox TbNaam;
         
         /// <summary>
-        /// TbStraat control.
+        /// LabelTelefoonnummer control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TbStraat;
-        
-        /// <summary>
-        /// TbPostcode control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TbPostcode;
-        
-        /// <summary>
-        /// TbWoonplaats control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TbWoonplaats;
+        protected global::System.Web.UI.WebControls.Label LabelTelefoonnummer;
         
         /// <summary>
         /// TbTelefoonnummer control.
@@ -58,6 +49,69 @@ namespace SME {
         protected global::System.Web.UI.WebControls.TextBox TbTelefoonnummer;
         
         /// <summary>
+        /// LabelPostcode control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelPostcode;
+        
+        /// <summary>
+        /// TbPostcode control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TbPostcode;
+        
+        /// <summary>
+        /// LabelWoonplaats control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelWoonplaats;
+        
+        /// <summary>
+        /// TbWoonplaats control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TbWoonplaats;
+        
+        /// <summary>
+        /// LabelStraat control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelStraat;
+        
+        /// <summary>
+        /// TbStraat control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TbStraat;
+        
+        /// <summary>
+        /// LabelEmail control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelEmail;
+        
+        /// <summary>
         /// TbEmail control.
         /// </summary>
         /// <remarks>
@@ -67,6 +121,15 @@ namespace SME {
         protected global::System.Web.UI.WebControls.TextBox TbEmail;
         
         /// <summary>
+        /// LabelRekeningnummer control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelRekeningnummer;
+        
+        /// <summary>
         /// TbRekeningnummer control.
         /// </summary>
         /// <remarks>
@@ -74,6 +137,15 @@ namespace SME {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TbRekeningnummer;
+        
+        /// <summary>
+        /// LabelSofinummer control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelSofinummer;
         
         /// <summary>
         /// TbSofinummer control.
