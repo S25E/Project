@@ -18,6 +18,12 @@
     <link href="//getbootstrap.com/examples/starter-template/starter-template.css" rel="stylesheet"/>
     <link href="//getbootstrap.com/examples/navbar-static-top/navbar-static-top.css" rel="stylesheet"/>
     <link href="style.css" rel="stylesheet"/>
+    <style type="text/css">
+    body, html { 
+    overflow-x: hidden; 
+    overflow-y: hidden;
+    }
+    </style>
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
