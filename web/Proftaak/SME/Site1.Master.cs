@@ -9,7 +9,7 @@ namespace SME
 {
     public partial class Site1 : System.Web.UI.MasterPage
     {
-        private static string title = ": :SME: :";
+        private static string title = "SME -";
  
         public static string UpdateTitle(string toBeAddedTitle)
         {
