@@ -19,7 +19,6 @@ namespace SME
             try
             {
                 Persoon persoon = Persoon.GetPersoonBijRFID(Convert.ToInt32(RFIDCheck.Text));
-                if(persoon.GetType)
                 persoon.Aanwezig = !persoon.Aanwezig;
                 RFIDCheck.ForeColor = System.Drawing.Color.Black;
             }
