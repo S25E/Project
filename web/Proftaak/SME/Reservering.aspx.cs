@@ -11,7 +11,7 @@ namespace SME
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            this.Title = Site1.UpdateTitle("Reservering");
         }
 
         protected void ButtonNext_Click(object sender, EventArgs e)
