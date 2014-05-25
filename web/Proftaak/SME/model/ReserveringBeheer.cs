@@ -39,10 +39,10 @@ namespace SME
         /// <returns></returns>
         public static Reservering AddReservering(Reservering reservering, Hoofdboeker hoofdboeker)
         {
-            reservering.Nummer = Reservering.AddReservering(reservering);
+            Reservering.AddReservering(reservering);
             hoofdboeker.ReserveringNummer = reservering.Nummer;
             Persoon.AddPersoon(hoofdboeker);
-
+            
             return reservering;
         }
 

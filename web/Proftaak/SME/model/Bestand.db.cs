@@ -83,7 +83,12 @@ namespace SME
         {
             DataTable dt = Database.GetData("SELECT * FROM DISLIKE_LIKE_REPORT WHERE RFID = " + persoon.Nummer + " AND BESTAND_ID = " + bestand.Nummer);
             if (dt.Rows.Count == 0)
-                Database.Execute("INSERT INTO DISLIKE_LIKE_REPORT (RFID, BESTAND_ID, LIKEDISLIKE, REPORT) VALUES (" + persoon.Nummer + ", " + bestand.Nummer + ", 'LIKE', 'N')");
+            {
+                Database.Execute("INSERT INTO DISLIKE_LIKE_REPORT (RFID, BESTAND_ID, LIKEDISLIKE, REPORT) VALUES (@rfid, @bestand_nummer, @type, @report" + persoon.Nummer + ", " + bestand.Nummer + ", 'LIKE', 'N')", new Dictionary<string, object>()
+                {
+                    {"@rfid", persoon.Nummer}
+                });
+            }
             else
                 Database.Execute("UPDATE DISLIKE_LIKE_REPORT SET LIKEDISLIKE = 'LIKE' WHERE RFID = " + persoon.Nummer + " AND BESTAND_ID = " + bestand.Nummer);
         }
@@ -166,7 +171,7 @@ namespace SME
                 row["NAAM"].ToString(),
                 row["EXTENSIE"].ToString(),
                 Convert.ToInt32(row["GROOTTE"]),
-                Convert.ToInt32(row["RFID"]),
+                row["RFID"].ToString(),
                 Convert.ToDateTime(row["DATUM"]),
                 Convert.ToInt32(row["GEDOWNLOAD"]),
                 Convert.ToInt32(row["RATING"]),

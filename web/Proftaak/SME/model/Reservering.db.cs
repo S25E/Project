@@ -28,22 +28,22 @@ namespace SME
                 }
                 
                 DateTime datum = Convert.ToDateTime(row["DATUM"]);
-                Reservering reservering = new Reservering(reserveringsnummer, betaald, datum);
+                Reservering reservering = new Reservering(reserveringsnummer, datum, betaald);
                 lijst.Add(reservering);
             }
             return lijst;
 
         }
 
-        public static int AddReservering(Reservering reservering)
+        public static void AddReservering(Reservering reservering)
         {
-            int insertedId =  Database.GetSequence("RESERVERING");
+            int insertedId =  Database.GetSequence("SEQ_RESERVERING");
             Database.Execute("INSERT INTO RESERVERING (RESERVERINGSNUMMER, DATUM) VALUES (@nummer, TO_DATE(@datum, 'SYYYY-MM-DD HH24:MI:SS'))", new Dictionary<string, object>()
             {
                 {"@nummer", insertedId},
                 {"@datum",  reservering.Datum.ToString("yyyy-MM-dd HH:mm:ss")}
             });
-            return insertedId;
+            reservering.Nummer = insertedId;
         }
 
         // NOG TE MAKEN

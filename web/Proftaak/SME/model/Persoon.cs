@@ -16,7 +16,7 @@ namespace SME
         public string Nummer
         {
             get;
-            private set;
+            set;
         }
 
         /// <summary>
@@ -49,12 +49,9 @@ namespace SME
         /// <param name="naam"></param>
         /// <param name="wachtwoord"></param>
         public Persoon(string nummer, string naam, string wachtwoord, bool aanwezig)
+            : this(naam, wachtwoord, aanwezig)
         {
             this.Nummer = nummer;
-            this.Naam = naam;
-            this.wachtwoord = wachtwoord;
-            this.Aanwezig = aanwezig;
-            
         }
 
         public Persoon(string naam, string wachtwoord = null, bool aanwezig = false)
@@ -65,7 +62,7 @@ namespace SME
             }
             this.Naam = naam;
             this.wachtwoord = wachtwoord;
-            this.Aanwezig = aanwezig;
+            this.aanwezig = aanwezig;
         }
 
         /// <summary>
