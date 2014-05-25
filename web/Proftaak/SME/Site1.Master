@@ -18,6 +18,7 @@
     <link href="//getbootstrap.com/examples/starter-template/starter-template.css" rel="stylesheet"/>
     <link href="//getbootstrap.com/examples/navbar-static-top/navbar-static-top.css" rel="stylesheet"/>
     <link href="style.css" rel="stylesheet"/>
+    <link href="festival.css" rel="stylesheet"/>
     <style type="text/css">
     body, html { 
     overflow-x: hidden; 
@@ -30,6 +31,9 @@
     }
     Button:hover{
         transition: 0.5s;
+    } 
+    h1{
+        font-family: FestivalNormal;
     }
     </style>
 
