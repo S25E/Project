@@ -11,7 +11,17 @@ namespace SME
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            
+        }
 
+        protected void ButtonNext_Click(object sender, EventArgs e)
+        {
+            TbNaam.ForeColor = System.Drawing.Color.Green;
+        }
+
+        protected void ButtonBack_Click(object sender, EventArgs e)
+        {
+            TbNaam.ForeColor = System.Drawing.Color.Red;
         }
     }
 }
