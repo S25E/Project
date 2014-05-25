@@ -18,16 +18,22 @@
     <link href="//getbootstrap.com/examples/starter-template/starter-template.css" rel="stylesheet"/>
     <link href="//getbootstrap.com/examples/navbar-static-top/navbar-static-top.css" rel="stylesheet"/>
     <link href="style.css" rel="stylesheet"/>
+    <link href="festival.css" rel="stylesheet"/>
     <style type="text/css">
     body, html { 
     overflow-x: hidden; 
     overflow-y: hidden;
+    background-image: url(http://www.sickchirpse.com/wp-content/uploads/2012/05/Festival-sun.jpg);
+    background-size: 100%;
     }
     a:hover{
         transition: 0.5s;
     }
     Button:hover{
         transition: 0.5s;
+    } 
+    h1{
+        font-family: FestivalNormal;
     }
     </style>
 
