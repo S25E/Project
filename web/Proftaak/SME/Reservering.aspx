@@ -120,16 +120,14 @@
 
         <div class="row class1">
             <div class="col-md-2">
-                <button type="button" class="btn btn-default btn-lg">
-                    <span class="glyphicon glyphicon-arrow-left"></span> Back
-                </button>
+                <asp:LinkButton runat="server" CssClass="glyphicon glyphicon-arrow-left btn btn-success" OnClick="ButtonBack_Click"/>
             </div>
         
             <div class="col-md-2 text-right">
-                <button type="button" class="btn btn-default btn-lg">
-                    Next <span class="glyphicon glyphicon-arrow-right"></span>
-                </button>
+                <asp:LinkButton runat="server" CssClass="glyphicon glyphicon-arrow-right btn btn-success" OnClick="ButtonNext_Click"/>
             </div>
+
+            
         </div>
     </div>
 </asp:Content>
