@@ -6,11 +6,29 @@
     <div class="form-horizontal">
         <h1>Maak hier uw reservering</h1>
         <br />
+
+        <%--dropdown row--%>
+        <div class="row class1">
+            <div class="col-md-2" style="height:34px;">
+                <div class="btn-group">
+                  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                   Type boeker.. <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu">
+                        <li><asp:LinkButton runat="server" OnClick="DropDownHoofdboeker_Click">Hoofdboeker</asp:LinkButton></li>
+                        <li><asp:LinkButton runat="server" OnClick="DropDownBijboeker_Click">Bijboeker</asp:LinkButton></li>
+                  </ul>
+                </div>
+            </div>
+        </div>
+        <%--einde dropdown row--%>
+        <br />
+
         <%--Begin 1e row--%>
         <div class="row class1">
             <div class="col-md-2" style="height:34px;">
                 <div class="control-group row-fluid form-inline">
-                    Naam:
+                    <asp:label runat="server" id="LabelNaam">Naam:</asp:label>
                 </div>
             </div>
             <div class="col-md-2">
@@ -24,11 +42,11 @@
         <div class="row class1">
             <div class="col-md-2">
                 <div class="control-group row-fluid form-inline">
-                    Straat:  
+                    <asp:label runat="server" id="LabelTelefoonnummer">Telefoonnummer</asp:label>
                 </div>
             </div>
             <div class="col-md-2">
-                <asp:TextBox style="text-align:left; width: 200px; margin-left:auto; margin-right:auto;" placeholder="Straat" class="form-control" id="TbStraat" runat="server"/>
+                <asp:TextBox style="text-align:left; width: 200px; margin-left:auto; margin-right:auto;" placeholder="Telefoonnummer" class="form-control" id="TbTelefoonnummer" runat="server"/>
             </div>
         </div>
         <%--Einde 2e row--%>
@@ -38,7 +56,7 @@
         <div class="row class1">
             <div class="col-md-2">
                 <div class="control-group row-fluid form-inline">
-                    Postcode:  
+                    <asp:label runat="server" id="LabelPostcode">Postcode:</asp:label>  
                 </div>
             </div>
             <div class="col-md-2">
@@ -52,7 +70,7 @@
         <div class="row class1">
             <div class="col-md-2">
                 <div class="control-group row-fluid form-inline">
-                     Woonplaats:
+                     <asp:label runat="server" id="LabelWoonplaats">Woonplaats:</asp:label>
                 </div>
             </div>
             <div class="col-md-2">
@@ -66,11 +84,11 @@
         <div class="row class1">
             <div class="col-md-2">
                 <div class="control-group row-fluid form-inline">
-                    Telefoonnummer:  
+                    <asp:label runat="server" id="LabelStraat">Straat:</asp:label>
                 </div>
             </div>
             <div class="col-md-2">
-                <asp:TextBox style="text-align:left; width: 200px; margin-left:auto; margin-right:auto;" placeholder="Telefoonnummer" class="form-control" id="TbTelefoonnummer" runat="server"/>
+                <asp:TextBox style="text-align:left; width: 200px; margin-left:auto; margin-right:auto;" placeholder="Straat" class="form-control" id="TbStraat" runat="server"/>
             </div>
         </div>
         <%--Einde 5e row--%>
@@ -80,7 +98,7 @@
         <div class="row class1">
             <div class="col-md-2">
                 <div class="control-group row-fluid form-inline">
-                    Emailadres:  
+                    <asp:label runat="server" id="LabelEmail">Emailadres</asp:label>
                 </div>
             </div>
             <div class="col-md-2">
@@ -94,7 +112,7 @@
         <div class="row class1">
             <div class="col-md-2">
                 <div class="control-group row-fluid form-inline">
-                    Rekeningnummer:
+                    <asp:label runat="server" id="LabelRekeningnummer">Rekeningnummer</asp:label>
                 </div>
             </div>
             <div class="col-md-2">
@@ -108,7 +126,7 @@
         <div class="row class1">
             <div class="col-md-2">
                 <div class="control-group row-fluid form-inline">
-                    Sofinummer:  
+                    <asp:label runat="server" id="LabelSofinummer">Sofinummer</asp:label>
                 </div>
             </div>
             <div class="col-md-2">
