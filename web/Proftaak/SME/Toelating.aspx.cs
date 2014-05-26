@@ -61,7 +61,6 @@ namespace SME
                 InfoLabel.Text = "U bent niet bekend in ons systeem";
             }
 
-            RFIDCheck.Attributes.Add("onfocus", "this.select()");
             RFIDCheck.Focus();
         }
     }
