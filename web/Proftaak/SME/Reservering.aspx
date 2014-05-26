@@ -43,7 +43,7 @@
         <div class="row class1">
             <div class="col-md-2">
                 <div class="control-group row-fluid form-inline">
-                    <asp:label runat="server" id="LabelTelefoonnummer">Telefoonnummer</asp:label>
+                    <asp:label runat="server" id="LabelTelefoonnummer">Telefoonnummer:</asp:label>
                 </div>
             </div>
             <div class="col-md-2">
@@ -99,7 +99,7 @@
         <div class="row class1">
             <div class="col-md-2">
                 <div class="control-group row-fluid form-inline">
-                    <asp:label runat="server" id="LabelEmail">Emailadres</asp:label>
+                    <asp:label runat="server" id="LabelEmail">Emailadres:</asp:label>
                 </div>
             </div>
             <div class="col-md-2">
@@ -113,7 +113,7 @@
         <div class="row class1">
             <div class="col-md-2">
                 <div class="control-group row-fluid form-inline">
-                    <asp:label runat="server" id="LabelRekeningnummer">Rekeningnummer</asp:label>
+                    <asp:label runat="server" id="LabelRekeningnummer">Rekeningnummer:</asp:label>
                 </div>
             </div>
             <div class="col-md-2">
@@ -127,7 +127,7 @@
         <div class="row class1">
             <div class="col-md-2">
                 <div class="control-group row-fluid form-inline">
-                    <asp:label runat="server" id="LabelSofinummer">Sofinummer</asp:label>
+                    <asp:label runat="server" id="LabelSofinummer">Sofinummer:</asp:label>
                 </div>
             </div>
             <div class="col-md-2">
