@@ -15,28 +15,6 @@
 	<!-- Custom styles for this template -->
 	<link href="css/style.css" rel="stylesheet"/>
 	<link href="fonts/festival/festival.css" rel="stylesheet"/>
-	<style type="text/css">
-		body, html { 
-			background-image: url("img/background.jpg");
-			background-size: 100%;
-		}
-		a:hover{
-			transition: 0.5s;
-		}
-		Button:hover{
-			transition: 0.5s;
-		} 
-		h1{
-			font-family: FestivalNormal;
-		}
-		#content{
-			background-color: rgba(255, 255, 255, 0.8);
-			padding: 60px;
-			margin-top: 5%;
-			border-radius:25px;
-			padding-top: 40px;
-		}
-	</style>
 
 	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!--[if lt IE 9]>
