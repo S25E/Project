@@ -60,15 +60,15 @@
 				</button>
 				<a class="navbar-brand" href="Default.aspx">SME</a>
 			</div>
-			<div class="collapse navbar-collapse pull-right">
+			<div class="collapse navbar-collapse navbar-right">
 				<ul class="nav navbar-nav">
 					<li><a href="Default.aspx">Home</a></li>
 					<li><a href="Reservering.aspx">Reservering</a></li>
 					<li><a href="Toelating.aspx">Toelating</a></li>
 					<li class="dropdown">
 						<a data-toggle="dropdown" class="dropdown-toggle" href="#">Inloggen <b class="caret"></b></a>
-						<div style="padding: 10px 15px 15px 15px" class="pull-right dropdown-menu dropdown-yellow dropdown-caret">
-							<form method="post">
+						<div style="padding: 10px 15px 15px 15px" class="navbar-right dropdown-menu dropdown-yellow dropdown-caret">
+							<form method="post" class="navbar-form">
 								<div class="form-group">
 									<input type="text" placeholder="RFID-Code" class="form-control" id="RFID-Code"/>
 								</div>
