@@ -3,6 +3,7 @@
     <title>Reservering</title>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <div id="content">
     <div class="form-horizontal">
         <h1>Maak hier uw reservering</h1>
         <br />
@@ -147,5 +148,6 @@
 
             
         </div>
+    </div>
     </div>
 </asp:Content>
