@@ -68,7 +68,7 @@
 					<li class="dropdown">
 						<a data-toggle="dropdown" class="dropdown-toggle" href="#">Inloggen <b class="caret"></b></a>
 						<div style="padding: 10px 15px 15px 15px" class="navbar-right dropdown-menu dropdown-yellow dropdown-caret">
-							<form method="post" class="navbar-form">
+							<form method="post">
 								<div class="form-group">
 									<input type="text" placeholder="RFID-Code" class="form-control" id="RFID-Code"/>
 								</div>
