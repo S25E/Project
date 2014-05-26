@@ -68,8 +68,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Default.aspx" />
+    <Content Include="fonts\festival\festival.css" />
+    <Content Include="fonts\festival\festival.svg" />
     <Content Include="Reservering.aspx" />
     <Content Include="Site1.Master" />
+    <Content Include="fonts\festival\festival.eot" />
+    <Content Include="fonts\festival\festival.ttf" />
+    <Content Include="fonts\festival\festival.woff" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
