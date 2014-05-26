@@ -68,7 +68,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="css\bootstrap.css" />
-    <Content Include="Default.aspx" />
+    <Content Include="default.aspx" />
     <Content Include="fonts\festival\festival.css" />
     <Content Include="fonts\festival\festival.svg" />
     <Content Include="img\background.jpg" />
@@ -92,11 +92,11 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Default.aspx.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
+    <Compile Include="default.aspx.cs">
+      <DependentUpon>default.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Default.aspx.designer.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
+    <Compile Include="default.aspx.designer.cs">
+      <DependentUpon>default.aspx</DependentUpon>
     </Compile>
     <Compile Include="model\Bestand.cs" />
     <Compile Include="model\Bestand.db.cs" />
