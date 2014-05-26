@@ -33,7 +33,9 @@ namespace SME
                     else
                     {
                         InfoLabel.ForeColor = System.Drawing.Color.Red;
-                        InfoLabel.Text = "U heeft nog niet betaald!";   
+                        RFIDCheck.ForeColor = System.Drawing.Color.Red;
+                        InfoLabel.Text = "U heeft nog niet betaald!";
+                        RFIDCheck.Focus();
                     }
                 }
                 else 
