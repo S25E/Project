@@ -72,6 +72,7 @@
     <Content Include="fonts\festival\festival.css" />
     <Content Include="fonts\festival\festival.svg" />
     <Content Include="img\background.jpg" />
+    <Content Include="js\bootstrap.min.js" />
     <Content Include="Reservering.aspx" />
     <Content Include="Site1.Master" />
     <Content Include="fonts\festival\festival.eot" />
