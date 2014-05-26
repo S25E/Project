@@ -78,7 +78,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="style.css" />
+    <Content Include="css\style.css" />
     <Content Include="TestKampeerplaats.aspx" />
     <Content Include="Toelating.aspx" />
     <Content Include="Web.config" />
