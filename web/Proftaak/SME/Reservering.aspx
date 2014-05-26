@@ -139,11 +139,11 @@
 
         <div class="row class1">
             <div class="col-md-2">
-                <asp:LinkButton runat="server" CssClass="glyphicon glyphicon-arrow-left btn btn-success" OnClick="ButtonBack_Click"/>
+                <asp:LinkButton runat="server" style="font-size:22px;" CssClass="glyphicon glyphicon-arrow-left btn btn-large btn-primary" OnClick="ButtonBack_Click"/>
             </div>
         
-            <div class="col-md-2 text-right">
-                <asp:LinkButton runat="server" CssClass="glyphicon glyphicon-arrow-right btn btn-success" OnClick="ButtonNext_Click"/>
+            <div class="col-md-3">
+                <asp:LinkButton runat="server" style="font-size:22px; margin-left:152px;" CssClass="glyphicon glyphicon-arrow-right btn btn-large btn-primary" OnClick="ButtonNext_Click"/>
             </div>
 
             
