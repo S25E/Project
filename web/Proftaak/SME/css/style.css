@@ -1,5 +1,5 @@
 ﻿body, html { 
-	background-image: url("img/background.jpg");
+	background-image: url("../img/background.jpg");
 	background-size: cover;
      min-height: 100%;
 }
