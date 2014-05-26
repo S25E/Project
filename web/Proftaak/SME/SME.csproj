@@ -71,6 +71,7 @@
     <Content Include="Default.aspx" />
     <Content Include="fonts\festival\festival.css" />
     <Content Include="fonts\festival\festival.svg" />
+    <Content Include="fonts\glyphicons\glyphicons-halflings-regular.svg" />
     <Content Include="img\background.jpg" />
     <Content Include="js\bootstrap.min.js" />
     <Content Include="Reservering.aspx" />
@@ -78,6 +79,9 @@
     <Content Include="fonts\festival\festival.eot" />
     <Content Include="fonts\festival\festival.ttf" />
     <Content Include="fonts\festival\festival.woff" />
+    <Content Include="fonts\glyphicons\glyphicons-halflings-regular.eot" />
+    <Content Include="fonts\glyphicons\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons\glyphicons-halflings-regular.woff" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
