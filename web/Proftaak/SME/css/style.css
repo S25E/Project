@@ -2,3 +2,13 @@
     margin-top:auto;
     margin-bottom:auto;
 }
+body {
+  padding-top: 50px;
+}
+.starter-template {
+  padding: 40px 15px;
+  text-align: center;
+}
+.navbar-static-top {
+  margin-bottom: 19px;
+}

@@ -12,17 +12,13 @@
     <meta name="author" content=""/>
 
     <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="css/bootstrap.min.css"/>
 
     <!-- Custom styles for this template -->
-    <link href="//getbootstrap.com/examples/starter-template/starter-template.css" rel="stylesheet"/>
-    <link href="//getbootstrap.com/examples/navbar-static-top/navbar-static-top.css" rel="stylesheet"/>
-    <link href="style.css" rel="stylesheet"/>
-    <link href="festival.css" rel="stylesheet"/>
+    <link href="css/style.css" rel="stylesheet"/>
+    <link href="fonts/festival/festival.css" rel="stylesheet"/>
     <style type="text/css">
     body, html { 
-    overflow-x: hidden; 
-    overflow-y: hidden;
     background-image: url("img/background.jpg");
     background-size: 100%;
     }

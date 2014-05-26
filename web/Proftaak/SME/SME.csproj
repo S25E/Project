@@ -67,6 +67,7 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="css\bootstrap.css" />
     <Content Include="Default.aspx" />
     <Content Include="fonts\festival\festival.css" />
     <Content Include="fonts\festival\festival.svg" />
