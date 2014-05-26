@@ -62,7 +62,7 @@
           </button>
           <a class="navbar-brand" href="#">SME</a>
         </div>
-        <div class="collapse navbar-collapse">
+        <div class="collapse navbar-collapse pull-right">
           <ul class="nav navbar-nav">
             <li><a href="#">Home</a></li>
             <li><a href="Reservering.aspx">Reservering</a></li>
