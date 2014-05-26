@@ -3,15 +3,15 @@
     <title>Toelating</title>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div style="background-color: rgba(255, 255, 255, 0.8); border-radius:25px; overflow:visible; width:35%; margin-top:25%; margin-left:32.5%;">
-    <div class="starter-template">
-        <h1>Welkom op SME</h1>
-        <div class="form-group">
-            <asp:Label style=" text-align:center;" runat="server" class="alert-info" ID="InfoLabel" ForeColor="Red" BackColor="Transparent"/>
-              <asp:TextBox style="text-align:center; width: 200px; margin-left:auto; margin-right:auto;" placeholder="RFID-Code" class="form-control" id="RFIDCheck" runat="server"/>
+    <div style="background-color: rgba(255, 255, 255, 0.8); border-radius:25px; overflow:visible; margin-top:17.5%;" class="col-lg-4 col-lg-offset-4">
+		<div class="starter-template">
+			<h1>Welkom op SME</h1>
+			<div class="form-group">
+				<asp:Label style=" text-align:center;" runat="server" class="alert-info" ID="InfoLabel" ForeColor="Red" BackColor="Transparent"/>
+				<asp:TextBox style="text-align:center; width: 200px; margin-left:auto; margin-right:auto;" placeholder="RFID-Code" class="form-control" id="RFIDCheck" runat="server"/>
                 <br />  
                 <asp:Button ID="ButtonCheck" runat="server" Text="Check" class="btn btn-success" OnClick="ButtonCheck_Click"/>
-        </div>
-      </div>
-      </div>
+			</div>
+		</div>
+	</div>
 </asp:Content>
