@@ -27,7 +27,7 @@ namespace SME
         protected void DropDownHoofdboeker_Click(object sender, EventArgs e)
         {
             //text combobox aanpassen
-            combobox.Text = "Hoofdboeker";
+            combobox.Text = "Hoofdboeker  ▼";
 
             //labels terug zetten
             LabelStraat.Visible = true;
@@ -49,7 +49,7 @@ namespace SME
         protected void DropDownBijboeker_Click(object sender, EventArgs e)
         {
             //text combobox aanpassen
-            combobox.Text = "Bijboeker";
+            combobox.Text = "Bijboeker  ▼";
 
             //labels verwijderen
             LabelStraat.Visible = false;
