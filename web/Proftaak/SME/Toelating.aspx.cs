@@ -16,8 +16,8 @@ namespace SME
 
         protected void ButtonCheck_Click(object sender, EventArgs e)
         {
-            try
-            {
+            //try
+            //{
                 Persoon persoon = Persoon.GetPersoonBijRFID(RFIDCheck.Text);
                 if (persoon is Boeker)
                 {
@@ -26,10 +26,13 @@ namespace SME
                         persoon.Aanwezig = !persoon.Aanwezig;
                         RFIDCheck.ForeColor = System.Drawing.Color.Black;
                         InfoLabel.ForeColor = System.Drawing.Color.Green;
-                        InfoLabel.Text = "U bent" + (persoon.Aanwezig ? "In" : "Uit") + "Gechecked";
+                        InfoLabel.Text = "";
+                        RFIDCheck.Text = persoon.Naam + " is" + (persoon.Aanwezig ? " In" : " Uit") + "gechecked";
+                        RFIDCheck.Focus();
                     }
                     else
                     {
+                        InfoLabel.ForeColor = System.Drawing.Color.Red;
                         InfoLabel.Text = "U heeft nog niet betaald!";   
                     }
                 }
@@ -40,16 +43,18 @@ namespace SME
                         persoon.Aanwezig = !persoon.Aanwezig;
                         RFIDCheck.ForeColor = System.Drawing.Color.Black;
                         InfoLabel.ForeColor = System.Drawing.Color.Green;
-                        InfoLabel.Text = "U bent" + (persoon.Aanwezig ? "In" : "Uit") + "Gechecked";
+                        InfoLabel.Text = "";
+                        RFIDCheck.Text = persoon.Naam + " is" + (persoon.Aanwezig ? " In" : " Uit") + "gechecked";
+                        RFIDCheck.Focus();
                     }
                 }
-            }
-            catch 
-            {
-                RFIDCheck.ForeColor = System.Drawing.Color.Red;
-                InfoLabel.Text = "U bent niet bekend in ons systeem";
-                RFIDCheck.Focus();
-            }
+            //}
+            //catch 
+            //{
+            //    RFIDCheck.ForeColor = System.Drawing.Color.Red;
+            //    InfoLabel.Text = "U bent niet bekend in ons systeem";
+            //    RFIDCheck.Focus();
+            //}
         }
     }
 }

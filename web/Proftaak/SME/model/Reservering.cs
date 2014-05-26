@@ -68,6 +68,8 @@ namespace SME
             :this(datum, betaald)
         {
             this.Nummer = reserveringsnummer;
+            this.Datum = datum;
+            this.Betaald = betaald;
         }
         public void AddBijboeker(Boeker bijboeker)
 
