@@ -23,7 +23,7 @@
     body, html { 
     overflow-x: hidden; 
     overflow-y: hidden;
-    background-image: url("http://www.sickchirpse.com/wp-content/uploads/2012/05/Festival-sun.jpg");
+    background-image: url("img/background.jpg");
     background-size: 100%;
     }
     a:hover{
