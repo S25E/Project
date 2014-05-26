@@ -16,8 +16,8 @@ namespace SME
 
         protected void ButtonCheck_Click(object sender, EventArgs e)
         {
-            //try
-            //{
+            try
+            {
                 Persoon persoon = Persoon.GetPersoonBijRFID(RFIDCheck.Text);
                 if (persoon is Boeker)
                 {
@@ -47,14 +47,22 @@ namespace SME
                         RFIDCheck.Text = persoon.Naam + " is" + (persoon.Aanwezig ? " In" : " Uit") + "gechecked";
                         RFIDCheck.Focus();
                     }
+                    else
+                    {
+                        RFIDCheck.ForeColor = System.Drawing.Color.Red;
+                        InfoLabel.ForeColor = System.Drawing.Color.Red;
+                        InfoLabel.Text = "U bent niet bekend in ons systeem";
+                        RFIDCheck.Focus();
+                    }
                 }
-            //}
-            //catch 
-            //{
-            //    RFIDCheck.ForeColor = System.Drawing.Color.Red;
-            //    InfoLabel.Text = "U bent niet bekend in ons systeem";
-            //    RFIDCheck.Focus();
-            //}
+            }
+            catch 
+            {
+                RFIDCheck.ForeColor = System.Drawing.Color.Red;
+                InfoLabel.ForeColor = System.Drawing.Color.Red;
+                InfoLabel.Text = "U bent niet bekend in ons systeem";
+                RFIDCheck.Focus();
+            }
         }
     }
 }
