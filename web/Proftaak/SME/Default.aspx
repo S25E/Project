@@ -3,5 +3,8 @@
     <title>Toelating</title>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    Welkom op onze site!
+    <div id="content">
+        <h1>Welkom op onze site!</h1>
+        <p>Reserveer nu een plaats op de camping voor het SocialMediaEvent!</p>
+    </div>
 </asp:Content>

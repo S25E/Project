@@ -60,11 +60,11 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">SME</a>
+          <a class="navbar-brand" href="Default.aspx">SME</a>
         </div>
         <div class="collapse navbar-collapse pull-right">
           <ul class="nav navbar-nav">
-            <li><a href="default.aspx">Home</a></li>
+            <li><a href="Default.aspx">Home</a></li>
             <li><a href="Reservering.aspx">Reservering</a></li>
             <li><a href="Toelating.aspx">Toelating</a></li>
           </ul>
