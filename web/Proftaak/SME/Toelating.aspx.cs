@@ -28,14 +28,12 @@ namespace SME
                         InfoLabel.ForeColor = System.Drawing.Color.Green;
                         InfoLabel.Text = "";
                         RFIDCheck.Text = persoon.Naam + " is" + (persoon.Aanwezig ? " In" : " Uit") + "gechecked";
-                        RFIDCheck.Focus();
                     }
                     else
                     {
                         InfoLabel.ForeColor = System.Drawing.Color.Red;
                         RFIDCheck.ForeColor = System.Drawing.Color.Red;
                         InfoLabel.Text = "U heeft nog niet betaald!";
-                        RFIDCheck.Focus();
                     }
                 }
                 else 
@@ -47,14 +45,12 @@ namespace SME
                         InfoLabel.ForeColor = System.Drawing.Color.Green;
                         InfoLabel.Text = "";
                         RFIDCheck.Text = persoon.Naam + " is" + (persoon.Aanwezig ? " In" : " Uit") + "gechecked";
-                        RFIDCheck.Focus();
                     }
                     else
                     {
                         RFIDCheck.ForeColor = System.Drawing.Color.Red;
                         InfoLabel.ForeColor = System.Drawing.Color.Red;
                         InfoLabel.Text = "U bent niet bekend in ons systeem";
-                        RFIDCheck.Focus();
                     }
                 }
             }
@@ -63,8 +59,10 @@ namespace SME
                 RFIDCheck.ForeColor = System.Drawing.Color.Red;
                 InfoLabel.ForeColor = System.Drawing.Color.Red;
                 InfoLabel.Text = "U bent niet bekend in ons systeem";
-                RFIDCheck.Focus();
             }
+
+            RFIDCheck.Attributes.Add("onfocus", "this.select()");
+            RFIDCheck.Focus();
         }
     }
 }
