@@ -12,9 +12,7 @@
         <div class="row class1">
             <div class="col-md-2" style="height:34px;">
                 <div class="btn-group">
-                  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                   Type boeker.. <span class="caret"></span>
-                  </button>
+                  <asp:Button ID="combobox" runat="server" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" text="Type Boeker... ▼"/>
                   <ul class="dropdown-menu" role="menu">
                         <li><asp:LinkButton runat="server" OnClick="DropDownHoofdboeker_Click">Hoofdboeker</asp:LinkButton></li>
                         <li><asp:LinkButton runat="server" OnClick="DropDownBijboeker_Click">Bijboeker</asp:LinkButton></li>
@@ -24,6 +22,8 @@
         </div>
         <%--einde dropdown row--%>
         <br />
+
+        <asp:
 
         <%--Begin 1e row--%>
         <div class="row class1">

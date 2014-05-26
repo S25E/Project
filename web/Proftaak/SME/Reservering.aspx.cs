@@ -26,6 +26,9 @@ namespace SME
 
         protected void DropDownHoofdboeker_Click(object sender, EventArgs e)
         {
+            //text combobox aanpassen
+            combobox.Text = "Hoofdboeker";
+
             //labels terug zetten
             LabelStraat.Visible = true;
             LabelPostcode.Visible = true;
@@ -45,6 +48,9 @@ namespace SME
 
         protected void DropDownBijboeker_Click(object sender, EventArgs e)
         {
+            //text combobox aanpassen
+            combobox.Text = "Bijboeker";
+
             //labels verwijderen
             LabelStraat.Visible = false;
             LabelPostcode.Visible = false;
