@@ -23,8 +23,6 @@
         <%--einde dropdown row--%>
         <br />
 
-        <asp:
-
         <%--Begin 1e row--%>
         <div class="row class1">
             <div class="col-md-2" style="height:34px;">
