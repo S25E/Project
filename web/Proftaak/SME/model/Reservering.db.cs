@@ -60,7 +60,7 @@ namespace SME
         public static void DeleteReservering(Reservering reservering)
         {
             // HIER RESERVERING VERWIJDEREN IN DATABASE
-            Database.Execute("DELETE FROM RESERVERING_KAMPEERPLAATS WHERE RESERVERING_NUMMER = " + reservering.Nummer);
+            Database.Execute("DELETE FROM RESERVERING_PLAATS WHERE RESERVERING_NUMMER = " + reservering.Nummer);
             Database.Execute("DELETE FROM RESERVERING WHERE RESERVERING_NUMMER = " + reservering.Nummer);
             Persoon.DeletePersoon(reservering.Hoofdboeker);
             foreach (Bijboeker bijboeker in reservering.Bijboekers)
