@@ -21,6 +21,11 @@ namespace SME
             }
         }
 
+        public MateriaalCategorie(string naam)
+        {
+            this.Naam = naam;
+        }
+
 
     }
 }
