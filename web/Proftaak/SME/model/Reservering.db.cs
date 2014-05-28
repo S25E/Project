@@ -15,7 +15,6 @@ namespace SME
 
         public static List<Reservering> GetReserveringen()
         {
-
             List<Reservering> lijst = new List<Reservering>();
 
             DataTable dt = Database.GetData("SELECT RESERVERINGSNUMMER, BETAALD, DATUM FROM RESERVERING");
@@ -26,7 +25,6 @@ namespace SME
             }
 
             return lijst;
-
         }
 
         public static Reservering GetReserveringBijNummer(int nummer)

@@ -219,7 +219,7 @@ namespace SME
                 Database.Execute("INSERT INTO KLANT (RFID, RESERVERINGSNUMMER) VALUES (@rfid, @reserveringsnummer)", new Dictionary<string, object>
                 {
                     {"@rfid", rfid},
-                    {"@reserveringnummer", bijboeker.ReserveringNummer}
+                    {"@reserveringsnummer", bijboeker.ReserveringNummer}
                 });
             }
             else if(persoon is Medewerker)
