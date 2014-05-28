@@ -79,7 +79,7 @@
     <Content Include="Reservering\Stap2.aspx" />
     <Content Include="Reservering\Stap3.aspx" />
     <Content Include="Reservering\Stap4.aspx" />
-    <Content Include="Site1.Master" />
+    <Content Include="Standaard.Master" />
     <Content Include="fonts\festival\festival.eot" />
     <Content Include="fonts\festival\festival.ttf" />
     <Content Include="fonts\festival\festival.woff" />
@@ -173,12 +173,12 @@
     <Compile Include="Reservering\Stap4.aspx.designer.cs">
       <DependentUpon>Stap4.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Site1.Master.cs">
-      <DependentUpon>Site1.Master</DependentUpon>
+    <Compile Include="Standaard.Master.cs">
+      <DependentUpon>Standaard.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Site1.Master.designer.cs">
-      <DependentUpon>Site1.Master</DependentUpon>
+    <Compile Include="Standaard.Master.designer.cs">
+      <DependentUpon>Standaard.Master</DependentUpon>
     </Compile>
     <Compile Include="TestKampeerplaats.aspx.cs">
       <DependentUpon>TestKampeerplaats.aspx</DependentUpon>
