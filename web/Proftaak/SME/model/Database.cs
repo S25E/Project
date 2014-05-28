@@ -40,7 +40,7 @@ namespace SME
             }
             catch (OracleException ex)
             {
-                throw;
+                throw new DatabaseException(ex.Message, Database.ParseParameters(query, waardes));
             }
             catch(Exception)
             {
@@ -69,7 +69,7 @@ namespace SME
             }
             catch (OracleException ex)
             {
-                throw;
+                throw new DatabaseException(ex.Message, Database.ParseParameters(query, waardes));
             }
             catch (Exception)
             {
@@ -83,30 +83,80 @@ namespace SME
 
         private static OracleCommand toOracleCommand(string query, Dictionary<string, object> waardes = default(Dictionary<string, object>))
         {
-            if (waardes != null && waardes.Count > 0)
-            {
-                foreach (KeyValuePair<string, object> waarde in waardes)
-                {
-                    if (waarde.Value is Int32 || waarde.Value.ToString() == "NULL")
-                    {
-                        query = query.Replace(waarde.Key, waarde.Value.ToString());
-                    }
-                    else
-                    {
-                        query = query.Replace(waarde.Key, "'" + waarde.Value.ToString().Replace("'", "\'") + "'");
-                    }
-                    //command.Parameters.Add(new OracleParameter(waarde.Key, waarde.Value).Value);
-                }
-            }
+            query = ParseParameters(query, waardes);
 
             OracleCommand command = new OracleCommand(query, oc);
 
             return command;
         }
 
+        public static string ParseParameters(string query, Dictionary<string, object> waardes = default(Dictionary<string, object>))
+        {
+            if (waardes != null && waardes.Count > 0)
+            {
+                foreach (KeyValuePair<string, object> waarde in waardes)
+                {
+                    string vervang = "";
+                    if (waarde.Value is Int32 || waarde.Value.ToString() == "NULL")
+                    {
+                        vervang = waarde.Value.ToString();
+                    }
+                    else if (waarde.Value is List<string>)
+                    {
+                        int aantal = ((List<string>)waarde.Value).Count;
+                        int count = 0;
+                        foreach (string value in (List<string>)waarde.Value)
+                        {
+                            vervang += Quote(value);
+                            count++;
+                            if (count != aantal)
+                            {
+                                vervang += ",";
+                            }
+                        }
+                    }
+                    else
+                    {
+                        vervang = Quote(waarde.Value.ToString());
+                    }
+
+                    query = query.Replace(waarde.Key, vervang);
+
+                    // Oracle Command werkt op een of andere manier niet, daarom custom parameters.
+                    //command.Parameters.Add(new OracleParameter(waarde.Key, waarde.Value).Value);
+                }
+            }
+
+            return query;
+        }
+
+        public static string Quote(string waarde)
+        {
+            return "'" + Escape(waarde) + "'";
+        }
+
+        public static string Escape(string waarde)
+        {
+            return waarde.Replace("'", "\'");
+        }
+
         public static int GetSequence(string naam)
         {
             return Convert.ToInt32(Database.GetData("SELECT " + naam + ".nextval FROM dual").Rows[0]["NEXTVAL"]);
+        }
+    }
+
+    class DatabaseException : Exception
+    {
+        public DatabaseException(string message, string query)
+            : base(GenerateMessage(message, query))
+        {
+
+        }
+
+        public static string GenerateMessage(string message, string query)
+        {
+            return message + " " + query;
         }
     }
 }

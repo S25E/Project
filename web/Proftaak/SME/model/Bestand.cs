@@ -85,7 +85,7 @@ namespace SME
         /// <summary>
         /// Het nummer van de persoon die het bestand heeft geupload.
         /// </summary>
-        private int uploader;
+        private string uploader;
 
         /// <summary>
         /// De persoon die het bestand heeft geupload -> wordt opgehaald aan de hand van het nummer van de persoon die het bestand heeft geupload.
@@ -201,7 +201,7 @@ namespace SME
                 if (this.reacties == null)
                 {
                     List<Reactie> reacties = Reactie.GetReactiesBijBestand(this);
-                    Dictionary<int, Persoon> personen = Persoon.GetPersonenBijRFIDs(reacties.Select(r => r.PersoonNummer).ToList<int>());
+                    Dictionary<string, Persoon> personen = Persoon.GetPersonenBijRFIDs(reacties.Select(r => r.PersoonNummer).ToList<string>());
 
                     foreach (Reactie reactie in reacties)
                         reactie.Persoon = personen[reactie.PersoonNummer];
@@ -227,7 +227,7 @@ namespace SME
         /// <param name="uploaddatum"></param>
         /// <param name="geuploaddoor"></param>
         /// <param name="mapnummer"></param>
-        public Bestand(int mapnummer, string naam, string beschrijving, string extensie, int grootte, int rfid, DateTime datum, int gedownload, int rating, string pad, int imgindex)
+        public Bestand(int mapnummer, string naam, string beschrijving, string extensie, int grootte, string rfid, DateTime datum, int gedownload, int rating, string pad, int imgindex)
         {
             this.MapNummer = mapnummer;
             this.Naam = naam;
@@ -253,7 +253,7 @@ namespace SME
         /// <param name="uploaddatum"></param>
         /// <param name="geuploaddoor"></param>
         /// <param name="mapnummer"></param>
-        public Bestand(int nummer, int mapnummer, string naam, string beschrijving, string extensie, int grootte, int rfid, DateTime datum, int gedownload, int rating, string pad, int imgindex)
+        public Bestand(int nummer, int mapnummer, string naam, string beschrijving, string extensie, int grootte, string rfid, DateTime datum, int gedownload, int rating, string pad, int imgindex)
             : this(mapnummer, naam, beschrijving, extensie, grootte, rfid, datum, gedownload, rating, pad, imgindex)
         {
             this.Nummer = nummer;

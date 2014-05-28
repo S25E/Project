@@ -1,0 +1,38 @@
+﻿html,
+body { 
+    min-height: 100%;
+}
+body {
+	background-image: url("../img/background.jpg");
+	background-size: cover;
+    min-height: 100%;
+    padding-top: 50px;
+}
+a:hover{
+	transition: 0.5s;
+}
+Button:hover{
+	transition: 0.5s;
+} 
+h1{
+	font-family: FestivalNormal;
+}
+#content{
+	background-color: rgba(255, 255, 255, 0.8);
+	padding: 60px;
+	margin-top: 5%;
+	border-radius:25px;
+	padding-top: 40px;
+    margin-bottom: 5%;
+}
+.vcenter{
+    margin-top:auto;
+    margin-bottom:auto;
+}
+.starter-template {
+  padding: 40px 15px;
+  text-align: center;
+}
+.navbar-static-top {
+  margin-bottom: 19px;
+}

@@ -13,9 +13,9 @@ namespace SME
 
     public partial class Persoon
     {
-        private static DataTable getPersonenByWhere(string where = "")
+        private static DataTable getPersonenByWhere(string where = "", Dictionary<string, object> parameters = default(Dictionary<string, object>))
         {
-            return Database.GetData("SELECT PERSOON.*, KLANT.*, KLANT_BETALEND.*, KLANT.RESERVERINGSNUMMER AS k_RESERVERINGSNUMMER, KLANT_BETALEND.RESERVERINGSNUMMER AS kb_RESERVERINGSNUMMER, KLANT_BETALEND.REKENINGNUMMER AS kb_REKENINGNUMMER, MEDEWERKER.REKENINGNUMMER AS m_REKENINGNUMMER FROM PERSOON LEFT JOIN KLANT ON PERSOON.RFID = KLANT.RFID LEFT JOIN KLANT_BETALEND ON PERSOON.RFID = KLANT_BETALEND.RFID LEFT JOIN MEDEWERKER ON PERSOON.RFID = MEDEWERKER.RFID" + (where != "" ? " WHERE " + where : ""));
+            return Database.GetData("SELECT PERSOON.*, KLANT.*, KLANT_BETALEND.*, KLANT.RESERVERINGSNUMMER AS k_RESERVERINGSNUMMER, KLANT_BETALEND.RESERVERINGSNUMMER AS kb_RESERVERINGSNUMMER, KLANT_BETALEND.REKENINGNUMMER AS kb_REKENINGNUMMER, MEDEWERKER.REKENINGNUMMER AS m_REKENINGNUMMER, MEDEWERKER.FUNCTIE FROM PERSOON LEFT JOIN KLANT ON PERSOON.RFID = KLANT.RFID LEFT JOIN KLANT_BETALEND ON PERSOON.RFID = KLANT_BETALEND.RFID LEFT JOIN MEDEWERKER ON PERSOON.RFID = MEDEWERKER.RFID" + (where != "" ? " WHERE " + where : ""), parameters);
         }
 
         /// <summary>
@@ -23,9 +23,9 @@ namespace SME
         /// </summary>
         /// <param name="nummer"></param>
         /// <returns>De Persoon</returns>
-        public static Persoon GetPersoonBijRFID(int rfid)
+        public static Persoon GetPersoonBijRFID(string rfid)
         {
-            foreach (DataRow row in getPersonenByWhere("RFID = " + rfid).Rows)
+            foreach (DataRow row in getPersonenByWhere("PERSOON.RFID = @rfid", new Dictionary<string, object>() { { "@rfid", rfid } }).Rows)
             {
                 return rowToPersoon(row);
             }
@@ -38,13 +38,17 @@ namespace SME
         /// </summary>
         /// <param name="nummers"></param>
         /// <returns>Een Dictonary met personen PERSOON_NUMMER => de Persoon</returns>
-        public static Dictionary<int, Persoon> GetPersonenBijRFIDs(List<int> rfids)
+        public static Dictionary<string, Persoon> GetPersonenBijRFIDs(List<string> rfids)
         {
-            Dictionary<int, Persoon> personen = new Dictionary<int, Persoon>();
+            Dictionary<string, Persoon> personen = new Dictionary<string, Persoon>();
 
             if (rfids.Count > 0)
-                foreach (DataRow row in Database.GetData("SELECT * FROM PERSOON WHERE RFID IN(" + string.Join(",", rfids) + ")").Rows)
-                    personen.Add(Convert.ToInt32(row["RFID"]), rowToPersoon(row));
+            {
+                foreach (DataRow row in Database.GetData("SELECT * FROM PERSOON WHERE RFID IN(@rfids)", new Dictionary<string, object>() { { "@rfids", rfids } }).Rows)
+                {
+                    personen.Add(row["RFID"].ToString(), rowToPersoon(row));
+                }
+            }
 
             return personen;
         }
@@ -59,7 +63,9 @@ namespace SME
             List<Persoon> likes = new List<Persoon>();
 
             foreach (DataRow row in getPersonenByWhere("RFID IN (SELECT RFID FROM DISLIKE_LIKE_REPORT WHERE LIKEDISLIKE = 'LIKE' AND BESTAND_ID = " + bestand.Nummer + ")").Rows)
+            {
                 likes.Add(rowToPersoon(row));
+            }
 
             return likes;
         }
@@ -81,7 +87,7 @@ namespace SME
 
         /// <summary>
         /// Het ophalen van een lijst met personen die een bestand hebben gereported.
-        /// </summary>
+        /// </summary>h
         /// <param name="bestand"></param>
         /// <returns>Een lijst met personen</returns>
         public static List<Persoon> GetReports(Bestand bestand)
@@ -111,7 +117,7 @@ namespace SME
 
             switch (type)
             {
-                case "Klant":
+                case "KLANT":
                     return new Bijboeker(
                         rfid,
                         naam,
@@ -119,7 +125,7 @@ namespace SME
                         aanwezig,
                         Convert.ToInt32(row["k_RESERVERINGSNUMMER"])
                     );
-                case "Klant_betalend":
+                case "KLANT_BETALEND":
                     return new Hoofdboeker(
                         rfid,
                         naam,
@@ -134,7 +140,7 @@ namespace SME
                         row["kb_REKENINGNUMMER"].ToString(),
                         row["SOFINUMMER"].ToString()
                     );
-                case "Medewerker":
+                case "MEDEWERKER":
                     return new Medewerker(
                         rfid,
                         naam,
@@ -149,7 +155,7 @@ namespace SME
         }
         public static void UpdateAanwezigheid(Persoon persoon)
         {
-            Database.Execute("UPDATE PERSOON SET aanwezig= " + (persoon.Aanwezig ? "Y" : "N") + " WHERE RFID = " + persoon.Nummer);
+            Database.Execute("UPDATE PERSOON SET aanwezig= '" + (persoon.Aanwezig ? "Y" : "N") + "' WHERE RFID = @rfid", new Dictionary<string,object>(){{"@rfid", persoon.Nummer}});
         }
 
         public static void AddPersoon(Persoon persoon)
@@ -163,17 +169,31 @@ namespace SME
             {
                 type = "Klant";
             }
-            else
+            else if(persoon is Medewerker)
             {
                 type = "Medewerker";
             }
-            string rfid = Database.GetData("SELECT RFID FROM RFID_COL WHERE RFID NOT IN (SELECT RFID FROM PERSOON)").Rows[0]["RFID"].ToString();
+            else
+            {
+                throw new Exception("Ongeldig type!");
+            }
+
+            string rfid;
+            try
+            {
+                rfid = Database.GetData("SELECT RFID FROM RFID_COL WHERE RFID NOT IN (SELECT RFID FROM PERSOON)").Rows[0]["RFID"].ToString();
+            }
+            catch
+            {
+                throw new Exception("Geen beschikbaar RFID nummer voor persoon gevonden");
+            }
+
             Database.Execute("INSERT INTO PERSOON (RFID, WACHTWOORD, TYPE, AANWEZIG, NAAM) VALUES (@rfid, @wachtwoord, @type, @aanwezig, @naam)", new Dictionary<string, object>
                 {
                     {"@rfid", rfid},
                     {"@wachtwoord", persoon.wachtwoord},
                     {"@type", type},
-                    {"@aanwezig", persoon.Aanwezig},
+                    {"@aanwezig", persoon.Aanwezig ? "Y" : "N"},
                     {"@naam", persoon.Naam}
                 });
 
@@ -213,66 +233,53 @@ namespace SME
                 });
             }
 
+            // Nummer van persoon goedzetten.
+            persoon.Nummer = rfid;
         }
 
         // NOG TE MAKEN
         public static void DeletePersoon(Persoon persoon)
         {
-            // DENK AAN ALLE TABELLEN WAARIN RFID GEBRUIKT WORDT.
-            Database.Execute("DELETE FROM PERSOON WHERE RFID = @rfid", new Dictionary<string, object>()
-                {
-                    {"@rfid", persoon.Nummer}
-                });
+            // EERST ALLE VERWIJZINGEN NAAR PERSOON VERWIJDEREN.
+
+            // TE BEGINNEN MET DE SUBTYPERING VAN PERSOON.
             if(persoon is Hoofdboeker)
             {
-                Database.Execute("DELETE FROM KLANT_BETALEND WHERE RFID = @rfid", new Dictionary<string, object>()
-                    {
-                        {"@rfid", persoon.Nummer}
-                    });
+                Database.Execute("DELETE FROM KLANT_BETALEND WHERE RFID = @rfid", new Dictionary<string, object>(){{"@rfid", persoon.Nummer}});
             }
             else if(persoon is Bijboeker)
             {
-                Database.Execute("DELETE FROM KLANT WHERE RFID = @rfid", new Dictionary<string, object>()
-                    {
-                        {"@rfid", persoon.Nummer}
-                    });
+                Database.Execute("DELETE FROM KLANT WHERE RFID = @rfid", new Dictionary<string, object>(){{"@rfid", persoon.Nummer}});
             }
             else 
             {
-                Database.Execute("DELETE FROM MEDEWERKER WHERE RFID = @rfid", new Dictionary<string, object>()
-                    {
-                        {"@rfid", persoon.Nummer}
-                    });
+                Database.Execute("DELETE FROM MEDEWERKER WHERE RFID = @rfid", new Dictionary<string, object>(){{"@rfid", persoon.Nummer}});
             }
 
-            
+            // DENK AAN ALLE TABELLEN WAARIN RFID GEBRUIKT WORDT.
             //DISLIKE_LIKE_REPORT
-            Database.Execute("DELETE FROM DISLIKE_LIKE_REPORT WHERE RFID = @rfid", new Dictionary<string, object>()
-                {
-                    {"@rfid", persoon.Nummer}
-                });
+            Database.Execute("DELETE FROM DISLIKE_LIKE_REPORT WHERE RFID = @rfid", new Dictionary<string, object>() {{"@rfid", persoon.Nummer}});
+
             //OPMERKING
-            Database.Execute("DELETE FROM OPMERKING WHERE RFID = @rfid", new Dictionary<string, object>()
-                {
-                    {"@rfid", persoon.Nummer}
-                });
+            Database.Execute("DELETE FROM OPMERKING WHERE RFID = @rfid", new Dictionary<string, object>() {{"@rfid", persoon.Nummer}});
 
             //OPMERKINGREPORT
-            Database.Execute("DELETE FROM OPMERKING_REPORT WHERE RFID = @rfid", new Dictionary<string, object>()
-                {
-                    {"@rfid", persoon.Nummer}
-                });
+            Database.Execute("DELETE FROM OPMERKINGREPORT WHERE RFID = @rfid", new Dictionary<string, object>() {{"@rfid", persoon.Nummer}});
 
+            // UITEINDELIJK DE PERSOON ZELF VERWIJDEREN
+            Database.Execute("DELETE FROM PERSOON WHERE RFID = @rfid", new Dictionary<string, object>() { { "@rfid", persoon.Nummer } });
         }
 
         public static Hoofdboeker GetHoofdboekerBijReservering(Reservering reservering)
         {
-            DataTable dt = getPersonenByWhere("KLANT_BETALEND.RESERVERINGSNUMMER =" + reservering.Nummer);
+            DataTable dt = getPersonenByWhere("KLANT_BETALEND.RESERVERINGSNUMMER = " + reservering.Nummer);
+
             foreach(DataRow row in dt.Rows)
             {
                 return (Hoofdboeker)rowToPersoon(row);
 
             }
+
             return null;
         }
 
@@ -280,10 +287,12 @@ namespace SME
         {
             List<Bijboeker> Bijboekers = new List<Bijboeker>();
             DataTable dt = getPersonenByWhere("KLANT.RESERVERINGSNUMMER =" + reservering.Nummer);
+
             foreach(DataRow row in dt.Rows)
             {
                 Bijboekers.Add((Bijboeker)rowToPersoon(row));                
             }
+
             return Bijboekers;
         }
     }

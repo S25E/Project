@@ -1,0 +1,8 @@
+@font-face {
+    font-family: 'FestivalNormal';
+    src: url('festival.eot');
+    src: url('festival.eot') format('embedded-opentype'),
+         url('festival.woff') format('woff'),
+         url('festival.ttf') format('truetype'),
+         url('festival.svg#FestivalNormal') format('svg');
+}

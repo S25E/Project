@@ -16,7 +16,7 @@ namespace SME
         public string Nummer
         {
             get;
-            private set;
+            set;
         }
 
         /// <summary>
@@ -49,12 +49,12 @@ namespace SME
         /// <param name="naam"></param>
         /// <param name="wachtwoord"></param>
         public Persoon(string nummer, string naam, string wachtwoord, bool aanwezig)
+            : this(naam, wachtwoord, aanwezig)
         {
             this.Nummer = nummer;
             this.Naam = naam;
             this.wachtwoord = wachtwoord;
             this.Aanwezig = aanwezig;
-            
         }
 
         public Persoon(string naam, string wachtwoord = null, bool aanwezig = false)
@@ -65,7 +65,7 @@ namespace SME
             }
             this.Naam = naam;
             this.wachtwoord = wachtwoord;
-            this.Aanwezig = aanwezig;
+            this.aanwezig = aanwezig;
         }
 
         /// <summary>
@@ -123,6 +123,13 @@ namespace SME
         {
             get
             {
+                foreach (Reservering reservering in Reservering.GetReserveringen())
+                {
+                    if(reservering.Nummer == this.ReserveringNummer)
+                    {
+                        return reservering;
+                    }
+                }
                 // Lazy loading maken.
                 return null;
             }
@@ -194,7 +201,10 @@ namespace SME
         public Hoofdboeker(string nummer, string naam, string wachtwoord, bool aanwezig, int reserveringsnummer, string straat, string postcode, string woonplaats, string telefoon, string email, string rekeningnummer, string sofinummer)
             : base(nummer, naam, wachtwoord, aanwezig, reserveringsnummer)
         {
+            this.Nummer = nummer;
             this.Naam = naam;
+            this.Aanwezig = aanwezig;
+            this.ReserveringNummer = reserveringsnummer;
             this.Straat = straat;
             this.Postcode = postcode;
             this.Woonplaats = woonplaats;
@@ -229,13 +239,18 @@ namespace SME
         public Bijboeker(string nummer, string naam, string wachtwoord, bool aanwezig, int reserveringsnummer)
             : base(nummer, naam, wachtwoord, aanwezig, reserveringsnummer)
         {
-
+            this.Nummer = nummer;
+            this.Naam = naam;
+            this.Aanwezig = aanwezig;
+            this.ReserveringNummer = reserveringsnummer;
         }
 
         public Bijboeker(string naam, string wachtwoord, bool aanwezig, int reserveringsnummer = default(int))
             : base(naam, wachtwoord, aanwezig, reserveringsnummer)
         {
-
+            this.Naam = naam;
+            this.Aanwezig = aanwezig;
+            this.ReserveringNummer = reserveringsnummer;
         }
     }
     public class Medewerker : Persoon

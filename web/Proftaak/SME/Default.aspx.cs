@@ -7,14 +7,8 @@ using System.Web.UI.WebControls;
 
 namespace SME
 {
-    public partial class Site1 : System.Web.UI.MasterPage
+    public partial class Default : System.Web.UI.Page
     {
-        private static string title = "SME -";
- 
-        public static string UpdateTitle(string toBeAddedTitle)
-        {
-            return title + " " + toBeAddedTitle;
-        }
         protected void Page_Load(object sender, EventArgs e)
         {
 

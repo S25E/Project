@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SME
 {
-    class BestandenCatalogus
+    public class BestandenCatalogus
     {
         /// <summary>
         /// Het ophalen van alle mappen. In deze methode wordt op een slimme manier alle mappen en bestanden opgehaald en vervolgens gekoppeld.
