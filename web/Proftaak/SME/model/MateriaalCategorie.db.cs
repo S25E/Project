@@ -6,7 +6,7 @@ using System.Data;
 
 namespace SME
 {
-    public class MateriaalCategorie
+    public partial class MateriaalCategorie
     {
         public static List<MateriaalCategorie> GetCategorie()
         {

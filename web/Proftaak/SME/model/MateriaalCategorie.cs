@@ -5,7 +5,7 @@ using System.Web;
 
 namespace SME
 {
-    public class MateriaalCategorie
+    public partial class MateriaalCategorie
     {
         public string Naam
         {
