@@ -203,7 +203,6 @@ namespace SME
         {
             this.Nummer = nummer;
             this.Naam = naam;
-            //this.wachtwoord =wachtwoord;
             this.Aanwezig = aanwezig;
             this.ReserveringNummer = reserveringsnummer;
             this.Straat = straat;
@@ -242,7 +241,6 @@ namespace SME
         {
             this.Nummer = nummer;
             this.Naam = naam;
-            //this.wachtwoord= wachtwoord;
             this.Aanwezig = aanwezig;
             this.ReserveringNummer = reserveringsnummer;
         }
@@ -251,7 +249,6 @@ namespace SME
             : base(naam, wachtwoord, aanwezig, reserveringsnummer)
         {
             this.Naam = naam;
-            //this.wachtwoord= wachtwoord;
             this.Aanwezig = aanwezig;
             this.ReserveringNummer = reserveringsnummer;
         }
