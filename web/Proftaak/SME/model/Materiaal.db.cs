@@ -2,22 +2,25 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Data;
 
 namespace SME
 {
     public partial class Materiaal
     {
-        public static void AddMateriaal(Materiaal materiaal)
+        public static int AddMateriaal(Materiaal materiaal)
         {
+            int insertedId = Database.GetSequence("SEQ_MATERIAAL");
             Database.Execute("INSERT INTO Materiaal (barcode, naam, aantal, verhuurprijs, omschrijving, categorie) VALUES (@barcode, @naam, @aantal, @verhuurprijs, @omschrijving, @categorie)", new Dictionary<string, object>()
             {
-                {"@barcode", materiaal.Barcode},
+                {"@barcode", insertedId},
                 {"@naam", materiaal.Naam},
                 {"@aantal", materiaal.Aantal},
                 {"@verhuurprijs", materiaal.Verhuurprijs},
                 {"@omschrijving", materiaal.Omschrijving},
                 {"@categorie", materiaal.Categorie}
             });
+            return insertedId;
         }
 
         public static void UpdateAantal(Materiaal materiaal)
@@ -32,6 +35,41 @@ namespace SME
             Database.Execute("DELETE FROM Materiaal WHERE BARCODE = @BARCODE", new Dictionary<string, object>(){
                 {"@barcode", materiaal.Barcode}
             });
+        }
+
+        private static DataTable getMaterialenByWhere(string where, Dictionary<string, object> parameters = default(Dictionary<string, object>)){
+
+            return Database.GetData("SELECT * FROM Materiaal" + (where != "" ? " WHERE " + where : ""), parameters);
+
+        }
+
+        public static Materiaal rowToMateriaal(DataRow row)
+           
+        {
+            return new Materiaal(row["BARCODE"].ToString(), row["NAAM"].ToString(), Convert.ToInt32(row["AANTAL"]), Convert.ToInt32(row["VERHUURPRIJS"]), row["OMSCHRIJVING"].ToString(), row["CATEGORIE"].ToString());
+        }
+
+        public static Materiaal GetMateriaalBijBarcode(int barcode)
+        {
+            foreach(DataRow row in getMaterialenByWhere("barcode = " + barcode).Rows){
+                return rowToMateriaal(row);
+            }
+
+            return (Materiaal)null;
+        }
+
+        public static List<Materiaal> GetMaterialenBijCategorie(MateriaalCategorie materiaalcategorie)
+        {
+            List<Materiaal> materialen = new List<Materiaal>();
+
+            foreach(DataRow row in getMaterialenByWhere("categorie = @categorie", new Dictionary<string,object>(){
+               {"@categorie", materiaalcategorie.Naam} 
+            }).Rows)
+            {
+                materialen.Add(rowToMateriaal(row));
+            }
+
+            return materialen;
         }
     }
 }

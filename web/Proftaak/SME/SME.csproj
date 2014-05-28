@@ -115,6 +115,8 @@
     <Compile Include="model\Materiaal.db.cs" />
     <Compile Include="model\MateriaalBeheer.cs" />
     <Compile Include="model\MateriaalBeheer.db.cs" />
+    <Compile Include="model\MateriaalCategorie.cs" />
+    <Compile Include="model\MateriaalCategorie.db.cs" />
     <Compile Include="model\Persoon.cs" />
     <Compile Include="model\Persoon.db.cs" />
     <Compile Include="model\Reactie.cs" />

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Data;
 
 namespace SME
 {
@@ -23,14 +24,24 @@ namespace SME
         //test
         public static void BrengTerug(Materiaal materiaal, Persoon persoon, int aantal)
         {
-            if (Convert.ToInt32(Database.GetData("SELECT AANTAL FROM UITLENING WHERE BARCODE = @BARCODE" )) >0 )
-            { }
-
+            int nummer = Convert.ToInt32(Database.GetData("SELECT AANTAL FROM UITLENING WHERE BARCODE = @BARCODE AND RESERVERINGNUMMER = @RESERVERINGNUMMER)", new Dictionary<string, object>()
+              {
+                {"@barcode", materiaal.Barcode},
+                {"@reserveringnummer", persoon.Nummer}
+              }));
+            
+            if ( nummer > 1 )
+            {
+                Database.Execute("UPDATTE UITLENING SET    =" + (nummer - 1)); 
+            }
+            else
+            {
             Database.Execute("DELETE FROM UITLENING WHERE BARCODE = @BARCODE AND RESERVERINGNUMMER = @RESERVERINGNUMMER)", new Dictionary<string, object>()
             {
                 {"@barcode", materiaal.Barcode},
                 {"@reserveringnummer", persoon.Nummer}
             });
+            }
         }
     }
 }
