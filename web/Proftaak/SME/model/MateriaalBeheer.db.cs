@@ -9,16 +9,15 @@ namespace SME
     public partial class MateriaalBeheer
     {
 
-        // JEROEN -> HIER WORDT PERSOON MEEGEGEVEN MAAR ER WORDT NIET EENS NAAR PERSOON GEKEKEN -> AANPASSEN DUS!
         public static void Leenuit(Materiaal materiaal, Persoon persoon)
         {
             Database.Execute("INSERT INTO UITLENING (RESERVERINGNUMMER, BARCODE, DATUM_UITGELEEND, DATUM_INGELEVERD, AANTAL) VALUES (@reserveringnummer, @barcode, @datum_uitgeleend, @datum_ingeleverd, @aantal)", new Dictionary<string, object>()
         {
-            {"@reserveringnummer", 1},
+            {"@reserveringnummer", persoon.Nummer},
             {"@barcode", materiaal.Barcode},
             {"@datum_uitgeleend", DateTime.Today},
             {"@datum_ingeleverd", null},
-            {"@datum_ingeleverd", 1}
+            {"@aantal", materiaal.Aantal}
         });
         }
         //test

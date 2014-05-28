@@ -43,6 +43,7 @@
 					<li><a href="Default.aspx">Home</a></li>
 					<li><a href="Reservering.aspx">Reservering</a></li>
 					<li><a href="Toelating.aspx">Toelating</a></li>
+                    <li><a href="Uitleen.aspx">Uitlenen</a></li>
 					<li class="dropdown">
 						<a data-toggle="dropdown" class="dropdown-toggle" href="#">Inloggen <b class="caret"></b></a>
 						<div style="padding: 10px 15px 15px 15px" class="navbar-right dropdown-menu dropdown-yellow dropdown-caret">

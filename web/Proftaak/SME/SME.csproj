@@ -93,6 +93,7 @@
     <Content Include="css\style.css" />
     <Content Include="TestKampeerplaats.aspx" />
     <Content Include="Toelating.aspx" />
+    <Content Include="Uitleen.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -152,6 +153,13 @@
     </Compile>
     <Compile Include="Toelating.aspx.designer.cs">
       <DependentUpon>Toelating.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Uitleen.aspx.cs">
+      <DependentUpon>Uitleen.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Uitleen.aspx.designer.cs">
+      <DependentUpon>Uitleen.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup />
