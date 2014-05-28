@@ -265,7 +265,7 @@ namespace SME
             this.Rekeningnummer = rekeningnummer;
         }
 
-        public Medewerker(string naam, string wachtwoord, bool aanwezig, string functie, string rekeningnummer)
+        public Medewerker(string naam, string functie, string rekeningnummer, string wachtwoord = null, bool aanwezig = false)
             : base(naam, wachtwoord, aanwezig)
         {
             this.Functie = functie;
