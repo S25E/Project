@@ -52,9 +52,6 @@ namespace SME
             : this(naam, wachtwoord, aanwezig)
         {
             this.Nummer = nummer;
-            this.Naam = naam;
-            this.wachtwoord = wachtwoord;
-            this.Aanwezig = aanwezig;
         }
 
         public Persoon(string naam, string wachtwoord = null, bool aanwezig = false)
@@ -123,15 +120,7 @@ namespace SME
         {
             get
             {
-                foreach (Reservering reservering in Reservering.GetReserveringen())
-                {
-                    if(reservering.Nummer == this.ReserveringNummer)
-                    {
-                        return reservering;
-                    }
-                }
-                // Lazy loading maken.
-                return null;
+                return Reservering.GetReserveringBijNummer(this.ReserveringNummer);
             }
         }
 
@@ -203,7 +192,6 @@ namespace SME
         {
             this.Nummer = nummer;
             this.Naam = naam;
-            this.Aanwezig = aanwezig;
             this.ReserveringNummer = reserveringsnummer;
             this.Straat = straat;
             this.Postcode = postcode;
@@ -237,20 +225,17 @@ namespace SME
         /// <param name="naam"></param>
         /// <param name="wachtwoord"></param>
         public Bijboeker(string nummer, string naam, string wachtwoord, bool aanwezig, int reserveringsnummer)
-            : base(nummer, naam, wachtwoord, aanwezig, reserveringsnummer)
+            : base(nummer, naam, wachtwoord, aanwezig, 0)
         {
             this.Nummer = nummer;
             this.Naam = naam;
-            this.Aanwezig = aanwezig;
             this.ReserveringNummer = reserveringsnummer;
         }
 
-        public Bijboeker(string naam, string wachtwoord, bool aanwezig, int reserveringsnummer = default(int))
-            : base(naam, wachtwoord, aanwezig, reserveringsnummer)
+        public Bijboeker(string naam, string wachtwoord = null, bool aanwezig = false)
+            : base(naam, wachtwoord, aanwezig)
         {
             this.Naam = naam;
-            this.Aanwezig = aanwezig;
-            this.ReserveringNummer = reserveringsnummer;
         }
     }
     public class Medewerker : Persoon
