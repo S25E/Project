@@ -75,6 +75,10 @@
     <Content Include="img\background.jpg" />
     <Content Include="js\bootstrap.min.js" />
     <Content Include="Reservering.aspx" />
+    <Content Include="Reservering\Stap1.aspx" />
+    <Content Include="Reservering\Stap2.aspx" />
+    <Content Include="Reservering\Stap3.aspx" />
+    <Content Include="Reservering\Stap4.aspx" />
     <Content Include="Site1.Master" />
     <Content Include="fonts\festival\festival.eot" />
     <Content Include="fonts\festival\festival.ttf" />
@@ -82,6 +86,7 @@
     <Content Include="fonts\glyphicons\glyphicons-halflings-regular.eot" />
     <Content Include="fonts\glyphicons\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons\glyphicons-halflings-regular.woff" />
+    <Content Include="Reservering\Reservering.master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -132,6 +137,41 @@
     </Compile>
     <Compile Include="Reservering.aspx.designer.cs">
       <DependentUpon>Reservering.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reservering\Reservering.master.cs">
+      <DependentUpon>Reservering.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reservering\Reservering.master.designer.cs">
+      <DependentUpon>Reservering.master</DependentUpon>
+    </Compile>
+    <Compile Include="Reservering\Stap1.aspx.cs">
+      <DependentUpon>Stap1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reservering\Stap1.aspx.designer.cs">
+      <DependentUpon>Stap1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reservering\Stap2.aspx.cs">
+      <DependentUpon>Stap2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reservering\Stap2.aspx.designer.cs">
+      <DependentUpon>Stap2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reservering\Stap3.aspx.cs">
+      <DependentUpon>Stap3.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reservering\Stap3.aspx.designer.cs">
+      <DependentUpon>Stap3.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reservering\Stap4.aspx.cs">
+      <DependentUpon>Stap4.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reservering\Stap4.aspx.designer.cs">
+      <DependentUpon>Stap4.aspx</DependentUpon>
     </Compile>
     <Compile Include="Site1.Master.cs">
       <DependentUpon>Site1.Master</DependentUpon>
