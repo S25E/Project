@@ -8,31 +8,37 @@ namespace SME
 {
     public partial class Reservering
     {
-        public static List<Reservering> GetReserveringen(){
+        private static Reservering rowToReservering(DataRow row)
+        {
+            return new Reservering(Convert.ToInt32(row["RESERVERINGSNUMMER"]), Convert.ToDateTime(row["DATUM"]), row["BETAALD"].ToString() == "true");
+        }
 
-            //nog te maken
+        public static List<Reservering> GetReserveringen()
+        {
+
             List<Reservering> lijst = new List<Reservering>();
 
             DataTable dt = Database.GetData("SELECT RESERVERINGSNUMMER, BETAALD, DATUM FROM RESERVERING");
+            
             foreach(DataRow row in dt.Rows)
             {
-                int reserveringsnummer = Convert.ToInt32(row["RESERVERINGSNUMMER"]);
-                bool betaald;
-                if(row["BETAALD"].ToString() == "true")
-                {
-                    betaald = true;
-                }
-                else
-                {
-                    betaald = false;
-                }
-                
-                DateTime datum = Convert.ToDateTime(row["DATUM"]);
-                Reservering reservering = new Reservering(reserveringsnummer, datum, betaald);
-                lijst.Add(reservering);
+                lijst.Add(rowToReservering(row));
             }
+
             return lijst;
 
+        }
+
+        public static Reservering GetReserveringBijNummer(int nummer)
+        {
+            DataTable dt = Database.GetData("SELECT RESERVERINGSNUMMER, BETAALD, DATUM FROM RESERVERING");
+
+            foreach (DataRow row in dt.Rows)
+            {
+                return rowToReservering(row);
+            }
+
+            return (Reservering)null;
         }
 
         public static void AddReservering(Reservering reservering)
