@@ -13,5 +13,10 @@ namespace SME
         {
 
         }
+
+        protected void rechts_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
