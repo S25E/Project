@@ -9,7 +9,7 @@ namespace SME
     public partial class MateriaalBeheer
     {
 
-        public static void Leenuit(Materiaal materiaal, Persoon persoon)
+        public static void Leenuit(Materiaal materiaal, Persoon persoon, int aantal)
         {
             Database.Execute("INSERT INTO UITLENING (RESERVERINGNUMMER, BARCODE, DATUM_UITGELEEND, DATUM_INGELEVERD, AANTAL) VALUES (@reserveringnummer, @barcode, @datum_uitgeleend, @datum_ingeleverd, @aantal)", new Dictionary<string, object>()
         {
@@ -17,7 +17,7 @@ namespace SME
             {"@barcode", materiaal.Barcode},
             {"@datum_uitgeleend", DateTime.Today},
             {"@datum_ingeleverd", null},
-            {"@aantal", materiaal.Aantal}
+            {"@aantal", aantal}
         });
         }
         //test
@@ -27,11 +27,11 @@ namespace SME
               {
                 {"@barcode", materiaal.Barcode},
                 {"@reserveringnummer", persoon.Nummer}
-              }));
+              }).Rows[0]["AANTAL"]);
             
-            if ( nummer > 1 )
+            if ( (nummer - aantal) >= 1 )
             {
-                Database.Execute("UPDATTE UITLENING SET    =" + (nummer - 1)); 
+                Database.Execute("UPDATTE UITLENING SET aantal = aantal - " + aantal); 
             }
             else
             {
