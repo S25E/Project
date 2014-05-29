@@ -71,5 +71,10 @@ namespace SME
 
             return materialen;
         }
+
+        public static List<Materiaal> GetMaterialenBijReservering(Reservering reservering)
+        {
+
+        }
     }
 }
