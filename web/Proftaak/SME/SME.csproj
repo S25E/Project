@@ -130,6 +130,8 @@
     <Compile Include="model\Reservering.cs" />
     <Compile Include="model\Reservering.db.cs" />
     <Compile Include="model\ReserveringBeheer.cs" />
+    <Compile Include="model\UitgeleendMateriaal.cs" />
+    <Compile Include="model\UitgeleendMateriaal.db.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reservering.aspx.cs">
       <DependentUpon>Reservering.aspx</DependentUpon>
