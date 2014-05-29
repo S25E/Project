@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="Uitleen.aspx.cs" Inherits="SME.Uitleen" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Standaard.Master" AutoEventWireup="true" CodeBehind="Uitleen.aspx.cs" Inherits="SME.Uitleen" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>Uitleen</title>
 </asp:Content>

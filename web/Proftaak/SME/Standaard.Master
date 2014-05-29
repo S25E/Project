@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site1.master.cs" Inherits="SME.Site1" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Standaard.Master.cs" Inherits="SME.Site1" %>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
