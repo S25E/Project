@@ -82,7 +82,6 @@
     <Content Include="fonts\glyphicons\glyphicons-halflings-regular.eot" />
     <Content Include="fonts\glyphicons\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons\glyphicons-halflings-regular.woff" />
-    <None Include="Properties\PublishProfiles\sme.marijnverwegen.nl.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
