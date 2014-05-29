@@ -7,12 +7,16 @@ namespace UnitTest
     [TestClass]
     public class ReserveringTest
     {
+        private Reservering reservering;
+
+        [TestInitialize]
         [TestMethod]
         public void AddHoofdboeker()
         {
             Hoofdboeker hoofdboeker = new Hoofdboeker("Naam", "Straat", "Postcode", "Woonplaats", "Telefoon", "Email", "Rekeningnummer", "Sofinummer", "Wachtwoord", false);
             Reservering reservering = new Reservering();
             ReserveringBeheer.AddReservering(reservering, hoofdboeker);
+            this.reservering = reservering;
             Hoofdboeker persoon = (Hoofdboeker)Persoon.GetPersoonBijRFID(hoofdboeker.Nummer);
             Assert.AreEqual("Naam", persoon.Naam, "Naam komt niet overeen met wat is toegevoegd.");
             Assert.AreEqual("Straat", persoon.Straat, "Straat komt niet overeen met wat is toegevoegd.");
@@ -31,5 +35,12 @@ namespace UnitTest
             persoon.Delete();
             Assert.AreEqual(null, (Hoofdboeker)Persoon.GetPersoonBijRFID(hoofdboeker.Nummer), "Persoon is aanwezig ondanks dat deze verwijderd is.");
         }
+
+        [TestMethod]
+        public void AddBijboeker()
+        {
+            this.reservering.AddBijboeker(new Bijboeker("Bijboeker", "Wachtwoord"));
+        }
+
     }
 }
