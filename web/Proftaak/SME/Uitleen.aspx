@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="Uitleen.aspx.cs" Inherits="SME.Uitleen" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Standaard.Master" AutoEventWireup="true" CodeBehind="Uitleen.aspx.cs" Inherits="SME.Uitleen" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>Uitleen</title>
 </asp:Content>
@@ -6,25 +6,8 @@
        <div id="content">
     <div class="form-horizontal">
         <h1>Maak hier uw reservering</h1>
-        <br />
-
-        <%--dropdown row--%>
-        <div class="row class1">
-            <div class="col-md-2" style="height:34px;">
-                <div class="btn-group">
-                  <asp:Button ID="combobox" runat="server" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" text="Type Boeker... ▼"/>
-                  <ul class="dropdown-menu" role="menu">
-                      @foreach(string categorie in MateriaalCategorie.GetCategorie())
-                      {
-                        <li></li>
-                      }
-                        <li><asp:LinkButton ID="" runat="server" OnClick="DropDownHoofdboeker_Click">Hoofdboeker</asp:LinkButton></li>
-                        <li><asp:LinkButton runat="server" OnClick="DropDownBijboeker_Click">Bijboeker</asp:LinkButton></li>
-                  </ul>
-                </div>
-            </div>
-        </div>
-        <%--einde dropdown row--%>
+        <asp:DropDownList ID="DropDownList1" runat="server">
+        </asp:DropDownList>
         <br />
 
         <%--Begin 1e row--%>
@@ -79,19 +62,6 @@
             <div class="col-md-2">
                 <asp:TextBox style="text-align:left; width: 200px; margin-left:auto; margin-right:auto;" placeholder="Woonplaats" class="form-control" id="TbWoonplaats" runat="server"/>
             </div>
-        </div>
-        <%--Einde 4e row--%>
-        <br />
-        <div class="row class1">
-            <div class="col-md-2">
-                <asp:LinkButton runat="server" style="font-size:22px;" CssClass="glyphicon glyphicon-arrow-left btn btn-large btn-primary" OnClick="ButtonBack_Click"/>
-            </div>
-        
-            <div class="col-md-3">
-                <asp:LinkButton ID="rechts" runat="server" style="font-size:22px; margin-left:152px;" CssClass="glyphicon glyphicon-arrow-right btn btn-large btn-primary" OnClick="rechts_Click"/>
-            </div>
-
-            
         </div>
     </div>
     </div>

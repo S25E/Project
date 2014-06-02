@@ -8,13 +8,13 @@ namespace SME
 {
     public partial class MateriaalCategorie
     {
-        public static List<MateriaalCategorie> GetCategorie()
+        public static List<MateriaalCategorie> GetMateriaalCategorieen()
         {
             List<MateriaalCategorie> materiaalcategorieen = new List<MateriaalCategorie>();
-            foreach (DataRow row in Database.GetData("Select DISTINCT Categorie From Materiaal").Rows)
+
+            foreach (DataRow row in Database.GetData("SELECT DISTINCT CATEGORIE FROM MATERIAAL").Rows)
             {
-                MateriaalCategorie materiaalCategorie = new MateriaalCategorie(row["CATEGORIE"].ToString());
-                materiaalcategorieen.Add(materiaalCategorie);
+                materiaalcategorieen.Add(new MateriaalCategorie(row["Categorie"].ToString()));
                 
             }
             return materiaalcategorieen;
