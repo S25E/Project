@@ -31,15 +31,21 @@ namespace UnitTest
 
             persoon = (Hoofdboeker)Persoon.GetHoofdboekerBijReservering(reservering);
             Assert.AreEqual(hoofdboeker.Nummer, persoon.Nummer, "Hoofdboeker bij reservering komt niet overeen.");
-
-            persoon.Delete();
-            Assert.AreEqual(null, (Hoofdboeker)Persoon.GetPersoonBijRFID(hoofdboeker.Nummer), "Persoon is aanwezig ondanks dat deze verwijderd is.");
-        }
+       }
 
         [TestMethod]
         public void AddBijboeker()
         {
-            this.reservering.AddBijboeker(new Bijboeker("Bijboeker", "Wachtwoord"));
+            Bijboeker bijboeker = new Bijboeker("Bijboeker", "Wachtwoord");
+            this.reservering.AddBijboeker(bijboeker);
+            Assert.IsNotNull(this.reservering.Bijboekers.Find(a => a.Nummer == bijboeker.Nummer), "Bijboeker niet gevonden in lijst met bijboekers");
+        }
+
+
+        [TestMethod]
+        public void DeleteReservering()
+        {
+            this.reservering.Delete();
         }
 
     }

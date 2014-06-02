@@ -37,13 +37,11 @@ namespace SME
         /// <param name="reservering">De reservering zelf</param>
         /// <param name="hoofdboeker">De hoofdboeker</param>
         /// <returns></returns>
-        public static Reservering AddReservering(Reservering reservering, Hoofdboeker hoofdboeker)
+        public static void AddReservering(Reservering reservering, Hoofdboeker hoofdboeker)
         {
             Reservering.AddReservering(reservering);
             hoofdboeker.ReserveringNummer = reservering.Nummer;
             Persoon.AddPersoon(hoofdboeker);
-            
-            return reservering;
         }
 
         /// <summary>
