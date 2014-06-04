@@ -69,6 +69,9 @@
   <ItemGroup>
     <Content Include="css\bootstrap.css" />
     <Content Include="Default.aspx" />
+    <Content Include="fonts\awesome\font-awesome.css" />
+    <Content Include="fonts\awesome\font-awesome.min.css" />
+    <Content Include="fonts\awesome\fontawesome-webfont.svg" />
     <Content Include="fonts\festival\festival.css" />
     <Content Include="fonts\festival\festival.svg" />
     <Content Include="fonts\glyphicons\glyphicons-halflings-regular.svg" />
@@ -87,6 +90,10 @@
     <Content Include="fonts\glyphicons\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons\glyphicons-halflings-regular.woff" />
     <Content Include="Reservering\Reservering.master" />
+    <Content Include="fonts\awesome\fontawesome-webfont.eot" />
+    <Content Include="fonts\awesome\fontawesome-webfont.ttf" />
+    <Content Include="fonts\awesome\fontawesome-webfont.woff" />
+    <Content Include="fonts\awesome\FontAwesome.otf" />
     <None Include="Properties\PublishProfiles\sme.marijnverwegen.nl.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
