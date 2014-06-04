@@ -41,12 +41,11 @@ namespace SME
 
         protected void ButtonVoegToe_Click(object sender, EventArgs e)
         {
-            if(Bijboekers == null)
+            Bijboekers = (List<Bijboeker>)Session["bijboekers"];
+            if (Bijboekers == null)
             {
                 Bijboekers = new List<Bijboeker>();
             }
-
-            Bijboekers = (List<Bijboeker>)Session["bijboekers"];
             Bijboeker bijboeker = new Bijboeker(TbBijboekersNaam.Text);
             Bijboekers.Add(bijboeker);
             Session["bijboekers"] = Bijboekers;
