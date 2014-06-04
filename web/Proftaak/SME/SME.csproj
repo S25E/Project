@@ -77,6 +77,7 @@
     <Content Include="fonts\glyphicons\glyphicons-halflings-regular.svg" />
     <Content Include="img\background.jpg" />
     <Content Include="js\bootstrap.min.js" />
+    <Content Include="Login.aspx" />
     <Content Include="Reservering.aspx" />
     <Content Include="Reservering\Stap1.aspx" />
     <Content Include="Reservering\Stap2.aspx" />
@@ -116,6 +117,13 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="model\Bestand.cs" />
     <Compile Include="model\Bestand.db.cs" />

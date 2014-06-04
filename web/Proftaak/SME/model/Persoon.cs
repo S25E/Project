@@ -83,7 +83,7 @@ namespace SME
         // Nog te maken
         public static bool Login(string rfid, string wachtwoord)
         {
-            using (PrincipalContext pc = new PrincipalContext(ContextType.Domain, "sme.marijnverwegen.nl"))
+            using (PrincipalContext pc = new PrincipalContext(ContextType.Domain, "sme.local"))
             {
                 bool isValid = pc.ValidateCredentials(rfid, wachtwoord);
                 if (isValid)
