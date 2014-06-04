@@ -71,23 +71,23 @@ namespace SME
             Persoon current = Persoon.GetPersoonBijRFID(rfid);
             if (current is Hoofdboeker)
             {
-                return current.Nummer + "<br />" + current.Naam + "<br />" + (current as Hoofdboeker).Email + "<br />" + (current as Hoofdboeker).Rekeningnummer + "<br />" + (current as Hoofdboeker).ReserveringNummer + "<br />" + (current as Hoofdboeker).Telefoon;
+                return "RFID: " + current.Nummer + "<br />" + "Naam: " + current.Naam + "<br />" + "Email: " + (current as Hoofdboeker).Email + "<br />" + "Rekeningnr: " + (current as Hoofdboeker).Rekeningnummer + "<br />" + "Resnr: " + (current as Hoofdboeker).ReserveringNummer + "<br />" + "Telnr: " + (current as Hoofdboeker).Telefoon;
             }
             else
             {
                 if(current is Bijboeker)
                 {
-                    return current.Nummer + "<br />" + current.Naam + "<br />" + (current as Bijboeker).ReserveringNummer;
+                    return "RFID: " + current.Nummer + "<br />" + "Naam: " + current.Naam + "<br />" + "Resnr: " + (current as Bijboeker).ReserveringNummer;
                 }
                 else
                 {
                     if(current is Medewerker)
                     {
-                        return current.Nummer + "<br />" + current.Naam + "<br />" + (current as Medewerker).Functie + "<br />" + (current as Medewerker).Rekeningnummer;
+                        return "RFID: " + current.Nummer + "<br />" + "Naam: " + current.Naam + "<br />" + "Functie: " + (current as Medewerker).Functie + "<br />" + "Rekeningnr: " + (current as Medewerker).Rekeningnummer;
                     }
                     else
                     {
-                        return "Niet Bekend";
+                        return rfid + " niet Bekend";
                     }
                 }
             }

@@ -15,12 +15,12 @@
             </div>
         </div>
     </div>
-    <div class="right" style="position: fixed; left: 90%; top: 5%; width: 10%;">
+    <div class="right" style="position: fixed; left: 80%; top: 5%; width: 20%;">
         <asp:ListView runat="server" ID="AanwezigenList" class="list-group">
             <ItemTemplate>
                 <asp:Label class="list-group-item dropdown" runat="server">
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#"><%#Eval("RFID") %> <b class="caret"></b></a>
-                    <div style="padding: 10px 15px 15px 15px" class="navbar-right dropdown-menu dropdown-yellow dropdown-caret">
+                    <div style="padding: 10px 15px 15px 15px; width:100%;" class="navbar-right dropdown-menu dropdown-yellow dropdown-caret">
                         <asp:Label runat="server" > <%#Persoonstring(Eval("RFID").ToString()) %> </asp:Label>
                         
                         <button type="button" class="btn btn-success" style="width: 100%">Ok</button>
