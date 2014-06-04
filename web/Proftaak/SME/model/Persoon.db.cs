@@ -196,20 +196,20 @@ namespace SME
                 cmd.Parameters.Add("p_email", OracleDbType.Varchar2).Value = hoofdboeker.Email;
                 cmd.Parameters.Add("p_rekeningnummer", OracleDbType.Varchar2).Value = hoofdboeker.Rekeningnummer;
                 cmd.Parameters.Add("p_sofinummer", OracleDbType.Varchar2).Value = hoofdboeker.Sofinummer;
-                cmd.Parameters.Add("p_reserveringnummer", OracleDbType.Int32).Value = hoofdboeker.ReserveringNummer; //Deze functie werkt niet, als deze niet klopt. gebruik vaste waarde van 60!
+                cmd.Parameters.Add("p_reserveringnummer", OracleDbType.Int32).Value = 60; //Deze functie werkt niet, als deze niet klopt. gebruik vaste waarde van 60 om te testen!
                 Database.ExecuteProcedure(cmd, procedureNaam);
             }
             else if(persoon is Bijboeker)
             {
                 Bijboeker bijboeker = (Bijboeker)persoon;
-                cmd.Parameters.Add("p_reserveringsnummer", OracleDbType.Varchar2).Value = bijboeker.ReserveringNummer;
+                cmd.Parameters.Add("p_reserveringsnummer", OracleDbType.Int32).Value = bijboeker.ReserveringNummer;
                 Database.ExecuteProcedure(cmd, procedureNaam);
             }
             else if(persoon is Medewerker)
             {
                 Medewerker medewerker = (Medewerker)persoon;
                 cmd.Parameters.Add("p_functie", OracleDbType.Varchar2).Value = medewerker.Functie;
-                cmd.Parameters.Add("p_rekeningnummer", OracleDbType.Varchar2).Value = medewerker.Rekeningnummer;
+                cmd.Parameters.Add("p_rekeningnummer", OracleDbType.Int32).Value = medewerker.Rekeningnummer;
             }
         }
 
@@ -217,7 +217,6 @@ namespace SME
         public static void DeletePersoon(Persoon persoon)
         {
             // EERST ALLE VERWIJZINGEN NAAR PERSOON VERWIJDEREN.
-
             // TE BEGINNEN MET DE SUBTYPERING VAN PERSOON.
             if(persoon is Hoofdboeker)
             {
