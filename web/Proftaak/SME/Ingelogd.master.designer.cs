@@ -10,15 +10,15 @@
 namespace SME {
     
     
-    public partial class Stap4 {
+    public partial class Ingelogd {
         
         /// <summary>
-        /// Volgende control.
+        /// ContentPlaceHolder3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Volgende;
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder ContentPlaceHolder3;
     }
 }

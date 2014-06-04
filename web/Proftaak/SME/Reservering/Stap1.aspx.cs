@@ -13,5 +13,21 @@ namespace SME
         {
 
         }
+
+        protected void ButtonBack_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        protected void ButtonNext_Click(object sender, EventArgs e)
+        {
+            Page.Validate();
+            if (Page.IsValid)
+            {
+                Hoofdboeker hoofdboeker = new Hoofdboeker(TbNaam.Text, TbStraat.Text, TbPostcode.Text, TbWoonplaats.Text, TbTelefoonnummer.Text, TbEmail.Text, TbRekeningnummer.Text, TbSofinummer.Text);
+                Session["Stap1"] = hoofdboeker;
+                Response.Redirect("Stap2.aspx");
+            }
+        }
     }
 }
