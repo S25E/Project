@@ -13,13 +13,22 @@ namespace SME {
     public partial class Uitleen {
         
         /// <summary>
-        /// DropDownList1 control.
+        /// CategorieList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList1;
+        protected global::System.Web.UI.WebControls.DropDownList CategorieList;
+        
+        /// <summary>
+        /// ArtiekelList control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ArtiekelList;
         
         /// <summary>
         /// LabelNaam control.
@@ -31,13 +40,13 @@ namespace SME {
         protected global::System.Web.UI.WebControls.Label LabelNaam;
         
         /// <summary>
-        /// TbNaam control.
+        /// TbAantal control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TbNaam;
+        protected global::System.Web.UI.WebControls.TextBox TbAantal;
         
         /// <summary>
         /// LabelTelefoonnummer control.
@@ -49,48 +58,30 @@ namespace SME {
         protected global::System.Web.UI.WebControls.Label LabelTelefoonnummer;
         
         /// <summary>
-        /// TbTelefoonnummer control.
+        /// TbRFID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TbTelefoonnummer;
+        protected global::System.Web.UI.WebControls.TextBox TbRFID;
         
         /// <summary>
-        /// LabelPostcode control.
+        /// Calendar1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelPostcode;
+        protected global::System.Web.UI.WebControls.Calendar Calendar1;
         
         /// <summary>
-        /// TbPostcode control.
+        /// Bevestigknop control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TbPostcode;
-        
-        /// <summary>
-        /// LabelWoonplaats control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelWoonplaats;
-        
-        /// <summary>
-        /// TbWoonplaats control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TbWoonplaats;
+        protected global::System.Web.UI.WebControls.Button Bevestigknop;
     }
 }
