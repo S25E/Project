@@ -6,10 +6,11 @@
        <div id="content">
     <div class="form-horizontal">
         <h1>Leen hier uw artiekelen</h1>
-        <asp:DropDownList ID="CategorieList" runat="server" Height="56px" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" Width="156px" DataTextField="Categorie">
+        <asp:DropDownList ID="CategorieList" runat="server" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" Width="80px" DataTextField="Categorie" CssClass="dropdown">
         </asp:DropDownList>
-        <asp:DropDownList ID="ArtiekelList" runat="server" Width="114px">
+        <asp:DropDownList ID="ArtiekelList" runat="server" Width="200px" style="margin-left:91px;">
         </asp:DropDownList>
+        <br />
         <br />
 
         <%--Begin 1e row--%>

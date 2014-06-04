@@ -334,5 +334,10 @@ namespace SME
 
             return Bijboekers;
         }
+
+        public static DataTable GetAanwezigePersonen()
+        {
+            return Database.GetData("SELECT RFID FROM PERSOON WHERE AANWEZIG = 'Y' ORDER BY RFID");
+        }
     }
 }
