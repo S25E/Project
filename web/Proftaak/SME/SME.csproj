@@ -69,6 +69,7 @@
   <ItemGroup>
     <Content Include="css\bootstrap.css" />
     <Content Include="Default.aspx" />
+    <Content Include="Filesharing.aspx" />
     <Content Include="fonts\awesome\font-awesome.css" />
     <Content Include="fonts\awesome\font-awesome.min.css" />
     <Content Include="fonts\awesome\fontawesome-webfont.svg" />
@@ -77,6 +78,7 @@
     <Content Include="fonts\glyphicons\glyphicons-halflings-regular.svg" />
     <Content Include="img\background.jpg" />
     <Content Include="js\bootstrap.min.js" />
+    <Content Include="Login.aspx" />
     <Content Include="Reservering.aspx" />
     <Content Include="Reservering\Stap1.aspx" />
     <Content Include="Reservering\Stap2.aspx" />
@@ -94,6 +96,7 @@
     <Content Include="fonts\awesome\fontawesome-webfont.ttf" />
     <Content Include="fonts\awesome\fontawesome-webfont.woff" />
     <Content Include="fonts\awesome\FontAwesome.otf" />
+    <Content Include="Ingelogd.master" />
     <None Include="Properties\PublishProfiles\sme.marijnverwegen.nl.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -116,6 +119,27 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Filesharing.aspx.cs">
+      <DependentUpon>Filesharing.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Filesharing.aspx.designer.cs">
+      <DependentUpon>Filesharing.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Ingelogd.master.cs">
+      <DependentUpon>Ingelogd.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Ingelogd.master.designer.cs">
+      <DependentUpon>Ingelogd.master</DependentUpon>
+    </Compile>
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="model\Bestand.cs" />
     <Compile Include="model\Bestand.db.cs" />
