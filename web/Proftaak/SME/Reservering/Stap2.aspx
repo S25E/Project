@@ -31,5 +31,4 @@
             <asp:LinkButton runat="server" Style="font-size: 22px; margin-left: 60px;" CssClass="glyphicon glyphicon-arrow-right btn btn-large btn-primary" OnClick="ButtonNext_Click" />
         </div>
     </div>
-    <%-- <asp:Button ID="Volgende" runat="server" OnClick="Volgende_Click" Text="Button" />--%>
 </asp:Content>

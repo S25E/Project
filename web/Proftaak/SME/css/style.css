@@ -152,3 +152,14 @@ h1{
 .wizard-actions {
 	text-align: right;
 }
+
+div.page-header
+{
+    border:0px;
+}
+
+.list-group
+{
+    max-height:200px;
+    overflow-y:scroll;
+}
