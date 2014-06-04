@@ -14,11 +14,22 @@ namespace SME
 
         }
 
-        protected void Volgende_Click(object sender, EventArgs e)
+        protected void ButtonBack_Click(object sender, EventArgs e)
         {
-            Session["Stap1"] = "Stapke1";
+            
+        }
 
-            Response.Redirect("Stap2.aspx");
+        protected void ButtonNext_Click(object sender, EventArgs e)
+        {
+            Page.Validate();
+            if (Page.IsValid)
+            {
+                Hoofdboeker hoofdboeker = new Hoofdboeker(TbNaam.Text, TbStraat.Text, TbPostcode.Text, TbWoonplaats.Text, TbTelefoonnummer.Text, TbEmail.Text, TbRekeningnummer.Text, TbSofinummer.Text);
+                Session["hoofdboeker"] = hoofdboeker;
+
+                Session["Stap1"] = "stapke1";
+                Response.Redirect("Stap2.aspx");
+            }
         }
     }
 }
