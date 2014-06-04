@@ -13,9 +13,9 @@ namespace SME
         }
 
         // MOET PERSOON GEEN RESERVERING ZIJN...
-        public static void LeenUit(Materiaal materiaal, Persoon persoon, int aantal)
+        public static void LeenUit(int Barcode, int rfid, int aantal)
         {
-            MateriaalBeheer.Leenuit(materiaal, persoon, aantal);
+            MateriaalBeheer.Leenuit(Barcode, rfid, aantal);
         }
         public static void Brengterug(Materiaal materiaal, Persoon persoon, int aantal)
         {

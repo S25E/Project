@@ -9,12 +9,12 @@ namespace SME
     public partial class MateriaalBeheer
     {
 
-        public static void Leenuit(Materiaal materiaal, Persoon persoon, int aantal)
+        public static void Leenuit(int Barcode, int rfid, int aantal)
         {
             Database.Execute("INSERT INTO UITLENING (RESERVERINGNUMMER, BARCODE, DATUM_UITGELEEND, DATUM_INGELEVERD, AANTAL) VALUES (@reserveringnummer, @barcode, @datum_uitgeleend, @datum_ingeleverd, @aantal)", new Dictionary<string, object>()
         {
-            {"@reserveringnummer", persoon.Nummer},
-            {"@barcode", materiaal.Barcode},
+            {"@reserveringnummer", rfid},
+            {"@barcode", Barcode},
             {"@datum_uitgeleend", DateTime.Today},
             {"@datum_ingeleverd", null},
             {"@aantal", aantal}
