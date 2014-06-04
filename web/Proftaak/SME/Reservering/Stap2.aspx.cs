@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace SME
+namespace SME.Reservering
 {
     public partial class Stap2 : System.Web.UI.Page
     {
