@@ -181,13 +181,11 @@ namespace SME
             }
 
             string procedureNaam = "ADD_" + type.ToUpper();
-            OracleCommand cmd = new OracleCommand();
-            cmd.Parameters.Add("p_naam", OracleDbType.Varchar2).Value = persoon.Naam;
-            cmd.Parameters.Add("p_wachtwoord", OracleDbType.Varchar2).Value = persoon.wachtwoord;
-            cmd.Parameters.Add("p_aanwezig", OracleDbType.Varchar2).Value = "N";
+
 
             if(persoon is Hoofdboeker)
             {
+                OracleCommand cmd = new OracleCommand();
                 Hoofdboeker hoofdboeker = (Hoofdboeker)persoon;
                 cmd.Parameters.Add("p_straat", OracleDbType.Varchar2).Value = hoofdboeker.Straat;
                 cmd.Parameters.Add("p_postcode", OracleDbType.Varchar2).Value = hoofdboeker.Postcode;
@@ -197,17 +195,28 @@ namespace SME
                 cmd.Parameters.Add("p_rekeningnummer", OracleDbType.Varchar2).Value = hoofdboeker.Rekeningnummer;
                 cmd.Parameters.Add("p_sofinummer", OracleDbType.Varchar2).Value = hoofdboeker.Sofinummer;
                 cmd.Parameters.Add("p_reserveringnummer", OracleDbType.Int32).Value = 60; //Deze functie werkt niet, als deze niet klopt. gebruik vaste waarde van 60 om te testen!
+                cmd.Parameters.Add("p_wachtwoord", OracleDbType.Varchar2).Value = hoofdboeker.wachtwoord;
+                cmd.Parameters.Add("p_aanwezig", OracleDbType.Varchar2).Value = "N";
+                cmd.Parameters.Add("p_naam", OracleDbType.Varchar2).Value = hoofdboeker.Naam;
                 Database.ExecuteProcedure(cmd, procedureNaam);
             }
             else if(persoon is Bijboeker)
             {
                 Bijboeker bijboeker = (Bijboeker)persoon;
+                OracleCommand cmd = new OracleCommand();
+                cmd.Parameters.Add("p_naam", OracleDbType.Varchar2).Value = bijboeker.Naam;
+                cmd.Parameters.Add("p_wachtwoord", OracleDbType.Varchar2).Value = bijboeker.wachtwoord;
+                cmd.Parameters.Add("p_aanwezig", OracleDbType.Varchar2).Value = "N";
                 cmd.Parameters.Add("p_reserveringsnummer", OracleDbType.Int32).Value = bijboeker.ReserveringNummer;
                 Database.ExecuteProcedure(cmd, procedureNaam);
             }
             else if(persoon is Medewerker)
             {
                 Medewerker medewerker = (Medewerker)persoon;
+                OracleCommand cmd = new OracleCommand();
+                cmd.Parameters.Add("p_naam", OracleDbType.Varchar2).Value = medewerker.Naam;
+                cmd.Parameters.Add("p_wachtwoord", OracleDbType.Varchar2).Value = medewerker.wachtwoord;
+                cmd.Parameters.Add("p_aanwezig", OracleDbType.Varchar2).Value = "N";
                 cmd.Parameters.Add("p_functie", OracleDbType.Varchar2).Value = medewerker.Functie;
                 cmd.Parameters.Add("p_rekeningnummer", OracleDbType.Int32).Value = medewerker.Rekeningnummer;
             }
