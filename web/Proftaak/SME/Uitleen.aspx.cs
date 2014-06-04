@@ -11,23 +11,15 @@ namespace SME
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            foreach (MateriaalCategorie a in MateriaalCategorie.GetMateriaalCategorieen())
+            if (!IsPostBack)
             {
-            // METHODE 1
-                CategorieList.Items.Add(a.Naam);
+                foreach (MateriaalCategorie a in MateriaalCategorie.GetMateriaalCategorieen())
+                {
+                    //   if (CategorieList.Items.Contains( a.Naam))
+                    // METHODE 1
+                    CategorieList.Items.Add(a.Naam);
+                }
             }
-           /* DropDownList1.DataSource = MateriaalCategorie.GetMateriaalCategorieen();
-            DropDownList1.DataTextField = "Naam";
-            DropDownList1.DataValueField = "Naam";
-            DropDownList1.DataBind();*/
-
-            /* METHODE 2
-            foreach (MateriaalCategorie materiaalcategorie in MateriaalCategorie.GetMateriaalCategorieen())
-            {
-                DropDownList1.Items.Add(materiaalcategorie.Naam);
-            }*/
-
-            // KIEST U ZELF MAR WAT U HET FIJNST VINDT.
         }
 
         protected void Unnamed_Click(object sender, EventArgs e)
@@ -40,14 +32,22 @@ namespace SME
 
         }
 
-        protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
 
         protected void Bevestigknop_Click(object sender, EventArgs e)
         {
             MateriaalBeheer.LeenUit(Convert.ToInt32(ArtiekelList.SelectedItem.Text), Convert.ToInt32(TbRFID.Text), Convert.ToInt32(TbAantal.Text));
+        }
+
+        protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            MateriaalCategorie materiaalcategorie = new MateriaalCategorie(CategorieList.SelectedValue);
+            ArtiekelList.Items.Clear();
+            foreach(Materiaal materiaal in Materiaal.GetMaterialenBijCategorie(materiaalcategorie))
+            {
+                ArtiekelList.Items.Add(new ListItem(materiaal.Naam, materiaal.Barcode));
+            }
+            CategorieList.SelectedValue = materiaalcategorie.Naam;
+            //CategorieList
         }
     }
 }
