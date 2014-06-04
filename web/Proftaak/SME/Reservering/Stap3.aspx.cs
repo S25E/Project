@@ -11,7 +11,17 @@ namespace SME
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["Stap2"] == null)
+            {
+                Response.Redirect("Stap2.aspx");
+            }
+        }
 
+        protected void Volgende_Click(object sender, EventArgs e)
+        {
+            Session["Stap3"] = "Stapke3";
+
+            Response.Redirect("Stap4.aspx");
         }
     }
 }

@@ -13,5 +13,12 @@ namespace SME
         {
 
         }
+
+        protected void Volgende_Click(object sender, EventArgs e)
+        {
+            Session["Stap1"] = "Stapke1";
+
+            Response.Redirect("Stap2.aspx");
+        }
     }
 }
