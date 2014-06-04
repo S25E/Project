@@ -81,6 +81,27 @@ namespace SME
             }
         }
 
+        public static void ExecuteProcedure(OracleCommand cmd, string procedure)
+        {
+            try
+            {
+                cmd.Connection = oc;
+                cmd.CommandText = procedure;
+                oc.Open();
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.ExecuteNonQuery();
+            }
+            catch(OracleException ex)
+            {
+                
+            }
+            finally
+            {
+                oc.Close();
+            }
+            
+        }
+
         private static OracleCommand toOracleCommand(string query, Dictionary<string, object> waardes = default(Dictionary<string, object>))
         {
             query = ParseParameters(query, waardes);

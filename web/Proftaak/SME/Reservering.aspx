@@ -128,8 +128,6 @@
             <div class="col-md-3">
                 <asp:LinkButton runat="server" style="font-size:22px; margin-left:152px;" CssClass="glyphicon glyphicon-arrow-right btn btn-large btn-primary" OnClick="ButtonNext_Click"/>
             </div>
-
-            
         </div>
     </div>
     </div>
