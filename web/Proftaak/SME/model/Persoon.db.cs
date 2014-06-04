@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Data;
+using Oracle.DataAccess.Types;
+using Oracle.DataAccess.Client;
 
 namespace SME
 {
@@ -178,63 +180,100 @@ namespace SME
                 throw new Exception("Ongeldig type!");
             }
 
-            string rfid;
-            try
-            {
-                rfid = Database.GetData("SELECT RFID FROM RFID_COL WHERE RFID NOT IN (SELECT RFID FROM PERSOON)").Rows[0]["RFID"].ToString();
-            }
-            catch
-            {
-                throw new Exception("Geen beschikbaar RFID nummer voor persoon gevonden");
-            }
+            string procedureNaam = "ADD_" + type.ToUpper();
 
-            Database.Execute("INSERT INTO PERSOON (RFID, WACHTWOORD, TYPE, AANWEZIG, NAAM) VALUES (@rfid, @wachtwoord, @type, @aanwezig, @naam)", new Dictionary<string, object>
-                {
-                    {"@rfid", rfid},
-                    {"@wachtwoord", persoon.wachtwoord},
-                    {"@type", type},
-                    {"@aanwezig", persoon.Aanwezig ? "Y" : "N"},
-                    {"@naam", persoon.Naam}
-                });
-
-            if (persoon is Hoofdboeker)
+            if(persoon is Hoofdboeker)
             {
                 Hoofdboeker hoofdboeker = (Hoofdboeker)persoon;
-                Database.Execute("INSERT INTO KLANT_BETALEND (RFID, STRAAT, POSTCODE, WOONPLAATS, TELEFOON, EMAIL, REKENINGNUMMER, SOFINUMMER, RESERVERINGSNUMMER) VALUES (@rfid, @straat, @postcode, @woonplaats, @telefoon, @email, @rekeningnummer, @sofinummer, @reserveringsnummer)", new Dictionary<string, object>
-                {
-                    {"@rfid", rfid},
-                    {"@straat", hoofdboeker.Straat},
-                    {"@postcode", hoofdboeker.Postcode},
-                    {"@woonplaats", hoofdboeker.Woonplaats},
-                    {"@telefoon", hoofdboeker.Telefoon},
-                    {"@email", hoofdboeker.Email},
-                    {"@rekeningnummer", hoofdboeker.Rekeningnummer},
-                    {"@sofinummer", hoofdboeker.Sofinummer},
-                    {"@reserveringsnummer",hoofdboeker.ReserveringNummer}
-                });
-            }
-            else if (persoon is Bijboeker)
-            {
-                Bijboeker bijboeker = (Bijboeker)persoon;
-                Database.Execute("INSERT INTO KLANT (RFID, RESERVERINGSNUMMER) VALUES (@rfid, @reserveringsnummer)", new Dictionary<string, object>
-                {
-                    {"@rfid", rfid},
-                    {"@reserveringsnummer", bijboeker.ReserveringNummer}
-                });
-            }
-            else if(persoon is Medewerker)
-            {
-                Medewerker medewerker = (Medewerker)persoon;
-                Database.Execute("INSERT INTO MEDEWERKER (RFID, FUNCTIE, REKENINGNUMMER) VALUES (@rfid, @functie, @rekeningnummer)", new Dictionary<string, object>
-                {
-                    {"@rfid", rfid},
-                    {"@functie", medewerker.Functie},
-                    {"@rekeningnummer", medewerker.Rekeningnummer}
-                });
+                OracleCommand cmd = new OracleCommand();
+                cmd.Parameters.Add("p_straat", OracleDbType.Varchar2).Value = hoofdboeker.Straat;
+                cmd.Parameters.Add("p_postcode", OracleDbType.Varchar2).Value = hoofdboeker.Postcode;
+                cmd.Parameters.Add("p_woonplaats", OracleDbType.Varchar2).Value = hoofdboeker.Woonplaats;
+                cmd.Parameters.Add("p_telefoon", OracleDbType.Varchar2).Value = hoofdboeker.Telefoon;
+                cmd.Parameters.Add("p_email", OracleDbType.Varchar2).Value = hoofdboeker.Email;
+                cmd.Parameters.Add("p_rekeningnummer", OracleDbType.Varchar2).Value = hoofdboeker.Rekeningnummer;
+                cmd.Parameters.Add("p_sofinummer", OracleDbType.Varchar2).Value = hoofdboeker.Sofinummer;
+                cmd.Parameters.Add("p_reserveringnummer", OracleDbType.Int32).Value = hoofdboeker.ReserveringNummer; //Deze functie werkt niet, als deze niet klopt. gebruik vaste waarde van 60!
+                cmd.Parameters.Add("p_wachtwoord", OracleDbType.Varchar2).Value = hoofdboeker.wachtwoord;
+                cmd.Parameters.Add("p_aanwezig", OracleDbType.Varchar2).Value = "N";
+                cmd.Parameters.Add("p_naam", OracleDbType.Varchar2).Value = hoofdboeker.Naam;
+                Database.ExecuteProcedure(cmd, procedureNaam);
+
+
+                //Database.ExecuteProcedure(procedureNaam + " (@p_straat, @p_postcode, @p_woonplaats, @p_telefoonnummer, @p_email, @p_rekeningnummer, @p_sofinummer, @p_reserveringsnummer, @p_wachtwoord, @p_aanwezig, @p_naam)", new Dictionary<string, object>
+                //{
+                //    {"@p_straat", hoofdboeker.Straat},
+                //    {"@p_postcode", hoofdboeker.Postcode},
+                //    {"@p_woonplaats", hoofdboeker.Woonplaats},
+                //    {"@p_telefoonnummer", hoofdboeker.Telefoon},
+                //    {"@p_email", hoofdboeker.Email},
+                //    {"@p_rekeningnummer", hoofdboeker.Rekeningnummer},
+                //    {"@p_sofinummer", hoofdboeker.Sofinummer},
+                //    {"@p_reserveringsnummer", hoofdboeker.ReserveringNummer},
+                //    {"@p_wachtwoord", hoofdboeker.wachtwoord},
+                //    {"@p_aanwezig", hoofdboeker.Aanwezig},
+                //    {"@p_naam", hoofdboeker.Naam}
+                //});
             }
 
+
+            //string rfid;
+            //try
+            //{
+            //    rfid = Database.GetData("SELECT RFID FROM RFID_COL WHERE RFID NOT IN (SELECT RFID FROM PERSOON)").Rows[0]["RFID"].ToString();
+            //}
+            //catch
+            //{
+            //    throw new Exception("Geen beschikbaar RFID nummer voor persoon gevonden");
+            //}
+
+            //Database.Execute("INSERT INTO PERSOON (RFID, WACHTWOORD, TYPE, AANWEZIG, NAAM) VALUES (@rfid, @wachtwoord, @type, @aanwezig, @naam)", new Dictionary<string, object>
+            //    {
+            //        {"@rfid", rfid},
+            //        {"@wachtwoord", persoon.wachtwoord},
+            //        {"@type", type},
+            //        {"@aanwezig", persoon.Aanwezig ? "Y" : "N"},
+            //        {"@naam", persoon.Naam}
+            //    });
+
+            //if (persoon is Hoofdboeker)
+            //{
+            //    Hoofdboeker hoofdboeker = (Hoofdboeker)persoon;
+            //    Database.Execute("INSERT INTO KLANT_BETALEND (RFID, STRAAT, POSTCODE, WOONPLAATS, TELEFOON, EMAIL, REKENINGNUMMER, SOFINUMMER, RESERVERINGSNUMMER) VALUES (@rfid, @straat, @postcode, @woonplaats, @telefoon, @email, @rekeningnummer, @sofinummer, @reserveringsnummer)", new Dictionary<string, object>
+            //    {
+            //        {"@rfid", rfid},
+            //        {"@straat", hoofdboeker.Straat},
+            //        {"@postcode", hoofdboeker.Postcode},
+            //        {"@woonplaats", hoofdboeker.Woonplaats},
+            //        {"@telefoon", hoofdboeker.Telefoon},
+            //        {"@email", hoofdboeker.Email},
+            //        {"@rekeningnummer", hoofdboeker.Rekeningnummer},
+            //        {"@sofinummer", hoofdboeker.Sofinummer},
+            //        {"@reserveringsnummer",hoofdboeker.ReserveringNummer}
+            //    });
+            //}
+            //else if (persoon is Bijboeker)
+            //{
+            //    Bijboeker bijboeker = (Bijboeker)persoon;
+            //    Database.Execute("INSERT INTO KLANT (RFID, RESERVERINGSNUMMER) VALUES (@rfid, @reserveringsnummer)", new Dictionary<string, object>
+            //    {
+            //        {"@rfid", rfid},
+            //        {"@reserveringsnummer", bijboeker.ReserveringNummer}
+            //    });
+            //}
+            //else if(persoon is Medewerker)
+            //{
+            //    Medewerker medewerker = (Medewerker)persoon;
+            //    Database.Execute("INSERT INTO MEDEWERKER (RFID, FUNCTIE, REKENINGNUMMER) VALUES (@rfid, @functie, @rekeningnummer)", new Dictionary<string, object>
+            //    {
+            //        {"@rfid", rfid},
+            //        {"@functie", medewerker.Functie},
+            //        {"@rekeningnummer", medewerker.Rekeningnummer}
+            //    });
+            //}
+
             // Nummer van persoon goedzetten.
-            persoon.Nummer = rfid;
+            //persoon.Nummer = rfid;
         }
 
         // NOG TE MAKEN

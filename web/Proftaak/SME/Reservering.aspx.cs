@@ -16,7 +16,8 @@ namespace SME
 
         protected void ButtonNext_Click(object sender, EventArgs e)
         {
-            TbNaam.ForeColor = System.Drawing.Color.Green;
+            Hoofdboeker hoofdboeker = new Hoofdboeker(TbNaam.Text, TbStraat.Text, TbPostcode.Text, TbWoonplaats.Text, TbTelefoonnummer.Text, TbEmail.Text, TbRekeningnummer.Text, TbSofinummer.Text);
+            Persoon.AddPersoon(hoofdboeker);
         }
 
         protected void ButtonBack_Click(object sender, EventArgs e)
