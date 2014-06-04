@@ -25,7 +25,7 @@
     <br />
     <div class="row">
         <div class="col-md-3">
-            <asp:LinkButton runat="server" Style="font-size: 22px;" CssClass="glyphicon glyphicon-plus btn btn-primary" OnClick="ButtonVoegToe_Click" placeholder="" />
+            <asp:LinkButton runat="server" Style="font-size: 22px;" CssClass="glyphicon glyphicon-plus btn btn-primary" OnClick="ButtonVoegToe_Click" />
         </div>
         <div class="col-md-3">
             <asp:LinkButton runat="server" Style="font-size: 22px; margin-left: 60px;" CssClass="glyphicon glyphicon-arrow-right btn btn-large btn-primary" OnClick="ButtonNext_Click" />

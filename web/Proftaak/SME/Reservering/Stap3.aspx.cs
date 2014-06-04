@@ -16,7 +16,6 @@ namespace SME
             {
                 List<Kampeerplaats> Kampeerplaatsen = Kampeerplaats.GetVrijeKampeerplaatsen();
                 dropdown.DataSource = Kampeerplaatsen;
-                dropdown.DataBind();
                 dropdown.DataTextField = "Nummer";
                 dropdown.DataBind();
 
