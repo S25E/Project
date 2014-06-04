@@ -11,9 +11,7 @@ namespace SME
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-        //    MateriaalCategorie.GetMateriaalCategorieen();
-            List<MateriaalCategorie> categorieen = new List<MateriaalCategorie>();
-            foreach (MateriaalCategorie a in categorieen)
+            foreach (MateriaalCategorie a in MateriaalCategorie.GetMateriaalCategorieen())
             {
             // METHODE 1
                 CategorieList.Items.Add(a.Naam);
