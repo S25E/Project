@@ -6,7 +6,7 @@
        <div id="content">
     <div class="form-horizontal">
         <h1>Leen hier uw artiekelen</h1>
-        <asp:DropDownList ID="CategorieList" runat="server" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" Width="80px" DataTextField="Categorie" CssClass="dropdown">
+        <asp:DropDownList ID="CategorieList" runat="server" AutoPostBack="true" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" Width="80px" DataTextField="Categorie" CssClass="dropdown">
         </asp:DropDownList>
         <asp:DropDownList ID="ArtiekelList" runat="server" Width="200px" style="margin-left:91px;">
         </asp:DropDownList>
@@ -48,7 +48,7 @@
                     Tot uiterste datum:</div>
             </div>
             <div class="col-md-2">
-                <asp:Calendar ID="Calendar1" runat="server"></asp:Calendar>
+                <asp:Calendar ID="Calendar1" runat="server" style="width: 200px;"></asp:Calendar>
             </div>
         </div>
         <%--Einde 3e row--%>
