@@ -204,21 +204,22 @@ namespace SME
             {
                 Bijboeker bijboeker = (Bijboeker)persoon;
                 OracleCommand cmd = new OracleCommand();
-                cmd.Parameters.Add("p_naam", OracleDbType.Varchar2).Value = bijboeker.Naam;
+                cmd.Parameters.Add("p_reserveringsnummer", OracleDbType.Int32).Value = bijboeker.ReserveringNummer;
                 cmd.Parameters.Add("p_wachtwoord", OracleDbType.Varchar2).Value = bijboeker.wachtwoord;
                 cmd.Parameters.Add("p_aanwezig", OracleDbType.Varchar2).Value = "N";
-                cmd.Parameters.Add("p_reserveringsnummer", OracleDbType.Int32).Value = bijboeker.ReserveringNummer;
+                cmd.Parameters.Add("p_naam", OracleDbType.Varchar2).Value = bijboeker.Naam;
                 Database.ExecuteProcedure(cmd, procedureNaam);
             }
             else if(persoon is Medewerker)
             {
                 Medewerker medewerker = (Medewerker)persoon;
                 OracleCommand cmd = new OracleCommand();
-                cmd.Parameters.Add("p_naam", OracleDbType.Varchar2).Value = medewerker.Naam;
-                cmd.Parameters.Add("p_wachtwoord", OracleDbType.Varchar2).Value = medewerker.wachtwoord;
-                cmd.Parameters.Add("p_aanwezig", OracleDbType.Varchar2).Value = "N";
                 cmd.Parameters.Add("p_functie", OracleDbType.Varchar2).Value = medewerker.Functie;
                 cmd.Parameters.Add("p_rekeningnummer", OracleDbType.Int32).Value = medewerker.Rekeningnummer;
+                cmd.Parameters.Add("p_wachtwoord", OracleDbType.Varchar2).Value = medewerker.wachtwoord;
+                cmd.Parameters.Add("p_aanwezig", OracleDbType.Varchar2).Value = "N";
+                cmd.Parameters.Add("p_naam", OracleDbType.Varchar2).Value = medewerker.Naam;
+                Database.ExecuteProcedure(cmd, procedureNaam);
             }
         }
 

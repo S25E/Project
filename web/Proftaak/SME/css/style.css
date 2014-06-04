@@ -152,3 +152,8 @@ h1{
 .wizard-actions {
 	text-align: right;
 }
+
+.page-header
+{
+    border-bottom:0px;
+}

@@ -7,24 +7,32 @@
     <div id="content">
         <div class="page-header">
             <ul class="wizard-steps">
-                <li id="step1">
-                    <span class="step">1</span>
-                    <span class="title">Hoofdboeker</span>
+                <li id="step1" runat="server">
+                    <a href="Stap1.aspx">
+                        <span class="step">1</span>
+                        <span class="title">Hoofdboeker</span>
+                    </a>
                 </li>
 
-                <li id="step2">
-                    <span class="step">2</span>
-                    <span class="title">Bijboekers</span>
+                <li id="step2" runat="server">
+                    <a href="Stap2.aspx">
+                        <span class="step">2</span>
+                        <span class="title">Bijboekers</span>
+                    </a>
                 </li>
 
-                <li id="step3">
-                    <span class="step">3</span>
-                    <span class="title">Kampeerplaats</span>
+                <li id="step3" runat="server">
+                    <a href="Stap3.aspx">
+                        <span class="step">3</span>
+                        <span class="title">Kampeerplaats</span>
+                    </a>
                 </li>
 
-                <li id="step4">
-                    <span class="step">4</span>
-                    <span class="title">Materiaal</span>
+                <li id="step4" runat="server">
+                    <a href="Stap4.aspx">
+                        <span class="step">4</span>
+                        <span class="title">Materiaal</span>
+                    </a>
                 </li>
             </ul>
         </div>
