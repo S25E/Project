@@ -4,29 +4,36 @@
     <title>Toelating</title>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div style="background-color: rgba(255, 255, 255, 0.8); border-radius: 25px; overflow: visible; margin-top: 17.5%;" class="col-lg-4 col-lg-offset-4">
-        <div class="starter-template">
-            <h1>Welkom op SME</h1>
-            <div class="form-group">
-                <asp:Label Style="text-align: center;" runat="server" class="alert-info" ID="InfoLabel" ForeColor="Red" BackColor="Transparent" />
-                <asp:TextBox Style="text-align: center; width: 250px; margin-left: auto; margin-right: auto;" placeholder="RFID-Code" class="form-control" ID="RFIDCheck" onFocus="this.select()" runat="server" />
-                <br />
-                <asp:Button ID="ButtonCheck" runat="server" Text="Check" class="btn btn-success" OnClick="ButtonCheck_Click" />
+    <asp:LoginView ID="LoginView1" runat="server">
+        <LoggedInTemplate>
+            <div style="background-color: rgba(255, 255, 255, 0.8); border-radius: 25px; overflow: visible; margin-top: 17.5%;" class="col-lg-4 col-lg-offset-4">
+                <div class="starter-template">
+                    <h1>Welkom op SME</h1>
+                    <div class="form-group">
+                        <asp:Label Style="text-align: center;" runat="server" class="alert-info" ID="InfoLabel" ForeColor="Red" BackColor="Transparent" />
+                        <asp:TextBox Style="text-align: center; width: 250px; margin-left: auto; margin-right: auto;" placeholder="RFID-Code" class="form-control" ID="RFIDCheck" onFocus="this.select()" runat="server" />
+                        <br />
+                        <asp:Button ID="ButtonCheck" runat="server" Text="Check" class="btn btn-success" OnClick="ButtonCheck_Click" />
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
-    <div class="right" style="position: fixed; left: 80%; top: 5%; width: 20%;">
-        <asp:ListView runat="server" ID="AanwezigenList" class="list-group">
-            <ItemTemplate>
-                <asp:Label class="list-group-item dropdown" runat="server">
+            <div class="right" style="position: fixed; left: 80%; top: 5%; width: 20%;">
+                <asp:ListView runat="server" ID="AanwezigenList" class="list-group">
+                    <ItemTemplate>
+                        <asp:Label class="list-group-item dropdown" runat="server">
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#"><%#Eval("RFID") %> <b class="caret"></b></a>
                     <div style="padding: 10px 15px 15px 15px; width:100%;" class="navbar-right dropdown-menu dropdown-yellow dropdown-caret">
                         <asp:Label runat="server" > <%#Persoonstring(Eval("RFID").ToString()) %> </asp:Label>
                         
                         <button type="button" class="btn btn-success" style="width: 100%">Ok</button>
                     </div>
-                </asp:Label>
-            </ItemTemplate>
-        </asp:ListView>
-    </div>
+                        </asp:Label>
+                    </ItemTemplate>
+                </asp:ListView>
+            </div>
+        </LoggedInTemplate>
+        <AnonymousTemplate>
+            <p>Je moet ingelogd zijn om deze pagina te kunnen bekijken</p>
+        </AnonymousTemplate>
+    </asp:LoginView>
 </asp:Content>
