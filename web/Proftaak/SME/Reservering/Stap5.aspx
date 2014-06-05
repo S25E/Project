@@ -53,6 +53,6 @@
         </div>
     </div>
     <br />
-    <asp:LinkButton runat="server" CssClass="btn btn-primary glyphicon glyphicon-ok" OnClick="Bevestig_Click"></asp:LinkButton>
+    <asp:LinkButton runat="server" CssClass="btn btn-primary glyphicon glyphicon-ok btn-large" OnClick="Bevestig_Click"></asp:LinkButton>
 
 </asp:Content>

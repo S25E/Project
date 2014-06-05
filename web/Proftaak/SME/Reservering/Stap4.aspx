@@ -27,5 +27,5 @@
             <asp:ListBox runat="server" style="width:400px;" ID="ListboxGeselecteerd" AutoPostBack="true"></asp:ListBox>
         </div>
     </div>
-    <asp:LinkButton runat="server"  CssClass="btn btn-primary glyphicon glyphicon-ok" OnClick="Volgende_Click"></asp:LinkButton>
+    <asp:LinkButton runat="server"  CssClass="glyphicon glyphicon-arrow-right btn btn-large btn-primary" OnClick="Volgende_Click"></asp:LinkButton>
 </asp:Content>

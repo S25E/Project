@@ -22,8 +22,9 @@
                     </ItemTemplate>
                 </asp:Repeater>
             </ul>
+            <asp:Label runat="server" ID="Labelfoutmelding" ForeColor="Red"></asp:Label>
         </div>
     </div>
     <br />
-    <asp:LinkButton runat="server" OnClick="ButtonNext_Click" CssClass="btn btn-primary glyphicon glyphicon-arrow-right" ></asp:LinkButton>
+    <asp:LinkButton runat="server" OnClick="ButtonNext_Click" CssClass="glyphicon glyphicon-arrow-right btn btn-large btn-primary" ></asp:LinkButton>
 </asp:Content>

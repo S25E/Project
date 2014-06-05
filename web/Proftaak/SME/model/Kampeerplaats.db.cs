@@ -44,7 +44,7 @@ namespace SME
         public static List<Kampeerplaats> GetVrijeKampeerplaatsen()
         {
             List<Kampeerplaats> Kampeerplaatsen = new List<Kampeerplaats>();
-            DataTable dt = Database.GetData("SELECT PLAATSNUMMER, OPMERKINGEN FROM KAMPEERPLAATS WHERE PLAATSNUMMER NOT IN (SELECT PLAATSNUMMER FROM RESERVERING_PLAATS) ORDER BY PLAATSNUMMER");
+            DataTable dt = Database.GetData("SELECT PLAATSNUMMER, OPMERKINGEN FROM KAMPEERPLAATS WHERE PLAATSNUMMER NOT IN (SELECT PLAATSNUMMER FROM RESERVERING_PLAATS)");
             foreach(DataRow row in dt.Rows)
             {
                 Kampeerplaats kampeerplaats = new Kampeerplaats(Convert.ToInt32(row["PLAATSNUMMER"]));

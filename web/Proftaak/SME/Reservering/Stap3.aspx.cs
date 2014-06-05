@@ -15,6 +15,7 @@ namespace SME
             if (!IsPostBack)
             {
                 List<Kampeerplaats> Kampeerplaatsen = Kampeerplaats.GetVrijeKampeerplaatsen();
+                var sortedlist = Kampeerplaatsen.OrderBy(i => i.Nummer);
                 dropdown.DataSource = Kampeerplaatsen;
                 dropdown.DataTextField = "Nummer";
                 dropdown.DataBind();
@@ -28,14 +29,41 @@ namespace SME
                 }
             }
 
-            repeaterPlaatsen.DataSource = Session["Stap3"];
-            repeaterPlaatsen.DataBind();
+            if (Session["Stap3"] != null)
+            {
+                List<Bijboeker> Bijboekers = (List<Bijboeker>)Session["Stap2"];
+                double aantalPlaatsen = Math.Ceiling(Convert.ToDouble(Bijboekers.Count + 1) / 5);
+                List<Int32> plaatsen = (List<Int32>)Session["Stap3"];
+                if (aantalPlaatsen <= plaatsen.Count)
+                {
+                    ButtonSelecteer.Visible = false;
+                }
+                else
+                {
+                    ButtonSelecteer.Visible = true;
+                }
+                repeaterPlaatsen.DataSource = Session["Stap3"];
+                repeaterPlaatsen.DataBind();
+            }
         }
 
         protected void ButtonNext_Click(object sender, EventArgs e)
         {
-
-            Response.Redirect("Stap4.aspx");
+            if (Session["Stap3"] != null)
+            {
+                List<Bijboeker> Bijboekers = (List<Bijboeker>)Session["Stap2"];
+                double aantalPlaatsen = Math.Ceiling(Convert.ToDouble(Bijboekers.Count + 1) / 5);
+                List<Int32> plaatsen = (List<Int32>)Session["Stap3"];
+                if (aantalPlaatsen <= plaatsen.Count)
+                {
+                    Response.Redirect("Stap4.aspx");
+                }
+                else
+                {
+                    Labelfoutmelding.Text = "Voeg nog een kampeerplaats toe.";
+                }
+            }
+            
         }
 
         protected void LaadOpmerking(object sender, EventArgs e)
@@ -51,10 +79,18 @@ namespace SME
             {
                 Kampeerplaatsen = new List<int>();
             }
-            int kampeerplaats = Convert.ToInt32(dropdown.Text);
-            Kampeerplaatsen.Add(kampeerplaats);
-            Session["Stap3"] = Kampeerplaatsen;
-            Response.Redirect("Stap3.aspx");
+
+            if (!Kampeerplaatsen.Contains(Convert.ToInt32(dropdown.Text)))
+            {
+                int kampeerplaats = Convert.ToInt32(dropdown.Text);
+                Kampeerplaatsen.Add(kampeerplaats);
+                Session["Stap3"] = Kampeerplaatsen;
+                Response.Redirect("Stap3.aspx");
+            }
+            else
+            {
+                Labelfoutmelding.Text = "U heeft deze plaats al geselecteerd, selecteer een andere plaats.";
+            }
         }
     }
 }

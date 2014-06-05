@@ -67,15 +67,11 @@ namespace SME
             //kampeerplaatsen
             //materialen
             //alles toevoegen aan de database
-
-            Response.Write(Session["Stap1"]);
-            Response.Write(Session["Stap2"]);
-            Response.Write(Session["Stap3"]);
-            Response.Write(Session["Stap4"]);
             Session["Stap1"] = null;
             Session["Stap2"] = null;
             Session["Stap3"] = null;
             Session["Stap4"] = null;
+            Response.Redirect("Stap1.aspx");
         }
     }
 }
