@@ -35,7 +35,8 @@ namespace SME
 
         protected void Bevestigknop_Click(object sender, EventArgs e)
         {
-            MateriaalBeheer.LeenUit(Convert.ToInt32(ArtiekelList.SelectedItem.Text), Convert.ToInt32(TbRFID.Text), Convert.ToInt32(TbAantal.Text));
+
+            MateriaalBeheer.LeenUit(ArtiekelList.SelectedItem.ToString(), Convert.ToInt32(TbRFID.Text), Convert.ToInt32(TbAantal.Text));
         }
 
         protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
@@ -44,7 +45,9 @@ namespace SME
             ArtiekelList.Items.Clear();
             foreach(Materiaal materiaal in Materiaal.GetMaterialenBijCategorie(materiaalcategorie))
             {
-                ArtiekelList.Items.Add(new ListItem(materiaal.Naam, materiaal.Barcode));
+                string totaal = (materiaal.Barcode.ToString() + ": " + materiaal.Naam.ToString() + ", aantal: " + materiaal.Aantal.ToString());
+                ArtiekelList.Items.Add(totaal);
+               // ArtiekelList.Items.Add(new ListItem(materiaal.Naam, materiaal.Barcode));
             }
             CategorieList.SelectedValue = materiaalcategorie.Naam;
             //CategorieList
