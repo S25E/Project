@@ -11,6 +11,18 @@ namespace SME
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if(Session["Stap1"] != null)
+            {
+                Hoofdboeker hoofdboeker = (Hoofdboeker)Session["Stap1"];
+                TbNaam.Text = hoofdboeker.Naam;
+                TbTelefoonnummer.Text = hoofdboeker.Telefoon;
+                TbPostcode.Text = hoofdboeker.Postcode;
+                TbWoonplaats.Text = hoofdboeker.Woonplaats;
+                TbStraat.Text = hoofdboeker.Straat;
+                TbEmail.Text = hoofdboeker.Email;
+                TbRekeningnummer.Text = hoofdboeker.Rekeningnummer;
+                TbSofinummer.Text = hoofdboeker.Sofinummer;
+            }
 
         }
 

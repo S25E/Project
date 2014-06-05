@@ -88,10 +88,10 @@ namespace SME
             this.Betaald = true;
         }
 
-        /*public void AddMateriaal(Materiaal materiaal)
-        {
-            Reservering.AddMateriaal(materiaal);
-        }*/
+        //public void AddMateriaal(Materiaal materiaal)
+        //{
+        //    Reservering.AddMateriaal(materiaal);
+        //}
 
         // NOG TE MAKEN
         public void Delete()
