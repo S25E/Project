@@ -37,21 +37,22 @@ namespace SME
             });
         }
 
-        private static DataTable getMaterialenByWhere(string where, Dictionary<string, object> parameters = default(Dictionary<string, object>)){
+        private static DataTable getMaterialenByWhere(string where, Dictionary<string, object> parameters = default(Dictionary<string, object>))
+        {
 
             return Database.GetData("SELECT * FROM Materiaal" + (where != "" ? " WHERE " + where : ""), parameters);
 
         }
 
         public static Materiaal rowToMateriaal(DataRow row)
-           
         {
             return new Materiaal(row["BARCODE"].ToString(), row["NAAM"].ToString(), Convert.ToInt32(row["AANTAL"]), Convert.ToInt32(row["VERHUURPRIJS"]), row["OMSCHRIJVING"].ToString(), row["CATEGORIE"].ToString());
         }
 
         public static Materiaal GetMateriaalBijBarcode(int barcode)
         {
-            foreach(DataRow row in getMaterialenByWhere("barcode = " + barcode).Rows){
+            foreach (DataRow row in getMaterialenByWhere("barcode = " + barcode).Rows)
+            {
                 return rowToMateriaal(row);
             }
 
@@ -62,7 +63,7 @@ namespace SME
         {
             List<Materiaal> materialen = new List<Materiaal>();
 
-            foreach(DataRow row in getMaterialenByWhere("categorie = @categorie", new Dictionary<string,object>(){
+            foreach (DataRow row in getMaterialenByWhere("categorie = @categorie", new Dictionary<string, object>(){
                {"@categorie", materiaalcategorie.Naam} 
             }).Rows)
             {
@@ -71,5 +72,19 @@ namespace SME
 
             return materialen;
         }
+
+        /*public static List<string> GetMaterialenBijCategorie(string materiaalcategorie)
+        {
+            List<string> materialen = new List<string>();
+            foreach (DataRow row in Database.GetData("SELECT NAAM, CATEGORIE, AANTAL - NVL((SELECT SUM(aantal) FROM UITLENING WHERE MATERIAAL.BARCODE = UITLENING.BARCODE AND DATUM_INGELEVERD IS NULL), 0) as AAP FROM MATERIAAL").Rows)
+            {
+               if (materiaalcategorie == row["CATEGORIE"].ToString())
+               {
+                   materialen.Add(row["NAAM"].ToString() + ", " + row["AAP"].ToString()); 
+               }
+            }
+
+            return materialen;
+        }*/
     }
 }

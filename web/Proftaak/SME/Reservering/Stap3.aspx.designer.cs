@@ -13,12 +13,39 @@ namespace SME {
     public partial class Stap3 {
         
         /// <summary>
-        /// Volgende control.
+        /// dropdown control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Volgende;
+        protected global::System.Web.UI.WebControls.DropDownList dropdown;
+        
+        /// <summary>
+        /// TbOpmerking control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TbOpmerking;
+        
+        /// <summary>
+        /// ButtonSelecteer control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton ButtonSelecteer;
+        
+        /// <summary>
+        /// repeaterPlaatsen control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater repeaterPlaatsen;
     }
 }

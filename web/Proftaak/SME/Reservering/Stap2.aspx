@@ -11,14 +11,6 @@
         </div>
         <div class="col-md-2">
             <asp:TextBox Style="text-align: left; width: 200px; margin-left: auto; margin-right: auto;" placeholder="Naam" class="form-control" ID="TbBijboekersNaam" runat="server" />
-            &nbsp;
-            <asp:RequiredFieldValidator ID="RequiredFieldValidator1"
-                ControlToValidate="TbBijboekersNaam"
-                Display="Dynamic"
-                ErrorMessage="Vul het veld in."
-                ForeColor="Red"
-                ValidationGroup="validation1"
-                runat="server" />
         </div>
         <div class="col-xs-5" style="margin-left: 200px;">
             <ul class="list-group">
@@ -33,11 +25,10 @@
     <br />
     <div class="row">
         <div class="col-md-3">
-            <asp:LinkButton runat="server" Style="font-size: 22px;" CssClass="glyphicon glyphicon-plus btn btn-primary" OnClick="ButtonVoegToe_Click" placeholder="" />
+            <asp:LinkButton runat="server" Style="font-size: 22px;" CssClass="glyphicon glyphicon-plus btn btn-primary" OnClick="ButtonVoegToe_Click" />
         </div>
         <div class="col-md-3">
             <asp:LinkButton runat="server" Style="font-size: 22px; margin-left: 60px;" CssClass="glyphicon glyphicon-arrow-right btn btn-large btn-primary" OnClick="ButtonNext_Click" />
         </div>
     </div>
-    <%-- <asp:Button ID="Volgende" runat="server" OnClick="Volgende_Click" Text="Button" />--%>
 </asp:Content>

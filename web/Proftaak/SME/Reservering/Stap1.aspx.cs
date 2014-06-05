@@ -25,9 +25,7 @@ namespace SME
             if (Page.IsValid)
             {
                 Hoofdboeker hoofdboeker = new Hoofdboeker(TbNaam.Text, TbStraat.Text, TbPostcode.Text, TbWoonplaats.Text, TbTelefoonnummer.Text, TbEmail.Text, TbRekeningnummer.Text, TbSofinummer.Text);
-                Session["hoofdboeker"] = hoofdboeker;
-
-                Session["Stap1"] = "stapke1";
+                Session["Stap1"] = hoofdboeker;
                 Response.Redirect("Stap2.aspx");
             }
         }
