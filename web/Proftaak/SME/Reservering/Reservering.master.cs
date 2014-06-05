@@ -28,6 +28,10 @@ namespace SME
             {
                 step4.Attributes.Add("class", "active");
             }
+            else if (this.Page is Stap5)
+            {
+                step5.Attributes.Add("class", "active");
+            }
 
             if (Session["Stap1"] != null)
             {
@@ -44,6 +48,10 @@ namespace SME
             if (Session["Stap4"] != null)
             {
                 step4.Attributes.Add("class", "complete");
+            }
+            if (Session["Stap5"] != null)
+            {
+                step5.Attributes.Add("class", "complete");
             }
         }
     }
