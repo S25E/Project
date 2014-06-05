@@ -74,6 +74,7 @@
     <Content Include="fonts\festival\festival.svg" />
     <Content Include="fonts\glyphicons\glyphicons-halflings-regular.svg" />
     <Content Include="img\background.jpg" />
+    <Content Include="img\plattegrond camping zonder nummers.png" />
     <Content Include="js\bootstrap.min.js" />
     <Content Include="Login.aspx" />
     <Content Include="Reservering.aspx" />
@@ -81,6 +82,7 @@
     <Content Include="Reservering\Stap2.aspx" />
     <Content Include="Reservering\Stap3.aspx" />
     <Content Include="Reservering\Stap4.aspx" />
+    <Content Include="Reservering\Stap5.aspx" />
     <Content Include="Standaard.Master" />
     <Content Include="fonts\festival\festival.eot" />
     <Content Include="fonts\festival\festival.ttf" />
@@ -203,6 +205,13 @@
     </Compile>
     <Compile Include="Reservering\Stap4.aspx.designer.cs">
       <DependentUpon>Stap4.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reservering\Stap5.aspx.cs">
+      <DependentUpon>Stap5.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reservering\Stap5.aspx.designer.cs">
+      <DependentUpon>Stap5.aspx</DependentUpon>
     </Compile>
     <Compile Include="Standaard.Master.cs">
       <DependentUpon>Standaard.Master</DependentUpon>

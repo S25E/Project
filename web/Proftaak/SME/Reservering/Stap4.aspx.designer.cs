@@ -13,12 +13,30 @@ namespace SME {
     public partial class Stap4 {
         
         /// <summary>
-        /// Volgende control.
+        /// DropdownCategorieen control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Volgende;
+        protected global::System.Web.UI.WebControls.DropDownList DropdownCategorieen;
+        
+        /// <summary>
+        /// ListBoxMaterialen control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ListBox ListBoxMaterialen;
+        
+        /// <summary>
+        /// ListboxGeselecteerd control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ListBox ListboxGeselecteerd;
     }
 }
