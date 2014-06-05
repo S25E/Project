@@ -9,12 +9,13 @@ namespace SME
     public partial class MateriaalBeheer
     {
 
-        public static void Leenuit(int Barcode, int rfid, int aantal)
+        public static void Leenuit(string Barcode, int rfid, int aantal)
         {
+            string First = Barcode.Substring(0, Barcode.IndexOf(","));
             Database.Execute("INSERT INTO UITLENING (RESERVERINGNUMMER, BARCODE, DATUM_UITGELEEND, DATUM_INGELEVERD, AANTAL) VALUES (@reserveringnummer, @barcode, @datum_uitgeleend, @datum_ingeleverd, @aantal)", new Dictionary<string, object>()
         {
             {"@reserveringnummer", rfid},
-            {"@barcode", Barcode},
+            {"@barcode", First},
             {"@datum_uitgeleend", DateTime.Today},
             {"@datum_ingeleverd", null},
             {"@aantal", aantal}
@@ -31,14 +32,13 @@ namespace SME
             
             if ( (nummer - aantal) >= 1 )
             {
-                Database.Execute("UPDATTE UITLENING SET aantal = aantal - " + aantal); 
+                Database.Execute("UPDATE UITLENING SET aantal = aantal - " + aantal); 
             }
             else
             {
-            Database.Execute("DELETE FROM UITLENING WHERE BARCODE = @BARCODE AND RESERVERINGNUMMER = @RESERVERINGNUMMER)", new Dictionary<string, object>()
+            Database.Execute("UPDATE UITLENING SET DATUM_INGELEVERD = @DATUM)", new Dictionary<string, object>()
             {
-                {"@barcode", materiaal.Barcode},
-                {"@reserveringnummer", persoon.Nummer}
+                {"@DATUM", DateTime.Today}
             });
             }
         }
