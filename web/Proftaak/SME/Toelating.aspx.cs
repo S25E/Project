@@ -63,8 +63,8 @@ namespace SME
                 InfoLabel.ForeColor = System.Drawing.Color.Red;
                 InfoLabel.Text = "U bent niet bekend in ons systeem";
             }
-            Response.Redirect("Toelating.aspx");
             RFIDCheck.Focus();
+            AanwezigenList.DataBind();
         }
 
         public string Persoonstring(string rfid)
