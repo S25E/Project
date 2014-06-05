@@ -24,12 +24,15 @@ namespace SME
 
                 if (Session["Stap2"] == null)
                 {
-                    Response.Redirect("Stap2.aspx");
+                    //Response.Redirect("Stap2.aspx");
                 }
             }
 
             repeaterPlaatsen.DataSource = Session["Stap3"];
             repeaterPlaatsen.DataBind();
+
+            KampeerplaatsenLijst.DataSource = Kampeerplaats.GetKampeerplaatsen();
+            KampeerplaatsenLijst.DataBind();
         }
 
         protected void ButtonNext_Click(object sender, EventArgs e)

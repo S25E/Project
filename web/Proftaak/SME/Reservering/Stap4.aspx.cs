@@ -44,16 +44,7 @@ namespace SME
         }
         protected void Volgende_Click(object sender, EventArgs e)
         {
-            //nog af maken, stored procedures aanroepen, of naar het overzicht gaan.
-
-            Response.Write(Session["Stap1"]);
-            Response.Write(Session["Stap2"]);
-            Response.Write(Session["Stap3"]);
-            Response.Write(Session["Stap4"]);
-            Session["Stap1"] = null;
-            Session["Stap2"] = null;
-            Session["Stap3"] = null;
-            Session["Stap4"] = null;
+            Response.Redirect("Stap5.aspx");
         }
 
         protected void LaadMaterialen(object sender, EventArgs e)

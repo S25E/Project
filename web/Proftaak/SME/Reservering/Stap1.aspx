@@ -182,11 +182,7 @@
 
     <div class="row class1">
         <div class="col-md-3">
-            <asp:LinkButton runat="server" Style="font-size: 22px;" CssClass="glyphicon glyphicon-arrow-left btn btn-large btn-primary" OnClick="ButtonBack_Click" />
-        </div>
-
-        <div class="col-md-3">
-            <asp:LinkButton runat="server" Style="font-size: 22px; margin-left: 60px;" CssClass="glyphicon glyphicon-arrow-right btn btn-large btn-primary" OnClick="ButtonNext_Click" />
+            <asp:LinkButton runat="server" Style="font-size: 22px; margin-left: 325px;" CssClass="glyphicon glyphicon-arrow-right btn btn-large btn-primary" OnClick="ButtonNext_Click" />
         </div>
     </div>
 </asp:Content>
