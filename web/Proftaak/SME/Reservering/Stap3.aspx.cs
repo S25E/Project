@@ -42,9 +42,9 @@ namespace SME
                 {
                     ButtonSelecteer.Visible = true;
                 }
-                repeaterPlaatsen.DataSource = Session["Stap3"];
-                repeaterPlaatsen.DataBind();
-            }
+            repeaterPlaatsen.DataSource = Session["Stap3"];
+            repeaterPlaatsen.DataBind();
+        }
         }
 
         protected void ButtonNext_Click(object sender, EventArgs e)
@@ -63,7 +63,7 @@ namespace SME
                     Labelfoutmelding.Text = "Voeg nog een kampeerplaats toe.";
                 }
             }
-            
+
         }
 
         protected void LaadOpmerking(object sender, EventArgs e)
@@ -82,11 +82,11 @@ namespace SME
 
             if (!Kampeerplaatsen.Contains(Convert.ToInt32(dropdown.Text)))
             {
-                int kampeerplaats = Convert.ToInt32(dropdown.Text);
-                Kampeerplaatsen.Add(kampeerplaats);
-                Session["Stap3"] = Kampeerplaatsen;
-                Response.Redirect("Stap3.aspx");
-            }
+            int kampeerplaats = Convert.ToInt32(dropdown.Text);
+            Kampeerplaatsen.Add(kampeerplaats);
+            Session["Stap3"] = Kampeerplaatsen;
+            Response.Redirect("Stap3.aspx");
+        }
             else
             {
                 Labelfoutmelding.Text = "U heeft deze plaats al geselecteerd, selecteer een andere plaats.";

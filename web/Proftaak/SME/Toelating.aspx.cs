@@ -39,9 +39,9 @@ namespace SME
                         InfoLabel.Text = "U heeft nog niet betaald!";
                     }
                 }
-                else 
-                { 
-                    if(persoon is Medewerker)
+                else
+                {
+                    if (persoon is Medewerker)
                     {
                         persoon.Aanwezig = !persoon.Aanwezig;
                         RFIDCheck.ForeColor = System.Drawing.Color.Black;
@@ -57,14 +57,14 @@ namespace SME
                     }
                 }
             }
-            catch 
+            catch
             {
                 RFIDCheck.ForeColor = System.Drawing.Color.Red;
                 InfoLabel.ForeColor = System.Drawing.Color.Red;
                 InfoLabel.Text = "U bent niet bekend in ons systeem";
             }
             RFIDCheck.Focus();
-            AanwezigenList.DataBind();
+            DataBinderts();
         }
 
         public string Persoonstring(string rfid)
@@ -76,13 +76,13 @@ namespace SME
             }
             else
             {
-                if(current is Bijboeker)
+                if (current is Bijboeker)
                 {
                     return "RFID: " + current.Nummer + "<br />" + "Naam: " + current.Naam + "<br />" + "Resnr: " + (current as Bijboeker).ReserveringNummer;
                 }
                 else
                 {
-                    if(current is Medewerker)
+                    if (current is Medewerker)
                     {
                         return "RFID: " + current.Nummer + "<br />" + "Naam: " + current.Naam + "<br />" + "Functie: " + (current as Medewerker).Functie + "<br />" + "Rekeningnr: " + (current as Medewerker).Rekeningnummer;
                     }
@@ -92,7 +92,13 @@ namespace SME
                     }
                 }
             }
-            
+
+        }
+
+        public void DataBinderts()
+        {
+            AanwezigenList.DataSource = Persoon.GetAanwezigePersonen();
+            AanwezigenList.DataBind();
         }
     }
 }

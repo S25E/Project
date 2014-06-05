@@ -21,14 +21,18 @@ namespace SME
         public static List<Kampeerplaats> GetKampeerplaatsen()
         {
             List<Kampeerplaats> kampeerplaatsen = new List<Kampeerplaats>();
+            List<Kampeerplaats> vrij = GetVrijeKampeerplaatsen();
             foreach (DataRow row in Database.GetData("SELECT PLAATSNUMMER, COORDINAAT_X AS x, COORDINAAT_Y AS y, PRIJS, OPMERKINGEN FROM KAMPEERPLAATS").Rows)
             {
-                kampeerplaatsen.Add(new Kampeerplaats(Convert.ToInt32(row["PLAATSNUMMER"]), Convert.ToInt32(row["x"]), Convert.ToInt32(row["y"]), Convert.ToInt32(row["PRIJS"]), row["OPMERKINGEN"].ToString()));
+                int plaatsnummer = Convert.ToInt32(row["PLAATSNUMMER"]);
+                Kampeerplaats kampeerplaats = new Kampeerplaats(Convert.ToInt32(row["PLAATSNUMMER"]), Convert.ToInt32(row["x"]), Convert.ToInt32(row["y"]), Convert.ToInt32(row["PRIJS"]), row["OPMERKINGEN"].ToString());
+                kampeerplaats.IsBeschikbaar = vrij.Find(a => a.Nummer == plaatsnummer) != null;
+                kampeerplaatsen.Add(kampeerplaats);
             }
             return kampeerplaatsen;
         }
 
-        public static bool IsBeschikbaar(int nummer)
+        public static bool CheckBeschikbaarheid(int nummer)
         {
             if(Database.GetData("SELECT RESERVERINGSNUMMER FROM RESERVERING_PLAATS WHERE PLAATSNUMMER =" + nummer).Rows.Count == 0)
             {
