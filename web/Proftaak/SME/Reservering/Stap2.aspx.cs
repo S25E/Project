@@ -18,10 +18,9 @@ namespace SME
             }
             else
             {
-                if (Session["bijboekers"] != null)
+                if (Session["Stap2"] != null)
                 {
-                    Bijboekers = (List<Bijboeker>)Session["bijboeker"];
-                    repeaterBijboekersNaam.DataSource = Bijboekers;
+                    repeaterBijboekersNaam.DataSource = Session["Stap2"];
                     repeaterBijboekersNaam.DataBind();
                 }
             }
@@ -33,22 +32,21 @@ namespace SME
             Page.Validate();
             if (Page.IsValid)
             {
-                Session["Stap2"] = "Stapke2";
-
                 Response.Redirect("Stap3.aspx");
             }
         }
 
         protected void ButtonVoegToe_Click(object sender, EventArgs e)
         {
-            Bijboekers = (List<Bijboeker>)Session["bijboekers"];
+            Bijboekers = (List<Bijboeker>)Session["Stap2"];
             if (Bijboekers == null)
             {
                 Bijboekers = new List<Bijboeker>();
             }
             Bijboeker bijboeker = new Bijboeker(TbBijboekersNaam.Text);
             Bijboekers.Add(bijboeker);
-            Session["bijboekers"] = Bijboekers;
+            Session["Stap2"] = Bijboekers;
+            Response.Redirect("Stap2.aspx");
         }
     }
 }
