@@ -14,11 +14,13 @@ namespace SME
         {
             if (!IsPostBack)
             {
-                List<Kampeerplaats> Kampeerplaatsen = Kampeerplaats.GetVrijeKampeerplaatsen();
-                var sortedlist = Kampeerplaatsen.OrderBy(i => i.Nummer);
+                List<Kampeerplaats> Kampeerplaatsen = Kampeerplaats.GetKampeerplaatsen();
                 dropdown.DataSource = Kampeerplaatsen;
                 dropdown.DataTextField = "Nummer";
                 dropdown.DataBind();
+
+                KampeerplaatsenLijst.DataSource = Kampeerplaatsen;
+                KampeerplaatsenLijst.DataBind();
 
                 Kampeerplaats kampeerplaats = Kampeerplaats.GetKampeerplaatsBijNummer(Convert.ToInt32(dropdown.Text));
                 TbOpmerking.Text = kampeerplaats.Opmerking;
