@@ -32,7 +32,10 @@ namespace SME
             
             if ( (nummer - aantal) >= 1 )
             {
-                Database.Execute("UPDATE UITLENING SET aantal = aantal - " + aantal); 
+                Database.Execute("UPDATE UITLENING SET aantal = aantal - @AANTAL)", new Dictionary<string, object>()
+                {
+                    {"@AANTAL", aantal}
+                });
             }
             else
             {
