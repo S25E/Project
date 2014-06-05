@@ -15,8 +15,8 @@
             </div>
         </div>
     </div>
-    <div class="right" style="position: fixed; left: 80%; top: 5%; width: 20%;">
-        <asp:ListView runat="server" ID="AanwezigenList" class="list-group">
+    <div class="right" style="position: fixed; left: 80%; top: 5%; width: 20%; max-height:90%; overflow-y:scroll;">
+        <asp:ListView runat="server" ID="AanwezigenList" class="list-group" style="overflow-y:auto; height:100%;">
             <ItemTemplate>
                 <div class="panel-group" id="accordion">
                     <div class="panel panel-default">
@@ -26,7 +26,7 @@
                                 </a>
                             </h4>
                         </div>
-                        <div id='<%#Eval("RFID").ToString() %>' class="panel-collapse collapse out">
+                        <div id='<%#Eval("RFID").ToString() %>' data-parent="#accordion" class="panel-collapse collapse out">
                             <asp:Label runat="server"> <%#Persoonstring(Eval("RFID").ToString()) %> </asp:Label>
                             <div class="panel-body">
                             </div>
