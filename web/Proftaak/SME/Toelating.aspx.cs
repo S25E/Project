@@ -14,6 +14,7 @@ namespace SME
             this.Title = Site1.UpdateTitle("Toelating");
             AanwezigenList.DataSource = Persoon.GetAanwezigePersonen();
             AanwezigenList.DataBind();
+            RFIDCheck.Focus();
         }
 
         protected void ButtonCheck_Click(object sender, EventArgs e)
@@ -62,7 +63,7 @@ namespace SME
                 InfoLabel.ForeColor = System.Drawing.Color.Red;
                 InfoLabel.Text = "U bent niet bekend in ons systeem";
             }
-
+            Response.Redirect("Toelating.aspx");
             RFIDCheck.Focus();
         }
 
