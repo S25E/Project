@@ -52,5 +52,18 @@ namespace SME
             CategorieList.SelectedValue = materiaalcategorie.Naam;
             //CategorieList
         }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            Persoon p = Persoon.GetPersoonBijRFID(RFIDinleverBox.Text);
+            List<Materiaal> materialen = new List<Materiaal>();
+            foreach (Materiaal a in materialen)
+            {
+                if (a.Barcode == ArtiekelList.SelectedValue.Substring(0, ArtiekelList.SelectedValue.IndexOf(",")))
+                {
+                    MateriaalBeheer.Brengterug(a, p, Convert.ToInt32(AantalInleverBox.Text));
+                }
+            }
+        }
     }
 }

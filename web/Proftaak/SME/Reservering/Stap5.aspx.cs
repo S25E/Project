@@ -51,6 +51,23 @@ namespace SME
 
         protected void Bevestig_Click(object sender, EventArgs e)
         {
+            Hoofdboeker Hoofdboeker = (Hoofdboeker)Session["Stap1"];
+            List<Bijboeker> Bijboekers = (List<Bijboeker>)Session["Stap2"];
+            List<Int32> Kampeerplaatsen = (List<Int32>)Session["Stap3"];
+            List<Int32> Materialen = (List<Int32>)Session["Stap4"];
+
+            Reservering reservering = new Reservering();
+            ReserveringBeheer.AddReservering(reservering, Hoofdboeker);
+            
+            foreach(Bijboeker bijboeker in Bijboekers)
+            {
+                reservering.AddBijboeker(bijboeker);
+            }
+
+            //kampeerplaatsen
+            //materialen
+            //alles toevoegen aan de database
+
             Response.Write(Session["Stap1"]);
             Response.Write(Session["Stap2"]);
             Response.Write(Session["Stap3"]);

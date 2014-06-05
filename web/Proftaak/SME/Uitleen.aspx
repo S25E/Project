@@ -6,15 +6,62 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
+    <div style="position:fixed; left: 50%; top: 21%; width: 50%;">
 
-    <div id="content">
+    <h1>Lever hier uw artiekelen in</h1>
+
+            <br />
+            <br />
+                    <div class="row class1">
+                <div class="col-md-2" style="height: 34px; top: 0px; left: 0px;">
+                    <div class="control-group row-fluid form-inline">
+                        <asp:Label runat="server" ID="Label1">Aantal:</asp:Label>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <asp:TextBox Style="text-align: left; width: 200px; margin-left: auto; margin-right: auto;" placeholder="Aantal" class="form-control" ID="AantalInleverBox" runat="server" />
+                </div>
+            </div>
+            <%--Einde 1e row--%>
+            <br />
+
+            <%--Begin 2e row--%>
+            <div class="row class1">
+                <div class="col-md-2">
+                    <div class="control-group row-fluid form-inline">
+                        <asp:Label runat="server" ID="Label2">RFID:</asp:Label>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <asp:TextBox Style="text-align: left; width: 200px; margin-left: auto; margin-right: auto;" placeholder="RFID" class="form-control" ID="RFIDinleverBox" runat="server" />
+                </div>
+            </div>
+            <%--Einde 2e row--%>
+            <br />
+
+            <%--Begin 3e row--%>
+            <div class="row class1">
+                <div class="col-md-2">
+                                    <asp:ListBox width="340px" Height="160px" ID="ListBox1" runat="server"></asp:ListBox>
+                    </div>
+                </div>
+        <br />
+                    <asp:Button ID="Button1" runat="server" Text="Button" OnClick="Button1_Click" />
+
+            </div>
+            <%--Einde 3e row--%>
+            <br />
+
+    </div>
+    <div id="content" style="width=50%;">
 
 
-        <div class="form-horizontal">
-            <h1>Leen hier uw artiekelen</h1>
-            <asp:DropDownList ID="CategorieList" runat="server" AutoPostBack="true" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" Width="80px" DataTextField="Categorie" CssClass="dropdown">
+        <div style="width: 50%;" class="form-horizontal">
+            <h1>Leen hier uw artiekelen</h1>             
+
+            <asp:DropDownList ID="CategorieList" runat="server" AutoPostBack="true"  OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" Width="80px" DataTextField="Categorie" CssClass="dropdown">
             </asp:DropDownList>
-            <asp:DropDownList ID="ArtiekelList" runat="server" Width="200px" Style="margin-left: 91px;">
+            <asp:DropDownList ID="ArtiekelList" runat="server" Width="180px" Style="margin-left: 25px;">
             </asp:DropDownList>
             <br />
             <br />
@@ -48,21 +95,20 @@
             <br />
 
             <%--Begin 3e row--%>
-            <div class="row class1">
-                <div class="col-md-2">
-                    <div class="control-group row-fluid form-inline">
-                        Tot uiterste datum:
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <asp:Calendar ID="Calendar1" runat="server" Style="width: 200px;"></asp:Calendar>
-                </div>
-            </div>
-            <%--Einde 3e row--%>
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
             <br />
 
 
-            <asp:Button ID="Bevestigknop" runat="server" Text="Bevestig" OnClick="Bevestigknop_Click" />
+
+            <asp:Button ID="Bevestigknop" runat="server" Text="Bevestig" OnClick="Bevestigknop_Click" Width="86px" CssClass="btn btn-primary" />
+
 
         </div>
     </div>
