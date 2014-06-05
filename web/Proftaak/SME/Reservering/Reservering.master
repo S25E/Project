@@ -35,6 +35,13 @@
                         <span class="title">Materiaal</span>
                     </a>
                 </li>
+
+                <li id="stap5" runat="server">
+                    <a href="Stap5.aspx">
+                        <span class="step">5</span>
+                        <span class="title">Bevestigen</span>
+                    </a>
+                </li>
             </ul>
         </div>
         <asp:ContentPlaceHolder ID="ContentPlaceHolder3" runat="server">

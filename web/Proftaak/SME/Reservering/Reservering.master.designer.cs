@@ -49,6 +49,15 @@ namespace SME {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl step4;
         
         /// <summary>
+        /// stap5 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl stap5;
+        
+        /// <summary>
         /// ContentPlaceHolder3 control.
         /// </summary>
         /// <remarks>
