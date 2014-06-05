@@ -27,7 +27,26 @@ namespace SME
             get; 
             private set; 
         }
-        
+
+        private bool isbeschikbaar;
+        public bool IsBeschikbaar
+        {
+            get
+            {
+                if (this.isbeschikbaar != default(bool))
+                {
+                    return this.isbeschikbaar;
+                }
+                else
+                {
+                    return this.isbeschikbaar = Kampeerplaats.CheckBeschikbaarheid(this.Nummer);
+                }
+            }
+            set
+            {
+                this.isbeschikbaar = value;
+            }
+        }
         
         /// <summary>
         /// Constructor, deze wordt gebruikt voor het ophalen van de kampeerplaatsen
@@ -55,11 +74,6 @@ namespace SME
         public Kampeerplaats(int Nummer)
         {
             this.Nummer = Nummer;
-        }
-
-        public bool IsBeschikbaar()
-        {
-            return Kampeerplaats.IsBeschikbaar(this.Nummer);
         }
     }
 }
