@@ -36,7 +36,7 @@
                     </a>
                 </li>
 
-                <li id="stap5" runat="server">
+                <li id="step5" runat="server">
                     <a href="Stap5.aspx">
                         <span class="step">5</span>
                         <span class="title">Bevestigen</span>
