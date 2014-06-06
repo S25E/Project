@@ -6,9 +6,15 @@
     <div id="content">
         <div class="row">
             <div class="col-xs-6">
-                <asp:DropDownList ID="Categorie" runat="server" CssClass="form-control" OnSelectedIndexChanged="Categorie_SelectedIndexChanged"></asp:DropDownList>
+                <asp:DropDownList ID="Categorie" runat="server" CssClass="form-control" OnSelectedIndexChanged="Categorie_SelectedIndexChanged" AutoPostBack="True"></asp:DropDownList>
+                <ul>
+                    <asp:ListView runat="server" ID="Bestanden">
+                        <ItemTemplate>
+                            <li><%#Eval("Naam") %>'></li>
+                        </ItemTemplate>
+                    </asp:ListView>
 
-
+                </ul>
             </div>
             <div class="col-xs-6">
                 Rechts
