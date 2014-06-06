@@ -76,6 +76,15 @@ namespace SME.pages {
         protected global::System.Web.UI.WebControls.DropDownList Categorie;
         
         /// <summary>
+        /// KnopNieuweMap control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button KnopNieuweMap;
+        
+        /// <summary>
         /// PanelBestand control.
         /// </summary>
         /// <remarks>
@@ -101,6 +110,15 @@ namespace SME.pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList Bestanden;
+        
+        /// <summary>
+        /// KnopNieuwBestand control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button KnopNieuwBestand;
         
         /// <summary>
         /// PanelInfo control.

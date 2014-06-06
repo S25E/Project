@@ -15,7 +15,7 @@ namespace SME.pages
         {
             if (!IsPostBack)
             {
-                setMap(0);
+                this.setMap(0);
                 PanelBestand.Visible = false;
             }
         }
@@ -161,14 +161,26 @@ namespace SME.pages
         {
             Bestand bestand = Bestand.GetBestand(Convert.ToInt32(Bestanden.SelectedValue));
             bestand.AddReport(this.persoon);
-            this.UpdateBestand(bestand);
+
+            if (bestand.Reports.Count > 3)
+            {
+                Response.Redirect("Filesharing.aspx");
+            }
+            else
+            {
+                this.UpdateBestand(bestand);
+            }
         }
 
         protected void PlaatsReactie_Click(object sender, EventArgs e)
         {
-            Bestand bestand = Bestand.GetBestand(Convert.ToInt32(Bestanden.SelectedValue));
-            bestand.AddReactie(new Reactie(this.persoon.Nummer, DateTime.Now, Reactie.Text));
-            this.UpdateBestand(bestand);
+            if (Reactie.Text != "")
+            {
+                Bestand bestand = Bestand.GetBestand(Convert.ToInt32(Bestanden.SelectedValue));
+                bestand.AddReactie(new Reactie(this.persoon.Nummer, DateTime.Now, Reactie.Text));
+                this.UpdateBestand(bestand);
+                Reactie.Text = "";
+            }
         }
 
         protected void ZoekKnop_Click(object sender, EventArgs e)
@@ -198,6 +210,16 @@ namespace SME.pages
             LabelBestand.Text = "Gevonden bestanden:";
             LabelMap.Text = "Gevonden mappen:";
             PanelBestand.Visible = true;
+        }
+
+        protected void KnopNieuweMap_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("AddMap.aspx");
+        }
+
+        protected void KnopNieuwBestand_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Uploaden.aspx");
         }
     }
 }

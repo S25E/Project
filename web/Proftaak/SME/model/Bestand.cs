@@ -323,7 +323,10 @@ namespace SME
         {
             Reactie.AddReactie(this, reactie);
 
-            this.reacties.Add(reactie);
+            if (this.reacties != null)
+            {
+                this.reacties.Add(reactie);
+            }
         }
 
         public void Download()

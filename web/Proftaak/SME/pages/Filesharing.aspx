@@ -24,7 +24,7 @@
                                 <div class="input-group">
                                     <asp:TextBox ID="Zoekterm" runat="server" CssClass="form-control"></asp:TextBox>
                                     <span class="input-group-btn">
-                                        <asp:Button Text="Zoek!" runat="server" ID="ZoekKnop" OnClick="ZoekKnop_Click" CssClass="btn btn-default" />
+                                        <asp:Button Text="Zoek!" runat="server" ID="ZoekKnop" OnClick="ZoekKnop_Click" CssClass="btn btn-success" />
                                     </span>
                                 </div>
                             </div>
@@ -34,7 +34,12 @@
                                 <asp:Label runat="server" ID="LabelMap">Selecteer map:</asp:Label>
                             </label>
                             <div class="col-sm-8">
-                                <asp:DropDownList ID="Categorie" runat="server" CssClass="form-control" OnSelectedIndexChanged="Categorie_SelectedIndexChanged" AutoPostBack="True"></asp:DropDownList>
+                                <div class="input-group">
+                                    <asp:DropDownList ID="Categorie" runat="server" CssClass="form-control" OnSelectedIndexChanged="Categorie_SelectedIndexChanged" AutoPostBack="True"></asp:DropDownList>
+                                    <span class="input-group-btn">
+                                        <asp:Button Text="+" runat="server" ID="KnopNieuweMap" OnClick="KnopNieuweMap_Click" CssClass="btn btn-primary" />
+                                    </span>
+                                </div>
                             </div>
                         </asp:Panel>
                         <asp:Panel ID="PanelBestand" CssClass="form-group row" runat="server">
@@ -42,7 +47,12 @@
                                 <asp:Label runat="server" ID="LabelBestand">Selecteer Bestand:</asp:Label>
                             </label>
                             <div class="col-sm-8">
-                                <asp:DropDownList ID="Bestanden" runat="server" CssClass="form-control" Visible="true" AutoPostBack="True" OnSelectedIndexChanged="Bestanden_SelectedIndexChanged"></asp:DropDownList>
+                                <div class="input-group">
+                                    <asp:DropDownList ID="Bestanden" runat="server" CssClass="form-control" Visible="true" AutoPostBack="True" OnSelectedIndexChanged="Bestanden_SelectedIndexChanged"></asp:DropDownList>
+                                    <span class="input-group-btn">
+                                        <asp:Button Text="+" runat="server" ID="KnopNieuwBestand" OnClick="KnopNieuwBestand_Click" CssClass="btn btn-primary" />
+                                    </span>
+                                </div>
                             </div>
                         </asp:Panel>
                         <asp:Panel ID="PanelInfo" runat="server" Visible="false">

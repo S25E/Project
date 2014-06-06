@@ -108,7 +108,6 @@ namespace SME
                     {"@rfid", persoon.Nummer}
                 });
             }
-            bestand.Rating += 1;
             Database.Execute("UPDATE BESTAND SET RATING = RATING + 1 WHERE BESTAND_ID = " + bestand.Nummer);
         }
 
@@ -134,7 +133,6 @@ namespace SME
                         {"@rfid", persoon.Nummer}
                     });
             }
-            bestand.Rating -= 1;
             Database.Execute("UPDATE BESTAND SET RATING = RATING - 1 WHERE BESTAND_ID = " + bestand.Nummer);
         }
 
