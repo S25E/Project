@@ -11,12 +11,12 @@
     <meta name="author" content="" />
 
     <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="css/bootstrap.css" />
+    <link rel="stylesheet" href="assets/css/bootstrap.css" />
 
     <!-- Custom styles for this template -->
-    <link href="css/style.css" rel="stylesheet" />
-    <link href="fonts/festival/festival.css" rel="stylesheet" />
-    <link href="fonts/awesome/font-awesome.css" rel="stylesheet" />
+    <link href="assets/css/style.css" rel="stylesheet" />
+    <link href="assets/fonts/festival/festival.css" rel="stylesheet" />
+    <link href="assets/fonts/awesome/font-awesome.css" rel="stylesheet" />
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
