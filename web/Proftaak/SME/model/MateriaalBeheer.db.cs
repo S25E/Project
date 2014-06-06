@@ -12,7 +12,7 @@ namespace SME
         public static void Leenuit(string Barcode, int reserveringnummer, int aantal)
         {
             string First = Barcode.Substring(0, Barcode.IndexOf(","));
-            Database.Execute("INSERT INTO UITLENING (RESERVERINGNUMMER, BARCODE, DATUM_UITGELEEND, DATUM_INGELEVERD, AANTAL) VALUES (@reserveringnummer, @barcode, @datum_uitgeleend, @datum_ingeleverd, @aantal)", new Dictionary<string, object>()
+            Database.Execute("INSERT INTO UITLENING (RESERVERINGNUMMER, BARCODE, DATUM_INGELEVERD, AANTAL, DATUM_UITGELEEND) VALUES (@reserveringnummer, @barcode, @datum_ingeleverd, @aantal, @datum_uitgeleend)", new Dictionary<string, object>()
         {
             {"@reserveringnummer", reserveringnummer},
             {"@barcode", First},
