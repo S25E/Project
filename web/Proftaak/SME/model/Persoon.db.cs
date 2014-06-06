@@ -285,5 +285,10 @@ namespace SME
         {
             return Database.GetData("SELECT RFID FROM PERSOON WHERE AANWEZIG = 'Y' ORDER BY RFID");
         }
+
+        public static DataTable GetAanwezigePersonenTout()
+        {
+            return Database.GetData("SELECT * FROM PERSOON ORDER BY AANWEZIG DESC,RFID");
+        }
     }
 }
