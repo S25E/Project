@@ -19,6 +19,8 @@ namespace SME
             }
             else
             {
+                alert.Visible = false;
+                ButtonBegin.Visible = false;
                 Hoofdboeker Hoofdboeker = (Hoofdboeker)Session["Stap1"];
                 LabelNaam.Text = Hoofdboeker.Naam;
                 LabelTelefoonnummer.Text = Hoofdboeker.Telefoon;
@@ -101,12 +103,9 @@ namespace SME
                 kampeerplaatsenString += "<li>Kampeerplaatsnummer: "+ kampeerplaats.Nummer.ToString() +", "+ kampeerplaats.Opmerking + "</li>";
             }
 
-            string bodyHeader = "<h3>Bedankt voor het plaatsen van een reservering bij SME.</h3><br /><p>Uw gegevens</p><p><ul>";
-            string body = "<li>Naam: " + Hoofdboeker.Naam + "</li><li>Telefoonnummer: " + Hoofdboeker.Telefoon + "</li><li>Woonplaats: " + Hoofdboeker.Woonplaats + "</li><li>Straat: " + Hoofdboeker.Woonplaats + "</li><li>Emailadres: " + Hoofdboeker.Email + "</li><li>Rekeningnummer: " + Hoofdboeker.Rekeningnummer + "</li><li>Sofinummer: " + Hoofdboeker.Sofinummer + "</li><li>Persoonlijk nummer: " + persoonlijknummerHoofdboeker + "</li><li>Uw reserveringsnummer: " + Hoofdboeker.ReserveringNummer + "</li><li>Wachtwoord: " + Hoofdboeker.Wachtwoord + "</li></ul><br /><p>De Bijboekers</p><ul>"+ bijboekerString +"</ul><br /><p>De kampeerplaats(en)</p><ul>"+ kampeerplaatsenString +"</ul>  <br /><p>De gereserveerde materialen</p><ul>"+ materialenString +"</ul>" ;
+            string bodyHeader = "<h3>Bedankt voor het plaatsen van een reservering bij SME.</h3><br /><p><u>Uw gegevens</u></p><p><ul>";
+            string body = "<li>Naam: " + Hoofdboeker.Naam + "</li><li>Telefoonnummer: " + Hoofdboeker.Telefoon + "</li><li>Woonplaats: " + Hoofdboeker.Woonplaats + "</li><li>Straat: " + Hoofdboeker.Woonplaats + "</li><li>Emailadres: " + Hoofdboeker.Email + "</li><li>Rekeningnummer: " + Hoofdboeker.Rekeningnummer + "</li><li>Sofinummer: " + Hoofdboeker.Sofinummer + "</li><li>Persoonlijk nummer: " + persoonlijknummerHoofdboeker + "</li><li>Uw reserveringsnummer: " + Hoofdboeker.ReserveringNummer + "</li><li>Wachtwoord: " + Hoofdboeker.Wachtwoord + "</li></ul><br /><p><u>De Bijboekers</u></p><ul>"+ bijboekerString +"</ul><br /><p><u>De kampeerplaats(en)</u></p><ul>"+ kampeerplaatsenString +"</ul>  <br /><p><u>De gereserveerde materialen</u></p><ul>"+ materialenString +"</ul>" ;
             string bodyFooter = "<p>Wij wensen U een prettig bezoek op het komende SME.</p><p>Voor vragen of opmerkingen, stuur een email naar: s25sme@gmail.com of gebruik #SME</p>";
-
-            
-            
 
             string bericht = bodyHeader + body + bodyFooter;
             mail.Body = bericht;
@@ -117,10 +116,17 @@ namespace SME
 
             SmtpServer.Send(mail);
 
+            ButtonFinish.Visible = false;
+            ButtonBegin.Visible = true;
+            alert.Visible = true;
             Session["Stap1"] = null;
             Session["Stap2"] = null;
             Session["Stap3"] = null;
             Session["Stap4"] = null;
+        }
+
+        protected void Opnieuw_Click(object sender, EventArgs e)
+        {
             Response.Redirect("Stap1.aspx");
         }
     }
