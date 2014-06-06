@@ -8,7 +8,7 @@
 
 
         <div style="width: 50%;" class="form-horizontal">
-            <h1>Boeg hier uw materiaal toe</h1>
+            <h1>Voeg hier uw materiaal toe</h1>
 
                         <%--Begin 5e row--%>
             <div class="row class1">
@@ -95,7 +95,7 @@
 
             <%--Begin 6e row--%>
 
-            <asp:Button ID="Bevestigknop" runat="server" Text="Bevestig" Width="86px" CssClass="btn btn-primary" OnClick="Bevestigknop_Click" />
+            <asp:Button ID="Bevestigknop" runat="server" Text="Bevestig" Width="86px" CssClass="btn btn-primary" PostBackUrl="~/admin/Uitleen.aspx" OnClick="Bevestigknop_Click"  />
 
 
         </div>
