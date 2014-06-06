@@ -195,7 +195,7 @@ namespace SME
                 cmd.Parameters.Add("p_rekeningnummer", OracleDbType.Varchar2).Value = hoofdboeker.Rekeningnummer;
                 cmd.Parameters.Add("p_sofinummer", OracleDbType.Varchar2).Value = hoofdboeker.Sofinummer;
                 cmd.Parameters.Add("p_reserveringnummer", OracleDbType.Int32).Value = hoofdboeker.ReserveringNummer;
-                cmd.Parameters.Add("p_wachtwoord", OracleDbType.Varchar2).Value = hoofdboeker.wachtwoord;
+                cmd.Parameters.Add("p_wachtwoord", OracleDbType.Varchar2).Value = hoofdboeker.Wachtwoord;
                 cmd.Parameters.Add("p_aanwezig", OracleDbType.Varchar2).Value = "N";
                 cmd.Parameters.Add("p_naam", OracleDbType.Varchar2).Value = hoofdboeker.Naam;
                 Database.ExecuteProcedure(cmd, procedureNaam);
@@ -205,7 +205,7 @@ namespace SME
                 Bijboeker bijboeker = (Bijboeker)persoon;
                 OracleCommand cmd = new OracleCommand();
                 cmd.Parameters.Add("p_reserveringsnummer", OracleDbType.Int32).Value = bijboeker.ReserveringNummer;
-                cmd.Parameters.Add("p_wachtwoord", OracleDbType.Varchar2).Value = bijboeker.wachtwoord;
+                cmd.Parameters.Add("p_wachtwoord", OracleDbType.Varchar2).Value = bijboeker.Wachtwoord;
                 cmd.Parameters.Add("p_aanwezig", OracleDbType.Varchar2).Value = "N";
                 cmd.Parameters.Add("p_naam", OracleDbType.Varchar2).Value = bijboeker.Naam;
                 Database.ExecuteProcedure(cmd, procedureNaam);
@@ -216,7 +216,7 @@ namespace SME
                 OracleCommand cmd = new OracleCommand();
                 cmd.Parameters.Add("p_functie", OracleDbType.Varchar2).Value = medewerker.Functie;
                 cmd.Parameters.Add("p_rekeningnummer", OracleDbType.Int32).Value = medewerker.Rekeningnummer;
-                cmd.Parameters.Add("p_wachtwoord", OracleDbType.Varchar2).Value = medewerker.wachtwoord;
+                cmd.Parameters.Add("p_wachtwoord", OracleDbType.Varchar2).Value = medewerker.Wachtwoord;
                 cmd.Parameters.Add("p_aanwezig", OracleDbType.Varchar2).Value = "N";
                 cmd.Parameters.Add("p_naam", OracleDbType.Varchar2).Value = medewerker.Naam;
                 Database.ExecuteProcedure(cmd, procedureNaam);

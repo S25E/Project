@@ -22,7 +22,10 @@ namespace SME
         /// <summary>
         /// Het wachtwoord van een persoon.
         /// </summary>
-        private string wachtwoord;
+        public string Wachtwoord {
+            get;
+            set;
+        }
 
         private bool aanwezig;
         public bool Aanwezig
@@ -61,7 +64,7 @@ namespace SME
                 wachtwoord = Path.GetRandomFileName().Replace(".", "");
             }
             this.Naam = naam;
-            this.wachtwoord = wachtwoord;
+            this.Wachtwoord = wachtwoord;
             this.aanwezig = aanwezig;
         }
 
@@ -72,7 +75,7 @@ namespace SME
         /// <returns>Een bool of het wachtwoord wel of niet klopt</returns>
         public bool ControleerWachtwoord(string wachtwoord)
         {
-            return this.wachtwoord == wachtwoord;
+            return this.Wachtwoord == wachtwoord;
         }
 
         public void Delete()

@@ -59,6 +59,16 @@ namespace SME
             return bestanden;
         }
 
+        public static Bestand GetBestand(int id)
+        {
+            foreach (DataRow row in getBestandenByWhere("BESTAND_ID = " + id).Rows)
+            {
+                return rowToBestand(row);
+            }
+
+            return null;
+        }
+
         /// <summary>
         /// Bestanden geven bij map.
         /// </summary>
