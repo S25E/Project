@@ -82,6 +82,7 @@
     <Content Include="assets\js\bootstrap.min.js" />
     <Content Include="Login.aspx" />
     <Content Include="Filesharing.aspx" />
+    <Content Include="pages\AddMap.aspx" />
     <Content Include="pages\Uploaden.aspx" />
     <Content Include="reservering\Stap1.aspx" />
     <Content Include="reservering\Stap2.aspx" />
@@ -170,6 +171,13 @@
     </Compile>
     <Compile Include="Filesharing.aspx.designer.cs">
       <DependentUpon>Filesharing.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\AddMap.aspx.cs">
+      <DependentUpon>AddMap.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\AddMap.aspx.designer.cs">
+      <DependentUpon>AddMap.aspx</DependentUpon>
     </Compile>
     <Compile Include="pages\Uploaden.aspx.cs">
       <DependentUpon>Uploaden.aspx</DependentUpon>
