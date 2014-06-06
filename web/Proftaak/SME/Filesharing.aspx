@@ -6,7 +6,8 @@
     <div id="content">
         <div class="row">
             <div class="col-xs-6">
-                Links
+                <asp:DropDownList ID="Categorie" runat="server" CssClass="form-control" OnSelectedIndexChanged="Categorie_SelectedIndexChanged" AutoPostBack="True"></asp:DropDownList>
+                <asp:DropDownList ID="Bestanden" runat="server" CssClass="form-control" Visible="true" AutoPostBack="True" OnSelectedIndexChanged="Bestanden_SelectedIndexChanged"></asp:DropDownList>
             </div>
             <div class="col-xs-6">
                 Rechts
