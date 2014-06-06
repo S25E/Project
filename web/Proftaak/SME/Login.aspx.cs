@@ -19,7 +19,30 @@ namespace SME
         {
             if (Persoon.Login(TextBoxGebruikersnaam.Text, TextBoxWachtwoord.Text))
             {
-                FormsAuthentication.RedirectFromLoginPage(TextBoxGebruikersnaam.Text, true);
+                Persoon persoon = Persoon.GetPersoonBijRFID(TextBoxGebruikersnaam.Text);
+
+                //FormsAuthentication.RedirectFromLoginPage(TextBoxGebruikersnaam.Text, true);
+                FormsAuthenticationTicket ticket = new FormsAuthenticationTicket(
+                    1,
+                    TextBoxGebruikersnaam.Text, 
+                    DateTime.Now,
+                    DateTime.Now.AddMinutes(100),
+                    false,
+                    (persoon is Medewerker ? "Medewerker" : "Gebruiker"),
+                    FormsAuthentication.FormsCookiePath
+                );
+
+                string hashCookies = FormsAuthentication.Encrypt(ticket);
+
+                HttpCookie cookie = new HttpCookie(FormsAuthentication.FormsCookieName, hashCookies); 
+
+                Response.Cookies.Add(cookie);
+
+                string returnUrl = Request.QueryString["ReturnUrl"];
+
+                if (returnUrl == null) returnUrl = "~/Default.aspx";
+
+                Response.Redirect(returnUrl); 
             }
             else
             {

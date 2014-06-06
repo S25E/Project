@@ -110,6 +110,7 @@
     <Content Include="assets\css\style.css" />
     <Content Include="admin\Toelating.aspx" />
     <Content Include="admin\Uitleen.aspx" />
+    <Content Include="Uitloggen.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -202,6 +203,7 @@
     </Compile>
     <Compile Include="Standaard.Master.cs">
       <DependentUpon>Standaard.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Standaard.Master.designer.cs">
       <DependentUpon>Standaard.Master</DependentUpon>
@@ -226,6 +228,13 @@
     </Compile>
     <Compile Include="admin\MateriaalToevoegen.aspx.designer.cs">
       <DependentUpon>MateriaalToevoegen.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Uitloggen.aspx.cs">
+      <DependentUpon>Uitloggen.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Uitloggen.aspx.designer.cs">
+      <DependentUpon>Uitloggen.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup />

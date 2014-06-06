@@ -55,12 +55,19 @@
                             <li><a href="/Login.aspx">Inloggen</a></li>
                         </AnonymousTemplate>
                         <LoggedInTemplate>
-                            <li><a href="/reservering/Stap1.aspx">Reserveren!</a></li>
-                            <li><a href="/admin/Toelating.aspx">Toelating</a></li>
-                            <li><a href="/admin/Uitleen.aspx">Uitlenen</a></li>
-                            <li><a href="/admin/Toelating.aspx">Toelating</a></li>
                             <li><a href="/pages/Filesharing.aspx">Filesharing</a></li>
+                            <li><a href="/Uitloggen.aspx">Uitloggen</a></li>
                         </LoggedInTemplate>
+                        <RoleGroups>
+                            <asp:RoleGroup Roles="Medewerker">
+                                <ContentTemplate>
+                                    <li><a href="/reservering/Stap1.aspx">Reserveren!</a></li>
+                                    <li><a href="/admin/Toelating.aspx">Toelating</a></li>
+                                    <li><a href="/admin/Uitleen.aspx">Uitlenen</a></li>
+                                    <li><a href="/admin/Toelating.aspx">Toelating</a></li>
+                                </ContentTemplate>
+                            </asp:RoleGroup>
+                        </RoleGroups>
                     </asp:LoginView>
                 </ul>
             </div>
