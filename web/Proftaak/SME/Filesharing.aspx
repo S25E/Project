@@ -7,14 +7,7 @@
         <div class="row">
             <div class="col-xs-6">
                 <asp:DropDownList ID="Categorie" runat="server" CssClass="form-control" OnSelectedIndexChanged="Categorie_SelectedIndexChanged" AutoPostBack="True"></asp:DropDownList>
-                <ul>
-                    <asp:ListView runat="server" ID="Bestanden">
-                        <ItemTemplate>
-                            <li><%#Eval("Naam") %>'></li>
-                        </ItemTemplate>
-                    </asp:ListView>
-
-                </ul>
+                <asp:DropDownList ID="Bestanden" runat="server" CssClass="form-control" Visible="true" AutoPostBack="True" OnSelectedIndexChanged="Bestanden_SelectedIndexChanged"></asp:DropDownList>
             </div>
             <div class="col-xs-6">
                 Rechts

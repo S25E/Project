@@ -22,8 +22,16 @@ namespace SME.pages
 
         protected void Categorie_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Bestanden.DataSource = Map.GetMapBijNummer(Convert.ToInt32(Categorie.SelectedValue)).Bestanden;
-            //Map.GetMapBijNummer(Categorie.SelectedValue);
+            foreach (Bestand bestand in Map.GetMapBijNummer(Convert.ToInt32(Categorie.SelectedValue)).Bestanden)
+            {
+                Bestanden.Items.Add(new ListItem(bestand.Naam, bestand.Nummer.ToString()));
+            }
+            //Bestanden.DataSource = Map.GetMapBijNummer(Convert.ToInt32(Categorie.SelectedValue)).Bestanden;
+        }
+
+        protected void Bestanden_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
         }
     }
 }
