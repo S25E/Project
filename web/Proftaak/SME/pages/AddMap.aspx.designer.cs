@@ -10,16 +10,7 @@
 namespace SME.pages {
     
     
-    public partial class Filesharing {
-        
-        /// <summary>
-        /// PanelMap control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel PanelMap;
+    public partial class AddMap {
         
         /// <summary>
         /// Label1 control.
@@ -31,39 +22,39 @@ namespace SME.pages {
         protected global::System.Web.UI.WebControls.Label Label1;
         
         /// <summary>
-        /// Categorie control.
+        /// Mappicker control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList Categorie;
+        protected global::System.Web.UI.WebControls.DropDownList Mappicker;
         
         /// <summary>
-        /// PanelBestand control.
+        /// Henk control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel PanelBestand;
+        protected global::System.Web.UI.WebControls.Label Henk;
         
         /// <summary>
-        /// Label2 control.
+        /// Naam control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label2;
+        protected global::System.Web.UI.WebControls.TextBox Naam;
         
         /// <summary>
-        /// Bestanden control.
+        /// K control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList Bestanden;
+        protected global::System.Web.UI.WebControls.LinkButton K;
     }
 }

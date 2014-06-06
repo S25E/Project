@@ -46,7 +46,7 @@ namespace SME
 
             if (rfids.Count > 0)
             {
-                foreach (DataRow row in Database.GetData("SELECT * FROM PERSOON WHERE RFID IN(@rfids)", new Dictionary<string, object>() { { "@rfids", rfids } }).Rows)
+                foreach (DataRow row in getPersonenByWhere("PERSOON.RFID IN(@rfids)", new Dictionary<string, object>() { { "@rfids", rfids } }).Rows)
                 {
                     personen.Add(row["RFID"].ToString(), rowToPersoon(row));
                 }
@@ -64,7 +64,7 @@ namespace SME
         {
             List<Persoon> likes = new List<Persoon>();
 
-            foreach (DataRow row in getPersonenByWhere("RFID IN (SELECT RFID FROM DISLIKE_LIKE_REPORT WHERE LIKEDISLIKE = 'LIKE' AND BESTAND_ID = " + bestand.Nummer + ")").Rows)
+            foreach (DataRow row in getPersonenByWhere("PERSOON.RFID IN (SELECT RFID FROM DISLIKE_LIKE_REPORT WHERE LIKEDISLIKE = 'Y' AND BESTAND_ID = " + bestand.Nummer + ")").Rows)
             {
                 likes.Add(rowToPersoon(row));
             }
@@ -81,7 +81,7 @@ namespace SME
         {
             List<Persoon> likes = new List<Persoon>();
 
-            foreach (DataRow row in getPersonenByWhere("RFID IN (SELECT RIFD FROM DISLIKE_LIKE_REPORT WHERE LIKEDISLIKE = 'DISLIKE' AND BESTAND_ID = " + bestand.Nummer + ")").Rows)
+            foreach (DataRow row in getPersonenByWhere("PERSOON.RFID IN (SELECT RFID FROM DISLIKE_LIKE_REPORT WHERE LIKEDISLIKE = 'N' AND BESTAND_ID = " + bestand.Nummer + ")").Rows)
                 likes.Add(rowToPersoon(row));
 
             return likes;
@@ -96,7 +96,7 @@ namespace SME
         {
             List<Persoon> likes = new List<Persoon>();
 
-            foreach (DataRow row in getPersonenByWhere("RFID IN (SELECT RIFD FROM DISLIKE_LIKE_REPORT WHERE REPORT = 'Y' AND BESTAND_ID = " + bestand.Nummer + ")").Rows)
+            foreach (DataRow row in getPersonenByWhere("PERSOON.RFID IN (SELECT RFID FROM DISLIKE_LIKE_REPORT WHERE REPORT = 'Y' AND BESTAND_ID = " + bestand.Nummer + ")").Rows)
                 likes.Add(rowToPersoon(row));
 
             return likes;

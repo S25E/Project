@@ -18,7 +18,7 @@ namespace SME
         {
             List<Reactie> reacties = new List<Reactie>();
 
-            foreach (DataRow row in Database.GetData("SELECT * FROM OPMERKING WHERE (SELECT COUNT(1) FROM OPMERKINGREPORT WHERE OPMERKINGREPORT.OPMERKING_ID = REACTIE.OPMERKING_ID) <= 3 AND BESTAND_ID = " + bestand.Nummer + " ORDER by OPMERKING_ID").Rows)
+            foreach (DataRow row in Database.GetData("SELECT * FROM OPMERKING WHERE (SELECT COUNT(1) FROM OPMERKINGREPORT WHERE OPMERKINGREPORT.OPMERKING_ID = OPMERKING.OPMERKING_ID) <= 3 AND BESTAND_ID = " + bestand.Nummer + " ORDER by OPMERKING_ID").Rows)
                 reacties.Add(
                     new Reactie(
                         Convert.ToInt32(row["OPMERKING_ID"]),
@@ -47,9 +47,9 @@ namespace SME
         /// </summary>
         /// <param name="bestand"></param>
         /// <param name="reactie"></param>
-        public static int AddReactie(Bestand bestand, Reactie reactie)
+        public static void AddReactie(Bestand bestand, Reactie reactie)
         {
-            int insertedId = Convert.ToInt32(Database.GetData("SELECT SEQ_OPMERKINGREPORT.nextval FROM dual").Rows[0]["NEXTVAL"]);
+            int insertedId = Database.GetSequence("SEQ_OPMERKINGREPORT");
             Database.Execute("INSERT INTO OPMERKING (OPMERKING_ID, RFID, BESTAND_ID, DATUM, OPMERKING_TEXT) VALUES (@nummer, @rfid, @bestand_nummer, TO_DATE(@datum, 'SYYYY-MM-DD HH24:MI:SS'), @opmerking)", new Dictionary<string, object>
             {
                 {"@nummer", insertedId},
@@ -58,7 +58,7 @@ namespace SME
                 {"@datum", reactie.Datum.ToString("yyyy-MM-dd HH:mm:ss")},
                 {"@opmerking", reactie.Opmerking},
             });
-            return insertedId;
+            reactie.Nummer = insertedId;
         }
     }
 }

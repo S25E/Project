@@ -79,7 +79,9 @@ namespace SME
             List<Bestand> bestanden = new List<Bestand>();
 
             foreach (DataRow row in getBestandenByWhere("MAP_ID = " + map.Nummer).Rows)
+            {
                 bestanden.Add(rowToBestand(row));
+            }
 
             return bestanden;
         }
@@ -94,13 +96,20 @@ namespace SME
             DataTable dt = Database.GetData("SELECT * FROM DISLIKE_LIKE_REPORT WHERE RFID = " + persoon.Nummer + " AND BESTAND_ID = " + bestand.Nummer);
             if (dt.Rows.Count == 0)
             {
-                Database.Execute("INSERT INTO DISLIKE_LIKE_REPORT (RFID, BESTAND_ID, LIKEDISLIKE, REPORT) VALUES (@rfid, @bestand_nummer, @type, @report" + persoon.Nummer + ", " + bestand.Nummer + ", 'LIKE', 'N')", new Dictionary<string, object>()
+                Database.Execute("INSERT INTO DISLIKE_LIKE_REPORT (RFID, BESTAND_ID, LIKEDISLIKE, REPORT) VALUES (@rfid, " + bestand.Nummer + ", 'Y', 'N')", new Dictionary<string, object>()
                 {
                     {"@rfid", persoon.Nummer}
                 });
             }
             else
-                Database.Execute("UPDATE DISLIKE_LIKE_REPORT SET LIKEDISLIKE = 'LIKE' WHERE RFID = " + persoon.Nummer + " AND BESTAND_ID = " + bestand.Nummer);
+            {
+                Database.Execute("UPDATE DISLIKE_LIKE_REPORT SET LIKEDISLIKE = 'Y' WHERE RFID = @rfid AND BESTAND_ID = " + bestand.Nummer, new Dictionary<string, object>()
+                {
+                    {"@rfid", persoon.Nummer}
+                });
+            }
+            bestand.Rating += 1;
+            Database.Execute("UPDATE BESTAND SET RATING = RATING + 1 WHERE BESTAND_ID = " + bestand.Nummer);
         }
 
         /// <summary>
@@ -112,9 +121,21 @@ namespace SME
         {
             DataTable dt = Database.GetData("SELECT * FROM DISLIKE_LIKE_REPORT WHERE RFID = " + persoon.Nummer + " AND BESTAND_ID = " + bestand.Nummer);
             if (dt.Rows.Count == 0)
-                Database.Execute("INSERT INTO DISLIKE_LIKE_REPORT (RFID, BESTAND_ID, LIKEDISLIKE, REPORT) VALUES (" + persoon.Nummer + ", " + bestand.Nummer + ", 'DISLIKE', 'N')");
+            {
+                Database.Execute("INSERT INTO DISLIKE_LIKE_REPORT (RFID, BESTAND_ID, LIKEDISLIKE, REPORT) VALUES (@rfid, " + bestand.Nummer + ", 'N', 'N')", new Dictionary<string, object>()
+                {
+                    {"@rfid", persoon.Nummer}
+                });
+            }
             else
-                Database.Execute("UPDATE DISLIKE_LIKE_REPORT SET LIKEDISLIKE = 'DISLIKE' WHERE RFID = " + persoon.Nummer + " AND BESTAND_ID = " + bestand.Nummer);
+            {
+                Database.Execute("UPDATE DISLIKE_LIKE_REPORT SET LIKEDISLIKE = 'N' WHERE RFID = @rfid AND BESTAND_ID = " + bestand.Nummer, new Dictionary<string, object>()
+                    {
+                        {"@rfid", persoon.Nummer}
+                    });
+            }
+            bestand.Rating -= 1;
+            Database.Execute("UPDATE BESTAND SET RATING = RATING - 1 WHERE BESTAND_ID = " + bestand.Nummer);
         }
 
         /// <summary>
@@ -126,9 +147,19 @@ namespace SME
         {
             DataTable dt = Database.GetData("SELECT * FROM DISLIKE_LIKE_REPORT WHERE RFID = " + persoon.Nummer + " AND BESTAND_ID = " + bestand.Nummer);
             if (dt.Rows.Count == 0)
-                Database.Execute("INSERT INTO DISLIKE_LIKE_REPORT (RFID, BESTAND_ID, LIKEDISLIKE, REPORT) VALUES (" + persoon.Nummer + ", " + bestand.Nummer + ", NULL, 'Y')");
+            {
+                Database.Execute("INSERT INTO DISLIKE_LIKE_REPORT (RFID, BESTAND_ID, LIKEDISLIKE, REPORT) VALUES (@rfid, " + bestand.Nummer + ", NULL, 'Y')", new Dictionary<string, object>()
+                {
+                    {"@rfid", persoon.Nummer}
+                });
+            }
             else
-                Database.Execute("UPDATE DISLIKE_LIKE_REPORT SET REPORT = 'Y' WHERE RFID = " + persoon.Nummer + " AND BESTAND_ID = " + bestand.Nummer);
+            {
+                Database.Execute("UPDATE DISLIKE_LIKE_REPORT SET REPORT = 'Y' WHERE RFID = @rfid AND BESTAND_ID = " + bestand.Nummer, new Dictionary<string, object>()
+                {
+                    {"@rfid", persoon.Nummer}
+                });
+            }
         }
 
         /// <summary>
@@ -187,6 +218,12 @@ namespace SME
                 row["PAD"].ToString(),
                 Convert.ToInt32(row["IMGINDEX"])
             );
+        }
+
+        public static void Download(Bestand bestand)
+        {
+            Database.Execute("UPDATE BESTAND SET GEDOWNLOAD = GEDOWNLOAD + 1 WHERE BESTAND_ID = " + bestand.Nummer);
+            bestand.Gedownload += 1;
         }
     }
 }
