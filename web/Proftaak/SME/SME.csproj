@@ -81,7 +81,7 @@
     <Content Include="assets\img\plattegrond camping zonder nummers.png" />
     <Content Include="assets\js\bootstrap.min.js" />
     <Content Include="Login.aspx" />
-    <Content Include="Filesharing.aspx" />
+    <Content Include="pages\Filesharing.aspx" />
     <Content Include="pages\AddMap.aspx" />
     <Content Include="pages\Uploaden.aspx" />
     <Content Include="reservering\Stap1.aspx" />
@@ -165,11 +165,11 @@
     <Compile Include="model\ReserveringBeheer.cs" />
     <Compile Include="model\UitgeleendMateriaal.cs" />
     <Compile Include="model\UitgeleendMateriaal.db.cs" />
-    <Compile Include="Filesharing.aspx.cs">
+    <Compile Include="pages\Filesharing.aspx.cs">
       <DependentUpon>Filesharing.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Filesharing.aspx.designer.cs">
+    <Compile Include="pages\Filesharing.aspx.designer.cs">
       <DependentUpon>Filesharing.aspx</DependentUpon>
     </Compile>
     <Compile Include="pages\AddMap.aspx.cs">
@@ -277,7 +277,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>7095</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
