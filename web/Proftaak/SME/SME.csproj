@@ -44,7 +44,10 @@
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.QualityTools.Testing.Fakes, Version=11.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
-    <Reference Include="Oracle.DataAccess, Version=4.121.1.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=x86" />
+    <Reference Include="Oracle.DataAccess, Version=4.121.1.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\..\oraclexe\app\oracle\product\11.2.0\server\odp.net\bin\2.x\Oracle.DataAccess.dll</HintPath>
+    </Reference>
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.DirectoryServices" />
     <Reference Include="System.DirectoryServices.AccountManagement" />
@@ -64,40 +67,38 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="css\bootstrap.css" />
+    <Content Include="assets\css\bootstrap.css" />
     <Content Include="Default.aspx" />
-    <Content Include="Filesharing.aspx" />
-    <Content Include="fonts\awesome\font-awesome.css" />
-    <Content Include="fonts\awesome\font-awesome.min.css" />
-    <Content Include="fonts\awesome\fontawesome-webfont.svg" />
-    <Content Include="fonts\festival\festival.css" />
-    <Content Include="fonts\festival\festival.svg" />
-    <Content Include="fonts\glyphicons\glyphicons-halflings-regular.svg" />
-    <Content Include="img\background.jpg" />
-    <Content Include="img\plattegrond camping zonder nummers.png" />
-    <Content Include="js\bootstrap.min.js" />
+    <Content Include="pages\Filesharing.aspx" />
+    <Content Include="assets\fonts\awesome\font-awesome.css" />
+    <Content Include="assets\fonts\awesome\font-awesome.min.css" />
+    <Content Include="assets\fonts\awesome\fontawesome-webfont.svg" />
+    <Content Include="assets\fonts\festival\festival.css" />
+    <Content Include="assets\fonts\festival\festival.svg" />
+    <Content Include="assets\fonts\glyphicons\glyphicons-halflings-regular.svg" />
+    <Content Include="assets\img\background.jpg" />
+    <Content Include="assets\img\plattegrond camping zonder nummers.png" />
+    <Content Include="assets\js\bootstrap.min.js" />
     <Content Include="Login.aspx" />
-    <Content Include="Reservering.aspx" />
-    <Content Include="Reservering\Stap1.aspx" />
-    <Content Include="Reservering\Stap2.aspx" />
-    <Content Include="Reservering\Stap3.aspx" />
-    <Content Include="Reservering\Stap4.aspx" />
-    <Content Include="Reservering\Stap5.aspx" />
-    <Content Include="Standaard.Master" />
-    <Content Include="fonts\festival\festival.eot" />
-    <Content Include="fonts\festival\festival.ttf" />
-    <Content Include="fonts\festival\festival.woff" />
-    <Content Include="fonts\glyphicons\glyphicons-halflings-regular.eot" />
-    <Content Include="fonts\glyphicons\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons\glyphicons-halflings-regular.woff" />
-    <Content Include="Reservering\Reservering.master" />
-    <Content Include="fonts\awesome\fontawesome-webfont.eot" />
-    <Content Include="fonts\awesome\fontawesome-webfont.ttf" />
-    <Content Include="fonts\awesome\fontawesome-webfont.woff" />
-    <Content Include="fonts\awesome\FontAwesome.otf" />
-    <Content Include="Ingelogd.master" />
-    <Content Include="MateriaalToevoegen.aspx" />
+    <Content Include="reservering\Stap1.aspx" />
+    <Content Include="reservering\Stap2.aspx" />
+    <Content Include="reservering\Stap3.aspx" />
+    <Content Include="reservering\Stap4.aspx" />
+    <Content Include="reservering\Stap5.aspx" />
+    <Content Include="assets\fonts\festival\festival.eot" />
+    <Content Include="assets\fonts\festival\festival.ttf" />
+    <Content Include="assets\fonts\festival\festival.woff" />
+    <Content Include="assets\fonts\glyphicons\glyphicons-halflings-regular.eot" />
+    <Content Include="assets\fonts\glyphicons\glyphicons-halflings-regular.ttf" />
+    <Content Include="assets\fonts\glyphicons\glyphicons-halflings-regular.woff" />
+    <Content Include="reservering\Reservering.master" />
+    <Content Include="assets\fonts\awesome\fontawesome-webfont.eot" />
+    <Content Include="assets\fonts\awesome\fontawesome-webfont.ttf" />
+    <Content Include="assets\fonts\awesome\fontawesome-webfont.woff" />
+    <Content Include="assets\fonts\awesome\FontAwesome.otf" />
+    <Content Include="admin\MateriaalToevoegen.aspx" />
     <None Include="Properties\PublishProfiles\sme.marijnverwegen.nl.pubxml" />
+    <Content Include="Standaard.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -106,10 +107,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="css\style.css" />
-    <Content Include="TestKampeerplaats.aspx" />
-    <Content Include="Toelating.aspx" />
-    <Content Include="Uitleen.aspx" />
+    <Content Include="assets\css\style.css" />
+    <Content Include="admin\Toelating.aspx" />
+    <Content Include="admin\Uitleen.aspx" />
+    <Content Include="Uitloggen.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -120,19 +121,12 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Filesharing.aspx.cs">
+    <Compile Include="pages\Filesharing.aspx.cs">
       <DependentUpon>Filesharing.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Filesharing.aspx.designer.cs">
+    <Compile Include="pages\Filesharing.aspx.designer.cs">
       <DependentUpon>Filesharing.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Ingelogd.master.cs">
-      <DependentUpon>Ingelogd.master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Ingelogd.master.designer.cs">
-      <DependentUpon>Ingelogd.master</DependentUpon>
     </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
@@ -165,53 +159,46 @@
     <Compile Include="model\UitgeleendMateriaal.cs" />
     <Compile Include="model\UitgeleendMateriaal.db.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Reservering.aspx.cs">
-      <DependentUpon>Reservering.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Reservering.aspx.designer.cs">
-      <DependentUpon>Reservering.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Reservering\Reservering.master.cs">
+    <Compile Include="reservering\Reservering.master.cs">
       <DependentUpon>Reservering.master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Reservering\Reservering.master.designer.cs">
+    <Compile Include="reservering\Reservering.master.designer.cs">
       <DependentUpon>Reservering.master</DependentUpon>
     </Compile>
-    <Compile Include="Reservering\Stap1.aspx.cs">
+    <Compile Include="reservering\Stap1.aspx.cs">
       <DependentUpon>Stap1.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Reservering\Stap1.aspx.designer.cs">
+    <Compile Include="reservering\Stap1.aspx.designer.cs">
       <DependentUpon>Stap1.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Reservering\Stap2.aspx.cs">
+    <Compile Include="reservering\Stap2.aspx.cs">
       <DependentUpon>Stap2.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Reservering\Stap2.aspx.designer.cs">
+    <Compile Include="reservering\Stap2.aspx.designer.cs">
       <DependentUpon>Stap2.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Reservering\Stap3.aspx.cs">
+    <Compile Include="reservering\Stap3.aspx.cs">
       <DependentUpon>Stap3.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Reservering\Stap3.aspx.designer.cs">
+    <Compile Include="reservering\Stap3.aspx.designer.cs">
       <DependentUpon>Stap3.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Reservering\Stap4.aspx.cs">
+    <Compile Include="reservering\Stap4.aspx.cs">
       <DependentUpon>Stap4.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Reservering\Stap4.aspx.designer.cs">
+    <Compile Include="reservering\Stap4.aspx.designer.cs">
       <DependentUpon>Stap4.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Reservering\Stap5.aspx.cs">
+    <Compile Include="reservering\Stap5.aspx.cs">
       <DependentUpon>Stap5.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Reservering\Stap5.aspx.designer.cs">
+    <Compile Include="reservering\Stap5.aspx.designer.cs">
       <DependentUpon>Stap5.aspx</DependentUpon>
     </Compile>
     <Compile Include="Standaard.Master.cs">
@@ -221,33 +208,33 @@
     <Compile Include="Standaard.Master.designer.cs">
       <DependentUpon>Standaard.Master</DependentUpon>
     </Compile>
-    <Compile Include="TestKampeerplaats.aspx.cs">
-      <DependentUpon>TestKampeerplaats.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="TestKampeerplaats.aspx.designer.cs">
-      <DependentUpon>TestKampeerplaats.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Toelating.aspx.cs">
+    <Compile Include="admin\Toelating.aspx.cs">
       <DependentUpon>Toelating.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Toelating.aspx.designer.cs">
+    <Compile Include="admin\Toelating.aspx.designer.cs">
       <DependentUpon>Toelating.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Uitleen.aspx.cs">
+    <Compile Include="admin\Uitleen.aspx.cs">
       <DependentUpon>Uitleen.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Uitleen.aspx.designer.cs">
+    <Compile Include="admin\Uitleen.aspx.designer.cs">
       <DependentUpon>Uitleen.aspx</DependentUpon>
     </Compile>
-    <Compile Include="MateriaalToevoegen.aspx.cs">
+    <Compile Include="admin\MateriaalToevoegen.aspx.cs">
       <DependentUpon>MateriaalToevoegen.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="MateriaalToevoegen.aspx.designer.cs">
+    <Compile Include="admin\MateriaalToevoegen.aspx.designer.cs">
       <DependentUpon>MateriaalToevoegen.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Uitloggen.aspx.cs">
+      <DependentUpon>Uitloggen.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Uitloggen.aspx.designer.cs">
+      <DependentUpon>Uitloggen.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup />
