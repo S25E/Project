@@ -321,70 +321,14 @@ namespace SME
         /// <param name="reactie"></param>
         public void AddReactie(Reactie reactie)
         {
-            reactie.Nummer = Reactie.AddReactie(this, reactie);
+            Reactie.AddReactie(this, reactie);
 
             this.reacties.Add(reactie);
         }
 
-        /// <summary>
-        /// Het uploaden van een bestand.
-        /// </summary>
-        /// <param name="bestandslocatie"></param>
-        /// <returns>Geeft terug of het uploaden wel of niet is gelukt.</returns>
-        public bool Uploaden(string bestandslocatie)
+        public void Download()
         {
-            this.Pad = this.Datum.ToFileTime() + (new FileInfo(bestandslocatie)).Extension;
-
-            FtpWebRequest request = (FtpWebRequest)WebRequest.Create("ftp://www.trink.nl/" + this.Pad);
-            request.Method = WebRequestMethods.Ftp.UploadFile;
-            request.Credentials = new NetworkCredential("sme@trink.nl", "sme");
-
-            byte[] file = File.ReadAllBytes(bestandslocatie);
-
-            request.ContentLength = file.Length;
-
-            using (Stream rs = request.GetRequestStream())
-            {
-                rs.Write(file, 0, file.Length);
-            }
-
-            using (FtpWebResponse response = (FtpWebResponse)request.GetResponse())
-            {
-                if (response.StatusCode == FtpStatusCode.ClosingData)
-                    return true;
-            }
-
-            return false;
-        }
-
-        /// <summary>
-        /// Het downloaden van een bestand naar een bestandslocatie.
-        /// </summary>
-        /// <param name="naarlocatie"></param>
-        public void Downloaden(string naarlocatie)
-        {
-            FtpWebRequest request = (FtpWebRequest)WebRequest.Create("ftp://www.trink.nl/" + this.Pad);
-            request.Method = WebRequestMethods.Ftp.DownloadFile;
-            request.Credentials = new NetworkCredential("sme@trink.nl", "sme");
-
-            using (FtpWebResponse response = (FtpWebResponse)request.GetResponse())
-            {
-                using (Stream rs = response.GetResponseStream())
-                {
-                    byte[] buffer = new byte[2048];
-
-                    int ReadCount = rs.Read(buffer, 0, buffer.Length);
-
-                    using(FileStream fs = new FileStream(naarlocatie, FileMode.Create, FileAccess.Write))
-                    {
-                        while (ReadCount > 0)
-                        {
-                            fs.Write(buffer, 0, ReadCount);
-                            ReadCount = rs.Read(buffer, 0, buffer.Length);
-                        }
-                    }
-                }
-            }
+            Bestand.Download(this);
         }
     }
 }

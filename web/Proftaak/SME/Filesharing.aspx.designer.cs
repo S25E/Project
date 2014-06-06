@@ -13,6 +13,42 @@ namespace SME.pages {
     public partial class Filesharing {
         
         /// <summary>
+        /// PanelZoeken control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel PanelZoeken;
+        
+        /// <summary>
+        /// Label3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label3;
+        
+        /// <summary>
+        /// Zoekterm control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox Zoekterm;
+        
+        /// <summary>
+        /// ZoekKnop control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ZoekKnop;
+        
+        /// <summary>
         /// PanelMap control.
         /// </summary>
         /// <remarks>
@@ -22,13 +58,13 @@ namespace SME.pages {
         protected global::System.Web.UI.WebControls.Panel PanelMap;
         
         /// <summary>
-        /// Label1 control.
+        /// LabelMap control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
+        protected global::System.Web.UI.WebControls.Label LabelMap;
         
         /// <summary>
         /// Categorie control.
@@ -49,13 +85,13 @@ namespace SME.pages {
         protected global::System.Web.UI.WebControls.Panel PanelBestand;
         
         /// <summary>
-        /// Label2 control.
+        /// LabelBestand control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label2;
+        protected global::System.Web.UI.WebControls.Label LabelBestand;
         
         /// <summary>
         /// Bestanden control.
@@ -130,6 +166,15 @@ namespace SME.pages {
         protected global::System.Web.UI.WebControls.Label Uploader;
         
         /// <summary>
+        /// Downloads control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Downloads;
+        
+        /// <summary>
         /// DownloadKnop control.
         /// </summary>
         /// <remarks>
@@ -173,5 +218,32 @@ namespace SME.pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Report;
+        
+        /// <summary>
+        /// Reacties control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ListView Reacties;
+        
+        /// <summary>
+        /// Reactie control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox Reactie;
+        
+        /// <summary>
+        /// PlaatsReactie control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button PlaatsReactie;
     }
 }

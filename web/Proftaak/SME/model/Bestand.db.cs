@@ -219,5 +219,11 @@ namespace SME
                 Convert.ToInt32(row["IMGINDEX"])
             );
         }
+
+        public static void Download(Bestand bestand)
+        {
+            Database.Execute("UPDATE BESTAND SET GEDOWNLOAD = GEDOWNLOAD + 1 WHERE BESTAND_ID = " + bestand.Nummer);
+            bestand.Gedownload += 1;
+        }
     }
 }

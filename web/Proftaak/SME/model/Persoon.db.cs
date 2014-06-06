@@ -46,7 +46,7 @@ namespace SME
 
             if (rfids.Count > 0)
             {
-                foreach (DataRow row in Database.GetData("SELECT * FROM PERSOON WHERE RFID IN(@rfids)", new Dictionary<string, object>() { { "@rfids", rfids } }).Rows)
+                foreach (DataRow row in getPersonenByWhere("PERSOON.RFID IN(@rfids)", new Dictionary<string, object>() { { "@rfids", rfids } }).Rows)
                 {
                     personen.Add(row["RFID"].ToString(), rowToPersoon(row));
                 }
