@@ -68,7 +68,25 @@ namespace SME
 
         protected void RFIDinleverBox_TextChanged(object sender, EventArgs e)
         {
-            UitgeleendMateriaal.GetUitgeleendMateriaalBijReservering(ReserveringNRinleverBox.Text);
+            ListBox1.Items.Clear();
+            ListBox1.Items.Add(UitgeleendMateriaal.GetUitgeleendMateriaalBijReservering(ReserveringNRinleverBox.Text));
+            
+        }
+
+        protected void btnOmzetten_Click(object sender, EventArgs e)
+        {
+            string barcode = ListBox1.SelectedItem.ToString();
+            Materiaal materiaal = Materiaal.GetMateriaalBijBarcode(barcode.Substring(0, barcode.IndexOf(",")));
+            Reservering reservering = Reservering.GetReserveringBijNummer(Convert.ToInt32(ReserveringNRinleverBox.Text));
+            MateriaalBeheer.ReserveringNaarUitlening(materiaal, reservering);
+            ListBox1.Items.Clear();
+            ListBox1.Items.Add(UitgeleendMateriaal.GetUitgeleendMateriaalBijReservering(ReserveringNRinleverBox.Text));
+        }
+
+
+        protected void MateriaalToevoegen_Click1(object sender, EventArgs e)
+        {
+            
         }
     }
 }

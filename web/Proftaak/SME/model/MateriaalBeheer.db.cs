@@ -29,8 +29,8 @@ namespace SME
                 {"@barcode", materiaal.Barcode},
                 {"@reserveringnummer", reservering.Nummer}
               }).Rows[0]["AANTAL"]);
-            
-            if ( (nummer - aantal) >= 1 )
+
+            if ((nummer - aantal) >= 1)
             {
                 Database.Execute("UPDATE UITLENING SET aantal = aantal - @AANTAL)", new Dictionary<string, object>()
                 {
@@ -39,11 +39,20 @@ namespace SME
             }
             else
             {
-            Database.Execute("UPDATE UITLENING SET DATUM_INGELEVERD = @DATUM)", new Dictionary<string, object>()
+                Database.Execute("UPDATE UITLENING SET DATUM_INGELEVERD = @DATUM)", new Dictionary<string, object>()
             {
                 {"@DATUM", DateTime.Today}
             });
             }
+        }
+        public static void ReserveringNaarUitlening(Materiaal materiaal, Reservering reservering)
+        {
+            Database.Execute("UPDATE UITLENING SET DATUM_UITGELEEND = @DATUM WHERE BARCODE = @BARCODE AND RESERVERINGSNUMMER = @RESERVERINGNUMMER)", new Dictionary<string, object>()
+            {
+                {"@DATUM", DateTime.Today},
+                {"@BARCODE", materiaal.Barcode.ToString()},
+                {"@RESERVERINGNUMMER", reservering.Nummer.ToString()}
+            });
         }
     }
 }

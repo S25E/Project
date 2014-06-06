@@ -19,14 +19,25 @@ namespace SME
             return new UitgeleendMateriaal(row["BARCODE"].ToString(), row["NAAM"].ToString(), Convert.ToInt32(row["AANTAL"]), Convert.ToInt32(row["VERHUURPRIJS"]), row["OMSCHRIJVING"].ToString(), row["CATEGORIE"].ToString());
         }
 
-        public static UitgeleendMateriaal GetUitgeleendMateriaalBijReservering(string reserveringnummer)
+        public static string GetUitgeleendMateriaalBijReservering(string reserveringnummer)
         {
-            foreach (DataRow row in getMaterialenByWhere("reserveringsnummer = " + reserveringnummer).Rows)
+            foreach (DataRow row in Database.GetData("SELECT * FROM UITLENING WHERE RESERVERINGSNUMMER = '" + reserveringnummer + "'").Rows)
             {
-                return rowToUitgeleendMateriaal(row);
+               Materiaal materiaal = Materiaal.GetMateriaalBijBarcode((row["BARCODE"]).ToString());
+                if ((row["datum_uitgeleend"]) == DBNull.Value)
+                {
+                    return (materiaal.Barcode +", " + materiaal.Naam + ", aantal:" + row["aantal"] + ", status: gereserveerd");
+                }
+                else
+                {
+                    return (materiaal.Barcode +", " + materiaal.Naam + ", aantal:" + row["aantal"] + ", status: uitgeleend");
+                }
+
             }
 
-            return (UitgeleendMateriaal)null;
+            return null;
         }
+
+        // return (string)null;
     }
 }
