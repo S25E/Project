@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Data;
+using Oracle.DataAccess.Client;
+using Oracle.DataAccess.Types;
 
 namespace SME
 {
@@ -86,5 +88,16 @@ namespace SME
 
             return materialen;
         }*/
+
+        public static void AddMateriaalReservering(Reservering reservering, int barcode)
+        {
+            OracleCommand cmd = new OracleCommand();
+            cmd.Parameters.Add("p_reserveringsnummer", OracleDbType.Varchar2).Value = reservering.Nummer;
+            cmd.Parameters.Add("p_barcode", OracleDbType.Varchar2).Value = barcode;
+            cmd.Parameters.Add("p_datumUitgeleend", OracleDbType.Date).Value = DateTime.Today;
+            cmd.Parameters.Add("p_datumIngeleverd", OracleDbType.Date).Value = null;
+            cmd.Parameters.Add("p_aantal", OracleDbType.Int32).Value = "1";
+            Database.ExecuteProcedure(cmd, "ADD_MATERIAAL");
+        }
     }
 }

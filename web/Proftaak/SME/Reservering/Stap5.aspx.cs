@@ -64,9 +64,17 @@ namespace SME
                 reservering.AddBijboeker(bijboeker);
             }
 
-            //kampeerplaatsen
-            //materialen
-            //alles toevoegen aan de database
+            foreach(int kampeerplaatsnummer in Kampeerplaatsen)
+            {
+                Kampeerplaats.AddKampeerplaatsReservering(reservering, kampeerplaatsnummer);
+            }
+
+            
+            foreach(int barcode in Materialen)
+            {
+                Materiaal.AddMateriaalReservering(reservering, barcode);
+            }
+
             Session["Stap1"] = null;
             Session["Stap2"] = null;
             Session["Stap3"] = null;

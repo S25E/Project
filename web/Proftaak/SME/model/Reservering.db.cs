@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Data;
+using Oracle.DataAccess.Client;
+using Oracle.DataAccess.Types;
 
 namespace SME
 {
@@ -42,13 +44,13 @@ namespace SME
         public static void AddReservering(Reservering reservering)
         {
             int insertedId =  Database.GetSequence("SEQ_RESERVERING");
-            Database.Execute("INSERT INTO RESERVERING (RESERVERINGSNUMMER, DATUM) VALUES (@nummer, TO_DATE(@datum, 'SYYYY-MM-DD HH24:MI:SS'))", new Dictionary<string, object>()
-            {
-                {"@nummer", insertedId},
-                {"@datum",  reservering.Datum.ToString("yyyy-MM-dd HH:mm:ss")}
-            });
             reservering.Nummer = insertedId;
 
+            OracleCommand cmd = new OracleCommand();
+            cmd.Parameters.Add("p_reserveringnummer", OracleDbType.Int32).Value = reservering.Nummer;
+            cmd.Parameters.Add("p_betaald", OracleDbType.Varchar2).Value = "false";
+            cmd.Parameters.Add("p_datum", OracleDbType.Date).Value = reservering.Datum;
+            Database.ExecuteProcedure(cmd, "ADD_RESERVERING");
         }
 
         // NOG TE MAKEN

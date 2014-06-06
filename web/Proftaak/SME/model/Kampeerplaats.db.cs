@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Data;
+using Oracle.DataAccess.Client;
+using Oracle.DataAccess.Types;
 
 namespace SME
 {
@@ -55,6 +57,14 @@ namespace SME
                 Kampeerplaatsen.Add(kampeerplaats);
             }
             return Kampeerplaatsen;
+        }
+
+        public static void AddKampeerplaatsReservering(Reservering reservering, int kampeerplaatsnummer)
+        {
+            OracleCommand cmd = new OracleCommand();
+            cmd.Parameters.Add("P_RESERVERINGNUMMER", OracleDbType.Int32).Value = reservering.Nummer;
+            cmd.Parameters.Add("P_PLAATSNUMMER", OracleDbType.Varchar2).Value = kampeerplaatsnummer; //nog aanpassen naar kampeerplaats.nummer
+            Database.ExecuteProcedure(cmd, "ADD_PLAATS_TOEWIJZING");
         }
 	}
 }
