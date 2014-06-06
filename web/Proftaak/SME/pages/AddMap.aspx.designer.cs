@@ -40,13 +40,13 @@ namespace SME.pages {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
         
         /// <summary>
-        /// Naam control.
+        /// Henk control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Naam;
+        protected global::System.Web.UI.WebControls.Label Henk;
         
         /// <summary>
         /// BestandNaam control.
@@ -73,6 +73,6 @@ namespace SME.pages {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button K;
+        protected global::System.Web.UI.WebControls.LinkButton K;
     }
 }
