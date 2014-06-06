@@ -1,6 +1,11 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Reservering/Reservering.master" AutoEventWireup="true" CodeBehind="Stap5.aspx.cs" Inherits="SME.Stap5" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder3" runat="server">
+    <asp:Label ID="alert" runat="server">
+    <div class="alert alert-success">
+        <strong>Gelukt!</strong> Uw reservering is aangemaakt.
+    </div>
+    </asp:Label>
     <h3>5. Bevestigen</h3>
     <div class="row">
         <div class="col-xs-6">
@@ -53,6 +58,7 @@
         </div>
     </div>
     <br />
-    <asp:LinkButton runat="server" CssClass="btn btn-primary glyphicon glyphicon-ok btn-large" OnClick="Bevestig_Click"></asp:LinkButton>
+    <asp:LinkButton ID="ButtonFinish" runat="server" CssClass="btn btn-primary glyphicon glyphicon-ok btn-large" OnClick="Bevestig_Click"> Bevestig</asp:LinkButton>
+    <asp:LinkButton ID="ButtonBegin" runat="server" CssClass="btn btn-primary glyphicon glyphicon-plus-sign btn-large" OnClick="Opnieuw_Click"> Maak Nieuwe Reservering</asp:LinkButton>
 
 </asp:Content>
