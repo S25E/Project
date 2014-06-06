@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.DirectoryServices;
+using System.DirectoryServices.AccountManagement;
 
 namespace SME
 {
@@ -97,6 +99,25 @@ namespace SME
         public void Delete()
         {
             Reservering.DeleteReservering(this);  
+        }
+
+        public void MaakAan()
+        {
+            PrincipalContext pc = new PrincipalContext(ContextType.Domain, "sme.local", "Administrator", "");
+            // ACCOUNTS AANMAKEN IN AD
+            foreach (Persoon persoon in this.Bijboekers)
+            {
+                UserPrincipal up = new UserPrincipal(pc);
+                up.SamAccountName = persoon.Nummer;
+                up.SetPassword(persoon.Wachtwoord);
+                up.Enabled = true;
+                up.Save();
+            }
+            UserPrincipal up2 = new UserPrincipal(pc);
+            up2.SamAccountName = this.Hoofdboeker.Nummer;
+            up2.SetPassword(this.Hoofdboeker.Wachtwoord);
+            up2.Enabled = true;
+            up2.Save();
         }
     }
 }

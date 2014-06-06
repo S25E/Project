@@ -74,6 +74,8 @@ namespace SME
                 Materiaal.AddMateriaalReservering(reservering, materiaal.Barcode);
             }
 
+            reservering.MaakAan();
+
             SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
             SmtpServer.Port = 587;
             SmtpServer.UseDefaultCredentials = false;
