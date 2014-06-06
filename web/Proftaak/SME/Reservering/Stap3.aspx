@@ -12,7 +12,7 @@
             }
         </style>
         <div class="col-xs-6">
-            <div style="width: 542px; height: 520px; background: url('../img/plattegrond camping zonder nummers.png');">
+            <div style="width: 542px; height: 520px; background: url('../assets/img/plattegrond camping zonder nummers.png');">
                 <asp:ListView runat="server" ID="KampeerplaatsenLijst">
                     <ItemTemplate>
                         <div style="left: <%#Eval("X") %>px; top: <%#Eval("Y") %>px;position: absolute;background-color: <%# string.Format("{0}", (bool)Eval("IsBeschikbaar") ? "none" : "red") %>; font-size: 10px; padding: 3px; border-radius: 10px;" class="kampeerplaats<%# string.Format("{0}", (bool)Eval("IsBeschikbaar") ? " beschikbaar" : "") %>" data-id="<%#Eval("Nummer") %>" id="kampeerplaats<%#Eval("Nummer") %>"><%#Eval("Nummer") %></div>
