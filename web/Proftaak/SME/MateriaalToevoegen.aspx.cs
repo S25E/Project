@@ -13,5 +13,12 @@ namespace SME
         {
 
         }
+
+        protected void Bevestigknop_Click(object sender, EventArgs e)
+        {
+            Materiaal materiaal = new Materiaal(tbBarcode.Text, TbNaam.Text, Convert.ToInt32(tbAantal.Text), Convert.ToInt32(tbVerhuurprijs.Text), tbOmschrijving.Text, tbCategorie.Text);
+
+            Materiaal.AddMateriaal(materiaal);
+        }
     }
 }

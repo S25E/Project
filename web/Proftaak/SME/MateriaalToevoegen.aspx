@@ -10,6 +10,19 @@
         <div style="width: 50%;" class="form-horizontal">
             <h1>Boeg hier uw materiaal toe</h1>
 
+                        <%--Begin 5e row--%>
+            <div class="row class1">
+                <div class="col-md-2">
+                    <div class="control-group row-fluid form-inline">
+                        <asp:Label runat="server" ID="Label4">Barcode:</asp:Label>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <asp:TextBox Style="text-align: left; width: 200px; margin-left: auto; margin-right: auto;" placeholder="Barcode" class="form-control" ID="tbBarcode" runat="server" />
+                </div>
+            </div>
+            <%--Einde 5e row--%>
+            <br />
 
             <%--Begin 1e row--%>
             <div class="row class1">
@@ -19,7 +32,7 @@
                     </div>
                 </div>
                 <div class="col-md-2">
-                    <asp:TextBox Style="text-align: left; width: 200px; margin-left: auto; margin-right: auto;" placeholder="Naam" class="form-control" ID="TbAantal" runat="server" />
+                    <asp:TextBox Style="text-align: left; width: 200px; margin-left: auto; margin-right: auto;" placeholder="Naam" class="form-control" ID="TbNaam" runat="server" />
                 </div>
             </div>
             <%--Einde 1e row--%>
@@ -33,7 +46,7 @@
                     </div>
                 </div>
                 <div class="col-md-2">
-                    <asp:TextBox Style="text-align: left; width: 200px; margin-left: auto; margin-right: auto;" placeholder="Aantal" class="form-control" ID="TbRFID" runat="server" />
+                    <asp:TextBox Style="text-align: left; width: 200px; margin-left: auto; margin-right: auto;" placeholder="Aantal" class="form-control" ID="tbAantal" runat="server" />
                 </div>
             </div>
             <%--Einde 2e row--%>
@@ -43,11 +56,11 @@
             <div class="row class1">
                 <div class="col-md-2">
                     <div class="control-group row-fluid form-inline">
-                        <asp:Label runat="server" ID="Label1">Omschrijving:</asp:Label>
+                        <asp:Label runat="server" ID="Label1">Verhuurprijs:</asp:Label>
                     </div>
                 </div>
                 <div class="col-md-2">
-                    <asp:TextBox Style="text-align: left; width: 200px; margin-left: auto; margin-right: auto;" placeholder="Omschrijving" class="form-control" ID="TextBox1" runat="server" />
+                    <asp:TextBox Style="text-align: left; width: 200px; margin-left: auto; margin-right: auto;" placeholder="Verhuurprijs" class="form-control" ID="tbVerhuurprijs" runat="server" />
                 </div>
             </div>
             <%--Einde 3e row--%>
@@ -60,7 +73,7 @@
                     </div>
                 </div>
                 <div class="col-md-2">
-                    <asp:TextBox Style="text-align: left; width: 200px; margin-left: auto; margin-right: auto;" placeholder="Omschrijving" class="form-control" ID="TextBox2" runat="server" />
+                    <asp:TextBox Style="text-align: left; width: 200px; margin-left: auto; margin-right: auto;" placeholder="Omschrijving" class="form-control" ID="tbOmschrijving" runat="server" />
                 </div>
             </div>
             <%--Einde 4e row--%>
@@ -69,11 +82,11 @@
             <div class="row class1">
                 <div class="col-md-2">
                     <div class="control-group row-fluid form-inline">
-                        <asp:Label runat="server" ID="Label3">Omschrijving:</asp:Label>
+                        <asp:Label runat="server" ID="Label3">Categorie:</asp:Label>
                     </div>
                 </div>
                 <div class="col-md-2">
-                    <asp:TextBox Style="text-align: left; width: 200px; margin-left: auto; margin-right: auto;" placeholder="Omschrijving" class="form-control" ID="TextBox3" runat="server" />
+                    <asp:TextBox Style="text-align: left; width: 200px; margin-left: auto; margin-right: auto;" placeholder="Categorie" class="form-control" ID="tbCategorie" runat="server" />
                 </div>
             </div>
             <%--Einde 5e row--%>
@@ -82,7 +95,7 @@
 
             <%--Begin 6e row--%>
 
-            <asp:Button ID="Bevestigknop" runat="server" Text="Bevestig" Width="86px" CssClass="btn btn-primary" />
+            <asp:Button ID="Bevestigknop" runat="server" Text="Bevestig" Width="86px" CssClass="btn btn-primary" OnClick="Bevestigknop_Click" />
 
 
         </div>

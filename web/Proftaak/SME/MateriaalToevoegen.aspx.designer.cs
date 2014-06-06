@@ -13,6 +13,24 @@ namespace SME {
     public partial class WebForm1 {
         
         /// <summary>
+        /// Label4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label4;
+        
+        /// <summary>
+        /// tbBarcode control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tbBarcode;
+        
+        /// <summary>
         /// LabelNaam control.
         /// </summary>
         /// <remarks>
@@ -22,13 +40,13 @@ namespace SME {
         protected global::System.Web.UI.WebControls.Label LabelNaam;
         
         /// <summary>
-        /// TbAantal control.
+        /// TbNaam control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TbAantal;
+        protected global::System.Web.UI.WebControls.TextBox TbNaam;
         
         /// <summary>
         /// LabelTelefoonnummer control.
@@ -40,13 +58,13 @@ namespace SME {
         protected global::System.Web.UI.WebControls.Label LabelTelefoonnummer;
         
         /// <summary>
-        /// TbRFID control.
+        /// tbAantal control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TbRFID;
+        protected global::System.Web.UI.WebControls.TextBox tbAantal;
         
         /// <summary>
         /// Label1 control.
@@ -58,13 +76,13 @@ namespace SME {
         protected global::System.Web.UI.WebControls.Label Label1;
         
         /// <summary>
-        /// TextBox1 control.
+        /// tbVerhuurprijs control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.TextBox tbVerhuurprijs;
         
         /// <summary>
         /// Label2 control.
@@ -76,13 +94,13 @@ namespace SME {
         protected global::System.Web.UI.WebControls.Label Label2;
         
         /// <summary>
-        /// TextBox2 control.
+        /// tbOmschrijving control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox2;
+        protected global::System.Web.UI.WebControls.TextBox tbOmschrijving;
         
         /// <summary>
         /// Label3 control.
@@ -94,13 +112,13 @@ namespace SME {
         protected global::System.Web.UI.WebControls.Label Label3;
         
         /// <summary>
-        /// TextBox3 control.
+        /// tbCategorie control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox3;
+        protected global::System.Web.UI.WebControls.TextBox tbCategorie;
         
         /// <summary>
         /// Bevestigknop control.
