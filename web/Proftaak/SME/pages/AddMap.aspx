@@ -9,7 +9,6 @@
                 <asp:Label runat="server" ID="Label1">Parentmap:</asp:Label></label>
             <div class="col-sm-5">
                 <asp:DropDownList ID="Mappicker" CssClass="dropdown form-control" runat="server" />
-                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" ControlToValidate="Categorie" Text="Categorie is verplicht!" runat="Server" />
             </div>
         </div>
         <div class="form-group row">
@@ -17,7 +16,6 @@
                 <asp:Label runat="server" ID="Henk">Naam:</asp:Label></label>
             <div class="col-sm-5">
                 <asp:TextBox CssClass="form-control" ID="Naam" runat="server" />
-                <asp:RequiredFieldValidator ID="RequiredFieldValidatorBestandNaam" ControlToValidate="BestandNaam" Text="Naam is verplicht!" runat="Server" />
             </div>
         </div>
         <div class="form-group row">

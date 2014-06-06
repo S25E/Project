@@ -31,15 +31,6 @@ namespace SME.pages {
         protected global::System.Web.UI.WebControls.DropDownList Mappicker;
         
         /// <summary>
-        /// RequiredFieldValidator1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
-        
-        /// <summary>
         /// Henk control.
         /// </summary>
         /// <remarks>
@@ -56,15 +47,6 @@ namespace SME.pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox Naam;
-        
-        /// <summary>
-        /// RequiredFieldValidatorBestandNaam control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorBestandNaam;
         
         /// <summary>
         /// K control.
