@@ -126,9 +126,9 @@ namespace SME
         /// </summary>
         /// <param name="bestand"></param>
         /// <returns>Het nummer van het toegevoegde bestand</returns>
-        public static int AddBestand(Bestand bestand)
+        public static void AddBestand(Bestand bestand)
         {
-            int insertedId = Convert.ToInt32(Database.GetData("SELECT SEQ_BESTAND.nextval FROM dual").Rows[0]["NEXTVAL"]);
+            int insertedId = Database.GetSequence("SEQ_BESTAND");
             Database.Execute("INSERT INTO BESTAND (BESTAND_ID, MAP_ID, NAAM, BESCHRIJVING, EXTENSIE, GROOTTE, RFID, DATUM, PAD, IMGINDEX) VALUES (@nummer, @map_nummer, @naam, @beschrijving, @extensie, @grootte, @rfid, TO_DATE(@datum, 'SYYYY-MM-DD HH24:MI:SS'), @pad, @imgindex)", new Dictionary<string, object>()
             {
                 {"@nummer", insertedId},
@@ -142,8 +142,7 @@ namespace SME
                 {"@pad", bestand.Pad},
                 {"@imgindex", bestand.Image}
             });
-
-            return insertedId;
+            bestand.Nummer = insertedId;
         }
           
         /// <summary>
@@ -152,9 +151,9 @@ namespace SME
         /// <param name="bestand"></param>
         public static void DeleteBestand(Bestand bestand)
         {
-            Database.Execute("DELETE FROM REACTIE WHERE BESTAND_NUMMER = " + bestand.Nummer);
-            Database.Execute("DELETE FROM DISLIKE_LIKE_REPORT WHERE BESTAND_NUMMER = " + bestand.Nummer);
-            Database.Execute("DELETE FROM BESTAND WHERE BESTAND_NUMMER = " + bestand.Nummer);
+            Database.Execute("DELETE FROM REACTIE WHERE BESTAND_ID = " + bestand.Nummer);
+            Database.Execute("DELETE FROM DISLIKE_LIKE_REPORT WHERE BESTAND_ID = " + bestand.Nummer);
+            Database.Execute("DELETE FROM BESTAND WHERE BESTAND_ID = " + bestand.Nummer);
         }
 
         /// <summary>
@@ -165,8 +164,8 @@ namespace SME
         private static Bestand rowToBestand(DataRow row)
         {
             return new Bestand(
-                Convert.ToInt32(row["BESTAND_NUMMER"]),
-                Convert.ToInt32(row["MAP_NUMMER"]),
+                Convert.ToInt32(row["BESTAND_ID"]),
+                Convert.ToInt32(row["MAP_ID"]),
                 row["BESCHRIJVING"].ToString(),
                 row["NAAM"].ToString(),
                 row["EXTENSIE"].ToString(),
