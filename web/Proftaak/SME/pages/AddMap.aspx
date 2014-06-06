@@ -16,7 +16,7 @@
             <label class="col-sm-2 control-label">
                 <asp:Label runat="server" ID="Henk">Naam:</asp:Label></label>
             <div class="col-sm-5">
-                <asp:TextBox CssClass="form-control" ID="BestandNaam" runat="server" />
+                <asp:TextBox CssClass="form-control" ID="Naam" runat="server" />
                 <asp:RequiredFieldValidator ID="RequiredFieldValidatorBestandNaam" ControlToValidate="BestandNaam" Text="Naam is verplicht!" runat="Server" />
             </div>
         </div>

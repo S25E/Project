@@ -49,13 +49,13 @@ namespace SME.pages {
         protected global::System.Web.UI.WebControls.Label Henk;
         
         /// <summary>
-        /// BestandNaam control.
+        /// Naam control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox BestandNaam;
+        protected global::System.Web.UI.WebControls.TextBox Naam;
         
         /// <summary>
         /// RequiredFieldValidatorBestandNaam control.
