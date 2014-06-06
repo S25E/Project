@@ -11,13 +11,13 @@
             <asp:Label runat="server">Categorie: </asp:Label><asp:DropDownList ID="Categorie" CssClass="dropdown" runat="server"/>
         </div>
         <div class="row">
-            <asp:Label runat="server">Naam: </asp:Label><asp:TextBox ID="Naam" runat="server" PlaceHolder="Naam" />
+            <asp:Label runat="server">Naam: </asp:Label><asp:TextBox ID="Naam" runat="server" />
         </div>
         <div class="row">
-            <asp:Label runat="server">Beschrijving: </asp:Label><asp:TextBox ID="Beschrijving" Height="200px" runat="server" PlaceHolder="Beschrijving" />
+            <asp:Label runat="server">Beschrijving: </asp:Label><asp:TextBox ID="Beschrijving" Height="200px" runat="server" />
         </div>
         <div class="row">
-            <asp:LinkButton runat="server" ID="Uploaden" Text="UploadenKnop" OnClick="Uploaden_Click" />
+            <asp:LinkButton runat="server" ID="UploadButton" Text="UploadenKnop" OnClick="Uploaden_Click" />
         </div>
     </div>
 </asp:Content>

@@ -81,8 +81,8 @@
     <Content Include="assets\img\plattegrond camping zonder nummers.png" />
     <Content Include="assets\js\bootstrap.min.js" />
     <Content Include="Login.aspx" />
-    <Content Include="pages\Filesharing.aspx" />
-	<Content Include="pages\Uploaden.aspx" />
+    <Content Include="Filesharing.aspx" />
+    <Content Include="pages\Uploaden.aspx" />
     <Content Include="reservering\Stap1.aspx" />
     <Content Include="reservering\Stap2.aspx" />
     <Content Include="reservering\Stap3.aspx" />
@@ -257,9 +257,7 @@
       <DependentUpon>Uitloggen.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="pages\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

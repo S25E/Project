@@ -14,7 +14,7 @@ namespace SME
             return Database.GetData("SELECT * FROM Uitlening" + (where != "" ? " WHERE " + where : ""), parameters);
 
         }
-        public static UitgeleendMateriaal rowToMateriaal(DataRow row)
+        public static UitgeleendMateriaal rowToUitgeleendMateriaal(DataRow row)
         {
             return new UitgeleendMateriaal(row["BARCODE"].ToString(), row["NAAM"].ToString(), Convert.ToInt32(row["AANTAL"]), Convert.ToInt32(row["VERHUURPRIJS"]), row["OMSCHRIJVING"].ToString(), row["CATEGORIE"].ToString());
         }
@@ -23,7 +23,7 @@ namespace SME
         {
             foreach (DataRow row in getMaterialenByWhere("reserveringsnummer = " + reserveringnummer).Rows)
             {
-                return rowToMateriaal(row);
+                return rowToUitgeleendMateriaal(row);
             }
 
             return (UitgeleendMateriaal)null;
