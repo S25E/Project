@@ -6,7 +6,9 @@
     <div id="content">
         <div class="row">
             <div class="col-xs-6">
-                Links
+                <asp:DropDownList ID="Categorie" runat="server" CssClass="form-control" OnSelectedIndexChanged="Categorie_SelectedIndexChanged"></asp:DropDownList>
+
+
             </div>
             <div class="col-xs-6">
                 Rechts
