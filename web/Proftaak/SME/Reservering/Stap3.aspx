@@ -32,7 +32,7 @@
             <ul class="list-group" id="geselecteerdeplaatsen">
                 <asp:Repeater runat="server" ID="repeaterPlaatsen">
                     <ItemTemplate>
-                        <li class="list-group-item" data-id="<%#Container.DataItem%>">Kampeerplaats nummer: <%#Container.DataItem%></li>
+                        <li class="list-group-item" data-id="<%#Eval("Nummer")%>">Kampeerplaats nummer: <%#Eval("Nummer")%></li>
                     </ItemTemplate>
                 </asp:Repeater>
             </ul>

@@ -9,7 +9,7 @@ namespace SME
 {
     public partial class Stap3 : System.Web.UI.Page
     {
-        List<Int32> Kampeerplaatsen;
+        List<Kampeerplaats> Kampeerplaatsen;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -36,7 +36,7 @@ namespace SME
             {
                 List<Bijboeker> Bijboekers = (List<Bijboeker>)Session["Stap2"];
                 double aantalPlaatsen = Math.Ceiling(Convert.ToDouble(Bijboekers.Count + 1) / 5);
-                List<Int32> plaatsen = (List<Int32>)Session["Stap3"];
+                List<Kampeerplaats> plaatsen = (List<Kampeerplaats>)Session["Stap3"];
                 if (aantalPlaatsen <= plaatsen.Count)
                 {
                     ButtonSelecteer.Visible = false;
@@ -56,7 +56,7 @@ namespace SME
             {
                 List<Bijboeker> Bijboekers = (List<Bijboeker>)Session["Stap2"];
                 double aantalPlaatsen = Math.Ceiling(Convert.ToDouble(Bijboekers.Count + 1) / 5);
-                List<Int32> plaatsen = (List<Int32>)Session["Stap3"];
+                List<Kampeerplaats> plaatsen = (List<Kampeerplaats>)Session["Stap3"];
                 if (aantalPlaatsen <= plaatsen.Count)
                 {
                     Response.Redirect("Stap4.aspx");
@@ -77,15 +77,16 @@ namespace SME
 
         protected void ButtonSelecteer_Click(object sender, EventArgs e)
         {
-            Kampeerplaatsen = (List<Int32>)Session["Stap3"];
+            Kampeerplaatsen = (List<Kampeerplaats>)Session["Stap3"];
             if(Kampeerplaatsen == null)
             {
-                Kampeerplaatsen = new List<int>();
+                Kampeerplaatsen = new List<Kampeerplaats>();
             }
 
-            if (!Kampeerplaatsen.Contains(Convert.ToInt32(dropdown.Text)))
+            Kampeerplaats kampeerplaats = Kampeerplaats.GetKampeerplaatsBijNummer(Convert.ToInt32(dropdown.Text));
+
+            if (!Kampeerplaatsen.Contains(kampeerplaats))
             {
-            int kampeerplaats = Convert.ToInt32(dropdown.Text);
             Kampeerplaatsen.Add(kampeerplaats);
             Session["Stap3"] = Kampeerplaatsen;
             Response.Redirect("Stap3.aspx");

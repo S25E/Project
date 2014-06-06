@@ -9,8 +9,7 @@ namespace SME
 {
     public partial class Stap4 : System.Web.UI.Page
     {
-        List<Int32> Barcodes;
-        List<string> Producten;
+        List<Materiaal> Barcodes;
         
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -36,7 +35,8 @@ namespace SME
 
                     if(Session["Stap4"] != null)
                     {
-                        ListboxGeselecteerd.DataSource = Session["Producten"];
+                        ListboxGeselecteerd.DataSource = Session["Stap4"];
+                        ListboxGeselecteerd.DataTextField = "Naam";
                         ListboxGeselecteerd.DataBind();
                     }
                 }
@@ -59,26 +59,16 @@ namespace SME
 
         protected void SelecteerMateriaal(object sender, EventArgs e)
         {
-            Barcodes = (List<Int32>)Session["Stap4"];
-            Producten = (List<string>)Session["producten"];
+            Barcodes = (List<Materiaal>)Session["Stap4"];
 
             if(Barcodes  == null)
             {
-                Barcodes = new List<int>();
+                Barcodes = new List<Materiaal>();
             }
 
-            if(Producten == null)
-            {
-                Producten = new List<string>();
-            }
-
-            int barcode = Convert.ToInt32(ListBoxMaterialen.SelectedValue);
-            Barcodes.Add(barcode);
+            Materiaal materiaal = Materiaal.GetMateriaalBijBarcode(ListBoxMaterialen.SelectedValue);
+            Barcodes.Add(materiaal);
             Session["Stap4"] = Barcodes;
-
-            string productnaam = ListBoxMaterialen.SelectedItem.Text;
-            Producten.Add(productnaam);
-            Session["producten"] = Producten;
             Response.Redirect("Stap4.aspx");
         }
     }

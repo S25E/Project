@@ -33,17 +33,12 @@ namespace SME
                 ListboxBijboekers.DataBind();
 
                 ListboxKampeerplaats.DataSource = Session["Stap3"];
+                ListboxKampeerplaats.DataTextField = "Nummer";
                 ListboxKampeerplaats.DataBind();
 
-                List<Int32> Barcodes = (List<Int32>)Session["Stap4"];
-                List<Materiaal> Materialen = new List<Materiaal>();
-                foreach(int barcode in Barcodes)
-                {
-                    Materiaal materiaal = Materiaal.GetMateriaalBijBarcode(barcode);
-                    Materialen.Add(materiaal);
-                }
+                List<Materiaal> Barcodes = (List<Materiaal>)Session["Stap4"];
                 
-                Listboxmaterialen.DataSource = Materialen;
+                Listboxmaterialen.DataSource = Barcodes;
                 Listboxmaterialen.DataTextField = "Naam";
                 Listboxmaterialen.DataBind();
             }
@@ -53,8 +48,8 @@ namespace SME
         {
             Hoofdboeker Hoofdboeker = (Hoofdboeker)Session["Stap1"];
             List<Bijboeker> Bijboekers = (List<Bijboeker>)Session["Stap2"];
-            List<Int32> Kampeerplaatsen = (List<Int32>)Session["Stap3"];
-            List<Int32> Materialen = (List<Int32>)Session["Stap4"];
+            List<Kampeerplaats> Kampeerplaatsen = (List<Kampeerplaats>)Session["Stap3"];
+            List<Materiaal> Materialen = (List<Materiaal>)Session["Stap4"];
 
             Reservering reservering = new Reservering();
             ReserveringBeheer.AddReservering(reservering, Hoofdboeker);
@@ -64,15 +59,15 @@ namespace SME
                 reservering.AddBijboeker(bijboeker);
             }
 
-            foreach(int kampeerplaatsnummer in Kampeerplaatsen)
+            foreach(Kampeerplaats kampeerplaats in Kampeerplaatsen)
             {
-                Kampeerplaats.AddKampeerplaatsReservering(reservering, kampeerplaatsnummer);
+                Kampeerplaats.AddKampeerplaatsReservering(reservering, kampeerplaats.Nummer);
             }
 
             
-            foreach(int barcode in Materialen)
+            foreach(Materiaal materiaal in Materialen)
             {
-                Materiaal.AddMateriaalReservering(reservering, barcode);
+                Materiaal.AddMateriaalReservering(reservering, materiaal.Barcode);
             }
 
             Session["Stap1"] = null;
