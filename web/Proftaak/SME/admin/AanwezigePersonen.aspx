@@ -2,14 +2,15 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div style="scrollbar-3dlight-color:aqua; overflow-y:auto;">
-    <asp:GridView Id="PersonenView" runat="server">
+    <div id="content" style="overflow-y:auto;">
+    <center><asp:GridView Id="PersonenView" runat="server" AutoGenerateColumns="false">
         <Columns>
-            <asp:BoundField DataField="RFID" HeaderText="RFID"/>
-            <asp:BoundField DataField="TYPE" HeaderText="Type"/>
-            <asp:BoundField DataField="AANWEZIG" HeaderText="Aanwezig"/>
-            <asp:BoundField DataField="NAAM" HeaderText="Naam"/>
+            <asp:BoundField DataField="RFID" HeaderText="RFID" ItemStyle-Width="100px"/>
+            <asp:BoundField DataField="TYPE" HeaderText="Type" ItemStyle-Width="150px"/>
+            <asp:BoundField DataField="AANWEZIG" HeaderText="Aanwezig" ItemStyle-Width="70px"/>
+            <asp:BoundField DataField="NAAM" HeaderText="Naam" ItemStyle-Width="150px"/>
         </Columns>
     </asp:GridView>
+        </center>
     </div>
 </asp:Content>
