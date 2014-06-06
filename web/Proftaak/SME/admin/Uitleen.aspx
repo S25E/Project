@@ -58,7 +58,7 @@
 
 
         <div style="width: 50%;" class="form-horizontal">
-            <h1>Leen hier uw artiekelen</h1>
+            <h1>Leen hier uw artikelen</h1>
 
             <asp:DropDownList ID="CategorieList" runat="server" AutoPostBack="true" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" Width="80px" DataTextField="Categorie" CssClass="dropdown">
             </asp:DropDownList>
