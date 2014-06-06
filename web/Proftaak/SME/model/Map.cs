@@ -99,7 +99,7 @@ namespace SME
         /// <param name="bestand"></param>
         public void AddBestand(Bestand bestand)
         {
-            bestand.Nummer = Bestand.AddBestand(bestand);
+            Bestand.AddBestand(bestand);
             this.bestanden = null;
         }
 

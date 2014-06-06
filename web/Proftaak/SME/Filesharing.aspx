@@ -3,14 +3,29 @@
     <title>Filesharing</title>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div id="content">
-        <div class="row">
-            <div class="col-xs-6">
-                <asp:DropDownList ID="Categorie" runat="server" CssClass="form-control" OnSelectedIndexChanged="Categorie_SelectedIndexChanged" AutoPostBack="True"></asp:DropDownList>
-                <asp:DropDownList ID="Bestanden" runat="server" CssClass="form-control" Visible="true" AutoPostBack="True" OnSelectedIndexChanged="Bestanden_SelectedIndexChanged"></asp:DropDownList>
-            </div>
-            <div class="col-xs-6">
-                Rechts
+    <div class="row">
+        <div class="col-xs-8 col-xs-offset-2">
+            <div id="content">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <asp:Panel ID="PanelMap" CssClass="form-group row" runat="server">
+                            <label class="col-sm-4 control-label">
+                                <asp:Label runat="server" ID="Label1">Selecteer map:</asp:Label>
+                            </label>
+                            <div class="col-sm-8">
+                                <asp:DropDownList ID="Categorie" runat="server" CssClass="form-control" OnSelectedIndexChanged="Categorie_SelectedIndexChanged" AutoPostBack="True"></asp:DropDownList>
+                            </div>
+                        </asp:Panel>
+                        <asp:Panel ID="PanelBestand" CssClass="form-group row" runat="server">
+                            <label class="col-sm-4 control-label">
+                                <asp:Label runat="server" ID="Label2">Selecteer Bestand:</asp:Label>
+                            </label>
+                            <div class="col-sm-8">
+                                <asp:DropDownList ID="Bestanden" runat="server" CssClass="form-control" Visible="true" AutoPostBack="True" OnSelectedIndexChanged="Bestanden_SelectedIndexChanged"></asp:DropDownList>
+                            </div>
+                        </asp:Panel>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

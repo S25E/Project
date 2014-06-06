@@ -21,11 +21,13 @@ namespace SME.pages
             }
         }
 
-        protected void Uploaden_Click(object sender, EventArgs e)
+        protected void UploadKnop_Click(object sender, EventArgs e)
         {
-            FileInfo fileinfo = new FileInfo(Bladeren.PostedFile.ToString());
-            Bestand toUpload = new Bestand(Convert.ToInt32(Categorie.SelectedValue),Naam.Text,Beschrijving.Text,fileinfo.Extension,Bladeren.PostedFile.ContentLength,Convert.ToString(000039),DateTime.Now,0,0,Bladeren.PostedFile.FileName,0);
-            toUpload.Uploaden(toUpload.Pad);
+            FileInfo fileinfo = new FileInfo(FileUpload.PostedFile.FileName);
+            string filelocatie = "/Files/" + DateTime.Now.ToString("yyyyMMddHHmmssffff") + "-" + fileinfo.Name;
+            FileUpload.PostedFile.SaveAs(Server.MapPath(filelocatie));
+            Bestand toUpload = new Bestand(Convert.ToInt32(Categorie.SelectedValue), BestandNaam.Text, Beschrijving.Text, fileinfo.Extension, FileUpload.PostedFile.ContentLength, "000039", DateTime.Now, 00, 0, filelocatie, 0);
+            Map.GetMapBijNummer(Convert.ToInt32(Categorie.SelectedValue)).AddBestand(toUpload);
         }
     }
 }
