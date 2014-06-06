@@ -35,6 +35,7 @@
                 </div>
             </ItemTemplate>
         </asp:ListView>
+        <asp:LinkButton id="print" runat="server" Text="Print" class="btn btn-primary" href="/admin/AanwezigePersonen.aspx"/>
     </div>
 
 

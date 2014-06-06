@@ -67,6 +67,7 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="admin\AanwezigePersonen.aspx" />
     <Content Include="assets\css\bootstrap.css" />
     <Content Include="Default.aspx" />
     <Content Include="pages\Filesharing.aspx" />
@@ -114,6 +115,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="admin\AanwezigePersonen.aspx.cs">
+      <DependentUpon>AanwezigePersonen.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\AanwezigePersonen.aspx.designer.cs">
+      <DependentUpon>AanwezigePersonen.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
