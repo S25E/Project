@@ -80,10 +80,34 @@ namespace SME
             MailMessage mail = new MailMessage();
             mail.Subject = "Uw registratie bij SME";
             mail.IsBodyHtml = true;
-            string bodyHeader = "<h3>Bedankt voor het plaatsen van een reservering bij SME.</h3><br /><p>Uw gegevens:</p><p><ul>";
-            string body = "<li>Naam: " + Hoofdboeker.Naam + "</li><li>Telefoonnummer: " + Hoofdboeker.Telefoon + "</li><li>Woonplaats: " + Hoofdboeker.Woonplaats + "</li><li>Straat: " + Hoofdboeker.Woonplaats + "</li><li>Emailadres: " + Hoofdboeker.Email + "</li><li>Rekeningnummer: " + Hoofdboeker.Rekeningnummer + "</li><li>Sofinummer: " + Hoofdboeker.Sofinummer + "</li><li>Persoonlijk nummer: " + Hoofdboeker.Nummer + "</li><li>Uw reserveringsnummer: " + Hoofdboeker.ReserveringNummer + "</li><li>Wachtwoord: "+ Hoofdboeker.Wachtwoord  +"</li>";
-            string bodyFooter = "</ul>";
+
+            string persoonlijknummerHoofdboeker = Persoon.GetHoofdboekerBijReservering(reservering).Nummer;
+
+            string bijboekerString= string.Empty;
+            foreach(Bijboeker bijboeker in Persoon.GetBijboekersBijReservering(reservering))
+            {
+                bijboekerString += "<li>Naam: "+ bijboeker.Naam +", RFID: " + bijboeker.Nummer +", Wachtwoord: " + bijboeker.Wachtwoord + "</li>";
+            }
+
+            string materialenString = string.Empty;
+            foreach(Materiaal materiaal in Materialen)
+            {
+                materialenString += "<li>"+ materiaal.Naam +"</li>";
+            }
+
+            string kampeerplaatsenString = string.Empty;
+            foreach(Kampeerplaats kampeerplaats in Kampeerplaatsen)
+            {
+                kampeerplaatsenString += "<li>Kampeerplaatsnummer: "+ kampeerplaats.Nummer.ToString() +", "+ kampeerplaats.Opmerking + "</li>";
+            }
+
+            string bodyHeader = "<h3>Bedankt voor het plaatsen van een reservering bij SME.</h3><br /><p>Uw gegevens</p><p><ul>";
+            string body = "<li>Naam: " + Hoofdboeker.Naam + "</li><li>Telefoonnummer: " + Hoofdboeker.Telefoon + "</li><li>Woonplaats: " + Hoofdboeker.Woonplaats + "</li><li>Straat: " + Hoofdboeker.Woonplaats + "</li><li>Emailadres: " + Hoofdboeker.Email + "</li><li>Rekeningnummer: " + Hoofdboeker.Rekeningnummer + "</li><li>Sofinummer: " + Hoofdboeker.Sofinummer + "</li><li>Persoonlijk nummer: " + persoonlijknummerHoofdboeker + "</li><li>Uw reserveringsnummer: " + Hoofdboeker.ReserveringNummer + "</li><li>Wachtwoord: " + Hoofdboeker.Wachtwoord + "</li></ul><br /><p>De Bijboekers</p><ul>"+ bijboekerString +"</ul><br /><p>De kampeerplaats(en)</p><ul>"+ kampeerplaatsenString +"</ul>  <br /><p>De gereserveerde materialen</p><ul>"+ materialenString +"</ul>" ;
+            string bodyFooter = "<p>Wij wensen U een prettig bezoek op het komende SME.</p><p>Voor vragen of opmerkingen, stuur een email naar: s25sme@gmail.com of gebruik #SME</p>";
+
             
+            
+
             string bericht = bodyHeader + body + bodyFooter;
             mail.Body = bericht;
 
