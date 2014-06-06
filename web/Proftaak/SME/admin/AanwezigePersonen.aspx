@@ -5,7 +5,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div id="content" style="overflow-y: auto;">
         <script type="text/javascript">window.print();</script>
-        <center>
+        <div style="margin: 0 auto">
             <asp:GridView Id="PersonenView" runat="server" AutoGenerateColumns="false">
             <Columns>
                 <asp:BoundField DataField="RFID" HeaderText="RFID" ItemStyle-Width="100px"/>
@@ -14,6 +14,6 @@
                 <asp:BoundField DataField="NAAM" HeaderText="Naam" ItemStyle-Width="150px"/>
             </Columns>
             </asp:GridView>
-        </center>
+        </div>
     </div>
 </asp:Content>
