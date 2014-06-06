@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Net.Mail;
+using System.Net;
 
 namespace SME
 {
@@ -33,17 +35,12 @@ namespace SME
                 ListboxBijboekers.DataBind();
 
                 ListboxKampeerplaats.DataSource = Session["Stap3"];
+                ListboxKampeerplaats.DataTextField = "Nummer";
                 ListboxKampeerplaats.DataBind();
 
-                List<Int32> Barcodes = (List<Int32>)Session["Stap4"];
-                List<Materiaal> Materialen = new List<Materiaal>();
-                foreach(int barcode in Barcodes)
-                {
-                    Materiaal materiaal = Materiaal.GetMateriaalBijBarcode(barcode);
-                    Materialen.Add(materiaal);
-                }
+                List<Materiaal> Barcodes = (List<Materiaal>)Session["Stap4"];
                 
-                Listboxmaterialen.DataSource = Materialen;
+                Listboxmaterialen.DataSource = Barcodes;
                 Listboxmaterialen.DataTextField = "Naam";
                 Listboxmaterialen.DataBind();
             }
@@ -53,8 +50,8 @@ namespace SME
         {
             Hoofdboeker Hoofdboeker = (Hoofdboeker)Session["Stap1"];
             List<Bijboeker> Bijboekers = (List<Bijboeker>)Session["Stap2"];
-            List<Int32> Kampeerplaatsen = (List<Int32>)Session["Stap3"];
-            List<Int32> Materialen = (List<Int32>)Session["Stap4"];
+            List<Kampeerplaats> Kampeerplaatsen = (List<Kampeerplaats>)Session["Stap3"];
+            List<Materiaal> Materialen = (List<Materiaal>)Session["Stap4"];
 
             Reservering reservering = new Reservering();
             ReserveringBeheer.AddReservering(reservering, Hoofdboeker);
@@ -64,16 +61,37 @@ namespace SME
                 reservering.AddBijboeker(bijboeker);
             }
 
-            foreach(int kampeerplaatsnummer in Kampeerplaatsen)
+            foreach(Kampeerplaats kampeerplaats in Kampeerplaatsen)
             {
-                Kampeerplaats.AddKampeerplaatsReservering(reservering, kampeerplaatsnummer);
+                Kampeerplaats.AddKampeerplaatsReservering(reservering, kampeerplaats.Nummer);
             }
 
             
-            foreach(int barcode in Materialen)
+            foreach(Materiaal materiaal in Materialen)
             {
-                Materiaal.AddMateriaalReservering(reservering, barcode);
+                Materiaal.AddMateriaalReservering(reservering, materiaal.Barcode);
             }
+
+            SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
+            SmtpServer.Port = 587;
+            SmtpServer.UseDefaultCredentials = false;
+            SmtpServer.Credentials = new System.Net.NetworkCredential("s25sme@gmail.com", "proft@@k");
+            SmtpServer.EnableSsl = true;
+            MailMessage mail = new MailMessage();
+            mail.Subject = "Uw registratie bij SME";
+            mail.IsBodyHtml = true;
+            string bodyHeader = "<h3>Bedankt voor het plaatsen van een reservering bij SME.</h3><br /><p>Uw gegevens:</p><p><ul>";
+            string body = "<li>Naam: " + Hoofdboeker.Naam + "</li><li>Telefoonnummer: " + Hoofdboeker.Telefoon + "</li><li>Woonplaats: " + Hoofdboeker.Woonplaats + "</li><li>Straat: " + Hoofdboeker.Woonplaats + "</li><li>Emailadres: " + Hoofdboeker.Email + "</li><li>Rekeningnummer: " + Hoofdboeker.Rekeningnummer + "</li><li>Sofinummer: " + Hoofdboeker.Sofinummer + "</li><li>Persoonlijk nummer: " + Hoofdboeker.Nummer + "</li><li>Uw reserveringsnummer: " + Hoofdboeker.ReserveringNummer + "</li><li>Wachtwoord: "+ Hoofdboeker.Wachtwoord  +"</li>";
+            string bodyFooter = "</ul>";
+            
+            string bericht = bodyHeader + body + bodyFooter;
+            mail.Body = bericht;
+
+            //Setting From , To and CC
+            mail.From = new MailAddress("s25sme@gmail.com", "SME");
+            mail.To.Add(new MailAddress(Hoofdboeker.Email));
+
+            SmtpServer.Send(mail);
 
             Session["Stap1"] = null;
             Session["Stap2"] = null;
