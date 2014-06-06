@@ -24,7 +24,7 @@ namespace SME.pages
         protected void K_Click(object sender, EventArgs e)
         {
             BestandenCatalogus.AddMap(new Map(Naam.Text,Convert.ToInt32(Mappicker.SelectedValue)));
-            Response.Redirect("/pages/AddMap.aspx");
+            Response.Redirect("/pages/Filesharing.aspx");
         }
     }
 }

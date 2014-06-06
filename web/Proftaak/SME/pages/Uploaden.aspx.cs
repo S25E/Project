@@ -28,6 +28,7 @@ namespace SME.pages
             FileUpload.PostedFile.SaveAs(Server.MapPath(filelocatie));
             Bestand toUpload = new Bestand(Convert.ToInt32(Categorie.SelectedValue), BestandNaam.Text, Beschrijving.Text, fileinfo.Extension, FileUpload.PostedFile.ContentLength, "000039", DateTime.Now, 00, 0, filelocatie, 0);
             Map.GetMapBijNummer(Convert.ToInt32(Categorie.SelectedValue)).AddBestand(toUpload);
+            Response.Redirect("/pages/Filesharing.aspx");
         }
     }
 }
