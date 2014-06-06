@@ -25,6 +25,7 @@ namespace SME.pages
         {
             FileInfo fileinfo = new FileInfo(Bladeren.PostedFile.ToString());
             Bestand toUpload = new Bestand(Convert.ToInt32(Categorie.SelectedValue),Naam.Text,Beschrijving.Text,fileinfo.Extension,Bladeren.PostedFile.ContentLength,Convert.ToString(000039),DateTime.Now,0,0,Bladeren.PostedFile.FileName,0);
+            FileUpload ftu = new FileUpload();
             toUpload.Uploaden(toUpload.Pad);
         }
     }
