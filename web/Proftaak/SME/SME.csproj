@@ -69,7 +69,7 @@
   <ItemGroup>
     <Content Include="assets\css\bootstrap.css" />
     <Content Include="Default.aspx" />
-    <Content Include="pages\Filesharing.aspx" />
+    <Content Include="Global.asax" />
     <Content Include="assets\fonts\awesome\font-awesome.css" />
     <Content Include="assets\fonts\awesome\font-awesome.min.css" />
     <Content Include="assets\fonts\awesome\fontawesome-webfont.svg" />
@@ -80,6 +80,7 @@
     <Content Include="assets\img\plattegrond camping zonder nummers.png" />
     <Content Include="assets\js\bootstrap.min.js" />
     <Content Include="Login.aspx" />
+    <Content Include="pages\Filesharing.aspx" />
     <Content Include="reservering\Stap1.aspx" />
     <Content Include="reservering\Stap2.aspx" />
     <Content Include="reservering\Stap3.aspx" />
@@ -121,12 +122,8 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
-    <Compile Include="pages\Filesharing.aspx.cs">
-      <DependentUpon>Filesharing.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="pages\Filesharing.aspx.designer.cs">
-      <DependentUpon>Filesharing.aspx</DependentUpon>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
@@ -158,6 +155,13 @@
     <Compile Include="model\ReserveringBeheer.cs" />
     <Compile Include="model\UitgeleendMateriaal.cs" />
     <Compile Include="model\UitgeleendMateriaal.db.cs" />
+    <Compile Include="pages\Filesharing.aspx.cs">
+      <DependentUpon>Filesharing.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\Filesharing.aspx.designer.cs">
+      <DependentUpon>Filesharing.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="reservering\Reservering.master.cs">
       <DependentUpon>Reservering.master</DependentUpon>
