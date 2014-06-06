@@ -11,7 +11,18 @@ namespace SME.pages
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                foreach (Map map in BestandenCatalogus.Mappen)
+                {
+                    Mappicker.Items.Add(new ListItem(map.ToString(), map.Nummer.ToString()));
+                }
+            }
+        }
 
+        protected void K_Click(object sender, EventArgs e)
+        {
+            BestandenCatalogus.AddMap(new Map(Naam.Text,Convert.ToInt32(Mappicker.SelectedValue)));
         }
     }
 }
