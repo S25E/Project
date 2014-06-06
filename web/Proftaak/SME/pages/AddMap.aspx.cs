@@ -13,6 +13,7 @@ namespace SME.pages
         {
             if (!IsPostBack)
             {
+                Mappicker.Items.Add(new ListItem("/","0"));
                 foreach (Map map in BestandenCatalogus.Mappen)
                 {
                     Mappicker.Items.Add(new ListItem(map.ToString(), map.Nummer.ToString()));
