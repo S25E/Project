@@ -81,7 +81,7 @@ namespace SME
             mail.Subject = "Uw registratie bij SME";
             mail.IsBodyHtml = true;
             string bodyHeader = "<h3>Bedankt voor het plaatsen van een reservering bij SME.</h3><br /><p>Uw gegevens:</p><p><ul>";
-            string body = "<li>Naam: " + Hoofdboeker.Naam + "</li><li>Telefoonnummer: " + Hoofdboeker.Telefoon + "</li><li>Woonplaats: " + Hoofdboeker.Woonplaats + "</li><li>Straat: " + Hoofdboeker.Woonplaats + "</li><li>Emailadres: " + Hoofdboeker.Email + "</li><li>Rekeningnummer: " + Hoofdboeker.Rekeningnummer + "</li><li>Sofinummer: " + Hoofdboeker.Sofinummer + "</li><li>Persoonlijk nummer: " + Hoofdboeker.Nummer + "</li><li>Uw reserveringsnummer: " + Hoofdboeker.ReserveringNummer + "</li><li>Wachtwoord: "+  +"</li>";
+            string body = "<li>Naam: " + Hoofdboeker.Naam + "</li><li>Telefoonnummer: " + Hoofdboeker.Telefoon + "</li><li>Woonplaats: " + Hoofdboeker.Woonplaats + "</li><li>Straat: " + Hoofdboeker.Woonplaats + "</li><li>Emailadres: " + Hoofdboeker.Email + "</li><li>Rekeningnummer: " + Hoofdboeker.Rekeningnummer + "</li><li>Sofinummer: " + Hoofdboeker.Sofinummer + "</li><li>Persoonlijk nummer: " + Hoofdboeker.Nummer + "</li><li>Uw reserveringsnummer: " + Hoofdboeker.ReserveringNummer + "</li><li>Wachtwoord: "+ Hoofdboeker.Wachtwoord  +"</li>";
             string bodyFooter = "</ul>";
             
             string bericht = bodyHeader + body + bodyFooter;
@@ -89,7 +89,7 @@ namespace SME
 
             //Setting From , To and CC
             mail.From = new MailAddress("s25sme@gmail.com", "SME");
-            mail.To.Add(new MailAddress(bestelling.Winkelwagen.Account.Gebruikersnaam));
+            mail.To.Add(new MailAddress(Hoofdboeker.Email));
 
             SmtpServer.Send(mail);
 
