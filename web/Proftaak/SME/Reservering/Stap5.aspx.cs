@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Net.Mail;
+using System.Net;
 
 namespace SME
 {
@@ -69,6 +71,27 @@ namespace SME
             {
                 Materiaal.AddMateriaalReservering(reservering, materiaal.Barcode);
             }
+
+            SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
+            SmtpServer.Port = 587;
+            SmtpServer.UseDefaultCredentials = false;
+            SmtpServer.Credentials = new System.Net.NetworkCredential("s25sme@gmail.com", "proft@@k");
+            SmtpServer.EnableSsl = true;
+            MailMessage mail = new MailMessage();
+            mail.Subject = "Uw registratie bij SME";
+            mail.IsBodyHtml = true;
+            string bodyHeader = "<h3>Bedankt voor het plaatsen van een reservering bij SME.</h3><br /><p>Uw gegevens:</p><p><ul>";
+            string body = "<li>Naam: " + Hoofdboeker.Naam + "</li><li>Telefoonnummer: " + Hoofdboeker.Telefoon + "</li><li>Woonplaats: " + Hoofdboeker.Woonplaats + "</li><li>Straat: " + Hoofdboeker.Woonplaats + "</li><li>Emailadres: " + Hoofdboeker.Email + "</li><li>Rekeningnummer: " + Hoofdboeker.Rekeningnummer + "</li><li>Sofinummer: " + Hoofdboeker.Sofinummer + "</li><li>Persoonlijk nummer: " + Hoofdboeker.Nummer + "</li><li>Uw reserveringsnummer: " + Hoofdboeker.ReserveringNummer + "</li><li>Wachtwoord: "+  +"</li>";
+            string bodyFooter = "</ul>";
+            
+            string bericht = bodyHeader + body + bodyFooter;
+            mail.Body = bericht;
+
+            //Setting From , To and CC
+            mail.From = new MailAddress("s25sme@gmail.com", "SME");
+            mail.To.Add(new MailAddress(bestelling.Winkelwagen.Account.Gebruikersnaam));
+
+            SmtpServer.Send(mail);
 
             Session["Stap1"] = null;
             Session["Stap2"] = null;
