@@ -81,7 +81,7 @@
     <Content Include="assets\img\plattegrond camping zonder nummers.png" />
     <Content Include="assets\js\bootstrap.min.js" />
     <Content Include="Login.aspx" />
-    <Content Include="Filesharing.aspx" />
+    <Content Include="pages\Filesharing.aspx" />
     <Content Include="reservering\Stap1.aspx" />
     <Content Include="reservering\Stap2.aspx" />
     <Content Include="reservering\Stap3.aspx" />
@@ -163,11 +163,11 @@
     <Compile Include="model\ReserveringBeheer.cs" />
     <Compile Include="model\UitgeleendMateriaal.cs" />
     <Compile Include="model\UitgeleendMateriaal.db.cs" />
-    <Compile Include="Filesharing.aspx.cs">
+    <Compile Include="pages\Filesharing.aspx.cs">
       <DependentUpon>Filesharing.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Filesharing.aspx.designer.cs">
+    <Compile Include="pages\Filesharing.aspx.designer.cs">
       <DependentUpon>Filesharing.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -249,9 +249,7 @@
       <DependentUpon>Uitloggen.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="pages\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
