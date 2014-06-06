@@ -14,11 +14,12 @@ namespace SME
         {
             if (!IsPostBack)
             {
-                List<Kampeerplaats> Kampeerplaatsen = Kampeerplaats.GetKampeerplaatsen();
-                dropdown.DataSource = Kampeerplaatsen;
+                List<Kampeerplaats> VrijeKampeerplaatsen = Kampeerplaats.GetVrijeKampeerplaatsen();
+                dropdown.DataSource = VrijeKampeerplaatsen;
                 dropdown.DataTextField = "Nummer";
                 dropdown.DataBind();
 
+                List<Kampeerplaats> Kampeerplaatsen = Kampeerplaats.GetKampeerplaatsen();
                 KampeerplaatsenLijst.DataSource = Kampeerplaatsen;
                 KampeerplaatsenLijst.DataBind();
 
