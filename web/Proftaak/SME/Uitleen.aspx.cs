@@ -55,15 +55,20 @@ namespace SME
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            Persoon p = Persoon.GetPersoonBijRFID(RFIDinleverBox.Text);
+            Reservering r = Reservering.GetReserveringBijNummer(Convert.ToInt32(ReserveringNRinleverBox.Text));
             List<Materiaal> materialen = new List<Materiaal>();
             foreach (Materiaal a in materialen)
             {
                 if (a.Barcode == ArtiekelList.SelectedValue.Substring(0, ArtiekelList.SelectedValue.IndexOf(",")))
                 {
-                    MateriaalBeheer.Brengterug(a, p, Convert.ToInt32(AantalInleverBox.Text));
+                    MateriaalBeheer.Brengterug(a, r, Convert.ToInt32(AantalInleverBox.Text));
                 }
             }
+        }
+
+        protected void RFIDinleverBox_TextChanged(object sender, EventArgs e)
+        {
+            UitgeleendMateriaal.GetUitgeleendMateriaalBijReservering(ReserveringNRinleverBox.Text);
         }
     }
 }

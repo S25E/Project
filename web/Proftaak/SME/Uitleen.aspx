@@ -29,11 +29,11 @@
             <div class="row class1">
                 <div class="col-md-2">
                     <div class="control-group row-fluid form-inline">
-                        <asp:Label runat="server" ID="Label2">RFID:</asp:Label>
+                        <asp:Label runat="server" ID="Label2">Reservering nummer:</asp:Label>
                     </div>
                 </div>
                 <div class="col-md-2">
-                    <asp:TextBox Style="text-align: left; width: 200px; margin-left: auto; margin-right: auto;" placeholder="RFID" class="form-control" ID="RFIDinleverBox" runat="server" />
+                    <asp:TextBox Style="text-align: left; width: 200px; margin-left: auto; margin-right: auto;" AutoPostBack="true" placeholder="Reservering Nummer" class="form-control" ID="ReserveringNRinleverBox" runat="server" OnTextChanged="RFIDinleverBox_TextChanged" />
                 </div>
             </div>
             <%--Einde 2e row--%>
@@ -52,7 +52,7 @@
             <%--Einde 3e row--%>
             <br />
 
-    </div>
+    
     <div id="content" style="width=50%;">
 
 

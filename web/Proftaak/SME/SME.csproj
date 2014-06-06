@@ -96,6 +96,7 @@
     <Content Include="fonts\awesome\fontawesome-webfont.woff" />
     <Content Include="fonts\awesome\FontAwesome.otf" />
     <Content Include="Ingelogd.master" />
+    <Content Include="MateriaalToevoegen.aspx" />
     <None Include="Properties\PublishProfiles\sme.marijnverwegen.nl.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -240,6 +241,13 @@
     </Compile>
     <Compile Include="Uitleen.aspx.designer.cs">
       <DependentUpon>Uitleen.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MateriaalToevoegen.aspx.cs">
+      <DependentUpon>MateriaalToevoegen.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MateriaalToevoegen.aspx.designer.cs">
+      <DependentUpon>MateriaalToevoegen.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup />

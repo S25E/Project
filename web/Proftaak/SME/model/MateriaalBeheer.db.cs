@@ -9,12 +9,12 @@ namespace SME
     public partial class MateriaalBeheer
     {
 
-        public static void Leenuit(string Barcode, int rfid, int aantal)
+        public static void Leenuit(string Barcode, int reserveringnummer, int aantal)
         {
             string First = Barcode.Substring(0, Barcode.IndexOf(","));
             Database.Execute("INSERT INTO UITLENING (RESERVERINGNUMMER, BARCODE, DATUM_UITGELEEND, DATUM_INGELEVERD, AANTAL) VALUES (@reserveringnummer, @barcode, @datum_uitgeleend, @datum_ingeleverd, @aantal)", new Dictionary<string, object>()
         {
-            {"@reserveringnummer", rfid},
+            {"@reserveringnummer", reserveringnummer},
             {"@barcode", First},
             {"@datum_uitgeleend", DateTime.Today},
             {"@datum_ingeleverd", null},
@@ -22,12 +22,12 @@ namespace SME
         });
         }
         //test
-        public static void BrengTerug(Materiaal materiaal, Persoon persoon, int aantal)
+        public static void BrengTerug(Materiaal materiaal, Reservering reservering, int aantal)
         {
             int nummer = Convert.ToInt32(Database.GetData("SELECT AANTAL FROM UITLENING WHERE BARCODE = @BARCODE AND RESERVERINGNUMMER = @RESERVERINGNUMMER)", new Dictionary<string, object>()
               {
                 {"@barcode", materiaal.Barcode},
-                {"@reserveringnummer", persoon.Nummer}
+                {"@reserveringnummer", reservering.Nummer}
               }).Rows[0]["AANTAL"]);
             
             if ( (nummer - aantal) >= 1 )
