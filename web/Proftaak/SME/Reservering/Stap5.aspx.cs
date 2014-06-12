@@ -76,14 +76,16 @@ namespace SME
 
             reservering.MaakAan();
 
-            SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
-            SmtpServer.Port = 587;
+            SmtpClient SmtpServer = new SmtpClient("sme.marijnverwegen.nl");
+            SmtpServer.Port = 25;
             SmtpServer.UseDefaultCredentials = false;
-            SmtpServer.Credentials = new System.Net.NetworkCredential("s25sme@gmail.com", "proft@@k");
+            SmtpServer.Credentials = new System.Net.NetworkCredential("info@sme.marijnverwegen.nl", "proft@@k1234");
             SmtpServer.EnableSsl = true;
             MailMessage mail = new MailMessage();
             mail.Subject = "Uw registratie bij SME";
             mail.IsBodyHtml = true;
+
+            SmtpServer.Send(mail);
 
             string persoonlijknummerHoofdboeker = Persoon.GetHoofdboekerBijReservering(reservering).Nummer;
 
@@ -113,7 +115,7 @@ namespace SME
             mail.Body = bericht;
 
             //Setting From , To and CC
-            mail.From = new MailAddress("s25sme@gmail.com", "SME");
+            mail.From = new MailAddress("info@sme.marijnverwegen.nl", "SME");
             mail.To.Add(new MailAddress(Hoofdboeker.Email));
 
             SmtpServer.Send(mail);
