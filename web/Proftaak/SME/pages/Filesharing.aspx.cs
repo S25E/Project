@@ -13,34 +13,34 @@ namespace SME.pages
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            if (!this.IsPostBack)
             {
                 this.setMap(0);
-                PanelBestand.Visible = false;
+                this.PanelBestand.Visible = false;
             }
         }
 
         protected void Categorie_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (Categorie.SelectedValue != "")
+            if (this.Categorie.SelectedValue != string.Empty)
             {
-                PanelBestand.Visible = true;
-                setBestanden(Convert.ToInt32(Categorie.SelectedValue));
+                this.PanelBestand.Visible = true;
+                this.setBestanden(Convert.ToInt32(Categorie.SelectedValue));
             }
             else
             {
-                PanelBestand.Visible = false;
+                this.PanelBestand.Visible = false;
             }
-            if (LabelMap.Text != "Selecteer map:")
+            if (this.LabelMap.Text != "Selecteer map:")
             {
-                this.setMap(Convert.ToInt32(Categorie.SelectedValue));
+                this.setMap(Convert.ToInt32(this.Categorie.SelectedValue));
             }
         }
 
         protected void setMap(int map_id)
         {
-            Categorie.Items.Clear();
-            Categorie.Items.Add("");
+            this.Categorie.Items.Clear();
+            this.Categorie.Items.Add(string.Empty);
             foreach (Map map in BestandenCatalogus.Mappen)
             {
                 Categorie.Items.Add(new ListItem(map.ToString() + " (" + map.Bestanden.Count + ")", map.Nummer.ToString()));
@@ -55,7 +55,7 @@ namespace SME.pages
         protected void setBestanden(int map_id)
         {
             Bestanden.Items.Clear();
-            Bestanden.Items.Add("");
+            Bestanden.Items.Add(string.Empty);
             foreach (Bestand bestand in Map.GetMapBijNummer(map_id).Bestanden)
             {
                 Bestanden.Items.Add(new ListItem(bestand.Naam, bestand.Nummer.ToString()));
@@ -65,15 +65,15 @@ namespace SME.pages
 
         protected void Bestanden_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (Bestanden.SelectedValue != "")
+            if (Bestanden.SelectedValue != string.Empty)
             {
-                UpdateBestand(Bestand.GetBestand(Convert.ToInt32(Bestanden.SelectedValue)));
+                this.UpdateBestand(Bestand.GetBestand(Convert.ToInt32(Bestanden.SelectedValue)));
             }
             else
             {
                 PanelInfo.Visible = false;
             }
-            if (LabelMap.Text != "Selecteer bestand:" && Bestanden.SelectedValue.ToString() != "")
+            if (LabelMap.Text != "Selecteer bestand:" && Bestanden.SelectedValue.ToString() != string.Empty)
             {
                 int bestand_id = Convert.ToInt32(Bestanden.SelectedValue);
                 int map_id = Bestand.GetBestand(bestand_id).MapNummer;
@@ -174,12 +174,12 @@ namespace SME.pages
 
         protected void PlaatsReactie_Click(object sender, EventArgs e)
         {
-            if (Reactie.Text != "")
+            if (Reactie.Text != string.Empty)
             {
                 Bestand bestand = Bestand.GetBestand(Convert.ToInt32(Bestanden.SelectedValue));
                 bestand.AddReactie(new Reactie(this.persoon.Nummer, DateTime.Now, Reactie.Text));
                 this.UpdateBestand(bestand);
-                Reactie.Text = "";
+                Reactie.Text = string.Empty;
             }
         }
 
@@ -188,7 +188,7 @@ namespace SME.pages
             string zoekterm = Zoekterm.Text.ToLower();
 
             Categorie.Items.Clear();
-            Categorie.Items.Add("");
+            Categorie.Items.Add(string.Empty);
             foreach (Map map in BestandenCatalogus.Mappen)
             {
                 if (map.Naam.ToLower().IndexOf(zoekterm) != -1)
@@ -198,7 +198,7 @@ namespace SME.pages
             }
 
             Bestanden.Items.Clear();
-            Bestanden.Items.Add("");
+            Bestanden.Items.Add(string.Empty);
             foreach (Bestand bestand in Bestand.GetBestanden())
             {
                 if (bestand.Naam.ToLower().IndexOf(zoekterm) != -1)
