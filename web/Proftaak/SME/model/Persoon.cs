@@ -88,7 +88,7 @@ namespace SME
         {
             Persoon persoon = Persoon.GetPersoonBijRFID(rfid);
 
-            using (PrincipalContext pc = new PrincipalContext(ContextType.Domain, "sme.local"))
+            using (PrincipalContext pc = new PrincipalContext(ContextType.Domain, "192.168.2.10", "Administrator", "m@rijn1234"))
             {
                 bool isValid = pc.ValidateCredentials(rfid, wachtwoord);
                 if (isValid)

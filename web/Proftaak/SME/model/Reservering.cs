@@ -103,7 +103,7 @@ namespace SME
 
         public void MaakAan()
         {
-            PrincipalContext pc = new PrincipalContext(ContextType.Domain, "sme.local", "Administrator", "");
+            PrincipalContext pc = new PrincipalContext(ContextType.Domain, "192.168.2.10", "Administrator", "m@rijn1234");
             // ACCOUNTS AANMAKEN IN AD
             foreach (Persoon persoon in this.Bijboekers)
             {
