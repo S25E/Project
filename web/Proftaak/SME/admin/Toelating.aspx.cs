@@ -29,7 +29,7 @@ namespace SME
                         persoon.Aanwezig = !persoon.Aanwezig;
                         RFIDCheck.ForeColor = System.Drawing.Color.Black;
                         InfoLabel.ForeColor = System.Drawing.Color.Green;
-                        InfoLabel.Text = "";
+                        InfoLabel.Text = string.Empty;
                         RFIDCheck.Text = persoon.Naam + " is" + (persoon.Aanwezig ? " In" : " Uit") + "gecheckt";
                     }
                     else
@@ -46,7 +46,7 @@ namespace SME
                         persoon.Aanwezig = !persoon.Aanwezig;
                         RFIDCheck.ForeColor = System.Drawing.Color.Black;
                         InfoLabel.ForeColor = System.Drawing.Color.Green;
-                        InfoLabel.Text = "";
+                        InfoLabel.Text = string.Empty;
                         RFIDCheck.Text = persoon.Naam + " is" + (persoon.Aanwezig ? " In" : " Uit") + "gecheckt";
                     }
                     else
@@ -64,7 +64,7 @@ namespace SME
                 InfoLabel.Text = "U bent niet bekend in ons systeem";
             }
             RFIDCheck.Focus();
-            DataBinderts();
+            this.DataBinderts();
         }
 
         public string Persoonstring(string rfid)
