@@ -54,7 +54,7 @@
     <br />
 
 
-    <div id="content" style="width=50%;">
+    <div id="content" style="width:50%;">
 
 
         <div style="width: 50%;" class="form-horizontal">

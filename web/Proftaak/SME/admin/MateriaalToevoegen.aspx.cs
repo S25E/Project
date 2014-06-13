@@ -19,6 +19,7 @@ namespace SME
             Materiaal materiaal = new Materiaal(tbBarcode.Text, TbNaam.Text, Convert.ToInt32(tbAantal.Text), Convert.ToInt32(tbVerhuurprijs.Text), tbOmschrijving.Text, tbCategorie.Text);
 
             Materiaal.AddMateriaal(materiaal);
+            Response.Redirect("~/admin/Uitleen.aspx");
         }
     }
 }
