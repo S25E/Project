@@ -85,8 +85,6 @@ namespace SME
             mail.Subject = "Uw registratie bij SME";
             mail.IsBodyHtml = true;
 
-            SmtpServer.Send(mail);
-
             string persoonlijknummerHoofdboeker = Persoon.GetHoofdboekerBijReservering(reservering).Nummer;
 
             string bijboekerString= string.Empty;
