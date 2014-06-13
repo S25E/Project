@@ -11,7 +11,7 @@ namespace SME
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            if (!this.IsPostBack)
             {
                 foreach (MateriaalCategorie a in MateriaalCategorie.GetMateriaalCategorieen())
                 {
@@ -32,10 +32,8 @@ namespace SME
 
         }
 
-
         protected void Bevestigknop_Click(object sender, EventArgs e)
         {
-
             MateriaalBeheer.LeenUit(ArtiekelList.SelectedItem.ToString(), Convert.ToInt32(TbRFID.Text), Convert.ToInt32(TbAantal.Text));
         }
 
@@ -82,7 +80,6 @@ namespace SME
             ListBox1.Items.Clear();
             ListBox1.Items.Add(UitgeleendMateriaal.GetUitgeleendMateriaalBijReservering(ReserveringNRinleverBox.Text));
         }
-
 
         protected void MateriaalToevoegen_Click1(object sender, EventArgs e)
         {

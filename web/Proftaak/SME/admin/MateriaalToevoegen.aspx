@@ -95,7 +95,7 @@
 
             <%--Begin 6e row--%>
 
-            <asp:Button ID="Bevestigknop" runat="server" Text="Bevestig" Width="86px" CssClass="btn btn-primary" PostBackUrl="~/admin/Uitleen.aspx" OnClick="Bevestigknop_Click"  />
+            <asp:Button ID="Bevestigknop" runat="server" Text="Bevestig" Width="86px" CssClass="btn btn-primary" OnClick="Bevestigknop_Click" />
 
 
         </div>

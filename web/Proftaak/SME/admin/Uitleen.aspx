@@ -6,7 +6,71 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-    <div style="position: fixed; left: 50%; top: 21%; width: 50%;">
+
+    <div id="content" style="width:50%;">
+
+
+        <div style="width: 50%;" class="form-horizontal">
+            <h1>Leen hier uw artikelen</h1>
+
+            <asp:DropDownList ID="CategorieList" runat="server" AutoPostBack="true" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" Width="80px" DataTextField="Categorie" CssClass="dropdown">
+            </asp:DropDownList>
+            <asp:DropDownList ID="ArtiekelList" runat="server" Width="180px" Style="margin-left: 25px;">
+            </asp:DropDownList>
+            <br />
+            <br />
+
+            <%--Begin 1e row--%>
+            <div class="row class1">
+                <div class="col-md-2" style="height: 34px; top: 0px; left: 0px;">
+                    <div class="control-group row-fluid form-inline">
+                        <asp:Label runat="server" ID="LabelNaam">Aantal:</asp:Label>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <asp:TextBox Style="text-align: left; width: 200px; margin-left: auto; margin-right: auto;" placeholder="Aantal" class="form-control" ID="TbAantal" runat="server" />
+                </div>
+            </div>
+
+
+
+            <%--Einde 1e row--%>
+            <br />
+
+            <%--Begin 2e row--%>
+            <div class="row class1">
+                <div class="col-md-2">
+                    <div class="control-group row-fluid form-inline">
+                        <asp:Label runat="server" ID="LabelTelefoonnummer">RFID:</asp:Label>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <asp:TextBox Style="text-align: left; width: 200px; margin-left: auto; margin-right: auto;" placeholder="RFID" class="form-control" ID="TbRFID" runat="server" />
+                </div>
+            </div>
+            <%--Einde 2e row--%>
+            <br />
+
+            <%--Begin 3e row--%>
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+
+
+
+            <asp:Button ID="Bevestigknop" runat="server" Text="Bevestig" OnClick="Bevestigknop_Click" Width="86px" CssClass="btn btn-primary" />
+            <asp:Button ID="MateriaalToevoegen" runat="server" Text="Materiaal Toevoegen"  Width="160px" CssClass="btn btn-primary" PostBackUrl="~/admin/MateriaalToevoegen.aspx" />
+
+
+        </div>
+
+       <div style="width: 50%;" class="form-horizontal">
 
         <h1>Lever hier uw artikelen in</h1>
 
@@ -53,66 +117,6 @@
     <%--Einde 3e row--%>
     <br />
 
-
-    <div id="content" style="width=50%;">
-
-
-        <div style="width: 50%;" class="form-horizontal">
-            <h1>Leen hier uw artikelen</h1>
-
-            <asp:DropDownList ID="CategorieList" runat="server" AutoPostBack="true" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" Width="80px" DataTextField="Categorie" CssClass="dropdown">
-            </asp:DropDownList>
-            <asp:DropDownList ID="ArtiekelList" runat="server" Width="180px" Style="margin-left: 25px;">
-            </asp:DropDownList>
-            <br />
-            <br />
-
-            <%--Begin 1e row--%>
-            <div class="row class1">
-                <div class="col-md-2" style="height: 34px; top: 0px; left: 0px;">
-                    <div class="control-group row-fluid form-inline">
-                        <asp:Label runat="server" ID="LabelNaam">Aantal:</asp:Label>
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <asp:TextBox Style="text-align: left; width: 200px; margin-left: auto; margin-right: auto;" placeholder="Aantal" class="form-control" ID="TbAantal" runat="server" />
-                </div>
-            </div>
-            <%--Einde 1e row--%>
-            <br />
-
-            <%--Begin 2e row--%>
-            <div class="row class1">
-                <div class="col-md-2">
-                    <div class="control-group row-fluid form-inline">
-                        <asp:Label runat="server" ID="LabelTelefoonnummer">RFID:</asp:Label>
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <asp:TextBox Style="text-align: left; width: 200px; margin-left: auto; margin-right: auto;" placeholder="RFID" class="form-control" ID="TbRFID" runat="server" />
-                </div>
-            </div>
-            <%--Einde 2e row--%>
-            <br />
-
-            <%--Begin 3e row--%>
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-
-
-
-            <asp:Button ID="Bevestigknop" runat="server" Text="Bevestig" OnClick="Bevestigknop_Click" Width="86px" CssClass="btn btn-primary" />
-            <asp:Button ID="MateriaalToevoegen" runat="server" Text="Materiaal Toevoegen"  Width="160px" CssClass="btn btn-primary" PostBackUrl="~/admin/MateriaalToevoegen.aspx" />
-
-
-        </div>
     </div>
 </asp:Content>
 
