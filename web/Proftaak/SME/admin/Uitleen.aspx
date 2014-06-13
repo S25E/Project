@@ -7,10 +7,10 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
 
-    <div id="content" style="width:50%;">
+    <div id="content">
 
-
-        <div style="width: 50%;" class="form-horizontal">
+        <div class="row">
+        <div class="form-horizontal col-xs-6">
             <h1>Leen hier uw artikelen</h1>
 
             <asp:DropDownList ID="CategorieList" runat="server" AutoPostBack="true" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" Width="80px" DataTextField="Categorie" CssClass="dropdown">
@@ -66,7 +66,7 @@
 
 
         </div>
-        <div style="position: absolute; left: 50%; top: 21%; width: 50%;">
+        <div class="col-xs-6">
 
         <h1>Lever hier uw artikelen in</h1>
 
@@ -113,5 +113,6 @@
     <%--Einde 3e row--%>
     <br />
     </div>
+        </div>
 </asp:Content>
 
