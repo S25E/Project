@@ -80,12 +80,9 @@ namespace SME
             SmtpServer.Port = 25;
             SmtpServer.UseDefaultCredentials = false;
             SmtpServer.Credentials = new System.Net.NetworkCredential("info@sme.marijnverwegen.nl", "proft@@k1234");
-            SmtpServer.EnableSsl = true;
             MailMessage mail = new MailMessage();
             mail.Subject = "Uw registratie bij SME";
             mail.IsBodyHtml = true;
-
-            SmtpServer.Send(mail);
 
             string persoonlijknummerHoofdboeker = Persoon.GetHoofdboekerBijReservering(reservering).Nummer;
 

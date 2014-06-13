@@ -4,8 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Data;
 
-// NOTE: getBestandenByWhere en rowToBestand kunnen samen worden gevoegd?
-
 namespace SME
 {
     public partial class Bestand 
@@ -190,7 +188,7 @@ namespace SME
         /// <param name="bestand"></param>
         public static void DeleteBestand(Bestand bestand)
         {
-            Database.Execute("DELETE FROM REACTIE WHERE BESTAND_ID = " + bestand.Nummer);
+            Database.Execute("DELETE FROM OPMERKING WHERE BESTAND_ID = " + bestand.Nummer);
             Database.Execute("DELETE FROM DISLIKE_LIKE_REPORT WHERE BESTAND_ID = " + bestand.Nummer);
             Database.Execute("DELETE FROM BESTAND WHERE BESTAND_ID = " + bestand.Nummer);
         }

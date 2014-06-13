@@ -158,7 +158,7 @@ namespace SME
 
         public static string Escape(string waarde)
         {
-            return waarde.Replace("'", "\'");
+            return waarde.Replace("'", "''");
         }
 
         public static int GetSequence(string naam)
