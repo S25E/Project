@@ -11,6 +11,12 @@ namespace SME
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (ListBox1.SelectedValue == null)
+            {
+                btnOmzetten.Enabled = false;
+                btnTerugBreng.Enabled = false;
+            }
+
             if (!this.IsPostBack)
             {
                 foreach (MateriaalCategorie a in MateriaalCategorie.GetMateriaalCategorieen())
