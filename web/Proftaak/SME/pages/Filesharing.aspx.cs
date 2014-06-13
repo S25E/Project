@@ -4,12 +4,13 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Web.Security;
 
 namespace SME.pages
 {
     public partial class Filesharing : System.Web.UI.Page
     {
-        protected Persoon persoon = Persoon.GetPersoonBijRFID("000039");
+        protected Persoon persoon = Persoon.GetPersoonBijRFID(HttpContext.Current.User.Identity.Name);
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -132,6 +133,8 @@ namespace SME.pages
                 DownloadKnop.Text = "Klik hier om het bestand te downloaden!";
             }
 
+            VerwijderKnop.Visible = bestand.Uploader.Equals(this.persoon) || this.persoon is Medewerker;
+
             Reacties.DataSource = bestand.Reacties;
             Reacties.DataBind();
         }
@@ -220,6 +223,13 @@ namespace SME.pages
         protected void KnopNieuwBestand_Click(object sender, EventArgs e)
         {
             Response.Redirect("Uploaden.aspx");
+        }
+
+        protected void VerwijderKnop_Click(object sender, EventArgs e)
+        {
+            Bestand bestand = Bestand.GetBestand(Convert.ToInt32(Bestanden.SelectedValue));
+            bestand.Map.DeleteBestand(bestand);
+            Response.Redirect("Filesharing.aspx");
         }
     }
 }

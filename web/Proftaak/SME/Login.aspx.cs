@@ -21,7 +21,6 @@ namespace SME
             {
                 Persoon persoon = Persoon.GetPersoonBijRFID(TextBoxGebruikersnaam.Text);
 
-                //FormsAuthentication.RedirectFromLoginPage(TextBoxGebruikersnaam.Text, true);
                 FormsAuthenticationTicket ticket = new FormsAuthenticationTicket(
                     1,
                     TextBoxGebruikersnaam.Text, 
