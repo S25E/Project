@@ -57,6 +57,7 @@
                         </asp:Panel>
                         <asp:Panel ID="PanelInfo" runat="server" Visible="false">
                             <h2 runat="server" id="Bestandnaam"></h2>
+                            <asp:LinkButton ID="VerwijderKnop" OnClick="VerwijderKnop_Click" runat="server">Verwijder dit bestand<br /></asp:LinkButton>
                             <b>Bestandsnaam:</b> <asp:Label ID="Naam" runat="server" Text="Label"></asp:Label><br />
                             <b>Beschrijving:</b> <asp:Label ID="Beschrijving" runat="server" Text="Label"></asp:Label><br />
                             <b>Grootte:</b> <asp:Label ID="Grootte" runat="server" Text="Label"></asp:Label><br />

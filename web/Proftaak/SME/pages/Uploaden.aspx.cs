@@ -26,7 +26,7 @@ namespace SME.pages
             FileInfo fileinfo = new FileInfo(this.FileUpload.PostedFile.FileName);
             string filelocatie = "/Files/" + DateTime.Now.ToString("yyyyMMddHHmmssffff") + "-" + fileinfo.Name;
             this.FileUpload.PostedFile.SaveAs(Server.MapPath(filelocatie));
-            Bestand toUpload = new Bestand(Convert.ToInt32(Categorie.SelectedValue), this.BestandNaam.Text, this.Beschrijving.Text, fileinfo.Extension, this.FileUpload.PostedFile.ContentLength, "000039", DateTime.Now, 00, 0, filelocatie, 0);
+            Bestand toUpload = new Bestand(Convert.ToInt32(Categorie.SelectedValue), this.BestandNaam.Text, this.Beschrijving.Text, fileinfo.Extension, this.FileUpload.PostedFile.ContentLength, HttpContext.Current.User.Identity.Name, DateTime.Now, 00, 0, filelocatie, 0);
             Map.GetMapBijNummer(Convert.ToInt32(Categorie.SelectedValue)).AddBestand(toUpload);
             Response.Redirect("/pages/Filesharing.aspx");
         }

@@ -91,6 +91,12 @@ namespace SME
         /// <param name="persoon"></param>
         public static void AddLike(Bestand bestand, Persoon persoon)
         {
+            if (bestand.Dislikes.Contains(persoon))
+            {
+                bestand.dislikes.Remove(persoon);
+                bestand.Rating += 1;
+                Database.Execute("UPDATE BESTAND SET RATING = RATING + 1 WHERE BESTAND_ID = " + bestand.Nummer);
+            }
             DataTable dt = Database.GetData("SELECT * FROM DISLIKE_LIKE_REPORT WHERE RFID = " + persoon.Nummer + " AND BESTAND_ID = " + bestand.Nummer);
             if (dt.Rows.Count == 0)
             {
@@ -106,6 +112,7 @@ namespace SME
                     {"@rfid", persoon.Nummer}
                 });
             }
+            bestand.Rating += 1;
             Database.Execute("UPDATE BESTAND SET RATING = RATING + 1 WHERE BESTAND_ID = " + bestand.Nummer);
         }
 
@@ -116,6 +123,12 @@ namespace SME
         /// <param name="persoon"></param>
         public static void AddDislike(Bestand bestand, Persoon persoon)
         {
+            if (bestand.Likes.Contains(persoon))
+            {
+                bestand.likes.Remove(persoon);
+                bestand.Rating -= 1;
+                Database.Execute("UPDATE BESTAND SET RATING = RATING - 1 WHERE BESTAND_ID = " + bestand.Nummer);
+            }
             DataTable dt = Database.GetData("SELECT * FROM DISLIKE_LIKE_REPORT WHERE RFID = " + persoon.Nummer + " AND BESTAND_ID = " + bestand.Nummer);
             if (dt.Rows.Count == 0)
             {
@@ -131,6 +144,7 @@ namespace SME
                         {"@rfid", persoon.Nummer}
                     });
             }
+            bestand.Rating -= 1;
             Database.Execute("UPDATE BESTAND SET RATING = RATING - 1 WHERE BESTAND_ID = " + bestand.Nummer);
         }
 
@@ -203,8 +217,8 @@ namespace SME
             return new Bestand(
                 Convert.ToInt32(row["BESTAND_ID"]),
                 Convert.ToInt32(row["MAP_ID"]),
-                row["BESCHRIJVING"].ToString(),
                 row["NAAM"].ToString(),
+                row["BESCHRIJVING"].ToString(),
                 row["EXTENSIE"].ToString(),
                 Convert.ToInt32(row["GROOTTE"]),
                 row["RFID"].ToString(),

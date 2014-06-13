@@ -266,17 +266,10 @@ namespace SME
         public void AddLike(Persoon persoon)
         {
             Bestand.AddLike(this, persoon);
-            this.Rating += 1;
 
             if (this.likes != null)
             {
                 this.likes.Add(persoon);
-            }
-
-            if (this.dislikes != null && this.dislikes.Contains(persoon))
-            {
-                this.dislikes.Remove(persoon);
-                this.Rating += 1;
             }
         }
 
@@ -287,17 +280,10 @@ namespace SME
         public void AddDislike(Persoon persoon)
         {
             Bestand.AddDislike(this, persoon);
-            this.Rating -= 1;
 
             if (this.dislikes != null)
             {
                 this.dislikes.Add(persoon);
-            }
-
-            if (this.likes != null && this.likes.Contains(persoon)) 
-            { 
-                this.likes.Remove(persoon);
-                this.Rating -= 1;
             }
         }
 
