@@ -60,7 +60,6 @@
                                     <li><a href="/reservering/Stap1.aspx">Reserveren!</a></li>
                                     <li><a href="/admin/Toelating.aspx">Toelating</a></li>
                                     <li><a href="/admin/Uitleen.aspx">Uitlenen</a></li>
-                                    <li><a href="/admin/Toelating.aspx">Toelating</a></li>
                                     <li><a href="/pages/Filesharing.aspx">Filesharing</a></li>
                                     <li><a href="/Uitloggen.aspx">Uitloggen</a></li>
                                 </ContentTemplate>
