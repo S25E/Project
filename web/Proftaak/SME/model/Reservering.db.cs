@@ -31,14 +31,14 @@ namespace SME
 
         public static Reservering GetReserveringBijNummer(int nummer)
         {
-            DataTable dt = Database.GetData("SELECT RESERVERINGSNUMMER, BETAALD, DATUM FROM RESERVERING");
+            DataTable dt = Database.GetData("SELECT RESERVERINGSNUMMER, BETAALD, DATUM FROM RESERVERING WHERE RESERVERINGSNUMMER = " + nummer);
 
             foreach (DataRow row in dt.Rows)
             {
                 return rowToReservering(row);
             }
 
-            return (Reservering)null;
+            return null;
         }
 
         public static void AddReservering(Reservering reservering)
