@@ -6,7 +6,7 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-    <div style="position: fixed; left: 50%; top: 21%; width: 50%;">
+    <div style="position: absolute; left: 50%; top: 21%; width: 50%;">
 
         <h1>Lever hier uw artikelen in</h1>
 
